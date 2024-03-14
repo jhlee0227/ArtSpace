@@ -1,0 +1,94 @@
+@import "reset.css";
+
+:root {
+    /* 여기에 이런식으로 변수 만들어서 색갈 넣을 수 있음 */
+    --main-color: #FFCA63;
+    /* 메인 컬러 */
+    --sub-color: #f5f5dc;
+    /* 서브용으로 연한 색 */
+    --black: #3B3831;
+    /* 검은색 폰트같은 거 이걸로 */
+    --light_gray: #A6A6A6;
+    /* 연한 글씨 색 같은거 이걸로 */
+    --brown: #605353;
+    /* 갈색 부분 */
+    --red: #E10000;
+    /* 빨간색 */
+    --border: .2rem solid rgba(255, 202, 99, .3);
+    --box-shadow: 1px 1px 1px 1px rgba(163, 159, 149, 0.3);
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.con {
+    display: flex;
+}
+
+.con .left {
+    width: 15vw;
+    border-right: 2px solid var(--light_gray);
+    margin-left: 80px;
+    height: 100vh;
+    background-color: rgb(248, 245, 233);
+}
+
+.con .left-main {
+    font-size: 1.5rem;
+    border-width: 0 0 1px;
+    border-style: solid;
+    padding: 1.75rem 20px;
+    text-align: left;
+
+}
+
+
+.con .left .left-menu li {
+    margin: 10px 10px 10px 20px;
+    text-align: left;
+}
+
+.con .left .left-menu a:hover {
+    color: blue;
+}
+
+.con .content {
+    width: 70vw;
+    margin-right: 80px;
+    margin-left: 30px;
+}
+
+.con .content .content-main {
+    font-size: 3rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.select {
+    margin: 10px;
+}
+
+.table {
+    width: 100%;
+    margin: auto;
+}
+
+th, td {
+    
+    
+}
+
+td {
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+}
+
+.btn {
+    padding-left: 50px;
+}
