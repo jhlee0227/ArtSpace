@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <section class="con">
+        <!-- 좌측 메뉴 -->
+        <div class="left">
+            <h2 class="left-main">관리자 페이지</h2>
+            <div class="left-menu">
+                <ul>
+                    <li><a href="#">회원 관리</a></li>
+                    <li><a href="#">공연장 정보</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">리뷰 관리</a></li>
+                    <li><a href="#">통계</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 내용 -->
+        <div class="content">
+            <h2 class="content-main">회원관리</h2>
+            <form name="search">
+                <select class="select" name="type" id="">
+                    <option value="id">아이디</option>
+                    <option value="group">단체명</option>
+                </select>
+                <input type="text">
+                <input type="button" value="검색">
+            </form>
+            <div class="main">
+                <div class="search-result">전체 사용자 0명</div>
+                <table class="table">
+                    <tr class="thead">
+                        <th><input type="checkbox" name="allCheck" id=""></th>
+                        <th>아이디</th>
+                        <th>단체명</th>
+                        <th>권한</th>
+                        <th class="block">차단상태</th>
+                        <th class="leave">탈퇴상태</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="rowcheck" id=""></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="btn">
+                <form name="block">
+                    <input class="block-btn" type="button" value="차단">
+                </form>
+                <form name="leave">
+                    <input class="leave-btn" type="button" value="탈퇴">
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href=".css/main_style.css">
+  <title>공간</title>
+</head>
+<body>
+
+  <!-- hearder -->
+  <header>
+    <div class="nav">
+      <div class="left-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="image/logo_text.png" alt="logo">
+          </a>
+        </div>
+        <div class="list-btn"></div>
+      </div>
+
+      <div class="right-content">
+        <div class="search-box">
+          <form action="" name="search" class="search-from">
+            <input type="text" name="content" id="content" >
+            <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
+          </form>
+      </div>
+        
+        <div class="mypage-btn"></div>
+      </div>      
+    </div> 
+  </header>
+  <script>
+    const searchBtn = document.querySelector('.search-box');
+    searchBtn.addEventListener('click', function(){
+      document.querySelector('#content').focus();
+    });
+
+    const submitButton = document.querySelector('#submit-btn');
+    submitButton.addEventListener('click', function() {
+      const form = document.forms.search;
+      form.submit();
+    });
+  </script>
+
+  <!-- hearder End -->
+
+  <!-- main-banner -->
+  <section class="main-banner">
+    <div class="container">
+
+      <div class="picture-contain p1">
+        <div class="picture">
+          <img src="" alt="">
+        </div>
+      </div>
+
+      <div class="picture-contain p2">
+        <div class="picture">
+          <img src="" alt="">
+        </div>
+      </div>
+
+      <div class="picture-contain p3">
+        <div class="picture">
+          <img src="" alt="">
+        </div>
+      </div>
+
+      <div class="banner-text">
+        <h1>문화 공간의 시작</h1>
+        <p>공간에서 시작되는 간편한 공연의 시작</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- main-banner end -->
+
+    <!-- main-banner -->
+    <section class="local-list">
+     
+    </section>
+    <!-- main-banner end -->
+
+  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+</body>
+</html>
