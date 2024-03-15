@@ -24,6 +24,10 @@
     padding: 0;
 }
 
+.header {
+    width: 100%;
+    height: 150px;
+}
 .con {
     display: flex;
 }
@@ -45,10 +49,13 @@
 
 }
 
-
 .con .left .left-menu li {
     margin: 10px 10px 10px 20px;
     text-align: left;
+}
+
+.con .left .left-menu .open {
+    color: blue;
 }
 
 .con .left .left-menu a:hover {
@@ -74,13 +81,18 @@
 .table {
     width: 100%;
     margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
-th, td {
-    
+th {
+    background-color: var(--main-color);
     
 }
 
+.con .content .main .table tbody tr:nth-child(even) {
+    background-color: var(--sub-color);
+}
 td {
     text-align: center;
 }

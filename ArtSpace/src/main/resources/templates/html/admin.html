@@ -9,17 +9,20 @@
 </head>
 
 <body>
+    <header class="header">
+
+    </header>
     <section class="con">
         <!-- 좌측 메뉴 -->
         <div class="left">
             <h2 class="left-main">관리자 페이지</h2>
             <div class="left-menu">
                 <ul>
-                    <li><a href="#">회원 관리</a></li>
-                    <li><a href="#">공연장 정보</a></li>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">리뷰 관리</a></li>
-                    <li><a href="#">통계</a></li>
+                    <li><a href="#" class="open">회원 관리</a></li>
+                    <li><a href="hall_info.html" target="_self">공연장 정보</a></li>
+                    <li><a href="notice.html" target="_self">공지사항</a></li>
+                    <li><a href="#" target="_self">리뷰 관리</a></li>
+                    <li><a href="#" target="_self">통계</a></li>
                 </ul>
             </div>
         </div>
@@ -37,21 +40,34 @@
             <div class="main">
                 <div class="search-result">전체 사용자 0명</div>
                 <table class="table">
-                    <tr class="thead">
-                        <th><input type="checkbox" name="allCheck" id=""></th>
-                        <th>아이디</th>
-                        <th>단체명</th>
-                        <th>권한</th>
-                        <th class="block">차단상태</th>
-                        <th class="leave">탈퇴상태</th>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="rowcheck" id=""></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" name="selectAll" value="selectAll" onclick="selectAll(this)"></th>
+                            <th>아이디</th>
+                            <th>단체명</th>
+                            <th>권한</th>
+                            <th class="block">차단상태</th>
+                            <th class="leave">탈퇴상태</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="check" onclick="checkSelectAll()"></td>
+                            <td>test1</td>
+                            <td>테스트</td>
+                            <td>일반</td>
+                            <td>차단</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="check" onclick="checkSelectAll()"></td>
+                            <td>test2</td>
+                            <td>테스트2</td>
+                            <td>일반2</td>
+                            <td>차단2</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="btn">
@@ -64,6 +80,8 @@
             </div>
         </div>
     </section>
+
+    <script src="js/admin.js"></script>
 </body>
 
 </html>
