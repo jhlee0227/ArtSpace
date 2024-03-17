@@ -1,28 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/hall_info.css">
+    <title>관리자</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 </head>
+
 <body>
+    <header>
+        <div class="nav">
+          <div class="left-content">
+            <div class="logo">
+              <a href="index.html">
+                <img src="image/logo_text.png" alt="logo" />
+              </a>
+            </div>
+            <a class="list-btn" href="">
+              대여 공간
+            </a>
+          </div>
+  
+          <div class="right-content">
+            <div class="search-box">
+              <form action="" name="search" class="search-from">
+                <input type="text" name="content" id="content" />
+                <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
+              </form>
+            </div>
+  
+            <div class="mypage-btn"></div>
+          </div>
+        </div>
+      </header>
+      <script>
+        const searchBtn = document.querySelector(".search-box");
+        searchBtn.addEventListener("click", function () {
+          document.querySelector("#content").focus();
+        });
+  
+        const submitButton = document.querySelector("#submit-btn");
+        submitButton.addEventListener("click", function () {
+          const form = document.forms.search;
+          form.submit();
+        });
+      </script>
+  
+      <!-- hearder End -->
     <section class="con">
+        <!-- 좌측 메뉴 -->
         <div class="left">
-            <h2 class="left-main">관리자 페이지</h2>
+            <div class="left-main">
+                <h2>관리자</h2>
+                <i class="fas fa-user-cog fa-4x"></i>
+            </div>
             <div class="left-menu">
                 <ul>
-                    <li><a href="admin.html" target="_self">회원 관리</a></li>
-                    <li><a href="#" class="open">공연장 정보</a></li>
-                    <li><a href="notice.html" target="_self">공지사항</a></li>
-                    <li><a href="#" target="_self">리뷰 관리</a></li>
-                    <li><a href="#" target="_self">통계</a></li>
+                    <a href="admin.html" target="_self"><li>회원 관리</li></a>
+                    <a href="#"><li class="open">공연장 정보</li></a>
+                    <a href="notice.html" target="_self"><li>공지사항</li></a>
+                    <a href="#" target="_self"><li>리뷰 관리</li></a>
+                    <a href="#" target="_self"><li>통계</li></a>
                 </ul>
             </div>
         </div>
         <div class="content">
             <h2 class="content-main">공연장 정보</h2>
-            <form name="search">
+            <div class="search">
+              <form name="search">
                 <select class="select" name="type" id="">
                     <option value="hallname">공연장명</option>
                     <option value="group">단체명</option>
@@ -31,20 +78,26 @@
                 <input type="text">
                 <input type="button" value="검색">
             </form>
+            </div>
             <div class="main">
                 <table class="table">
-                    <tr>
-                        <th><input type="checkbox" name="allCheck" id=""></th>
-                        <th>공연장명</th>
-                        <th>단체명</th>
-                        <th>지역</th>
-                    </tr>
-                    <tr>
-                        <th><input type="checkbox" name="rowCheck" id=""></th>
-                        <td><a href="#">1</a></td>
-                        <td>2</td>
-                        <td>3</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" name="allCheck" id=""></th>
+                            <th>공연장명</th>
+                            <th>단체명</th>
+                            <th>지역</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="rowCheck" id=""></td>
+                            <td><a href="#">1</a></td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                   
                 </table>
             </div>
         </div>
