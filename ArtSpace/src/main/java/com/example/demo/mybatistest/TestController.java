@@ -15,6 +15,7 @@ public class TestController {
 	
 	@GetMapping("/t")
 	public String test(Model model) {
+		System.out.println(testService.getAll());
 		model.addAttribute("list", testService.getAll());		
 		return "html/test1";
 	}
