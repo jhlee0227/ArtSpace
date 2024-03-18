@@ -1,0 +1,72 @@
+@import url(./main_style.css);
+
+
+body {
+    background-color: var(--bg);
+}
+
+/* ===== Item Filter ===== */
+.filter {
+    margin-top: 90px;
+    min-width: 667px;    
+    padding: 8rem 20rem;
+    box-shadow: var(--box-shadow-gray);
+}
+
+.filter h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filter .fil-container {
+    margin: .8rem 0;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow-gray);
+    display: flex;
+    
+}
+.filter .fil-name {
+    text-align: center;
+    min-width: 55px;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-right: var(--border);
+    border-color: var(--gray);
+    cursor: pointer;
+}
+
+.filter .tags {
+    display: flex;
+}
+
+.filter .tags .tag {
+    font-size: 1.5rem;
+    background-color: var(--main-color);
+    padding: 1rem 2rem;
+    margin-left: 1.5rem;
+    border-radius: 2rem;
+}
+
+/* ===== Item Filter End ===== */
+
+
+/* ===== Hall List Start ===== */
+
+.hall-list .drop-menu {
+    cursor: pointer;
+    display: flex;
+    align-self: self-start;
+    font-size: 2rem;
+    text-align: left;
+    margin: 1.5rem 10rem;
+}
+
+.hall-list .drop-menu .cur-item{
+    margin-right: .3rem;
+}
+
+
+/* ===== Hall List End ===== */

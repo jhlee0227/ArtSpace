@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/main_style.css" />
-    <title>공간</title>
+    <link rel="stylesheet" href="../css/h_list_style.css" />
+    <title>Document</title>
   </head>
   <body>
     <!-- hearder -->
@@ -16,16 +16,23 @@
               <img src="../img/logo_text.png" alt="logo" />
             </a>
           </div>
-          <a class="list-btn" href="hall_list.html">
-            대여 공간
-          </a>
+          <a class="list-btn" href="hall_list.html"> 대여 공간 </a>
         </div>
 
         <div class="right-content">
           <div class="search-box">
             <form action="" name="search" class="search-from">
-              <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
-              <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
+              <input
+                type="text"
+                name="content"
+                id="content"
+                placeholder="이곳에 공연장을 검색해보세요."
+              />
+              <i
+                id="submit-btn"
+                class="fa fa-search fa-3x"
+                aria-hidden="true"
+              ></i>
             </form>
           </div>
 
@@ -44,7 +51,7 @@
         searchBtn.addEventListener("click", function () {
           document.querySelector("#content").focus();
         });
-  
+
         const submitButton = document.querySelector("#submit-btn");
         submitButton.addEventListener("click", function () {
           const form = document.forms.search;
@@ -54,68 +61,52 @@
     </header>
     <!-- hearder End -->
 
-    <!-- 베너 부분 -->
-    <section class="main-banner">
-      <div class="container">
-        <div class="picture-contain p1">
-          <div class="picture">
-            <img src="" alt="" />
-          </div>
+    <!-- Item Filter -->
+    <section class="filter">
+      <h1>필터</h1>
+      <div class="fil-container">
+        <div class="fil-name">
+          <p>지역</p>
         </div>
-        <div class="picture-contain p2">
-          <div class="picture">
-            <img src="" alt="" />
-          </div>
+        <div class="tags">
+          <div class="tag"><p>강서구</p></div>
+          <div class="tag"><p>강남구</p></div>
         </div>
-        <div class="picture-contain p3">
-          <div class="picture">
-            <img src="" alt="" />
-          </div>
+      </div>
+      <div class="fil-container">
+        <div class="fil-name">
+          <p>공간유형</p>
         </div>
-
-        <div class="banner-text">
-          <h1>문화 <span class="point">공간</span>의</h1>
-          <h1>시작</h1>
-          <p>공간에서 시작되는 간편한 공연의 시작</p>
+        <div class="tags">
+          <div class="tag"><p>대강당/극장</p></div>
+        </div>
+      </div>
+      <div class="fil-container">
+        <div class="fil-name">
+          <p>가격</p>
+        </div>
+        <div class="tags">
+          <div class="tag"><p>50~100 만원</p></div>
+        </div>
+      </div>
+      <div class="fil-container">
+        <div class="fil-name">
+          <p>인원수</p>
+        </div>
+        <div class="tags">
+          <div class="tag"><p>200명 이상</p></div>
         </div>
       </div>
     </section>
-    <!-- 베너 부분 end -->
+    <!-- Item Filter End -->
 
-    <!-- 지역별 리스트 목록 -->
-    <section class="local-list">
-      <h1 class="heading">- 지역별 -</h1>
-      <div class="content">
-        <i id="left-arrow" class="fa fa-arrow-left fa-5x" aria-hidden="true"></i>
-        <div class="box-container">
-          <div class="box">
-            <h1>서울</h1>
-          </div>
-          <div class="box">
-            <h1>경기</h1>
-          </div>
-          <div class="box">
-            <h1>인천</h1>
-          </div>
-          <div class="box">
-            <h1>부산</h1>
-          </div>
-          <div class="box">
-            <h1>대전</h1>
-          </div>
-        </div>
-        <i id="left-arrow" class="fa fa-arrow-right fa-5x" aria-hidden="true"></i>
-      </div>
-    </section>
-    <!-- 지역별 리스트 목록 end -->
-
-
-
-    <!-- 최신순 리스트 목록 -->
+    <!-- Hall List -->
     <section class="hall-list">
-      <div class="con">
-
-        <h1 class="heading">- 최신 공연장 -</h1>
+      <div class="con">  
+        <div class="drop-menu">
+          <p class="cur-item">인기순</p>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
         <div class="box-container">
           <div class="box">
             <div class="imgbox">            
@@ -216,41 +207,9 @@
             </div>
           </div>
         </div>
-        <div class="btn">더보기</div>
       </div>
     </section>
-    <!-- 최신순 리스트 목록 end -->
-
-
-    <!-- 리뷰 홍보 start -->
-    <section class="review">
-      <div class="image">
-        <img src="" alt="">
-      </div>
-      <div class="content">
-        <h1>성공적인 무대의 후기들<br/>지금 공간을 통해<br/>경험해 보세요.</h1>
-        <div class="btn">더보기</div>
-      </div>
-    </section>
-    <!-- 리뷰 홍보 end -->
-
-    <!-- 공연장 공연자 바로가기 Start -->
-      <section class="user-move">
-        <div class="con">
-          <h1>공연자</h1>
-          <p>공연자이신가요?</p>
-          <p>지금 <span>공연자 정보</span>를 입력하고<br/>공간의 유용한 기능을 체험해 보세요!</p>
-          <div class="btn" id="su-move">내 정보</div>
-        </div>
-        <div class="con">
-          <h1>공연장 관리</h1>
-          <p>공연장을 등록 하고 싶으신가요?</p>
-          <p><span>사업자 인증</span>을 마무리하고<br/>내 공연장을 등록, 관리 할 수 있습니다.</p>
-          <div class="btn" id="sc-move">공연장 등록</div>
-        </div>
-      </section>
-    <!-- 공연장 공연자 바로가기 End -->
-
+    <!-- Hall List End -->
 
     <!-- footer -->
     <footer>
@@ -266,16 +225,21 @@
       <div class="company">
         <p>
           (주) 공간 사업자 정보
-          <br/>법인명 : 이준호 주식회사  대표이사 : 이준호
-          <br/>사업자등록번호 822-88-00602 통신판매업:2017-서울서초-0774호 개인정보보호책임자 : 한남욱
-          <br/>주소 : 서울특별시 성동구 성수동1가 72-71 2층 이준호 주식회사
-          <br/>입점문의 : 입점문의하기   대표이메일 : info@gmail.com
-          <br/>공간(주)는 통신판매중개자로서, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
-          <br/>Copyright©2017 abc All rights reserved
+          <br />법인명 : 이준호 주식회사 대표이사 : 이준호 <br />사업자등록번호
+          822-88-00602 통신판매업:2017-서울서초-0774호 개인정보보호책임자 :
+          한남욱 <br />주소 : 서울특별시 성동구 성수동1가 72-71 2층 이준호
+          주식회사 <br />입점문의 : 입점문의하기 대표이메일 : info@gmail.com
+          <br />공간(주)는 통신판매중개자로서, 상품의 예약, 이용 및 환불 등과
+          관련한 의무와 책임은 각 판매자에게 있습니다. <br />Copyright©2017 abc
+          All rights reserved
         </p>
       </div>
     </footer>
     <!-- footer End -->
-    <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+
+    <script
+      src="https://kit.fontawesome.com/194e6948f1.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
