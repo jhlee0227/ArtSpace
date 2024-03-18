@@ -1,146 +1,29 @@
 @import "reset.css";
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
-:root {
-    /* 여기에 이런식으로 변수 만들어서 색갈 넣을 수 있음 */
-    --main-color: #FFCA63;
-    /* 메인 컬러 */
-    --sub-color: #f5f5dc;
-    /* 서브용으로 연한 색 */
-    --black: #3B3831;
-    /* 검은색 폰트같은 거 이걸로 */
-    --light_gray: #A6A6A6;
-    /* 연한 글씨 색 같은거 이걸로 */
-    --brown: #605353;
-    /* 갈색 부분 */
-    --red: #E10000;
-    /* 빨간색 */
-    --border: .2rem solid rgba(255, 202, 99, .3);
-    --box-shadow: 1px 1px 1px 1px rgba(163, 159, 149, 0.3);
-    --white: #fff;
-}
-
 * {
     margin: 0;
     padding: 0;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 body {
 	height: 100%;
-	font-size: 16px;
 	color: var(--black);
 	line-height: 1.5;
 	background-color: #fff
 }
 
-/* ===== header ===== */
-header .nav {
-    padding: 20px 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: var(--box-shadow);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: var(--white);
-  }
-  
-  header .nav .left-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 50px;
-  }
-  
-  
-  header .nav .left-content .logo {
-    width: 80px;
-    height: 40px;
-    margin-right: 50px;
-  }
-  
-  header .nav .left-content .logo img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  header .nav .left-content .list-btn {
-    text-align: center;
-    font-size: 2.5rem;
-    text-decoration: none;
-    outline: none;
-    color: var(--main-color);
-    font-weight: 600;
-  }
-  
-  /* == */
-  
-  
-  header .nav .right-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* 검색 창 */
-  header .nav .right-content .search-box {
-    cursor: pointer;
-    color: var(--light_gray);
-    margin-right: 50px;
-  }
-  
-  header .nav .right-content .search-box .search-from {
-    width: 300px;
-    border: var(--border);
-    border-radius: 10px;
-    height: 40px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-  }
-  
-  header .nav .right-content .search-box input {
-    padding: 0 10px;
-    height: 30px;
-    width: 80%;
-    border: 0;
-    font-size: 1.5rem;
-  }
-  
-  header .nav .right-content .search-box input:focus {
-    outline: 0px;
-  }
-  
-  header .nav .right-content .search-box #submit-btn {
-    border-left: 1px solid rgba(255, 202, 99, .3);
-    padding-left: 10px;
-    cursor: pointer;
-    color: var(--main-color);
-  }
-  
-  /* 검색창 끝 */
-  
-  
-  
-  header .nav .right-content .mypage-btn {
-    width: 80px;
-    height: 40px;
-    background-color: var(--main-color);
-  }
-  
-  
-  /* ===== header End ===== */
 
 .con {
     width: 100%;
     height: 100vh;
-    padding-top: 100px;
+    padding-top: 90px;
     display: flex;
 }
 
@@ -153,20 +36,27 @@ header .nav {
 }
 
 .con .left .left-main {
-    font-size: 1.5rem;
-    border-width: 0 0 1px;
-    border-style: solid;
-    padding: 1.75rem 20px;
-    text-align: center;
+  font-size: 2rem;
+  border-width: 0 0 1px;
+  border-style: solid;
+  padding: 1.75rem 20px;
+  text-align: center;
 }
 
 .con .left .left-main i {
   color: var(--main-color);
 }
 
-.con .left .left-main h2 {
-    padding-bottom: 1rem;
-    font-weight: bold;
+.con .left .left-main .mypage {
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
+.con .left .left-main .username {
+  font-size: 2.5rem;
+  padding-top: 1rem;
+  font-weight: bold
 }
 
 .con .left .left-menu ul {
@@ -184,9 +74,155 @@ header .nav {
 }
 
 .con .left .left-menu li {
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    padding: 1.25rem;
+  font-size: 1.5rem;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding: 1.25rem;
+  padding-left: 2.5rem;
+}
+
+.con .content {
+  width: 70vw;
+  margin-right: 80px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.con .content .content-main {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.con .content .mypage {
+  display: flex;
+}
+
+.con .content .img {
+  width: 150px;
+  height: 150px;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+.con .content .mypage .nickname {
+  margin-left: 4rem;
+  margin-top: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.con .content .mypage .nickname button {
+  background-color: var(--light_gray);
+  border-radius: 10px;
+  border: none;
+  width: 7rem;
+  height: 3.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.con .content .mypage .nickname button:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
+}
+
+.con .content .img .profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.con .content .list {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--sub-color);
+  margin-top: 50px;
+}
+
+.con .content .list > div {
+  padding: 2rem 3.5rem 2rem;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+}
+
+.con .content .list > div .list-con {
+  font-size: 1.5rem;
+}
+
+.con .content .list div .list-name {
+  width: 10%;
+  font-size: 1.5rem;
+}
+
+.con .content .list .pw {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.con .content .list label {
+  display: inline-block;
+  width: 110px;
+}
+
+.con .content .list .pw input {
+  margin-left: 1rem;
+  width: 250px;
+  margin-bottom: 0.2rem;
+}
+
+.con .content .list div .btn {
+  margin-left: auto;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  width: 7rem;
+  height: 3.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.con .content .list div .btn:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
+}
+
+.con .content .list .last {
+  border-bottom: none;
+}
+
+.con .content .button {
+  text-align: right;
+}
+
+.con .content .button span {
+  font-size: 1.2rem;
+}
+
+.con .content .button .leave-btn {
+  margin: 1rem 0 0;
+  background-color: var(--sub-color);
+  border-radius: 10px;
+  border: none;
+  width: 5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.footer {
+  height: 100px;
 }
