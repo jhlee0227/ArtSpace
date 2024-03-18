@@ -10,14 +10,16 @@
     <!-- hearder -->
     <header>
       <div class="nav">
-        <div class="left-content">
-          <div class="logo">
-            <a href="index.html">
-              <img src="../img/logo_text.png" alt="logo" />
-            </a>
-          </div>
-          <a class="list-btn" href="hall_list.html"> 대여 공간 </a>
-        </div>
+		<div class="left-content">
+		  <div class="logo">
+		    <a th:href="@{|/|}">
+		      <img src="../img/logo_text.png" alt="logo" />
+		    </a>
+		  </div>
+		  <a class="list-btn" th:href="@{|/list|}">
+		    대여 공간
+		  </a>
+		</div>
 
         <div class="right-content">
           <div class="search-box">
@@ -40,7 +42,7 @@
             <i class="fa-solid fa-user fa-4x"></i>
             <p>My</p>
           </a> -->
-          <a class="mypage-btn" href="login.html">
+          <a class="mypage-btn" th:href="@{|/login|}">
             <i class="fa-regular fa-user fa-4x"></i>
             <p>로그인</p>
           </a>
