@@ -14,5 +14,11 @@ public class TestDTO {
 	private String test1;
 	
 	private String test2;
+	
+	@Override
+	public String toString() {
+		return "test1 " + test1 + "test2 " + test2;
+	}
+	
 
 }

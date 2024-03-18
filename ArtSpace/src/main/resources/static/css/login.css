@@ -35,6 +35,7 @@ body {
 body {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
+  background-color: #999999;
 }
 
 
@@ -161,6 +162,13 @@ body {
   height: 100px;
   background-color: #675050;
 }
+
+.sign .btn-box .con #con-sign {
+  background-color: var(--light_gray);
+  border-radius: 1rem;
+}
+
+
 
 
 /* container end */
