@@ -2,9 +2,9 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  margin: 0;
+  padding: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
 a {
@@ -13,137 +13,36 @@ a {
 }
 
 body {
-	height: 100%;
-	font-size: 16px;
-	color: var(--black);
-	line-height: 1.5;
-	background-color: #fff
+  height: 100%;
+  color: var(--black);
+  line-height: 1.5;
+  background-color: #fff
 }
 
-/* ===== header ===== */
-header .nav {
-    padding: 20px 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: var(--box-shadow);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: var(--white);
-  }
-  
-  header .nav .left-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 50px;
-  }
-  
-  
-  header .nav .left-content .logo {
-    width: 80px;
-    height: 40px;
-    margin-right: 50px;
-  }
-  
-  header .nav .left-content .logo img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  header .nav .left-content .list-btn {
-    text-align: center;
-    font-size: 2.5rem;
-    text-decoration: none;
-    outline: none;
-    color: var(--main-color);
-    font-weight: 600;
-  }
-  
-  /* == */
-  
-  
-  header .nav .right-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* 검색 창 */
-  header .nav .right-content .search-box {
-    cursor: pointer;
-    color: var(--light_gray);
-    margin-right: 50px;
-  }
-  
-  header .nav .right-content .search-box .search-from {
-    width: 300px;
-    border: var(--border);
-    border-radius: 10px;
-    height: 40px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-  }
-  
-  header .nav .right-content .search-box input {
-    padding: 0 10px;
-    height: 30px;
-    width: 80%;
-    border: 0;
-    font-size: 1.5rem;
-  }
-  
-  header .nav .right-content .search-box input:focus {
-    outline: 0px;
-  }
-  
-  header .nav .right-content .search-box #submit-btn {
-    border-left: 1px solid rgba(255, 202, 99, .3);
-    padding-left: 10px;
-    cursor: pointer;
-    color: var(--main-color);
-  }
-  
-  /* 검색창 끝 */
-  
-  
-  
-  header .nav .right-content .mypage-btn {
-    width: 80px;
-    height: 40px;
-    background-color: var(--main-color);
-  }
-  
-  
-  /* ===== header End ===== */
-
 .con {
-    width: 100%;
-    height: 100vh;
-    padding-top: 100px;
-    display: flex;
+  width: 100%;
+  height: 100vh;
+  padding-top: 90px;
+  display: flex;
 }
 
 .con .left {
-    width: 15vw;
-    border-right: 2px solid var(--light_gray);
-    margin-left: 80px;
-    height: 100vh;
-    background-color: var(--sub-color);
+  width: 20vw;
+  border-right: 2px solid var(--light_gray);
+  margin-left: 180px;
+  height: 100vh;
+  background-color: var(--sub-color);
 }
 
 .con .left .left-main {
-    font-size: 1.5rem;
-    border-width: 0 0 1px;
-    border-style: solid;
-    padding: 1.75rem 20px;
-    text-align: center;
+  font-size: 2rem;
+  border-width: 0 0 1px;
+  border-style: solid;
+  padding: 1.75rem 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .con .left .left-main i {
@@ -151,43 +50,105 @@ header .nav {
 }
 
 .con .left .left-main h2 {
-    padding-bottom: 1rem;
-    font-weight: bold;
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
 }
 
 .con .left .left-menu ul {
-    width: 100%;
-    font-weight: bold;
+  width: 100%;
+  font-weight: bold;
 }
 
 .con .left .left-menu .open {
-    color: blue;
-    background-color: var(--main-color);
+  color: blue;
+  background-color: var(--main-color);
 }
 
 .con .left .left-menu a:hover {
-    color: blue;
+  color: blue;
 }
 
 .con .left .left-menu li {
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    padding: 1.25rem;
+  font-size: 1.5rem;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding: 1.25rem;
+  padding-left: 2.5rem;
 }
 
 .con .content {
-    width: 70vw;
-    margin-right: 80px;
-    margin-left: 30px;
+  width: 70vw;
+  margin-right: 180px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .con .content .content-main {
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 1rem 0;
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.con .content .tabs {
+  padding-bottom: 40px;
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.con .content .tab_item {
+  width: calc(100%/3);
+  height: 50px;
+  border-bottom: 3px solid var(--black);
+  background-color: #f8f8f8;
+  line-height: 50px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--black);
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.con .content .tab_item:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+input[name="tab_item"] {
+  display: none;
+}
+
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+#all:checked ~ #all_content,
+#block:checked ~ #block_content,
+#leave:checked ~ #leave_content {
+  display: block;
+}
+
+.con .content .tabs input:checked + .tab_item {
+  background-color: var(--main-color);
+  color: var(--black);
+}
+
+.con .content .tabs input:checked + .tab_item:hover {
+  opacity: 1;
+  cursor: default;
 }
 
 .con .content .search {
@@ -195,34 +156,77 @@ header .nav {
 }
 
 .con .content .search .select {
-    margin: 10px;
+  margin: 10px;
+}
+
+.con .content .search input[type=button] {
+  background-color: var(--sub-color);
+  border-radius: 10px;
+  border: 0.5px solid black;
+  width: 5rem;
+  height: 21.6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.con .content .search input[type=button]:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
+}
+
+.con .content .main .search-result {
+  font-size: 1.5rem;
 }
 
 .con .content .main .table {
-    width: 100%;
-    margin: auto;
-    border: 1px solid black;
-    border-collapse: collapse;
+  width: 100%;
+  margin: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.con .content .main .table .chkbox {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .con .content .main .table th {
-    background-color: var(--main-color);
-    
+  background-color: var(--main-color);
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .con .content .main .table tbody tr:nth-child(even) {
-    background-color: var(--sub-color);
+  background-color: var(--sub-color);
 }
 
 .con .content .main .table td {
-    text-align: center;
+  text-align: center;
+  padding: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
-form {
-    display: inline-block;
+.con .content .btn form {
+  display: inline-block;
+  margin-top: 1rem;
 }
 
 .con .content .btn {
-    padding-left: 50px;
-    text-align: right;
+  text-align: right;
+}
+
+.con .content .btn input[type=button] {
+  background-color: var(--sub-color);
+  border-radius: 10px;
+  border: 0.5px solid black;
+  width: 6rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.con .content .btn input[type=button]:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
 }
