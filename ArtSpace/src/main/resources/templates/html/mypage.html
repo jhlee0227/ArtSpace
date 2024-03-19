@@ -5,67 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/mypage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/> -->
 </head>
 <body>
-    <header>
-        <div class="nav">
-          <div class="left-content">
-            <div class="logo">
-              <a href="index.html">
-                <img src="image/logo_text.png" alt="logo" />
-              </a>
-            </div>
-            <a class="list-btn" href="">
-              대여 공간
-            </a>
-          </div>
-  
-          <div class="right-content">
-            <div class="search-box">
-              <form action="" name="search" class="search-from">
-                <input type="text" name="content" id="content" />
-                <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
-              </form>
-            </div>
-  
-            <div class="mypage-btn"></div>
-          </div>
+ <!-- hearder -->
+ <header>
+  <div class="nav">
+    <div class="left-content">
+      <div class="logo">
+        <a th:href="@{|/|}">
+          <img src="../img/logo_text.png" alt="logo" />
+        </a>
+      </div>
+      <a class="list-btn" th:href="@{|/list|}">
+        대여 공간
+      </a>
+    </div>
+
+    <div class="right-content">
+      <div class="search-box">
+        <form action="" name="search" class="search-from">
+          <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
+          <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
+        </form>
+      </div>
+
+      <!-- <a class="mypage-btn" href="">
+        <i class="fa-solid fa-user fa-4x"></i>
+        <p>My</p>
+      </a> -->
+      <a class="mypage-btn" href="login.html">
+        <i class="fa-regular fa-user fa-4x"></i>
+        <p>로그인</p>
+      </a>
+    </div>
+  </div>
+  <script>
+    const searchBtn = document.querySelector(".search-box");
+    searchBtn.addEventListener("click", function () {
+      document.querySelector("#content").focus();
+    });
+
+    const submitButton = document.querySelector("#submit-btn");
+    submitButton.addEventListener("click", function () {
+      const form = document.forms.search;
+      form.submit();
+    });
+  </script>
+</header>
+<!-- hearder End -->
+  <section class="con">
+    <!-- 좌측 메뉴 -->
+    <div class="left">
+        <div class="left-main">
+            <h2 class="mypage">마이페이지</h2>
+            <i class="fas fa-user fa-4x"></i>
+            <h2 class="username">000</h2>
         </div>
-      </header>
-      <script>
-        const searchBtn = document.querySelector(".search-box");
-        searchBtn.addEventListener("click", function () {
-          document.querySelector("#content").focus();
-        });
-  
-        const submitButton = document.querySelector("#submit-btn");
-        submitButton.addEventListener("click", function () {
-          const form = document.forms.search;
-          form.submit();
-        });
-      </script>
-      <section class="con">
-        <!-- 좌측 메뉴 -->
-        <div class="left">
-            <div class="left-main">
-                <h2>마이페이지</h2>
-                <i class="fas fa-user fa-4x"></i>
-            </div>
-            <div class="left-menu">
-                <ul>
-                    <a href="#"><li class="open">내 정보</li></a>
-                    <a href="#" target="_self"><li>내 즐겨찾기</li></a>
-                    <a href="#" target="_self"><li>예약 확인</li></a>
-                    <a href="#" target="_self"><li>리뷰 작성</li></a>
-                </ul>
-            </div>
+        <div class="left-menu">
+            <ul>
+                <a href="#"><li class="open">내 정보</li></a>
+                <a href="#" target="_self"><li>내 즐겨찾기</li></a>
+                <a href="#" target="_self"><li>예약 확인</li></a>
+                <a href="#" target="_self"><li>리뷰 작성</li></a>
+            </ul>
         </div>
-        <!-- 내용 -->
-        <div class="content">
-            <h2 class="content-main">내 정보</h2>
-              
-    </section>
-      <!-- hearder End -->
+    </div>
+    <!-- 내용 -->
+    <div class="content">
+      <h2 class="content-main">내 정보</h2>
+      <div class="mypage">
+        <div class="img">
+          <img src="hongsnow1.jpg" class="profile" alt="">
+        </div>
+        <div class="nickname">
+          <div>000</div>
+          <button>사진 수정</button>
+        </div>
+      </div>
+      
+      <div class="list">
+        <div>
+          <div class="list-name">이름</div>
+          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+          <div class="list-con">aaa</div>
+        </div>
+        <div>
+          <div class="list-name">이메일</div>
+          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+          <div class="list-con">1234@naver.com</div>
+        </div>
+        <div>
+          <div class="list-name">비밀번호</div>
+          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+          <div class="pw">
+            <div><label for="" class="list-con">새 비밀번호</label><input type="password"></div>
+            <div><label for="" class="list-con">비밀번호 확인</label><input type="password"></div>
+          </div>
+          <button class="btn">수정</button>
+        </div>
+        <div>
+          <div class="list-name">닉네임</div>
+          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+          <div class="list-con"><input type="text" value="000"></div>
+          <button class="btn">수정</button>
+        </div>
+        <div class="last">
+          <div class="list-name">핸드폰</div>
+          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+          <div class="list-con">010-4542-3021</div>
+        </div>
+      </div>
+      <form action="">
+        <div class="button">
+          <span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>
+          <button class="leave-btn">회원 탈퇴</button>
+        </div>
+      </form>
+      
+    </div>
+    
+  </section>
+  <footer class="footer">
+
+  </footer>
+  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+ 
 </body>
 </html>
