@@ -87,6 +87,24 @@ h1 {
   color: var(--main-color);
 }
 
+.btn {
+  margin-top: 1rem;
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+
 /* ===== 기본 설정 end ===== */
 
 
