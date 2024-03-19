@@ -1,4 +1,4 @@
-@import url("reset.css"); /* url 형식 */
+@import url('reset.css'); /* url 형식 */
 
 section {
   padding: 2rem 7%;
@@ -11,24 +11,6 @@ section {
   padding-bottom: 3.5rem;
   font-size: 4rem;
 }
-
-.btn {
-  margin-top: 1rem;
-  cursor: pointer;
-  padding: 1.5rem 3rem;
-
-  display: inline-block;
-  background-color: var(--main-color);
-  border: var(--border);
-  border-radius: 1rem;
-
-  color: var(--white);
-  font-size: 2.5rem;
-  font-weight: 600;
-  text-align: center;
-  box-shadow: var(--box-shadow);
-}
-
 
 /* ===== main-banner ===== */
 .main-banner {
