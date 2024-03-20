@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/mypage.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/> -->
+  <link rel="stylesheet" href="../../static/css/my_review.css">
 </head>
-
 <body>
   <!-- hearder -->
   <header>
@@ -33,9 +30,9 @@
         </div>
 
         <!-- <a class="mypage-btn" href="">
-        <i class="fa-solid fa-user fa-4x"></i>
-        <p>My</p>
-      </a> -->
+            <i class="fa-solid fa-user fa-4x"></i>
+            <p>My</p>
+            </a> -->
         <a class="mypage-btn" href="login.html">
           <i class="fa-regular fa-user fa-4x"></i>
           <p>로그인</p>
@@ -68,8 +65,8 @@
       </div>
       <div class="left-menu">
         <ul>
-          <a href="#" target="_self">
-            <li class="open">내 정보</li>
+          <a href="mypage.html" target="_self">
+            <li>내 정보</li>
           </a>
           <a href="performer_info.html" target="_self">
             <li>공연자 정보</li>
@@ -80,73 +77,40 @@
           <a href="reservation_list.html" target="_self">
             <li>예약 내역</li>
           </a>
-          <a href="my_review.html" target="_self">
-            <li>내 리뷰</li>
+          <a href="#" target="_self">
+            <li class="open">내 리뷰</li>
           </a>
         </ul>
       </div>
     </div>
     <!-- 내용 -->
     <div class="content">
-      <h2 class="content-main">내 정보</h2>
-      <div class="my">
-        <div class="img">
-          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
-        </div>
-        <div class="nickname">
-          <div>000</div>
-          <button>사진 수정</button>
-        </div>
-      </div>
-
-      <div class="list">
-        <!-- 버튼마다 수정 기능 넣어야.. -->
-        <div>
-          <div class="list-name">이름</div>
-          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="list-con">aaa</div>
-        </div>
-        <div>
-          <div class="list-name">이메일</div>
-          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="list-con">1234@naver.com</div>
-        </div>
-        <div>
-          <div class="list-name">비밀번호</div>
-          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="pw">
-            <div><label for="" class="list-con">새 비밀번호</label><input type="password"></div>
-            <div><label for="" class="list-con">비밀번호 확인</label><input type="password"></div>
+      <h2 class="content-main">내 리뷰</h2>
+      <!-- 여기에 th:each -->
+      <div class="fav-list">
+        <!-- 여기에 th:text -->
+        <div class="fav-item">
+          <div class="hall-img">
+            <img src="../../static/img/hallex.jpg" class="hall-thumb" alt="">
           </div>
-          <button class="btn">수정</button>
-        </div>
-        <div>
-          <div class="list-name">닉네임</div>
-          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="list-con"><input type="text" value="000" maxlength="8"></div>
-          <button class="btn">수정</button>
-        </div>
-        <div class="last">
-          <div class="list-name">핸드폰</div>
-          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="list-con">010-4542-3021</div>
+          <div class="hall">
+            <div class="hall-name">안녕하세요홀</div>
+            <div class="hall-loca">서울</div>
+            <div class="reserve-date">2024-04-19[금] ~ 2024-04-20[토]</div>
+          </div>
+          <div class="btn">
+            <!-- 버튼 누르면 리뷰 작성 페이지로.. -->
+            <button>리뷰 작성</button>
+            <!-- 버튼 누르면 공연장 상세 페이지로.. -->
+            <button>상세보기</button>
+          </div>
         </div>
       </div>
-      <form action="">
-        <div class="button">
-          <span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>
-          <button class="leave-btn">회원 탈퇴</button>
-        </div>
-      </form>
-
     </div>
-
   </section>
   <footer class="footer">
 
   </footer>
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
-
 </body>
-
 </html>
