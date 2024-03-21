@@ -49,13 +49,22 @@ body {
   height: 350px;
   box-sizing: border-box;
 }
+.container .login-box .login-wrapper>h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
 .container .login-box .login-wrapper>h2 {
-  font-size: 3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #000000;
   margin-bottom: 20px;
   text-align: center;
+   border-bottom: var(--border);
+   border-color: gray;
 }
 
 #login-form>input {
@@ -77,7 +86,6 @@ body {
   font-size: 2rem;
   background-color: var(--main-color);
   margin-top: 20px;
-  
 }
 
 #login-form>input[type="checkbox"] {
@@ -87,8 +95,8 @@ body {
 #login-form>label {
   display: flex;
   justify-content: center;
-  color: #999999;
-  font-size: 1.2rem;
+  color: #9c5b5b;
+  font-size: 1.5rem;
 }
 
 #login-form input[type="checkbox"]+label {
@@ -109,6 +117,8 @@ body {
   height: 200px;
   width: 100%;
   background-color: var(--main-color);
+  border-bottom: var(--border);
+  border-color: gray;
 }
 
 
@@ -120,24 +130,7 @@ body {
   text-align: center;
   padding-bottom: 20px;
   font-size: 2rem;
-  border-top: var(--border);
-  border-color: gray;
 }
-.sign .title>h1{
-  text-align: center;
-  padding-bottom: 20px;
-  font-size: 2rem;
-
-}
-.sign .title>h2{
-  text-align: center;
-  padding-bottom: 20px;
-  font-size: 1.5rem;
-
-}
-
-
-
 
 .sign .btn-box {
   display: flex;
