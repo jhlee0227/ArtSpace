@@ -1,0 +1,248 @@
+@import "reset.css";
+
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+.hall-detail {
+    background-color: white;
+    width: 1500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hall-detail .imgbox {
+    width: 1500px;
+    height: 500px;
+    margin-top: 200px;
+    margin-bottom: 10px;
+    background: #fff5e2;
+}
+
+.hall-detail .hall-content .address-text {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--gray);
+    line-height: 40px;
+}
+
+.hall-detail .hall-content .title-text {
+    text-align: center;
+    font-size: 3.1rem;
+    font-weight: 600;
+}
+
+.hall-detail .favorite .fa-regular {
+    top: 20px;
+    right: 20px;
+    margin-left: 15px;
+    margin-right: 7px;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.hall-detail .favorite .fa-sharp {
+    margin-right: 18px;
+}
+
+.hall-detail .favorite .mini {
+    color: gold;
+}
+
+hr {
+    margin-top: 15px;
+    border: 1px solid rgb(220, 220, 220);
+}
+
+.hall-detail .container {
+    width: 1250px;
+    height: 220px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(235, 235, 235);
+    border-radius: 20px;
+}
+
+.hall-detail .container h1 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 35px;
+}
+
+.hall-detail .container p {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 88px;
+    line-height: normal;
+}
+
+.hall-detail .container .text-red {
+    color: red;
+}
+
+.hall-detail .main input[type=radio] {
+	display: none;
+}
+
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2),
+#tab-3:checked ~ .tab label:nth-child(3),
+#tab-4:checked ~ .tab label:nth-child(4) {
+    background-color: white;
+    color: black;
+    box-shadow: none;
+}
+
+.hall-detail .content > div {
+	display: none;
+}
+
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2),
+#tab-3:checked ~ .content div:nth-child(3),
+#tab-4:checked ~ .content div:nth-child(4)  {
+	display: block;
+}
+
+.hall-detail .main {
+  margin: 0 auto;
+  min-width:1380px;
+  max-width: 100%;
+}
+
+.hall-detail .tab {
+    background-color: rgb(235, 235, 235);
+    color: gray;
+    padding: 0px 0px 3px 0px;
+    overflow: hidden;
+}
+
+.hall-detail .tab #t1 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t2 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t3 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t4 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab label {
+    font-size: 25px;
+    cursor: pointer;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 30px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.hall-detail .content {
+  background-color: white;
+  min-height: 250px;
+}
+
+.hall-detail .content > div{
+   padding: 60px 0px 60px 100px;
+   line-height: 1.5;
+   font-size: 17px;
+}
+
+.hall-detail .content h1 {
+    font-size: 40px;
+}
+
+.hall-detail .content p {
+    font-size: 20px;
+}
+
+.hall-detail .content table {
+    font-weight: bold;
+    white-space: pre;
+}
+
+.hall-detail .content tr {
+    border-top: 2px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+    border-left: 1px solid rgb(200, 200, 200);
+    border-bottom: 2px solid rgb(200, 200, 200);
+}
+
+.hall-detail .content .color {
+    background-color: rgb(235, 235, 235);
+    width: 125px;
+    height: 30px;
+    text-align: center;
+}
+
+.hall-detail .content td {
+    width: 1000px;
+}
+
+.hall-detail .content hr {
+    float: left;
+    width: 80.5%;
+    margin-top: 30px;
+}
+
+.hall-detail .content .fa-location-dot {
+    margin-left: 10px;
+}
+
+.hall-expectation .expectation {
+    width: 100%;
+    height: 180px;
+    border-radius: 25px 25px 0 0;
+    text-align: center;
+    line-height: 185px;
+    color: white;
+    font-size: 3.5rem;
+    font-weight: bold;
+    background-color: #605353;
+}
+
+.hall-expectation .expectation .amount {
+    color: gold;
+    width: max-content;
+    margin-left: 10%;
+}
+
+.hall-expectation .expectation .reservation {
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 1.5rem 3rem;
+  
+    display: inline-block;
+    background-color: var(--main-color);
+    border: var(--border);
+    border-radius: 1rem;
+  
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+  }
+
+
