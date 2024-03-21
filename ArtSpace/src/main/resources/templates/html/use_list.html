@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/reservation_list.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../static/css/use_list.css">
 </head>
 <body>
-    <!-- hearder -->
+  <!-- hearder -->
   <header>
     <div class="nav">
       <div class="left-content">
@@ -54,41 +54,41 @@
   </header>
   <!-- hearder End -->
   <section class="con">
-     <!-- 좌측 메뉴 -->
-     <div class="left">
-        <div class="left-main">
-          <h2 class="mypage">마이페이지</h2>
-          <div class="img">
-            <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
-          </div>
-          <h2 class="username">000</h2>
+    <!-- 좌측 메뉴 -->
+    <div class="left">
+      <div class="left-main">
+        <h2 class="mypage">마이페이지</h2>
+        <div class="img">
+          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
         </div>
-        <div class="left-menu">
-          <ul>
-            <a href="mypage.html" target="_self">
-              <li>내 정보</li>
-            </a>
-            <a href="performer_info.html" target="_self">
-              <li>공연자 정보</li>
-            </a>
-            <a href="my_favorites.html" target="_self">
-              <li>내 즐겨찾기</li>
-            </a>
-            <a href="#" target="_self">
-              <li class="open">예약 내역</li>
-            </a>
-            <a href="use_list.html" target="_self">
-              <li>이용 내역</li>
-            </a>
-            <a href="my_review.html" target="_self">
-              <li>내 리뷰</li>
-            </a>
-          </ul>
-        </div>
+        <h2 class="username">000</h2>
       </div>
+      <div class="left-menu">
+        <ul>
+          <a href="mypage.html" target="_self">
+            <li>내 정보</li>
+          </a>
+          <a href="performer_info.html" target="_self">
+            <li>공연자 정보</li>
+          </a>
+          <a href="my_favorites.html" target="_self">
+            <li>내 즐겨찾기</li>
+          </a>
+          <a href="reservation_list.html" target="_self">
+            <li>예약 내역</li>
+          </a>
+          <a href="#" target="_self">
+            <li class="open">이용 내역</li>
+          </a>
+          <a href="my_review.html" target="_self">
+            <li>내 리뷰</li>
+          </a>
+        </ul>
+      </div>
+    </div>
     <!-- 내용 -->
     <div class="content">
-      <h2 class="content-main">예약 내역</h2>
+      <h2 class="content-main">내 리뷰</h2>
       <!-- 여기에 th:each -->
       <div class="list">
         <!-- 여기에 th:text -->
@@ -102,9 +102,8 @@
             <div class="reserve-date">2024-04-19[금] ~ 2024-04-20[토]</div>
           </div>
           <div class="btn">
-            <!-- 약관에 따라 예약 취소 비활성화 필요 -->
-            <!-- 확인창..? -->
-            <button>예약 취소</button>
+            <!-- 버튼 누르면 리뷰 작성 페이지로.. -->
+            <button>리뷰 작성</button>
             <!-- 버튼 누르면 공연장 상세 페이지로.. -->
             <button onclick = "location.href = '#'">상세보기</button>
           </div>

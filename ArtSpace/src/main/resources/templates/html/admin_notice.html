@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>관리자</title>
-  <link rel="stylesheet" href="../../static/css/hall_info.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../static/css/admin_notice.css">
 </head>
 
 <body>
@@ -67,68 +67,51 @@
           <a href="admin.html" target="_self">
             <li>회원 관리</li>
           </a>
+          <a href="hall_info.html" target="_self">
+            <li>공연장 정보</li>
+          </a>
           <a href="#">
-            <li class="open">공연장 정보</li>
+            <li class="open">공지사항</li>
           </a>
-          <a href="admin_notice.html" target="_self">
-            <li>공지사항</li>
-          </a>
-          <a href="admin_review.html" target="_self">
+          <a href="admin_review.html">
             <li>리뷰 관리</li>
           </a>
-          <a href="#" target="_self">
+          <a href="#">
             <li>통계</li>
           </a>
         </ul>
       </div>
     </div>
+    <!-- 내용 -->
     <div class="content">
-      <h2 class="content-main">공연장 정보</h2>
-      <div class="search">
-        <form name="search">
-          <select class="select" name="type" id="">
-            <option value="hallname">공연장명</option>
-            <option value="group">단체명</option>
-            <option value="region">지역</option>
-          </select>
-          <input type="text">
-          <input type="button" value="검색">
-        </form>
-      </div>
+      <h2 class="content-main">공지사항</h2>
       <div class="main">
         <table class="table">
           <thead>
             <tr>
-              <th class="box"><input type="checkbox" class="chkbox" name="selectAll" value="selectAll" onclick="selectAll(this)"></th>
-              <th>공연장명</th>
-              <th>단체명</th>
-              <th>지역</th>
-              <th>차단상태</th>
+              <th>번호</th>
+              <th>분류</th>
+              <th>제목</th>
+              <th>작성날짜</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="box"><input type="checkbox" class="chkbox" name="check" onclick="checkSelectAll()"></td>
-              <!-- 이름 누르면 상세페이지로.. -->
-              <td><a href="#">잠자는홀</a></td>
-              <td>숙면</td>
-              <td>광주</td>
-              <td>차단x</td>
+              <td>1</td>
+              <td>[예시공지]</td>
+              <td>예를 들어 어쩌구 저쩌구</td>
+              <td>2024-03-15</td>
             </tr>
           </tbody>
         </table>
         <div class="btn">
-          <form name="block">
-            <input class="block-btn" type="button" value="차단">
-          </form>
+          <input class="submit-btn" type="button" value="공지사항 등록">
         </div>
-        
+
       </div>
     </div>
   </section>
-
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
-  <script src="../../static/js/admin.js"></script>
 </body>
 
 </html>

@@ -80,6 +80,9 @@
           <a href="reservation_list.html" target="_self">
             <li>예약 내역</li>
           </a>
+          <a href="use_list.html" target="_self">
+            <li>이용 내역</li>
+          </a>
           <a href="my_review.html" target="_self">
             <li>내 리뷰</li>
           </a>
@@ -115,10 +118,10 @@
           <div class="list-name">비밀번호</div>
           <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
           <div class="pw">
-            <div><label for="" class="list-con">새 비밀번호</label><input type="password"></div>
-            <div><label for="" class="list-con">비밀번호 확인</label><input type="password"></div>
+            <div><label for="" class="list-con">새 비밀번호</label><input type="password" id="pw" oninput="pwCheck()"></div>
+            <div><label for="" class="list-con">비밀번호 확인</label><input type="password" id="pwChk" oninput="pwCheck()"><span id="check"></span></div>
           </div>
-          <button class="btn">수정</button>
+          <button id="btn" class="btn">수정</button>
         </div>
         <div>
           <div class="list-name">닉네임</div>
@@ -146,7 +149,25 @@
 
   </footer>
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+  <script>
+    function pwCheck() {
+      let pw = document.getElementById('pw').value;
+      let pwChk = document.getElementById('pwChk').value;
 
+      if (pw.length > 0 && pwChk.length > 0) {
+        if (pw == pwChk) {
+          document.getElementById('check').innerHTML = '비밀번호가 일치합니다.';
+          document.getElementById('check').style.color = 'green';
+          btnActive();
+        } else {
+          document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
+          document.getElementById('check').style.color = 'red';
+        }
+      } else if (pw.length == 0 && pwChk.length == 0) {
+        document.getElementById('check').innerHTML = '';
+      } 
+    }
+  </script>
 </body>
 
 </html>

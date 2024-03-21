@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+    <link rel="stylesheet" href="css/detail_page.css">
+</head>
+<body>
+    <header>
+        <div class="nav">
+          <div class="left-content">
+            <div class="logo">
+              <a th:href="@{|/|}">
+                <img src="./img/logo_text.png" alt="logo" />
+              </a>
+            </div>
+            <a class="list-btn" th:href="@{|/list|}">
+              대여 공간
+            </a>
+          </div>
+  
+          <div class="right-content">
+            <div class="search-box">
+              <form action="" name="search" class="search-from">
+                <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
+                <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
+              </form>
+            </div>
+  
+            <a class="mypage-btn" href="login.html">
+              <i class="fa-regular fa-user fa-4x"></i>
+              <p>로그인</p>
+            </a>
+          </div>
+        </div>
+
+        <script>
+          const searchBtn = document.querySelector(".search-box");
+          searchBtn.addEventListener("click", function () {
+            document.querySelector("#content").focus();
+          });
+    
+          const submitButton = document.querySelector("#submit-btn");
+          submitButton.addEventListener("click", function () {
+            const form = document.forms.search;
+            form.submit();
+          });
+        </script>
+
+      </header>
+
+      <section class="hall-detail">
+        <div class="imgbox">            
+          <img src="" alt="">
+        </div>
+
+        <div class="hall-content">
+          <p class="address-text">oo대학</p>
+          <p class="title-text">난파 음악관 콘서트 홀</p>
+          <p class="address-text">경기 어디구 어디로 27</p>
+        </div>
+
+        <div class="favorite">
+          <i class="fa-regular fa-star fa-5x"></i>
+          <i class="fa-sharp fa-solid fa-arrow-up-from-bracket fa-4x"></i>
+          <i class="mini fa-solid fa-star fa-3x"></i>
+          <i class="text fa-solid fa-3x">4.8(22)</i>
+        </div>
+
+        <hr>
+
+        <div class="container">
+          <h1>※ 중요 안내 사항</h1> <br>
+          <p>사이트의 고정 안내 사항이나 해당 공연장에 중요 안내사항을 이 공간에 표시합니다. <br>
+          크기는 컨텐츠 내용에 따라 높이가 달라질 것으로 예상됩니다. <br>
+          ★★★3월 10일까지 체육관 보수 공사로 인해 대관이 불가능합니다. 이 부분 양해부탁드립니다.★★★ <br>
+          않을까... 색깔도 <span class="text-red">이렇게</span> 변경! 강조!!!!</p>
+        </div>
+
+        <div class="main">
+          <input type="radio" id="tab-1" name="show" checked/>
+          <input type="radio" id="tab-2" name="show" />
+          <input type="radio" id="tab-3" name="show" />
+          <input type="radio" id="tab-4" name="show" />
+          
+          <div class="tab">
+            <label for="tab-1" id="t1">상세 정보</label>
+            <label for="tab-2" id="t2">견적 내기</label>
+            <label for="tab-3" id="t3">리뷰</label>
+            <label for="tab-4" id="t4">문의 사항</label>
+          </div>
+
+          <div class="content">
+            <div class="content-dis">
+              <h1>상세 정보</h1>
+              <br>
+              <p>★체육대회 및 행사(20명 이상의 행사)는 Life페이지가 아닌 Work페이지로 이동하여 예약해주세요. <br>
+              생활체육으로 결제 후 체육대회 및 행사 진행 시 환불없이 퇴장 조치 될 수 있습니다. <br>
+              <br>
+              ★★체대입시 혹은 개인 및 단체 레슨은 해당 공간에서 블가능합니다. <br>
+              <br>
+              생활체육으로 대관 후 체대입시 및 레슨 목적으로 이용 시 환불없이 퇴장 조치될 수 있습니다. 이 부분 유의부탁드립니다. <br>
+              <br>
+              ★★★첫 타임이거나 마지막 타임일 경우 골대를 옮겨달라는 현장매니저의 부탁이 있을 수 있습니다. <br>
+              혼자서 옮기기 어려운 골대이다보니 도움을 요청드릴 수 있는 점 양해부탁드립니다. <br>
+              <br>
+              *예약 전 아래 설명들을 필독 해주시기 바랍니다.* (고객 미숙지로 인한 불이익 시 쉐어잇이 책임지지 않습니다.) <br>
+              <br>
+              0. 공통 ★학교 사정으로 인해 예약이 취소될 수 있습니다. <br>
+              (해당 경우 100% 환불 조치 외에, 별다른 보상이 제공되지 않으니 예약 시에 참고 부탁드립니다.) <br>
+              1. 실시간 '생활체육' 예약 안내 <br>
+              ★공지 예약 과정에서 '호스트 전달 내용'에 이용하려는 스포츠 종목을 꼭 적어주세요. <br>
+              ★가능 종목 : 농구(5:5), 배구(6인제), 배드민턴(4코트) *이외 스포츠는 협의 필요 <br>
+              ★예약 가능 일자 : 매월 20일(20일이 휴일인 경우 이후 가장 빠른 평일) <br>
+              18시 익월 한 달 예약 오픈 (학교 일정에 따라 매월 예약 가능한 일시가 달라지기 때문에 한 달 단위 예약만 가능, 장기대관 불가)</p>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h1>시설정보</h1>
+              <table>
+                <tr>
+                  <td class="color">면적</td>
+                  <td>   942 ㎡   284.95 평</td>
+                </tr>
+                <tr>
+                  <td class="color">가로</td>
+                  <td>   35.12 m</td>
+                </tr>
+                <tr>
+                  <td class="color">세로</td>
+                  <td>   26.83 m</td>
+                </tr>
+                <tr>
+                  <td class="color">천정높이</td>
+                  <td>   7.26 m</td>
+                </tr>
+                <tr>
+                  <td class="color">최대 수용 인원</td>
+                  <td>   866 명</td>
+                </tr>
+              </table>
+
+              <hr>
+              <br>
+              <br>
+
+              <div class="map">
+
+                <h1>지도</h1>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.
+                7500924868004!2d126.92247877632376!3d37.
+                58450202309692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c985b23292a2d%3A0x459427c4b994b6b7!
+                2z7ISc7Jq47Yq567OE7IucIOyEnOuMgOusuOq1rCDqsIDsoozroZwgMTM0!5e0!3m2!1sko!2skr!4v1710923727190!5m2!1sko!2skr" 
+                width="1125" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <br>
+
+                <i class="fa-solid fa-location-dot"> 서울 서대문구 가좌로 134</i>
+
+              </div>
+
+              <hr>
+              <br>
+              <br>
+
+              <h1>주의 사항</h1> <br>
+              <p>*예약 전 아래 설명들을 필독 해주시기 바랍니다.* (고객 미숙지로 인한 불이익 시 쉐어잇이 책임지지 않습니다.) <br>
+              <br>
+              0. 공통 ★학교 사정으로 인해 예약이 취소될 수 있습니다. <br>
+              1. 실시간 '생활체육' 예약 안내 <br>
+              ★공지 예약 과정에서 '호스트 전달 내용'에 이용하려는 스포츠 종목을 꼭 적어주세요. <br>
+              ★가능 종목 : 농구(5:5), 배구(6인제), 배드민턴(4코트) *이외 스포츠는 협의 필요 <br>
+              ★예약 가능 일자 : 매월 20일(20일이 휴일인 경우 이후 가장 빠른 평일) <br>
+              18시 익월 한 달 예약 오픈 (학교 일정에 따라 매월 예약 가능한 일시가 달라지기 때문에 한 달 단위 예약만 가능, 장기대관 불가)</p>
+
+              <br>
+              <hr>
+              <br>
+              <br>
+
+              <h1>환불 규정</h1>
+              <p>실시간 상품 <br>
+              천재지변 및 불가항력 <br>
+              - 공간 이용일 기준 당일 취소 시 : 100% 환불 <br>
+              회원 <br>
+              - 공간 이용일 기준 7일 전 : 90% 환불 <br>
+              <br>
+              - 공간 이용일 기준 6일 ~ 4일 전 : 50% 환불 <br>
+              <br>
+              - 공간 이용일 기준 3일 ~ 당일 취소 시 : 환불 불가 <br>
+              <br>
+              회사 및 호스트</p>
+
+              <hr>
+              <br>
+              <br>
+
+            </div>
+
+            <div class="content-dis">
+              견적 내기 내용 넣을 예정
+            </div>
+
+            <div class="content-dis">
+              리뷰 내용 넣을 예정
+            </div>
+
+            <div class="content-dis">
+              문의 사항 내용 넣을 예정
+            </div>
+
+          </div>
+
+      </section>
+
+      <section class="hall-expectation">
+      <div class="expectation">
+        <span>예상 견적: </span>
+        <span class="amount">0</span>
+        <span>원</span>
+        <a class="reservation">예약 하기</a>
+      </div>
+      </section>
+
+      <footer>
+        <div class="about">
+          <h1>고객 센터</h1>
+          <h1>02-1234-1234</h1>
+          <p>문의시간 : 09:00 ~ 18:00</p>
+          <div class="btns">
+            <div class="btn">문의 사항</div>
+            <div class="btn">공지 사항</div>
+          </div>
+        </div>
+        <div class="company">
+          <p>
+            (주) 공간 사업자 정보
+            <br/>법인명 : 이준호 주식회사  대표이사 : 이준호
+            <br/>사업자등록번호 822-88-00602 통신판매업:2017-서울서초-0774호 개인정보보호책임자 : 한남욱
+            <br/>주소 : 서울특별시 성동구 성수동1가 72-71 2층 이준호 주식회사
+            <br/>입점문의 : 입점문의하기   대표이메일 : info@gmail.com
+            <br/>공간(주)는 통신판매중개자로서, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+            <br/>Copyright©2017 abc All rights reserved
+          </p>
+        </div>
+      </footer>
+
+      <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
