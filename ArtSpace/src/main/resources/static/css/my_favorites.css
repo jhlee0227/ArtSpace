@@ -110,52 +110,52 @@ body {
   margin-bottom: 3rem;
 }
 
-.con .content .fav-list {
+.con .content .list {
   display: flex;
   flex-direction: column;
-  background-color: var(--sub-color);
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px 1px gray;
   margin-bottom: 1rem;
 }
 
-.con .content .fav-list .fav-item {
+.con .content .list .item {
   display: flex;
   align-items: center;
+  box-shadow: 1px 1px 5px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
 }
 
-.con .content .fav-list .fav-item .hall-img {
+.con .content .list .item .hall-img {
   width: 100px;
   height: 100px;
   overflow: hidden;
   margin: 1rem 4rem 1rem 1rem;
 }
 
-.con .content .fav-list .fav-item .hall-img .hall-thumb {
+.con .content .list .item .hall-img .hall-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
 
-.con .content .fav-list .fav-item .hall {
+.con .content .list .item .hall {
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.con .content .fav-list .fav-item .hall-name {
+.con .content .list .item .hall-name {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.con .content .fav-list .fav-item .hall-loca {
+.con .content .list .item .hall-loca {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.con .content .fav-list .fav-item .btn {
+.con .content .list .item .btn {
   display: flex;
   width: 10%;
   height: 100%;
@@ -166,16 +166,23 @@ body {
   justify-content: space-around;
 }
 
-.con .content .fav-list .fav-item .btn button {
-  background-color: var(--light_gray);
-  border-radius: 10px;
-  border: none;
-  width: 7rem;
-  height: 3.5rem;
+.con .content .list .item .btn button {
   cursor: pointer;
+  padding: 0 1rem;
+  margin-left: auto;
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  width: 80px;
 }
 
-.con .content .fav-list .fav-item .btn button:hover {
+.con .content .list .item .btn button:hover {
   filter: brightness(0.9);
   transition: 0.5s;
 }

@@ -104,13 +104,18 @@ body {
 }
 
 .con .content .search input[type=button] {
-  background-color: var(--sub-color);
-  border-radius: 10px;
-  border: 0.5px solid black;
-  width: 5rem;
-  height: 21.6px;
   cursor: pointer;
-  font-size: 1.2rem;
+  display: inline-block;
+  padding: 0 0.5rem;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  margin-left: 1rem;
 }
 
 .con .content .search input[type=button]:hover {
@@ -118,18 +123,15 @@ body {
   transition: 0.5s;
 }
 
-.con .content .content-main {
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 1rem 0;
-}
-
 .con .content .main .table {
   width: 100%;
   margin: auto;
-  border: 1px solid black;
+  border: 1px #a39485 solid;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 100%;
   border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .con .content .main .table .chkbox {
@@ -139,7 +141,7 @@ body {
 
 .con .content .main .table th {
   background-color: var(--main-color);
-  padding: 0.3rem;
+  padding: 0.7rem;
   font-size: 1.5rem;
   font-weight: bold;
   width: calc(96%/4);
@@ -151,10 +153,14 @@ body {
 
 .con .content .main .table td {
   text-align: center;
-  padding: 0.3rem;
-  font-size: 1.3rem;
+  padding: 0.7rem;
+  font-size: 1.5rem;
   font-weight: 600;
   width: calc(96%/4);
+}
+
+.con .content .main .table a {
+  font-weight: 400;
 }
 
 .con .content .main .table .box {
@@ -171,12 +177,17 @@ body {
 }
 
 .con .content .btn input[type=button] {
-  background-color: var(--sub-color);
-  border-radius: 10px;
-  border: 0.5px solid black;
-  width: 5rem;
-  height: 3rem;
   cursor: pointer;
+  padding: 0 1rem;
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
 }
 
 .con .content .btn input[type=button]:hover {
