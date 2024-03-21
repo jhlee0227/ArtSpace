@@ -6,7 +6,6 @@ input::-webkit-inner-spin-button {
 }
 
 .hall-form {
-  margin-top: 90px;
   padding: 8rem 20rem;
 
   background-color: var(--light_gray);
@@ -14,6 +13,7 @@ input::-webkit-inner-spin-button {
 
 .hall-form h1 {
   font-size: 2rem;
+  margin-top: 8rem;
   margin-bottom: 2rem;
 }
 
@@ -27,7 +27,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
 }
 
-.hall-form form label input{
+.hall-form form label input {
   font-size: 1.5rem;
   width: 100%;
   border: none;
@@ -37,7 +37,7 @@ input::-webkit-inner-spin-button {
   margin-bottom: 1rem;
 }
 
-.hall-form form label input:focus{
+.hall-form form label input:focus {
   outline-color: var(--main-color);
 }
 
@@ -63,8 +63,8 @@ input::-webkit-inner-spin-button {
   box-shadow: var(--box-shadow);
 }
 
-.hall-form form label .input-name{
-  font-size: 1.5rem;  
+.hall-form form label .input-name {
+  font-size: 1.5rem;
   min-width: 15rem;
   font-weight: 600;
 }
@@ -74,20 +74,22 @@ input::-webkit-inner-spin-button {
   display: block;
 }
 
-.hall-form form label.text-area .input-name{
+.hall-form form label.text-area .input-name {
   margin-bottom: 1rem;
 }
 
-.hall-form form label.text-area textarea{
+.hall-form form label.text-area textarea {
   font-size: 1.5rem;
   width: 100%;
   border: none;
   resize: none;
   box-shadow: var(--box-shadow);
   border-radius: 1rem;
+  padding: 1.3rem;
+
 }
 
-.hall-form form label.text-area textarea:focus{
+.hall-form form label.text-area textarea:focus {
   outline-color: var(--main-color);
 }
 
@@ -97,9 +99,34 @@ input::-webkit-inner-spin-button {
   min-width: 25rem;
 }
 
-.hall-form form label.hall-size span{
+.hall-form form label.hall-size span {
   margin-top: 1rem;
   margin-left: .5rem;
   font-weight: 600;
   font-size: 2rem;
+}
+
+
+.img-input-wrap{
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat( 5, 1fr );
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f3f3f3;
+}
+
+.img-input-wrap a {
+  width: 15rem;
+  height: 15rem;
+  margin: 1rem;
+}
+
+.img-input-wrap img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }

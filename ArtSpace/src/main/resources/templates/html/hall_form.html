@@ -66,9 +66,9 @@
       <h1 class="header-text">내 공연장 등록</h1>
       
       <form action="">
-        <label>
+        <label for="hallName">
           <p class="input-name">장소 이름 (제목)</p>
-          <input type="text" name="" id="">
+          <input type="text" name="hallName" id="hallName">
         </label>
 
         <label>
@@ -76,6 +76,16 @@
           <input type="text" name="" id="addr1" disabled="true">
           <div class="addr-btn">주소 검색</div>
         </label>
+
+        <label id='image_wrap' for="imgfile">
+          <p class="input-name">사진</p>
+          <a href="javascript:" onclick="fileUploadAction();" class="addr-btn">파일 업로드</a>
+          <input type="file" name="imgfile" id="imgfile" accept="image/gif, image/jpeg, image/png" multiple hidden/>
+        </label>
+
+        <div class="img-input-wrap">
+          <img id="img"/>
+        </div>
 
         <label>
           <p class="input-name">상세 주소</p>
@@ -114,46 +124,11 @@
         </label>
       </form>
       
-      <div class="btn">다음으로</div>
-    </section>
 
-    <section class="hall-form">
-      <h1 class="header-text">내 공연장 등록</h1>
+      <h1 class="header-text">공연장 장비 등록</h1>
+
       
-      <form action="">
-        <label>
-          <p class="input-name">장소 이름 (제목)</p>
-          <input type="text" name="" id="">
-        </label>
-
-        <label>
-          <p class="input-name">주소</p>
-          <input type="text" name="" id="addr1" disabled="true">
-          <div class="addr-btn">주소 검색</div>
-        </label>
-
-        <label>
-          <p class="input-name">상세 주소</p>
-          <input type="text" name="" id="">
-        </label>
-
-        <label class="hall-size">
-          <p class="input-name">면적(㎡)</p>
-          <input type="number" name="" id=""><span>㎡</span>
-        </label>
-
-        <label class="text-area">
-          <p class="input-name">상세 설명</p>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-        </label>
-
-        <label class="text-area">
-          <p class="input-name">주의 사항</p>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-        </label>
-      </form>
-      
-      <div class="btn">다음으로</div>
+      <a href="javascript:" class="btn" onclick="submitAction();">등록</a>
     </section>
 
     <!-- footer -->
@@ -181,8 +156,64 @@
     </footer>
     <!-- footer End -->
 
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      // 이미지 정보 담을 배열
+      let sel_files = [];
+
+      $(document).ready(function(){
+        $('#imgfile').on('change', handleImgFileSelect);
+
+        
+   
+      });
+
+      function fileUploadAction() {
+        console.log('fileUploadAction');
+        $('#imgfile').trigger('click');
+      }
+
+      function handleImgFileSelect(e) {
+        // 이미지 정보 초기화
+        sel_files = [];
+        $('.img-input-wrap').empty();
+
+        let files = e.target.files;
+        let filesArr = Array.prototype.slice.call(files);
+
+        let index = 0;
+        filesArr.forEach(function(f) {
+          if(!f.type.match('image.*')){
+            alert('이미지 파일만 업로드 할 수 있습니다.');
+            return;
+          }
+          
+          sel_files.push(f);
+          
+          let reader = new FileReader();
+          reader.onload = function(e) {
+            var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+");\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+            $('.img-input-wrap').append(html);
+            index++;
+          }
+          reader.readAsDataURL(f);
+        });
 
 
+        // add이벤트리스너로 바꾸기
+        function deleteImageAction(index) {            
+            console.log("index : "+index);
+            sel_files.splice(index, 1);
+ 
+            var img_id = "#img_id_"+index;
+            $(img_id).remove();
+ 
+            console.log(sel_files);
+        }   
+
+      }
+
+    </script>
     <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
   </body>
 </html>
