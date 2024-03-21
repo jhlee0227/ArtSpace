@@ -2,9 +2,9 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  margin: 0;
+  padding: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
 a {
@@ -13,10 +13,10 @@ a {
 }
 
 body {
-	height: 100%;
-	color: var(--black);
-	line-height: 1.5;
-	background-color: #fff
+  height: 100%;
+  color: var(--black);
+  line-height: 1.5;
+  background-color: #fff
 }
 
 .con {
@@ -45,29 +45,14 @@ body {
   align-items: center;
 }
 
-.con .left .left-main .img {
-  width: 100px;
-  height: 100px;
-  border-radius: 70%;
-  overflow: hidden;
+.con .left .left-main i {
+  color: var(--main-color);
 }
 
-.con .left .left-main .img .profile {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.con .left .left-main .mypage {
+.con .left .left-main h2 {
   font-size: 2.5rem;
   padding-bottom: 1rem;
   font-weight: bold;
-}
-
-.con .left .left-main .username {
-  font-size: 2.5rem;
-  padding-top: 1rem;
-  font-weight: bold
 }
 
 .con .left .left-menu ul {
@@ -107,13 +92,53 @@ body {
   font-weight: bold;
   text-align: center;
   padding: 1rem 0;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
+.con .content .main .table {
+  width: 100%;
+  margin: auto;
+  border: 1px #a39485 solid;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
 
+.con .content .main .table th {
+  background-color: var(--main-color);
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
+.con .content .main .table tbody tr:nth-child(even) {
+  background-color: var(--sub-color);
+}
 
+.con .content .main .table td {
+  text-align: center;
+  padding: 0.7rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
 
-.footer {
-  height: 100px;
+.con .content .main .btn {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.con .content .main .btn .submit-btn {
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
 }

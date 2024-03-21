@@ -160,13 +160,17 @@ input[name="tab_item"] {
 }
 
 .con .content .search input[type=button] {
-  background-color: var(--sub-color);
-  border-radius: 10px;
-  border: 0.5px solid black;
-  width: 5rem;
-  height: 21.6px;
   cursor: pointer;
-  font-size: 1.2rem;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
 }
 
 .con .content .search input[type=button]:hover {
@@ -181,8 +185,12 @@ input[name="tab_item"] {
 .con .content .main .table {
   width: 100%;
   margin: auto;
-  border: 1px solid black;
+  border: 1px #a39485 solid;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 100%;
   border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .con .content .main .table .chkbox {
@@ -192,7 +200,7 @@ input[name="tab_item"] {
 
 .con .content .main .table th {
   background-color: var(--main-color);
-  padding: 0.3rem;
+  padding: 0.8rem;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -203,7 +211,7 @@ input[name="tab_item"] {
 
 .con .content .main .table td {
   text-align: center;
-  padding: 0.3rem;
+  padding: 0.8rem;
   font-size: 1.3rem;
   font-weight: 600;
 }
@@ -218,12 +226,17 @@ input[name="tab_item"] {
 }
 
 .con .content .btn input[type=button] {
-  background-color: var(--sub-color);
-  border-radius: 10px;
-  border: 0.5px solid black;
-  width: 6rem;
-  height: 3rem;
   cursor: pointer;
+  padding: 0 1rem;
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
 }
 
 .con .content .btn input[type=button]:hover {
