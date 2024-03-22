@@ -93,11 +93,32 @@
           </form>
         </div>
         <div class="main">
-          
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="box"><input type="checkbox" class="chkbox" name="selectAll" value="selectAll" onclick="selectAll(this)"></th>
+                <th>공연장</th>
+                <th>작성자</th>
+                <th class="review-content">리뷰내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="box"><input type="checkbox" class="chkbox" name="check" onclick="checkSelectAll()"></td>
+                <td>안녕하세요홀</td>
+                <td>강아지</td>
+                <td class="review-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora voluptas aperiam sunt, asperiores adipisci, exercitationem consectetur rem explicabo repellendus voluptatibus, aspernatur amet architecto nisi quae soluta quia voluptatem accusamus voluptate!</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="btn">
+            <button>리뷰 삭제</button>
+          </div>
         </div>
       </div>
     </section>
 
     <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/admin.js"></script>
 </body>
 </html>

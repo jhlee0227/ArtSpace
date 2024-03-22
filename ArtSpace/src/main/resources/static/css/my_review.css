@@ -9,7 +9,7 @@
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--black);
 }
 
 body {
@@ -110,9 +110,208 @@ body {
   margin-bottom: 3rem;
 }
 
+.con .content .tabs {
+  padding-bottom: 40px;
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 0 auto;
+}
 
+.con .content .tab_item {
+  width: calc(100%/2);
+  height: 50px;
+  border-bottom: 3px solid var(--main-color);
+  background-color: #f8f8f8;
+  line-height: 50px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--black);
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.2s;
+}
 
+.con .content .tab_item:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
 
+input[name="tab_item"] {
+  display: none;
+}
+
+.tab_content {
+  display: none;
+  padding: 20px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+#review:checked ~ #review_content,
+#written:checked ~ #written_content {
+  display: block;
+}
+
+.con .content .tabs input:checked + .tab_item {
+  background-color: var(--main-color);
+  color: var(--black);
+}
+
+.con .content .tabs input:checked + .tab_item:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+.con .content .tabs .main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.con .content .tabs .tab_content .review {
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 5px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.con .content .tabs .tab_content .hall-img {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  margin: 1rem 4rem 1rem 1rem;
+}
+
+.con .content .tabs .tab_content .hall-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.con .content .tabs .tab_content .info {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.con .content .tabs .tab_content .hall-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+}
+
+.con .content .tabs .tab_content .date {
+  font-size: 1.5rem;
+  font-weight: bold;  
+}
+
+.con .content .tabs .tab_content .btn {
+  display: flex;
+  width: 15%;
+  height: 100%;
+  flex-direction: column;
+  text-align: right;
+  margin-left: auto;
+  margin-right: 30px;
+  justify-content: space-around;
+}
+
+.con .content .tabs .tab_content .btn button {
+  cursor: pointer;
+  padding: 0 1rem;
+  margin-left: auto;
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  width: 80px;
+}
+
+.con .content .tabs .tab_content .btn .first-btn {
+  margin-bottom: 4rem;
+}
+
+.con .content .tabs .written-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.con .content .tabs .written-list .written-rev {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 5px;
+  margin-bottom: 1rem; 
+  border-radius: 10px;
+}
+
+.con .content .tabs .written-list .written-rev .hall {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2px solid var(--light_gray);
+  justify-content: space-between;
+}
+
+.con .content .tabs .written-list .written-rev .hall-thumb {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin: 1rem 4rem 1rem 1.5rem;
+}
+
+.con .content .tabs .written-list .written-rev .hall .hall-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.con .content .tabs .written-list .written-rev .hall .name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.con .content .tabs .written-list .written-rev .hall .modify-btn {
+  margin-right: 2rem;
+  margin-left: 4rem;
+  font-size: 1.5rem;
+  color: blue;
+}
+
+.con .content .tabs .written-list .written-rev .rating {
+ margin-bottom: 2rem;
+}
+
+.con .content .tabs .written-list .written-rev .rating i {
+  color: var(--main-color);
+  margin: 1rem 0 1rem 1.5rem;
+}
+
+.con .content .tabs .written-list .written-rev .rating > span {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+}
+
+.con .content .tabs .written-list .written-rev .rating > .date {
+  font-weight: 400;
+}
+
+.con .content .tabs .written-list .written-rev .review-box {
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+  padding-bottom: 1.5rem;
+}
 
 .footer {
   height: 100px;

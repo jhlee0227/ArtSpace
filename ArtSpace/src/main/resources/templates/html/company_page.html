@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/mypage.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/> -->
+  <link rel="stylesheet" href="../../static/css/company_page.css">
 </head>
 
 <body>
@@ -62,7 +60,7 @@
       <div class="left-main">
         <h2 class="mypage">마이페이지</h2>
         <div class="img">
-          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
+          <img src="../../static/img/hongsnow5.jpg" class="profile" alt="">
         </div>
         <h2 class="username">000</h2>
       </div>
@@ -71,20 +69,17 @@
           <a href="#" target="_self">
             <li class="open">내 정보</li>
           </a>
-          <a href="performer_info.html" target="_self">
-            <li>공연자 정보</li>
+          <a href="company_info.html" target="_self">
+            <li>사업자 정보</li>
           </a>
-          <a href="my_favorites.html" target="_self">
-            <li>내 즐겨찾기</li>
+          <a href="company_hall.html" target="_self">
+            <li>내 공연장</li>
           </a>
-          <a href="reservation_list.html" target="_self">
+          <a href="company_reserve.html" target="_self">
             <li>예약 내역</li>
           </a>
-          <a href="use_list.html" target="_self">
-            <li>이용 내역</li>
-          </a>
-          <a href="my_review.html" target="_self">
-            <li>내 리뷰</li>
+          <a href="company_review.html" target="_self">
+            <li>리뷰 관리</li>
           </a>
         </ul>
       </div>
@@ -94,7 +89,7 @@
       <h2 class="content-main">내 정보</h2>
       <div class="my">
         <div class="img">
-          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
+          <img src="../../static/img/hongsnow5.jpg" class="profile" alt="">
         </div>
         <div class="nickname">
           <div>000</div>
@@ -107,19 +102,20 @@
         <div>
           <div class="list-name">이름</div>
           <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="list-con">aaa</div>
+          <div class="list-con">강아지</div>
         </div>
         <div>
           <div class="list-name">이메일</div>
           <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-          <div class="list-con">1234@naver.com</div>
+          <div class="list-con">hongsnow@naver.com</div>
         </div>
         <div>
           <div class="list-name">비밀번호</div>
           <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
           <div class="pw">
-            <div><label for="" class="list-con">새 비밀번호</label><input type="password" id="pw" oninput="pwCheck()" placeholder="새 비밀번호"></div>
-            <div><label for="" class="list-con">비밀번호 확인</label><input type="password" id="pwChk" oninput="pwCheck()" placeholder="비밀번호 확인"><span id="check"></span></div>
+            <div><label for="" class="list-con">새 비밀번호</label><input type="password" id="pw" oninput="pwCheck()"></div>
+            <div><label for="" class="list-con">비밀번호 확인</label><input type="password" id="pwChk"
+                oninput="pwCheck()"><span id="check"></span></div>
           </div>
           <button id="btn" class="btn">수정</button>
         </div>
@@ -148,6 +144,7 @@
   <footer class="footer">
 
   </footer>
+  </section>
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
   <script>
     function pwCheck() {
@@ -165,7 +162,7 @@
         }
       } else if (pw.length == 0 && pwChk.length == 0) {
         document.getElementById('check').innerHTML = '';
-      } 
+      }
     }
   </script>
 </body>
