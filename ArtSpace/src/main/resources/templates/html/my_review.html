@@ -90,7 +90,55 @@
     <div class="content">
       <h2 class="content-main">내 리뷰</h2>
       <!-- 여기에 th:each -->
-      
+      <div class="tabs">
+        <input id="review" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="review">리뷰 작성</label>
+        <input id="written" type="radio" name="tab_item">
+        <label class="tab_item" for="written">작성한 리뷰</label>
+        <div class="tab_content" id="review_content">
+        <!-- 리뷰 작성 Tab -->
+          <div class="main-content">
+            <div class="review">
+              <div class="hall-img">
+                <img src="../../static/img/hallex.jpg">
+              </div>
+              <div class="info">
+                <div class="hall-name">졸려홀</div>
+                <div class="date">2024-03-21[목]</div>
+              </div>
+              <div class="btn">
+                <!-- 리뷰 작성 페이지로.. -->
+                <button class="first-btn" onclick="location.href=''">리뷰 작성</button>
+                <!-- 공연장 상세 페이지로.. -->
+                <button  onclick="location.href=''">상세보기</button>
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="tab_content" id="written_content">
+        <!-- 작성한 리뷰 Tab -->
+          <div class="written-list">
+            <div class="written-rev">
+              <div class="hall">
+                <div class="hall-thumb">
+                  <img src="../../static/img/hallex.jpg">
+                </div>
+                <!-- 상세페이지 링크 -->
+                <a href=""><span class="name">졸려홀</span></a>
+                <a href=""><span class="modify-btn">수정</span></a>
+              </div>
+              <div class="rating">
+                <i class="fa-solid fa-star fa-3x"></i>
+                <span class="star">4.0</span>
+                <span class="date">2024-03-21</span> 
+              </div>
+              <div class="review-box">
+                여기 잠 잘와요오
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <footer class="footer">
