@@ -1,0 +1,237 @@
+@import "reset.css";
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  height: 100%;
+  color: var(--black);
+  line-height: 1.5;
+  background-color: #fff
+}
+
+.con {
+  width: 100%;
+  height: 100%;
+  padding-top: 90px;
+  display: flex;
+  padding-bottom: 250px;
+}
+
+.con .left {
+  width: 20vw;
+  border-right: 2px solid var(--light_gray);
+  margin-left: 180px;
+  height: 100vh;
+  background-color: var(--sub-color);
+}
+
+.con .left .left-main {
+  font-size: 2rem;
+  border-width: 0 0 1px;
+  border-style: solid;
+  padding: 1.75rem 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.con .left .left-main .img {
+  width: 100px;
+  height: 100px;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+.con .left .left-main .img .profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.con .left .left-main .mypage {
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
+.con .left .left-main .username {
+  font-size: 2.5rem;
+  padding-top: 1rem;
+  font-weight: bold
+}
+
+.con .left .left-menu ul {
+  width: 100%;
+  font-weight: bold;
+}
+
+.con .left .left-menu .open {
+  color: blue;
+  background-color: var(--main-color);
+}
+
+.con .left .left-menu a:hover {
+  color: blue;
+}
+
+.con .left .left-menu li {
+  font-size: 1.5rem;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding: 1.25rem;
+  padding-left: 2.5rem;
+}
+
+.con .content {
+  width: 70vw;
+  margin-right: 180px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.con .content .content-main {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.con .content .list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 2rem;
+}
+
+.con .content .list h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.con .content .list>div {
+  padding: 2rem 3.5rem 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  border-top: 2px solid var(--light_gray);
+}
+
+.con .content .list .first {
+  border-top: 2px solid var(--black);
+}
+
+.con .content .list div .list-name {
+  width: 15%;
+  font-size: 1.5rem;
+}
+
+.con .content .list>div .list-con {
+  font-size: 1.5rem;
+}
+
+.con .content .list div .btn {
+  cursor: pointer;
+  padding: 0 1rem;
+  margin-left: auto;
+  display: inline-block;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.con .content .list div .btn:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
+}
+
+.con .content .list .last {
+  border-bottom: 2px solid var(--black);
+}
+
+.con .content .paper {
+  margin-top: 2rem;
+}
+
+.con .content .paper h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.con .content .paper .paper-list > div {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem 3rem 2rem;
+  align-items: center;
+  border-top: 2px solid var(--light_gray);
+}
+
+.con .content .paper .paper-list .first {
+  border-top: 2px solid var(--black);
+}
+
+.con .content .paper .paper-list .list-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 20%;
+}
+
+.con .content .paper .paper-list .list-con {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  
+}
+
+.con .content .paper .paper-list .list-con .file {
+  margin-top: 1rem;
+}
+
+.con .content .paper .paper-list .last {
+  border-bottom: 2px solid var(--black);
+}
+
+.con .content .paper .btn {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.con .content .paper button {
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--main-color);
+  border: var(--border);
+  border-radius: 1rem;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: var(--box-shadow);
+}
+
+.con .content .paper button:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
+}

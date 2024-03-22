@@ -1,5 +1,9 @@
 @import "reset.css";
 
+
+/* ==================================================기본 전체 적용================================================== */
+
+
 body {
     background-color: rgb(245, 245, 245);
 }
@@ -11,6 +15,10 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+/* ==================================================공연장 사진 및 이름================================================== */
+
 
 .hall-detail .imgbox {
     width: 1500px;
@@ -33,6 +41,10 @@ body {
     font-weight: 600;
 }
 
+
+/* ==================================================즐겨찾기 및 공유 및 별점================================================== */
+
+
 .hall-detail .favorite .fa-regular {
     top: 20px;
     right: 20px;
@@ -54,6 +66,10 @@ hr {
     margin-top: 15px;
     border: 1px solid rgb(220, 220, 220);
 }
+
+
+/* ==================================================중요 안내 사항================================================== */
+
 
 .hall-detail .container {
     width: 1250px;
@@ -82,8 +98,19 @@ hr {
     line-height: normal;
 }
 
-.hall-detail .container .text-red {
+.text-red {
     color: red;
+}
+
+
+/* ==================================================목록 변환================================================== */
+
+
+.hall-detail .tab {
+    position: sticky;
+    width: 100%;
+    top: 90.7px;
+    z-index: 1000;
 }
 
 .hall-detail .main input[type=radio] {
@@ -112,7 +139,7 @@ hr {
 
 .hall-detail .main {
   margin: 0 auto;
-  min-width:1380px;
+  min-width: 1380px;
   max-width: 100%;
 }
 
@@ -145,7 +172,7 @@ hr {
     float: left;
     width: 25%;
     text-align: center;
-    padding: 30px 0;
+    padding: 20px 0;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
@@ -163,6 +190,10 @@ hr {
    line-height: 1.5;
    font-size: 17px;
 }
+
+
+/* ==================================================상세 정보 목록================================================== */
+
 
 .hall-detail .content h1 {
     font-size: 40px;
@@ -205,28 +236,168 @@ hr {
     margin-left: 10px;
 }
 
+
+/* ==================================================견적 내기 목록================================================== */
+
+
+.hall-detail .content .quote {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hall-detail .content .quote h2 {
+    font-size: 30px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.hall-detail .content .quote .rental-date {
+    width: 1250px;
+    height: 270px;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(235, 235, 235);
+    border-radius: 20px;
+    color: rgb(100, 100, 100);
+}
+
+.hall-detail .content .quote .rental-date .start {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    line-height: 70px;
+    font-size: 25px;
+}
+
+.hall-detail .content .quote .rental-date .start .start-date {
+    margin-left: 6rem;
+    margin-right: 18rem;
+}
+
+.hall-detail .content .quote .rental-date .start .start-time {
+    margin-left: 18rem;
+    margin-right: 15rem;
+}
+
+.hall-detail .content .quote .rental-date .end {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    line-height: 70px;
+    font-size: 25px;
+}
+
+.hall-detail .content .quote .rental-date .end .end-date {
+    margin-left: 6rem;
+    margin-right: 18rem;
+}
+
+.hall-detail .content .quote .rental-date .end .end-time {
+    margin-left: 18rem;
+    margin-right: 15rem;
+}
+
+.hall-detail .content .quote .rental-date p {
+    display: flex;
+    justify-content: right;
+    margin-right: 50px;
+}
+
+input[type="date"] {
+    border: none;
+    position: relative;
+    padding: 10px;
+    box-shadow: none;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    text-decoration: underline;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: transparent;
+    cursor: pointer;
+}
+
+.hall-detail .content .quote .rental-date #am-pm {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(../img/chevron-down-solid.svg) no-repeat 88% 50%/15px auto;
+    align-content: start;
+    padding: 5px 40px 5px 35px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid;
+    height: 50%;
+}
+
+.hall-detail .content .quote .rental-date #am-pm::-ms-expand {
+    display:none;
+}
+
+.hall-detail .content .equipment .equipment-list span {
+    font-size: 16px;
+}
+
+
+/* ==================================================최종 금액 및 예약하기================================================== */
+
+
+.hall-expectation {
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
 .hall-expectation .expectation {
     width: 100%;
-    height: 180px;
+    height: 100px;
     border-radius: 25px 25px 0 0;
     text-align: center;
-    line-height: 185px;
+    line-height: 100px;
     color: white;
     font-size: 3.5rem;
     font-weight: bold;
     background-color: #605353;
+    display: flex;
+    justify-content: center;
 }
 
 .hall-expectation .expectation .amount {
     color: gold;
-    width: max-content;
-    margin-left: 10%;
+    width: 200px;
+    text-align: right;
+    margin-right: 0.5%;
 }
 
 .hall-expectation .expectation .reservation {
     margin-left: 5%;
     cursor: pointer;
 }
+
+
+/* ==================================================후터================================================== */
+
 
 .btn {
     margin-top: 1rem;

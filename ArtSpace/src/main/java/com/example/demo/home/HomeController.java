@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
 	@GetMapping("/")
-	public String ShowMain() {
+	public String showMain() {
 		return "html/index.html";
 	}
 	
 	@GetMapping("/list")
-	public String ShowHallList() {
+	public String showHallList() {
 		return "html/hall_list";
 	}
 	
