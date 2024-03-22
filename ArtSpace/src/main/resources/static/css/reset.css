@@ -132,6 +132,7 @@ header .nav .left-content {
 
 
 header .nav .left-content .logo {
+  cursor: pointer;
   min-width: 80px;
   height: 40px;
   margin-right: 50px;
@@ -143,6 +144,7 @@ header .nav .left-content .logo img {
 }
 
 header .nav .left-content .list-btn {
+  cursor: pointer;
   min-width: 72px;
   text-align: center;
   font-size: 2.5rem;
