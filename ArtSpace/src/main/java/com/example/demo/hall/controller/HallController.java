@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.service.HallService;
+
 
 //import com.example.demo.hall.dto.HallDTO;
 //import com.example.demo.hall.service.HallService;
@@ -24,17 +26,24 @@ public class HallController {
 	@Autowired
 	private HallService hallService;
 	
-	
 	@GetMapping("form")
 	public String showForm() {
 		return "html/hall_form";
 	}
-	
+//	
+//	@GetMapping("form/${id}")
+//	public String shwForm(Model model, Integer id) {
+//		HallDTO hallInfo = hallService.findById(id);
+//		
+//		model.addAttribute("hall_info", model);
+//		return "html/hall_form";
+//	}
+//	
 	@PostMapping("/form/insert")
 	public String hallCreate(@ModelAttribute HallDTO hallDTO) {		
 		hallDTO.setCreate_date(LocalDate.now());
 		hallService.insert(hallDTO);
-		return "redirect:/";
+		return "redirect:/hall/form/equipment";
 	}
 	
 	

@@ -7,5 +7,9 @@
 		values(#{hall_name}, #{address1}, #{address2}, #{hall_description}, #{warning}, #{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
 	</insert>
 
+	<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
+		select * from hall
+		where hall_id = #{id}
+	</select>
 
 </mapper>
