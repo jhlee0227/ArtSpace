@@ -6,5 +6,7 @@ public interface HallService {
 
 	public void insert(HallDTO hallDTO);
 
+	public HallDTO findById(Integer id);
+
 
 }

@@ -16,4 +16,8 @@ public class HallDAO {
 		sqlSession.insert("hall.insert", hallDTO);
 	}
 
+	public HallDTO findById(Integer id) {
+		return sqlSession.selectOne("hall.findById", id);
+	}
+
 }
