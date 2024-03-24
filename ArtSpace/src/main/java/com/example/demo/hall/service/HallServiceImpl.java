@@ -17,5 +17,10 @@ public class HallServiceImpl implements HallService{
 	public void insert(HallDTO hallDTO) {
 		hallDAO.insert(hallDTO);
 	}
+
+	@Override
+	public HallDTO findById(Integer id) {
+		return hallDAO.findById(id);
+	}
 	
 }
