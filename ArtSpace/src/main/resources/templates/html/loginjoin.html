@@ -21,34 +21,66 @@
             background-size: 100% 100%;}
     </style>
     
-    <div class="ttt">
+
+
+    <section class="container">
+        <div class="login-box">
+            
+            <form method="post" action="서버의url" id="login-form">
+                <div class="login-wrapper">
+                <h2>일반 회원 가입</h2>
+                    <label for="">
+                        <input type="text" name="userName" placeholder="아이디 ex)abc12@gmail.com">
+                        <p>아이디는 이메일 형식으로 입력해 주세요.</p>
+                    </label>
+                    <label>
+                        <input type="password" name="userPassword" placeholder="비밀 번호">
+                        <p>대소문자와 숫자를 포함한 8~16자</p>
+                    </label>
+                    <label>
+                    <input type="password" name="userPassword1" placeholder="비밀 번호 확인">
+                        <p>비밀 번호를 한 번 더 입력해 주세요.</p>
+                    </label>
+                    <label>
+                    <input type="text" name="username1" placeholder="닉네임">
+                        <p>사이트에서 사용하실 닉네임을 입력해 주세요.</p>
+                    </label>
+                    <label>
+                    <input type="text" name="username2" placeholder="이름">
+                        <p>실명을 입력해 주세요.</p>
+                    </label>
+                    <label>
+                    <input type="text" name="userphone" placeholder="">
+                        <p>핸드폰 번호를 하이픈(-)를 제외하고 입력해 주세요.</p>
+                    </label>
+                
+                </div>
+                
+                <div class="login-wrapper">
+                    <div class="login-chkbox">
+                        <span>이용 약관</span>
+                        <span class="login-chk"><input type="checkbox" name="" id="">동의</span> 
+                    </div>
+                    
+                    <div class="text1">""</div> 
+                    <div class="login-chkbox">
+                        <span>개인 정보 처리 방침</span>
+                        <span class="login-chk"><input type="checkbox" name="" id="">동의</span> 
+                    </div>
+                    <div class="text2">""</div>
+                    <div class="btn1">다음</div>
+                </div>
+            </form>
+
+
+        </div>
+      </section>
+      <div class="ttt">
         <h1>공연의 <span style="color: #FFCA63;">공간</span></h1> <br>
         <h2>빠른 예약과</h2> 
         <h2>확실한 정보로</h2> 
         <h2>꿈이 이루어지는 공간 입니다.</h2>
     </div>
-
-    <section class="container">
-        <div class="login-box">
-
-            <div class="login-wrapper">
-                <h2>일반 회원 가입</h2>
-                <form method="post" action="서버의url" id="login-form">
-                    <input type="text" name="userName" placeholder="아이디 ex)abc12@gmail.com">
-                    <input type="password" name="userPassword" placeholder="비밀 번호">
-                    <input type="password1" name="userPassword1" placeholder="비밀 번호 확인">
-                    <input type="text1" name="username1" placeholder="닉네임">
-                    <input type="text2" name="username2" placeholder="이름">
-                    <input type="phone" name="userphone" placeholder="">
-                
-                 
-                </form>
-            </div>
-
-
-        </div>
-      </section>
-
 
 
 </body>
