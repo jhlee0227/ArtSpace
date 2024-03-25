@@ -354,8 +354,205 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display:none;
 }
 
-.hall-detail .content .equipment .equipment-list span {
+
+/* ====================시작일 & 종료일 끝==================== */
+
+
+.hall-detail .content .equipment {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hall-detail .content .equipment h2 {
+    font-size: 30px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.hall-detail .content .equipment span {
     font-size: 16px;
+}
+
+.hall-detail .content .equipment .equipment-list {
+    width: 1250px;
+    height: 810px;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(235, 235, 235);
+    border-radius: 20px;
+    color: rgb(100, 100, 100);
+    padding: 1% 0px 0px 0px;
+}
+
+.hall-detail .content .equipment .equipment-list span {
+    font-size: 27px;
+    margin-left: 4%;
+    color: rgb(60, 60, 60);
+}
+
+input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* ====================장비 공통 끝==================== */
+
+
+.hall-detail .content .equipment .equipment-list .mic-line {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-line #line {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-line .count {
+    margin-left: 20%;
+    margin-right: 3%;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline #noline {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline .count {
+    margin-left: 20%;
+    margin-right: 3%;
+}
+
+.hall-detail .content .equipment .equipment-list #mic-count {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(../img/chevron-down-solid.svg) no-repeat 88% 50%/15px auto;
+    align-content: start;
+    padding: 5px 40px 5px 35px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid;
+    height: 50%;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline #mic-count::-ms-expand {
+    display: none;
+}
+
+
+/* ====================마이크 끝==================== */
+
+
+.hall-detail .content .equipment .equipment-list .main-speaker {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list .main-speaker #main {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .sub-speaker {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list .sub-speaker #sub {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .woofer-speaker {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list .woofer-speaker #woofer {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .stage-speaker {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list .stage-speaker #stage {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .stage-speaker .use {
+    margin-left: 11%;
+    margin-right: 3%;
+}
+
+.hall-detail .content .equipment .equipment-list .use {
+    margin-left: 14.5%;
+    margin-right: 3%;
+}
+
+.hall-detail .content .equipment .equipment-list #speaker-use {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(../img/chevron-down-solid.svg) no-repeat 88% 50%/15px auto;
+    align-content: start;
+    padding: 5px 35px 5px 25px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid;
+    height: 50%;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline #mic-count::-ms-expand {
+    display: none;
 }
 
 
