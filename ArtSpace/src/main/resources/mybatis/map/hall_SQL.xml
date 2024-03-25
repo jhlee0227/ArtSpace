@@ -3,8 +3,10 @@
 <mapper namespace="hall">
 
 	<insert id="insert">
-		insert into hall(hall_id, hall_name, address1, address2, hall_description, warning, create_date, area, width, length, height, maximum)
-		values(#{hall_id}, #{hall_name}, #{address1}, #{address2}, #{hall_description}, #{warning}, #{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
+		insert into hall(hall_id, hall_name, address1, address2, hall_description, warning,
+						create_date, area, width, length, height, maximum)
+		values(#{hall_id}, #{hall_name}, #{address1}, #{address2}, #{hall_description}, #{warning},
+					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
 	</insert>
 
 	<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
@@ -18,9 +20,31 @@
 	</select>
 
 	<update id="update_info">
-		
-	
+	   UPDATE hall
+	      SET hall_name = #{hall_name},
+	          address1 = #{address1},
+	          address2 = #{address2},
+	          hall_description = #{hall_description},
+	          warning = #{warning},
+	          address1 = #{address1},
+	          address2 = #{address2},
+	          hall_description = #{hall_description},
+	          warning = #{warning},
+	          create_date = #{create_date},
+	          area = #{area},
+	          width = #{width},
+	          length = #{length},
+	          height = #{height},
+	          maximum = #{maximum}
+	       WHERE hall_id = #{hall_id}
 	</update>	
+	
+	<select id="getEquiList" resultType="com.example.demo.hall.dto.EquipmentDTO">
+		select * from equipment
+		where hall_id = #{id}
+	</select>
+	
+	
 	
 	
 	

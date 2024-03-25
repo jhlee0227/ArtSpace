@@ -71,3 +71,28 @@ function submitAction() {
   }
   xhr.send(data);
 }
+
+
+  let plusBtn = document.querySelector("#plus-btn");
+
+  plusBtn.addEventListener("click", function () {
+    const itemRow = document.querySelector(".item-row"); //복사할 노드
+    const newNode = itemRow.cloneNode(true); // 노드 복사
+
+    //console.log(newNode.lastElementChild.lastElementChild.previousElementSibling);
+    newNode.lastElementChild.lastElementChild.value = null;
+    newNode.lastElementChild.lastElementChild.previousElementSibling.value = null;
+    newNode.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.value = null;
+
+    document.querySelector(".item-container").appendChild(newNode);
+  });
+
+  function removeRow(e) {
+    if(e.parentNode.parentNode.childElementCount > 1){
+      e.parentNode.remove();
+    } else {
+      e.nextElementSibling.lastElementChild.value = null;
+      e.nextElementSibling.lastElementChild.previousElementSibling.value = null;
+      e.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.value = null;
+    }
+  }
