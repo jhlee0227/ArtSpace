@@ -1,149 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{html/layout/default_layout}" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/my_review.css">
+  <link rel="stylesheet" href="/css/my_review.css">
 </head>
 <body>
-  <!-- hearder -->
-  <header>
-    <div class="nav">
-      <div class="left-content">
-        <div class="logo">
-          <a th:href="@{|/|}">
-            <img src="../../static/img/logo_text.png" alt="logo" />
-          </a>
-        </div>
-        <a class="list-btn" th:href="@{|/list|}">
-          대여 공간
-        </a>
-      </div>
-
-      <div class="right-content">
-        <div class="search-box">
-          <form action="" name="search" class="search-from">
-            <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
-            <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
-          </form>
-        </div>
-
-        <!-- <a class="mypage-btn" href="">
-            <i class="fa-solid fa-user fa-4x"></i>
-            <p>My</p>
-            </a> -->
-        <a class="mypage-btn" href="login.html">
-          <i class="fa-regular fa-user fa-4x"></i>
-          <p>로그인</p>
-        </a>
-      </div>
-    </div>
-    <script>
-      const searchBtn = document.querySelector(".search-box");
-      searchBtn.addEventListener("click", function () {
-        document.querySelector("#content").focus();
-      });
-
-      const submitButton = document.querySelector("#submit-btn");
-      submitButton.addEventListener("click", function () {
-        const form = document.forms.search;
-        form.submit();
-      });
-    </script>
-  </header>
-  <!-- hearder End -->
-  <section class="con">
-    <!-- 좌측 메뉴 -->
-    <div class="left">
-      <div class="left-main">
-        <h2 class="mypage">마이페이지</h2>
-        <div class="img">
-          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
-        </div>
-        <h2 class="username">000</h2>
-      </div>
-      <div class="left-menu">
-        <ul>
-          <a href="mypage.html" target="_self">
-            <li>내 정보</li>
-          </a>
-          <a href="performer_info.html" target="_self">
-            <li>공연자 정보</li>
-          </a>
-          <a href="my_favorites.html" target="_self">
-            <li>내 즐겨찾기</li>
-          </a>
-          <a href="reservation_list.html" target="_self">
-            <li>예약 내역</li>
-          </a>
-          <a href="use_list.html" target="_self">
-            <li>이용 내역</li>
-          </a>
-          <a href="#" target="_self">
-            <li class="open">내 리뷰</li>
-          </a>
-        </ul>
-      </div>
-    </div>
-    <!-- 내용 -->
-    <div class="content">
-      <h2 class="content-main">내 리뷰</h2>
-      <!-- 여기에 th:each -->
-      <div class="tabs">
-        <input id="review" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="review">리뷰 작성</label>
-        <input id="written" type="radio" name="tab_item">
-        <label class="tab_item" for="written">작성한 리뷰</label>
-        <div class="tab_content" id="review_content">
-        <!-- 리뷰 작성 Tab -->
-          <div class="main-content">
-            <div class="review">
-              <div class="hall-img">
-                <img src="../../static/img/hallex.jpg">
-              </div>
-              <div class="info">
-                <div class="hall-name">졸려홀</div>
-                <div class="date">2024-03-21[목]</div>
-              </div>
-              <div class="btn">
-                <!-- 리뷰 작성 페이지로.. -->
-                <button class="first-btn" onclick="location.href=''">리뷰 작성</button>
-                <!-- 공연장 상세 페이지로.. -->
-                <button  onclick="location.href=''">상세보기</button>
-              </div>
-            </div>
-          </div> 
-        </div>
-        <div class="tab_content" id="written_content">
-        <!-- 작성한 리뷰 Tab -->
-          <div class="written-list">
-            <div class="written-rev">
-              <div class="hall">
-                <div class="hall-thumb">
-                  <img src="../../static/img/hallex.jpg">
-                </div>
-                <!-- 상세페이지 링크 -->
-                <a href=""><span class="name">졸려홀</span></a>
-                <a href=""><span class="modify-btn">수정</span></a>
-              </div>
-              <div class="rating">
-                <i class="fa-solid fa-star fa-3x"></i>
-                <span class="star">4.0</span>
-                <span class="date">2024-03-21</span> 
-              </div>
-              <div class="review-box">
-                여기 잠 잘와요오
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="footer">
-
-  </footer>
+	<div layout:fragment="content">
+		<section class="con">
+		    <!-- 좌측 메뉴 -->
+		    <div class="left">
+		      <div class="left-main">
+		        <h2 class="mypage">마이페이지</h2>
+		        <div class="img">
+		          <img src="/img/hongsnow1.jpg" class="profile" alt="">
+		        </div>
+		        <h2 class="username">000</h2>
+		      </div>
+		      <div class="left-menu">
+		        <ul>
+		          <a href="mypage.html" target="_self">
+		            <li>내 정보</li>
+		          </a>
+		          <a href="performer_info.html" target="_self">
+		            <li>공연자 정보</li>
+		          </a>
+		          <a href="my_favorites.html" target="_self">
+		            <li>내 즐겨찾기</li>
+		          </a>
+		          <a href="reservation_list.html" target="_self">
+		            <li>예약 내역</li>
+		          </a>
+		          <a href="use_list.html" target="_self">
+		            <li>이용 내역</li>
+		          </a>
+		          <a href="#" target="_self">
+		            <li class="open">내 리뷰</li>
+		          </a>
+		        </ul>
+		      </div>
+		    </div>
+		    <!-- 내용 -->
+		    <div class="content">
+		      <h2 class="content-main">내 리뷰</h2>
+		      <!-- 여기에 th:each -->
+		      <div class="tabs">
+		        <input id="review" type="radio" name="tab_item" checked>
+		        <label class="tab_item" for="review">리뷰 작성</label>
+		        <input id="written" type="radio" name="tab_item">
+		        <label class="tab_item" for="written">작성한 리뷰</label>
+		        <div class="tab_content" id="review_content">
+		        <!-- 리뷰 작성 Tab -->
+		          <div class="main-content">
+		            <div class="review">
+		              <div class="hall-img">
+		                <img src="/img/hallex.jpg">
+		              </div>
+		              <div class="info">
+		                <div class="hall-name">졸려홀</div>
+		                <div class="date">2024-03-21[목]</div>
+		              </div>
+		              <div class="btn">
+		                <!-- 리뷰 작성 페이지로.. -->
+		                <button class="first-btn" onclick="location.href=''">리뷰 작성</button>
+		                <!-- 공연장 상세 페이지로.. -->
+		                <button  onclick="location.href=''">상세보기</button>
+		              </div>
+		            </div>
+		          </div> 
+		        </div>
+		        <div class="tab_content" id="written_content">
+		        <!-- 작성한 리뷰 Tab -->
+		          <div class="written-list">
+		            <div class="written-rev">
+		              <div class="hall">
+		                <div class="hall-thumb">
+		                  <img src="/img/hallex.jpg">
+		                </div>
+		                <!-- 상세페이지 링크 -->
+		                <a href=""><span class="name">졸려홀</span></a>
+		                <a href=""><span class="modify-btn">수정</span></a>
+		              </div>
+		              <div class="rating">
+		                <i class="fa-solid fa-star fa-3x"></i>
+		                <span class="star">4.0</span>
+		                <span class="date">2024-03-21</span> 
+		              </div>
+		              <div class="review-box">
+		                여기 잠 잘와요오
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </section>
+	</div>
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
 </body>
 </html>

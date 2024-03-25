@@ -1,125 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{html/layout/default_layout}" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/company_review.css">
+  <link rel="stylesheet" href="/css/company_review.css">
 </head>
 <body>
-  <!-- hearder -->
-  <header>
-    <div class="nav">
-      <div class="left-content">
-        <div class="logo">
-          <a th:href="@{|/|}">
-            <img src="../../static/img/logo_text.png" alt="logo" />
-          </a>
-        </div>
-        <a class="list-btn" th:href="@{|/list|}">
-          대여 공간
-        </a>
-      </div>
-
-      <div class="right-content">
-        <div class="search-box">
-          <form action="" name="search" class="search-from">
-            <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
-            <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
-          </form>
-        </div>
-
-        <!-- <a class="mypage-btn" href="">
-        <i class="fa-solid fa-user fa-4x"></i>
-        <p>My</p>
-      </a> -->
-        <a class="mypage-btn" href="login.html">
-          <i class="fa-regular fa-user fa-4x"></i>
-          <p>로그인</p>
-        </a>
-      </div>
-    </div>
-    <script>
-      const searchBtn = document.querySelector(".search-box");
-      searchBtn.addEventListener("click", function () {
-        document.querySelector("#content").focus();
-      });
-
-      const submitButton = document.querySelector("#submit-btn");
-      submitButton.addEventListener("click", function () {
-        const form = document.forms.search;
-        form.submit();
-      });
-    </script>
-  </header>
-  <!-- hearder End -->
-  <section class="con">
-    <div class="left">
-      <div class="left-main">
-        <h2 class="mypage">마이페이지</h2>
-        <div class="img">
-          <img src="../../static/img/hongsnow5.jpg" class="profile" alt="">
-        </div>
-        <h2 class="username">000</h2>
-      </div>
-      <div class="left-menu">
-        <ul>
-          <a href="company_page.html" target="_self">
-            <li>내 정보</li>
-          </a>
-          <a href="company_info.html" target="_self">
-            <li>사업자 정보</li>
-          </a>
-          <a href="company_hall.html" target="_self">
-            <li>내 공연장</li>
-          </a>
-          <a href="company_reserve.html" target="_self">
-            <li>예약 내역</li>
-          </a>
-          <a href="#" target="_self">
-            <li class="open">리뷰 관리</li>
-          </a>
-        </ul>
-      </div>
-    </div>
-    <div class="content">
-      <h2 class="content-main">리뷰 관리</h2>
-      <div class="main">
-        <table class="table">
-          <thead>
-            <tr>
-              <th><input type="checkbox" class="chkbox" name="selectAll" value="selectAll" onclick="selectAll(this)">
-              </th>
-              <th>공연장</th>
-              <th>닉네임</th>
-              <th class="table-content">내용</th>
-              <th>평점</th>
-              <th>관리</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><!-- th:each -->
-              <td><input type="checkbox" class="chkbox" name="check" onclick="checkSelectAll()"></td>
-              <!-- th:text -->
-              <td>test1</td>
-              <td>테스트</td>
-              <td class="table-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id a ipsa, esse maiores unde architecto illo. Impedit magni, aliquid nam molestias repudiandae nemo excepturi similique, cumque ipsam sequi aliquam?</td>
-              <td>4.0</td>
-              <td><button>수정</button></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="chkbox" name="check" onclick="checkSelectAll()"></td>
-              <td>test2</td>
-              <td>테스트2</td>
-              <td class="table-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque exercitationem, corrupti dolorem nemo autem ab molestiae corporis, accusamus debitis tenetur deserunt consequatur placeat unde incidunt ipsum. Eum exercitationem ex eius.</td>
-              <td>4.5</td>
-              <td><button>수정</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+	<div layout:fragment="content">
+		<section class="con">
+		    <div class="left">
+		      <div class="left-main">
+		        <h2 class="mypage">마이페이지</h2>
+		        <div class="img">
+		          <img src="/img/hongsnow5.jpg" class="profile" alt="">
+		        </div>
+		        <h2 class="username">000</h2>
+		      </div>
+		      <div class="left-menu">
+		        <ul>
+		          <a href="company_page.html" target="_self">
+		            <li>내 정보</li>
+		          </a>
+		          <a href="company_info.html" target="_self">
+		            <li>사업자 정보</li>
+		          </a>
+		          <a href="company_hall.html" target="_self">
+		            <li>내 공연장</li>
+		          </a>
+		          <a href="company_reserve.html" target="_self">
+		            <li>예약 내역</li>
+		          </a>
+		          <a href="#" target="_self">
+		            <li class="open">리뷰 관리</li>
+		          </a>
+		        </ul>
+		      </div>
+		    </div>
+		    <div class="content">
+		      <h2 class="content-main">리뷰 관리</h2>
+		      <div class="main">
+		        <table class="table">
+		          <thead>
+		            <tr>
+		              <th><input type="checkbox" class="chkbox" name="selectAll" value="selectAll" onclick="selectAll(this)">
+		              </th>
+		              <th>공연장</th>
+		              <th>닉네임</th>
+		              <th class="table-content">내용</th>
+		              <th>평점</th>
+		              <th>관리</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <tr><!-- th:each -->
+		              <td><input type="checkbox" class="chkbox" name="check" onclick="checkSelectAll()"></td>
+		              <!-- th:text -->
+		              <td>test1</td>
+		              <td>테스트</td>
+		              <td class="table-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id a ipsa, esse maiores unde architecto illo. Impedit magni, aliquid nam molestias repudiandae nemo excepturi similique, cumque ipsam sequi aliquam?</td>
+		              <td>4.0</td>
+		              <td><button>수정</button></td>
+		            </tr>
+		            <tr>
+		              <td><input type="checkbox" class="chkbox" name="check" onclick="checkSelectAll()"></td>
+		              <td>test2</td>
+		              <td>테스트2</td>
+		              <td class="table-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque exercitationem, corrupti dolorem nemo autem ab molestiae corporis, accusamus debitis tenetur deserunt consequatur placeat unde incidunt ipsum. Eum exercitationem ex eius.</td>
+		              <td>4.5</td>
+		              <td><button>수정</button></td>
+		            </tr>
+		          </tbody>
+		        </table>
+		      </div>
+		    </div>
+		  </section>
+	</div>
+  
 
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
 </body>

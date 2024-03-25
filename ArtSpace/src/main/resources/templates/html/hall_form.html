@@ -15,18 +15,18 @@
       <form th:action="@{/hall/form/insert}" method="post">
         <label for="hall_name">
           <p class="input-name">장소 이름 (제목)</p>
-          <input type="text" name="hall_name" id="hall_name">
+          <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">
         </label>
 
         <label>
           <p class="input-name">주소</p>
-          <input type="text" name="address1" id="address1">
+          <input type="text" name="address1" id="address1" th:value="${hall_info.address1}">
           <div class="addr-btn">주소 검색</div>
         </label>
 		
         <label>
           <p class="input-name">상세 주소</p>
-          <input type="text" name="address2" id="address2">
+          <input type="text" name="address2" id="address2" th:value="${hall_info.address2}">
         </label>
 
         <label id='image_wrap' for="imgfile">
@@ -41,33 +41,33 @@
 
         <label class="hall-size">
           <p class="input-name">면적(㎡)</p>
-          <input type="number" name="area" id="area"><span>㎡</span>
+          <input type="number" name="area" id="area" th:value="${hall_info.area}" ><span>㎡</span>
         </label>
         <label class="hall-size">
           <p class="input-name">가로(m)</p>
-          <input type="number" name="width" id="width"><span>m</span>
+          <input type="number" name="width" id="width" th:value="${hall_info.width}"><span>m</span>
         </label>
         <label class="hall-size">
           <p class="input-name">세로(m)</p>
-          <input type="number" name="length" id="length"><span>m</span>
+          <input type="number" name="length" id="length" th:value="${hall_info.length}"><span>m</span>
         </label>
         <label class="hall-size">
           <p class="input-name">천장높이(m)</p>
-          <input type="number" name="height" id="height"><span>m</span>
+          <input type="number" name="height" id="height" th:value="${hall_info.height}"><span>m</span>
         </label>
         <label class="hall-size">
           <p class="input-name">최대 수용 인원(명)</p>
-          <input type="number" name="maximum" id="maximum"><span>명</span>
+          <input type="number" name="maximum" id="maximum" th:value="${hall_info.maximum}"><span>명</span>
         </label>
         
         <label class="text-area">
           <p class="input-name">상세 설명</p>
-          <textarea name="hall_description" id="hall_description" cols="30" rows="10" placeholder="공연장에 대한 상세한 설명을 작성해 주십시오. "></textarea>
+          <textarea name="hall_description" id="hall_description" cols="30" rows="10" th:text="${hall_info.hall_description}" placeholder="공연장에 대한 상세한 설명을 작성해 주십시오. "></textarea>
         </label>
 
         <label class="text-area">
           <p class="input-name">주의 사항</p>
-          <textarea name="warning" id="warning" cols="30" rows="10" placeholder="시설 이용자가 숙지해야할 주의사항을 작성해 주십시오."></textarea>
+          <textarea name="warning" id="warning" cols="30" rows="10" th:text="${hall_info.warning}" placeholder="시설 이용자가 숙지해야할 주의사항을 작성해 주십시오."></textarea>
         </label>
 		
         <input type="submit" value="다음" class="btn">
