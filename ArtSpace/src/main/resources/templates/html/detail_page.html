@@ -271,6 +271,7 @@
                           <option value="one">1</option>
                           <option value="two">2</option>
                         </select>
+                        <span class="price">각 7,000원</span>
                       </div>
 
                       <div class="mic-noline">
@@ -281,6 +282,7 @@
                           <option value="one">1</option>
                           <option value="two">2</option>
                         </select>
+                        <span class="price">각 10,000원</span>
                       </div>
 
                       <br>
@@ -294,6 +296,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
+                        <span class="price">150,000원</span>
                       </div>
 
                       <div class="sub-speaker">
@@ -304,6 +307,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
+                        <span class="price">100,000원</span>
                       </div>
 
                       <div class="woofer-speaker">
@@ -314,6 +318,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
+                        <span class="price">100,000원</span>
                       </div>
 
                       <div class="stage-speaker">
@@ -324,9 +329,67 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
+                        <span class="price">50,000원</span>
                       </div>
 
+                      <br>
+
+                      <span>조명</span> <br>
+                      <div class="non-moving">
+                        <input type="checkbox" name="light" value="non" id="non"> 조명기
+                        <span class="use">사용 여부</span>
+                        <select name="light-use" id="light-use">
+                          <option value="sel">선택</option>
+                          <option value="yes">예</option>
+                          <option value="no">아니오</option>
+                        </select>
+                        <span class="price">100,000원</span>
+                      </div>
+
+                      <div class="moving">
+                        <input type="checkbox" name="moving-light" value="on" id="on"> 무빙 조명기
+                        <span class="count">개수</span>
+                        <select name="moving-count" id="moving-count">
+                          <option value="sel">선택</option>
+                          <option value="one">1</option>
+                          <option value="two">2</option>
+                          <option value="three">3</option>
+                          <option value="four">4</option>
+                          <option value="five">5</option>
+                          <option value="six">6</option>
+                          <option value="seven">7</option>
+                          <option value="eight">8</option>
+                        </select>
+                        <span class="price">각 20,000원</span>
+                      </div>
                     </div>
+              </section>
+
+              <br>
+              <br>
+
+              <section class="etc">
+                <h2>기타</h2>
+                <div class="etc-list">
+                  <h3>취식 여부<span>취식은 개별 준비 사항입니다. 행사 진행 시 취식이 진행된다면 선택해 주세요.</span></h3> <br>
+                  <div class="eat">
+                    <input type="checkbox" name="babcar" value="babcar" class="eat-list"> 밥차 <br>
+                    <input type="checkbox" name="dosirak" value="dosirak" class="eat-list"> 도시락 <br>
+                    <input type="checkbox" name="outeat" value="outeat" class="eat-list"> 외부 가게 <br>
+                    <input type="checkbox" name="ineat" value="ineat" class="eat-list"> 교내식당
+                  </div>
+                  
+                  <br>
+
+                  <h3>냉난방</h3>
+                  <div class="heat-cool">
+                    <input type="checkbox" name="use" value="use" class="use"> 사용 <br>
+                    <input type="checkbox" name="no-use" value="no-use" class="use"> 미사용 <br>
+                    <input type="checkbox" name="later" value="later" class="use"> 추후 협의
+                  </div>
+
+
+                </div>
 
               </section>
 
