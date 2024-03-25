@@ -8,5 +8,9 @@ public interface HallService {
 
 	public HallDTO findById(Integer id);
 
+	public Integer findLastIndex();
+
+	public void update(HallDTO hallDTO);
+
 
 }

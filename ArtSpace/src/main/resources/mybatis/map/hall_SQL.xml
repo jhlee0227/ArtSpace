@@ -3,13 +3,26 @@
 <mapper namespace="hall">
 
 	<insert id="insert">
-		insert into hall(hall_name, address1, address2, hall_description, warning, create_date, area, width, length, height, maximum)
-		values(#{hall_name}, #{address1}, #{address2}, #{hall_description}, #{warning}, #{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
+		insert into hall(hall_id, hall_name, address1, address2, hall_description, warning, create_date, area, width, length, height, maximum)
+		values(#{hall_id}, #{hall_name}, #{address1}, #{address2}, #{hall_description}, #{warning}, #{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
 	</insert>
 
 	<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
 		select * from hall
 		where hall_id = #{id}
 	</select>
+	
+	<select id="findLastIndex" resultType="Integer">
+		select hall_id from hall
+		order by hall_id desc limit 1;
+	</select>
+
+	<update id="update_info">
+		
+	
+	</update>	
+	
+	
+	
 
 </mapper>
