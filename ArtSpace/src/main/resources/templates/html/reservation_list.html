@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/reservation_list.css">
+    <link rel="stylesheet" href="/css/reservation_list.css">
 </head>
 <body>
 	<div layout:fragment="content">
@@ -14,7 +14,7 @@
 		        <div class="left-main">
 		          <h2 class="mypage">마이페이지</h2>
 		          <div class="img">
-		            <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
+		            <img src="/static/img/hongsnow1.jpg" class="profile" alt="">
 		          </div>
 		          <h2 class="username">000</h2>
 		        </div>
@@ -32,10 +32,10 @@
 		            <a href="#" target="_self">
 		              <li class="open">예약 내역</li>
 		            </a>
-		            <a href="use_list.html" target="_self">
+		            <a th:href="@{/mypage/uselist}" target="_self">
 		              <li>이용 내역</li>
 		            </a>
-		            <a href="my_review.html" target="_self">
+		            <a th:href="@{/mypage/review}" target="_self">
 		              <li>내 리뷰</li>
 		            </a>
 		          </ul>
@@ -56,7 +56,7 @@
 		            <div class="hall-loca">서울</div>
 		            <div class="reserve-date">2024-04-19[금] ~ 2024-04-20[토]</div>
 		          </div>
-		          <div class="btn">
+		          <div class="button">
 		            <!-- 약관에 따라 예약 취소 비활성화 필요 -->
 		            <!-- 확인창..? -->
 		            <button>예약 취소</button>

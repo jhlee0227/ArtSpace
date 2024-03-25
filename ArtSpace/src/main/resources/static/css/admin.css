@@ -216,16 +216,16 @@ input[name="tab_item"] {
   font-weight: 600;
 }
 
-.con .content .btn form {
+.con .content .button form {
   display: inline-block;
   margin-top: 1rem;
 }
 
-.con .content .btn {
+.con .content .button {
   text-align: right;
 }
 
-.con .content .btn input[type=button] {
+.con .content .button input[type=button] {
   cursor: pointer;
   padding: 0 1rem;
   display: inline-block;
@@ -239,7 +239,7 @@ input[name="tab_item"] {
   box-shadow: var(--box-shadow);
 }
 
-.con .content .btn input[type=button]:hover {
+.con .content .button input[type=button]:hover {
   filter: brightness(0.9);
   transition: 0.5s;
 }

@@ -11,6 +11,9 @@
 
 <body>
 	<div layout:fragment="content">
+		<form name="form1" method="post">
+			
+		
 		<section class="con">
 		    <!-- 좌측 메뉴 -->
 		    <div class="left">
@@ -19,7 +22,7 @@
 		        <div class="img">
 		          <img src="/img/hongsnow1.jpg" class="profile" alt="">
 		        </div>
-		        <h2 class="username">000</h2>
+		        <h2 class="username" th:text="${my_info.nickname}"></h2>
 		      </div>
 		      <div class="left-menu">
 		        <ul>
@@ -52,7 +55,7 @@
 		          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
 		        </div>
 		        <div class="nickname">
-		          <div>000</div>
+		          <div th:text="${my_info.nickname}"></div>
 		          <button>사진 수정</button>
 		        </div>
 		      </div>
@@ -62,12 +65,12 @@
 		        <div>
 		          <div class="list-name">이름</div>
 		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con">aaa</div>
+		          <div class="list-con" th:text="${my_info.name}"></div>
 		        </div>
 		        <div>
 		          <div class="list-name">이메일</div>
 		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con">1234@naver.com</div>
+		          <div class="list-con" th:text="${my_info.email}"></div>
 		        </div>
 		        <div>
 		          <div class="list-name">비밀번호</div>
@@ -81,26 +84,27 @@
 		        <div>
 		          <div class="list-name">닉네임</div>
 		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con"><input type="text" value="000" maxlength="8"></div>
-		          <button class="btn">수정</button>
+		          <div class="list-con"><input type="text" th:value="${my_info.nickname}" maxlength="8"></div>
+		          <button class="btn" id="btnUpdate">수정</button>
 		        </div>
 		        <div class="last">
 		          <div class="list-name">핸드폰</div>
 		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con">010-4542-3021</div>
+		          <div class="list-con" th:text="${my_info.phone}"></div>
 		        </div>
 		      </div>
-		      <form action="">
+		      
 		        <div class="button">
 		          <span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>
 		          <button class="leave-btn">회원 탈퇴</button>
 		        </div>
-		      </form>
+		      
+				</form>
+				</section>
+		  
 		
-		    </div>
-		
-		  </section>
-	</div>
+		  
+	
   
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
   <script>
@@ -121,7 +125,10 @@
         document.getElementById('check').innerHTML = '';
       } 
     }
+	
+	
   </script>
+  </div>
 </body>
 
 </html>

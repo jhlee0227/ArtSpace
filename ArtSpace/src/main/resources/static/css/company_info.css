@@ -147,7 +147,7 @@ body {
   font-size: 1.5rem;
 }
 
-.con .content .list div .btn {
+.con .content .list div .button {
   cursor: pointer;
   padding: 0 1rem;
   margin-left: auto;
@@ -162,7 +162,7 @@ body {
   box-shadow: var(--box-shadow);
 }
 
-.con .content .list div .btn:hover {
+.con .content .list div .button:hover {
   filter: brightness(0.9);
   transition: 0.5s;
 }
@@ -214,7 +214,7 @@ body {
   border-bottom: 2px solid var(--black);
 }
 
-.con .content .paper .btn {
+.con .content .paper .button {
   text-align: right;
   margin-top: 1rem;
 }

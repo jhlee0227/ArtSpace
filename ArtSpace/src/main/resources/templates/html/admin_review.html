@@ -17,13 +17,13 @@
 		        </div>
 		        <div class="left-menu">
 		          <ul>
-		            <a href="admin.html">
+		            <a th:href="@{/admin}" target="_self">
 		              <li>회원 관리</li>
 		            </a>
-		            <a href="hall_info.html" target="_self">
+		            <a th:href="@{/admin/hallinfo}" target="_self">
 		              <li>공연장 정보</li>
 		            </a>
-		            <a href="admin_notice.html" target="_self">
+		            <a th:href="@{/admin/notice}" target="_self">
 		              <li>공지사항</li>
 		            </a>
 		            <a href="#" target="_self">
@@ -66,17 +66,18 @@
 		              </tr>
 		            </tbody>
 		          </table>
-		          <div class="btn">
+		          <div class="button">
 		            <button>리뷰 삭제</button>
 		          </div>
 		        </div>
 		      </div>
 		    </section>
-	</div>
+	
     
     
 
     <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
     <script src="/js/admin.js"></script>
+	</div>
 </body>
 </html>

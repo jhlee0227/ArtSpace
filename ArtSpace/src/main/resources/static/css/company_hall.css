@@ -158,14 +158,14 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.con .content .list .item .btn {
+.con .content .list .item .button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 1.5rem 1.5rem 1.5rem auto;
 }
 
-.con .content .list .item .btn button {
+.con .content .list .item .button button {
   cursor: pointer;
   padding: 0 1rem;
   margin-left: auto;
