@@ -1,9 +1,12 @@
 package com.example.demo.hall.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 
 @Repository
@@ -26,6 +29,15 @@ public class HallDAO {
 
 	public void update(HallDTO hallDTO) {
 		sqlSession.update("hall.update_info", hallDTO);
+		
+	}
+
+	public List<EquipmentDTO> getEquiList(Integer id) {
+		return sqlSession.selectList("hall.getEquiList", id);
+	}
+
+	public void insertEquiList(EquipmentDTO equiDTO) {
+		sqlSession.insert("equi_insert", equiDTO);
 		
 	}
 

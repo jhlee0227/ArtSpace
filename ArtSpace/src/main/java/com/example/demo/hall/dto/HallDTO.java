@@ -2,8 +2,6 @@ package com.example.demo.hall.dto;
 
 import java.time.LocalDate;
 
-import lombok.Data;
-
 public class HallDTO {
 
 	private Integer hall_id;		// 공연장ID PK
@@ -21,7 +19,7 @@ public class HallDTO {
 	private LocalDate create_date;		// 등록 날짜
 	private Integer user_id;		// 유저ID FK
 
-	
+
 	public Integer getHall_id() {
 		return hall_id;
 	}

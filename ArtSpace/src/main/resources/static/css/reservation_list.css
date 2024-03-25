@@ -161,7 +161,7 @@ body {
   font-weight: bold;
 }
 
-.con .content .list .item .btn {
+.con .content .list .item .button {
   display: flex;
   width: 10%;
   height: 100%;
@@ -172,7 +172,7 @@ body {
   justify-content: space-around;
 }
 
-.con .content .list .item .btn button {
+.con .content .list .item .button button {
   cursor: pointer;
   padding: 0 1rem;
   margin-left: auto;
@@ -188,7 +188,7 @@ body {
   width: 85px;
 }
 
-.con .content .list .item .btn button:hover {
+.con .content .list .item .button button:hover {
   filter: brightness(0.9);
   transition: 0.5s;
 }

@@ -12,7 +12,7 @@
     <section class="hall-form">
       <h1 class="header-text">내 공연장 등록</h1>
       
-      <form th:action="@{/hall/form/insert}" method="post">
+      <form th:action="${action}" method="post">
         <label for="hall_name">
           <p class="input-name">장소 이름 (제목)</p>
           <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">

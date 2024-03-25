@@ -210,7 +210,7 @@ input[name="tab_item"] {
   font-weight: bold;  
 }
 
-.con .content .tabs .tab_content .btn {
+.con .content .tabs .tab_content .button {
   display: flex;
   width: 15%;
   height: 100%;
@@ -221,7 +221,7 @@ input[name="tab_item"] {
   justify-content: space-around;
 }
 
-.con .content .tabs .tab_content .btn button {
+.con .content .tabs .tab_content .button button {
   cursor: pointer;
   padding: 0 1rem;
   margin-left: auto;
@@ -237,7 +237,7 @@ input[name="tab_item"] {
   width: 80px;
 }
 
-.con .content .tabs .tab_content .btn .first-btn {
+.con .content .tabs .tab_content .button .first-btn {
   margin-bottom: 4rem;
 }
 

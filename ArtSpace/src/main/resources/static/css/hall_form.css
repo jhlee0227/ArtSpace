@@ -8,6 +8,8 @@ input::-webkit-inner-spin-button {
 .hall-form {
   padding: 8rem 20rem;
   background-color: var(--light_gray);
+  
+
 }
 
 .hall-form h1 {

@@ -348,6 +348,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 18px;
     border: 1px solid;
     height: 50%;
+    text-align: center;
 }
 
 .hall-detail .content .quote .rental-date #am-pm::-ms-expand {
@@ -376,7 +377,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .hall-detail .content .equipment .equipment-list {
     width: 1250px;
-    height: 810px;
+    height: 830px;
     border: 1px solid rgb(235, 235, 235);
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -393,6 +394,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input[type=checkbox] {
     width: 18px;
     height: 18px;
+}
+
+.hall-detail .content .equipment .equipment-list .price {
+    color: rgb(100, 100, 100);
+    font-weight: lighter;
 }
 
 
@@ -452,6 +458,7 @@ input[type=checkbox] {
     font-size: 18px;
     border: 1px solid;
     height: 50%;
+    text-align: center;
 }
 
 .hall-detail .content .equipment .equipment-list .mic-noline #mic-count::-ms-expand {
@@ -549,10 +556,169 @@ input[type=checkbox] {
     font-size: 18px;
     border: 1px solid;
     height: 50%;
+    text-align: center;
 }
 
 .hall-detail .content .equipment .equipment-list .mic-noline #mic-count::-ms-expand {
     display: none;
+}
+
+
+/* ====================스피커 끝==================== */
+
+
+.hall-detail .content .equipment .equipment-list .non-moving {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list #light-use {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(../img/chevron-down-solid.svg) no-repeat 88% 50%/15px auto;
+    align-content: start;
+    padding: 5px 35px 5px 25px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid;
+    height: 50%;
+    text-align: center;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline #mic-count::-ms-expand {
+    display: none;
+}
+
+.hall-detail .content .equipment .equipment-list .non-moving #non {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .non-moving .use {
+    margin-left: 18.5%;
+    margin-right: 3%;
+}
+
+.hall-detail .content .equipment .equipment-list .moving {
+    width: 1150px;
+    height: 70px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.hall-detail .content .equipment .equipment-list #moving-count {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(../img/chevron-down-solid.svg) no-repeat 88% 50%/15px auto;
+    align-content: start;
+    padding: 5px 40px 5px 35px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid;
+    height: 50%;
+    text-align: center;
+}
+
+.hall-detail .content .equipment .equipment-list .mic-noline #mic-count::-ms-expand {
+    display: none;
+}
+
+.hall-detail .content .equipment .equipment-list .moving #on {
+    margin-left: 5%;
+}
+
+.hall-detail .content .equipment .equipment-list .moving .count {
+    margin-left: 20%;
+    margin-right: 3%;
+}
+
+
+/* ====================조명기 끝==================== */
+
+
+.hall-detail .content .etc {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hall-detail .content .etc h2 {
+    font-size: 30px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.hall-detail .content .etc .etc-list {
+    width: 1250px;
+    height: 510px;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(235, 235, 235);
+    border-radius: 20px;
+    color: rgb(100, 100, 100);
+    padding: 1% 0px 0px 0px;
+}
+
+.hall-detail .content .etc .etc-list h3 {
+    font-size: 27px;
+    margin-left: 4%;
+    color: rgb(60, 60, 60);
+}
+
+.hall-detail .content .etc .etc-list span {
+    font-size: 16px;
+}
+
+
+/* ====================etc 공통 끝==================== */
+
+
+.hall-detail .content .etc .etc-list .eat {
+    width: 1150px;
+    height: 210px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -2%;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.hall-detail .content .etc .etc-list .eat .eat-list {
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+
+/* ====================취식 여부 끝==================== */
+
+
+.hall-detail .content .etc .etc-list .heat-cool {
+    width: 1150px;
+    height: 160px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.hall-detail .content .etc .etc-list .heat-cool .use {
+    margin-top: 2%;
+    margin-left: 5%;
 }
 
 

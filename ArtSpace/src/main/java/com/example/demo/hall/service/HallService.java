@@ -1,5 +1,8 @@
 package com.example.demo.hall.service;
 
+import java.util.List;
+
+import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 
 public interface HallService {
@@ -11,6 +14,10 @@ public interface HallService {
 	public Integer findLastIndex();
 
 	public void update(HallDTO hallDTO);
+
+	public List<EquipmentDTO> getEquiList(Integer id);
+
+	public void insertEqui(List<EquipmentDTO> equiDTOList, Integer id);
 
 
 }

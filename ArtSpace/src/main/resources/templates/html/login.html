@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="/static/css/login.css">
+  <link rel="stylesheet" href="/css/login.css">
   <style>
     body{
         background-repeat: no-repeat;
@@ -52,12 +52,12 @@
 
                 <div class="btn-box">
                     <div class="con">
-                        <div id="user-sign" class="box">일반 회원가입</div>
+                        <div th:onclick="|location.href='@{/user/singin}'|" id="user-sign" class="box">일반 회원가입</div>
                         <h2>공연장을 <span style="color: #FFCA63;">대여</span> 하고 싶은 분</h2>
                     </div>
 
                     <div class="con">
-                        <div id="con-sign" class="box2">법인 회원가입</div>
+                        <div th:onclick="|location.href='@{/user/corporation}'|" id="con-sign" class="box2">법인 회원가입</div>
                         <h2>공연장을 <span style="color: #FFCA63;">등록</span>하고 싶은 분</h2>
                     </div>
 

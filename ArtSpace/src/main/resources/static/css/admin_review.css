@@ -173,12 +173,12 @@ body {
   font-weight: 400;
 }
 
-.con .content .main .btn {
+.con .content .main .button {
   text-align: right;
   margin-top: 1rem;
 }
 
-.con .content .main .btn button {
+.con .content .main .button button {
   cursor: pointer;
   padding: 0 1rem;
   display: inline-block;

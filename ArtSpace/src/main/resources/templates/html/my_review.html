@@ -20,19 +20,19 @@
 		      </div>
 		      <div class="left-menu">
 		        <ul>
-		          <a href="mypage.html" target="_self">
+		          <a th:href="@{/mypage}" target="_self">
 		            <li>내 정보</li>
 		          </a>
-		          <a href="performer_info.html" target="_self">
+		          <a th:href="@{/mypage/performer}" target="_self">
 		            <li>공연자 정보</li>
 		          </a>
-		          <a href="my_favorites.html" target="_self">
+		          <a th:href="@{/mypage/favorite}" target="_self">
 		            <li>내 즐겨찾기</li>
 		          </a>
-		          <a href="reservation_list.html" target="_self">
+		          <a th:href="@{/mypage/reserve}" target="_self">
 		            <li>예약 내역</li>
 		          </a>
-		          <a href="use_list.html" target="_self">
+		          <a th:href="@{/mypage/uselist}" target="_self">
 		            <li>이용 내역</li>
 		          </a>
 		          <a href="#" target="_self">
@@ -61,7 +61,7 @@
 		                <div class="hall-name">졸려홀</div>
 		                <div class="date">2024-03-21[목]</div>
 		              </div>
-		              <div class="btn">
+		              <div class="button">
 		                <!-- 리뷰 작성 페이지로.. -->
 		                <button class="first-btn" onclick="location.href=''">리뷰 작성</button>
 		                <!-- 공연장 상세 페이지로.. -->

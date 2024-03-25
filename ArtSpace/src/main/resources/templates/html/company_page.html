@@ -24,16 +24,16 @@
 		          <a href="#" target="_self">
 		            <li class="open">내 정보</li>
 		          </a>
-		          <a href="company_info.html" target="_self">
+		          <a th:href="@{/company/info}" target="_self">
 		            <li>사업자 정보</li>
 		          </a>
-		          <a href="company_hall.html" target="_self">
+		          <a th:href="@{/company/hall}" target="_self">
 		            <li>내 공연장</li>
 		          </a>
-		          <a href="company_reserve.html" target="_self">
+		          <a th:href="@{/company/reserve}" target="_self">
 		            <li>예약 내역</li>
 		          </a>
-		          <a href="company_review.html" target="_self">
+		          <a th:href="@{/company/review}" target="_self">
 		            <li>리뷰 관리</li>
 		          </a>
 		        </ul>
@@ -72,13 +72,13 @@
 		            <div><label for="" class="list-con">비밀번호 확인</label><input type="password" id="pwChk"
 		                oninput="pwCheck()"><span id="check"></span></div>
 		          </div>
-		          <button id="btn" class="btn">수정</button>
+		          <button id="btn" class="button1">수정</button>
 		        </div>
 		        <div>
 		          <div class="list-name">닉네임</div>
 		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 		          <div class="list-con"><input type="text" value="000" maxlength="8"></div>
-		          <button class="btn">수정</button>
+		          <button class="button1">수정</button>
 		        </div>
 		        <div class="last">
 		          <div class="list-name">핸드폰</div>
@@ -96,7 +96,7 @@
 		    </div>
 		
 		  </section>	
-	</div>
+	
 
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
   <script>
@@ -118,6 +118,7 @@
       }
     }
   </script>
+  </div>
 </body>
 
 </html>
