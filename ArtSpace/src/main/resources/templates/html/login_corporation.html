@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/login_corporation.css">
+    <link rel="stylesheet" href="/css/login_corporation.css">
 </head>
 <body>
     <style>
@@ -28,11 +28,11 @@
             <div class="login-wrapper">
                 <h1>법인 회원 가입</h1>
                 <h2><span style="color: #FFCA63;">사업자 등록 번호</span>를 기입해 주십시오.</h2>
-                <form method="post" action="서버의url" id="login-form">
+                <form method="post" th:action="@{/user/joincorporation}" id="login-form">
                     <input type="text" name="userName" placeholder="">
                     
                     
-                    <input type="submit" value="확인" onclick="alert('확이이이ㅣㅇㄴ')">
+                    <input type="submit" value="확인" >
                 </form>
             </div>
 </body>

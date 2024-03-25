@@ -1,5 +1,9 @@
 package com.example.demo.user.service;
 
-public class UserService {
+import com.example.demo.user.dto.UserDTO;
+
+public interface UserService {
+
+	public void insert(UserDTO userDTO);
 
 }
