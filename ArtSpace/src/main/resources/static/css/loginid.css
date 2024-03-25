@@ -25,7 +25,7 @@ body {
 }
 
 .container .login-box {
-  height: 500px;
+  height: 400px;
   
   background-color: var(--white);
   margin-left: 10%;
@@ -39,7 +39,7 @@ body {
   justify-content: center;
 
   flex-direction: column;
-  padding: 40px;
+  padding: 70px;
 
 }
 
@@ -60,7 +60,7 @@ body {
 .container .login-box .login-wrapper>h2 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #888888;
+  color: #8c8c8c;
   margin-bottom: 20px;
   text-align: center;
    border-bottom: var(--border);
@@ -73,12 +73,16 @@ body {
   padding: 0 10px;
   box-sizing: border-box;
   margin-bottom: 16px;
-  border-radius: 6px;
-  background-color: #F8F8F8;
+  border-bottom: var(--border);
+  border-color: gray;
+}
+
+.text {
+    text-align: center;
 }
 
 #login-form>input::placeholder {
-  color: #D2D2D2;
+  color: #141414;
 }
 
 #login-form>input[type="submit"] {
@@ -86,11 +90,10 @@ body {
   font-size: 2rem;
   background-color: var(--main-color);
   margin-top: 20px;
+  border-radius: 6px;
+  border-color: #FFCA63;
 }
 
-#login-form>input[type="checkbox"] {
-  display: none;
-}
 
 #login-form>label {
   display: flex;
@@ -99,19 +102,8 @@ body {
   font-size: 1.5rem;
 }
 
-#login-form input[type="checkbox"]+label {
-  cursor: pointer;
-  padding-left: 26px;
-  background-image: url("checkbox.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 
-#login-form input[type="checkbox"]:checked+label {
-  background-image: url("checkbox-active.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
+
 
 .container .join-box {
   height: 200px;
@@ -122,9 +114,7 @@ body {
 }
 
 
-.sign{
 
-}
 
 .sign .title{
   text-align: center;

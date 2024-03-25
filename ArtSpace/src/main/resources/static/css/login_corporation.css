@@ -60,7 +60,7 @@ body {
 .container .login-box .login-wrapper>h2 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #888888;
+  color: #7e7e7e;
   margin-bottom: 20px;
   text-align: center;
    border-bottom: var(--border);
