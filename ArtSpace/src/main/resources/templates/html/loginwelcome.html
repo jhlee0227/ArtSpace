@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/loginwelcome.css">
+    <link rel="stylesheet" href="/css/loginwelcome.css">
 </head>
 <body>
     <style>
@@ -28,9 +28,7 @@
             <div class="login-wrapper">
                 <h1>환영 합니다!</h1>
                 <h2>공연장 대여 중계 사이트 <span style="color: #FFCA63;">공간</span> 입니다</h2>
-                <form method="post" action="서버의url" id="login-form">
-                    <input type="submit" value="홈 화면으로" onclick="alert('확이이이ㅣㅇㄴ')">
-                </form>
+				<div class="btn" th:onclick="|location.href='@{/}'|" >홈 화면으로</div>
             </div>
 
             <div class="btn-box">
