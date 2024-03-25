@@ -1,132 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{html/layout/default_layout}" lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/my_favorites.css">
+  <link rel="stylesheet" href="/css/my_favorites.css">
 </head>
 
 <body>
-  <!-- hearder -->
-  <header>
-    <div class="nav">
-      <div class="left-content">
-        <div class="logo">
-          <a th:href="@{|/|}">
-            <img src="../../static/img/logo_text.png" alt="logo" />
-          </a>
-        </div>
-        <a class="list-btn" th:href="@{|/list|}">
-          대여 공간
-        </a>
-      </div>
-
-      <div class="right-content">
-        <div class="search-box">
-          <form action="" name="search" class="search-from">
-            <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
-            <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
-          </form>
-        </div>
-
-        <!-- <a class="mypage-btn" href="">
-            <i class="fa-solid fa-user fa-4x"></i>
-            <p>My</p>
-            </a> -->
-        <a class="mypage-btn" href="login.html">
-          <i class="fa-regular fa-user fa-4x"></i>
-          <p>로그인</p>
-        </a>
-      </div>
-    </div>
-    <script>
-      const searchBtn = document.querySelector(".search-box");
-      searchBtn.addEventListener("click", function () {
-        document.querySelector("#content").focus();
-      });
-
-      const submitButton = document.querySelector("#submit-btn");
-      submitButton.addEventListener("click", function () {
-        const form = document.forms.search;
-        form.submit();
-      });
-    </script>
-  </header>
-  <!-- hearder End -->
-  <section class="con">
-    <!-- 좌측 메뉴 -->
-    <div class="left">
-      <div class="left-main">
-        <h2 class="mypage">마이페이지</h2>
-        <div class="img">
-          <img src="../../static/img/hongsnow1.jpg" class="profile" alt="">
-        </div>
-        <h2 class="username">000</h2>
-      </div>
-      <div class="left-menu">
-        <ul>
-          <a href="mypage.html" target="_self">
-            <li>내 정보</li>
-          </a>
-          <a href="performer_info.html" target="_self">
-            <li>공연자 정보</li>
-          </a>
-          <a href="#" target="_self">
-            <li class="open">내 즐겨찾기</li>
-          </a>
-          <a href="reservation_list.html" target="_self">
-            <li>예약 내역</li>
-          </a>
-          <a href="use_list.html" target="_self">
-            <li>이용 내역</li>
-          </a>
-          <a href="my_review.html" target="_self">
-            <li>내 리뷰</li>
-          </a>
-        </ul>
-      </div>
-    </div>
-    <!-- 내용 -->
-    <div class="content">
-      <h2 class="content-main">내 즐겨찾기</h2>
-      <!-- 여기에 th:each -->
-      <div class="list">
-        <!-- 여기에 th:text -->
-        <div class="item">
-          <div class="hall-img">
-            <img src="../../static/img/hallex.jpg" class="hall-thumb" alt="">
-          </div>
-          <div class="hall">
-            <div class="hall-name">안녕하세요홀</div>
-            <div class="hall-loca">서울</div>
-          </div>
-          <div class="btn">
-            <button>찜 취소</button>
-            <button>상세보기</button>
-          </div>
-        </div>
-        <div class="item">
-          <div class="hall-img">
-            <img src="../../static/img/hallex.jpg" class="hall-thumb" alt="">
-          </div>
-          <div class="hall">
-            <div class="hall-name">안녕못해요홀</div>
-            <div class="hall-loca">서울</div>
-          </div>
-          <div class="btn">
-            <button>찜 취소</button>
-            <!-- 공연장 상세 페이지 링크 걸기 -->
-            <button onclick = "location.href = '#'">상세보기</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="footer">
-
-  </footer>
+	<div layout:fragment="content">
+		<section class="con">
+		    <!-- 좌측 메뉴 -->
+		    <div class="left">
+		      <div class="left-main">
+		        <h2 class="mypage">마이페이지</h2>
+		        <div class="img">
+		          <img src="/img/hongsnow1.jpg" class="profile" alt="">
+		        </div>
+		        <h2 class="username">000</h2>
+		      </div>
+		      <div class="left-menu">
+		        <ul>
+		          <a th:href="@{/mypage}" target="_self">
+		            <li>내 정보</li>
+		          </a>
+		          <a th:href="@{/mypage/performer}" target="_self">
+		            <li>공연자 정보</li>
+		          </a>
+		          <a href="#" target="_self">
+		            <li class="open">내 즐겨찾기</li>
+		          </a>
+		          <a th:href="@{/mypage/reserve}" target="_self">
+		            <li>예약 내역</li>
+		          </a>
+		          <a th:href="@{/mypage/uselist}" target="_self">
+		            <li>이용 내역</li>
+		          </a>
+		          <a th:href="@{/mypage/review}" target="_self">
+		            <li>내 리뷰</li>
+		          </a>
+		        </ul>
+		      </div>
+		    </div>
+		    <!-- 내용 -->
+		    <div class="content">
+		      <h2 class="content-main">내 즐겨찾기</h2>
+		      <!-- 여기에 th:each -->
+		      <div class="list">
+		        <!-- 여기에 th:text -->
+		        <div class="item">
+		          <div class="hall-img">
+		            <img src="/img/hallex.jpg" class="hall-thumb" alt="">
+		          </div>
+		          <div class="hall">
+		            <div class="hall-name">안녕하세요홀</div>
+		            <div class="hall-loca">서울</div>
+		          </div>
+		          <div class="btn">
+		            <button>찜 취소</button>
+		            <button>상세보기</button>
+		          </div>
+		        </div>
+		        <div class="item">
+		          <div class="hall-img">
+		            <img src="../../static/img/hallex.jpg" class="hall-thumb" alt="">
+		          </div>
+		          <div class="hall">
+		            <div class="hall-name">안녕못해요홀</div>
+		            <div class="hall-loca">서울</div>
+		          </div>
+		          <div class="btn">
+		            <button>찜 취소</button>
+		            <!-- 공연장 상세 페이지 링크 걸기 -->
+		            <button onclick = "location.href = '#'">상세보기</button>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </section>	
+	</div>
   <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
 </body>
 

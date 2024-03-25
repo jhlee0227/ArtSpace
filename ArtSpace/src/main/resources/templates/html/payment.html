@@ -1,134 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{html/layout/default_layout}" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/payment.css">
+  <link rel="stylesheet" href="/css/payment.css">
 </head>
 <body>
-    <!-- hearder -->
-    <header>
-      <div class="nav">
-        <div class="left-content">
-          <div class="logo">
-            <a th:href="@{|/|}">
-              <img src="../../static/img/logo_text.png" alt="logo" />
-            </a>
-          </div>
-          <a class="list-btn" th:href="@{|/list|}">
-            대여 공간
-          </a>
-        </div>
-  
-        <div class="right-content">
-          <div class="search-box">
-            <form action="" name="search" class="search-from">
-              <input type="text" name="content" id="content" placeholder="이곳에 공연장을 검색해보세요." />
-              <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
-            </form>
-          </div>
-  
-          <!-- <a class="mypage-btn" href="">
-          <i class="fa-solid fa-user fa-4x"></i>
-          <p>My</p>
-        </a> -->
-          <a class="mypage-btn" href="login.html">
-            <i class="fa-regular fa-user fa-4x"></i>
-            <p>로그인</p>
-          </a>
-        </div>
-      </div>
-      <script>
-        const searchBtn = document.querySelector(".search-box");
-        searchBtn.addEventListener("click", function () {
-          document.querySelector("#content").focus();
-        });
-  
-        const submitButton = document.querySelector("#submit-btn");
-        submitButton.addEventListener("click", function () {
-          const form = document.forms.search;
-          form.submit();
-        });
-      </script>
-    </header>
-    <!-- hearder End -->
-    <section class="con">
-      <div class="content">
-        <div class="main">
-          <div class="reserve">
-            <h2>예약</h2>
-            <div class="reserve-info">
-              <div class="img">
-                <img src="../../static/img/hallex.jpg" alt="">
-              </div>
-              <div class="reserve-detail">
-                <div class="reserve-num">예약번호:<span>1234</span></div>
-                <div class="hall-name">장소 이름</div>
-                <div class="reserve-day">예약 날짜 2024-03-24</div>
-              </div>
-              <!-- 예약 정보..? -->
-              <div class="hall-detail"><a href="">상세 정보 ></a></div>
-            </div>
-          </div>
-          <div class="user">
-            <h2>예약자 정보</h2>
-            <div class="user-info">
-              <div class="user-caption">
-                <div>이름</div>
-                <div>전화번호</div>
-                <div>단체명</div>
-              </div>
-              <div id="user-info">
-                <div>000</div>
-                <div>010-5555-5555</div>
-                <div>test</div>
-              </div>
-            </div>
-          </div>
-          <div class="pay">
-            <h2>결제</h2>
-            <div class="payment card">신용·체크카드</div>
-            <div class="easy-payment">
-              <div class="payment">Npay</div>
-              <div class="payment last">Kpay</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="hall-expectation">
-      <div class="expectation">
-        <div class="estimate">예상 견적: </div>
-        <div class="amount">0</div>
-        <div>원</div>
-        <a class="reservation">결제 확인</a>
-      </div>
-      </section>
-    <!-- footer -->
-    <footer>
-      <div class="about">
-        <h1>고객 센터</h1>
-        <h1>02-1234-1234</h1>
-        <p>문의시간 : 09:00 ~ 18:00</p>
-        <div class="btns">
-          <div class="btn">문의 사항</div>
-          <div class="btn">공지 사항</div>
-        </div>
-      </div>
-      <div class="company">
-        <p>
-          (주) 공간 사업자 정보
-          <br/>법인명 : 이준호 주식회사  대표이사 : 이준호
-          <br/>사업자등록번호 822-88-00602 통신판매업:2017-서울서초-0774호 개인정보보호책임자 : 한남욱
-          <br/>주소 : 서울특별시 성동구 성수동1가 72-71 2층 이준호 주식회사
-          <br/>입점문의 : 입점문의하기   대표이메일 : info@gmail.com
-          <br/>공간(주)는 통신판매중개자로서, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
-          <br/>Copyright©2017 abc All rights reserved
-        </p>
-      </div>
-    </footer>
-    <!-- footer End -->
+	<div layout:fragment="content">
+		<section class="con">
+		      <div class="content">
+		        <div class="main">
+		          <div class="reserve">
+		            <h2>예약</h2>
+		            <div class="reserve-info">
+		              <div class="img">
+		                <img src="/img/hallex.jpg" alt="">
+		              </div>
+		              <div class="reserve-detail">
+		                <div class="reserve-num">예약번호:<span>1234</span></div>
+		                <div class="hall-name">장소 이름</div>
+		                <div class="reserve-day">예약 날짜 2024-03-24</div>
+		              </div>
+		              <!-- 예약 정보..? -->
+		              <div class="hall-detail"><a href="">상세 정보 ></a></div>
+		            </div>
+		          </div>
+		          <div class="user">
+		            <h2>예약자 정보</h2>
+		            <div class="user-info">
+		              <div class="user-caption">
+		                <div>이름</div>
+		                <div>전화번호</div>
+		                <div>단체명</div>
+		              </div>
+		              <div id="user-info">
+		                <div>000</div>
+		                <div>010-5555-5555</div>
+		                <div>test</div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="pay">
+		            <h2>결제</h2>
+		            <div class="payment card">신용·체크카드</div>
+		            <div class="easy-payment">
+		              <div class="payment">Npay</div>
+		              <div class="payment last">Kpay</div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </section>
+		    <section class="hall-expectation">
+		      <div class="expectation">
+		        <div class="estimate">예상 견적: </div>
+		        <div class="amount">0</div>
+		        <div>원</div>
+		        <a class="reservation">결제 확인</a>
+		      </div>
+		      </section>
+	</div>
+
     <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
