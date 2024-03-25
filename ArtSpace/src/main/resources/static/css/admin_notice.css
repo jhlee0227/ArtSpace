@@ -124,12 +124,12 @@ body {
   font-weight: 600;
 }
 
-.con .content .main .btn {
+.con .content .main .button {
   text-align: right;
   margin-top: 1rem;
 }
 
-.con .content .main .btn .submit-btn {
+.con .content .main .button .submit-btn {
   cursor: pointer;
   padding: 0.5rem 0.5rem;
   display: inline-block;

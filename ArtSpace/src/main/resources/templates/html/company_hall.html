@@ -20,19 +20,19 @@
 		      </div>
 		      <div class="left-menu">
 		        <ul>
-		          <a href="company_page.html" target="_self">
+		          <a th:href="@{/company}" target="_self">
 		            <li>내 정보</li>
 		          </a>
-		          <a href="company_info.html" target="_self">
+		          <a th:href="@{/company/info}" target="_self">
 		            <li>사업자 정보</li>
 		          </a>
 		          <a href="#" target="_self">
 		            <li class="open">내 공연장</li>
 		          </a>
-		          <a href="company_reserve.html" target="_self">
+		          <a th:href="@{/company/reserve}" target="_self">
 		            <li>예약 내역</li>
 		          </a>
-		          <a href="#" target="_self">
+		          <a th:href="@{/company/review}" target="_self">
 		            <li>리뷰 관리</li>
 		          </a>
 		        </ul>
@@ -49,7 +49,7 @@
 		            <div class="hall-name">광주무역회관 빛고을홀</div>
 		            <div class="hall-region">광주 광산구 무진대로 282</div>
 		          </div>
-		          <div class="btn">
+		          <div class="button">
 		            <button onclick="location.href=''">상세 정보</button>
 		            <button onclick="location.href=''">정보 수정</button>
 		            <button>공연장 삭제</button>

@@ -19,19 +19,19 @@
 		      </div>
 		      <div class="left-menu">
 		        <ul>
-		          <a href="admin.html" target="_self">
+		          <a th:href="@{/admin}" target="_self">
 		            <li>회원 관리</li>
 		          </a>
-		          <a href="hall_info.html" target="_self">
+		          <a th:href="@{/admin/hallinfo}" target="_self">
 		            <li>공연장 정보</li>
 		          </a>
-		          <a href="#">
+		          <a href="#" target="_self">
 		            <li class="open">공지사항</li>
 		          </a>
-		          <a href="admin_review.html">
+		          <a th:href="@{/admin/review}">
 		            <li>리뷰 관리</li>
 		          </a>
-		          <a href="#">
+		          <a href="#" target="_self">
 		            <li>통계</li>
 		          </a>
 		        </ul>
@@ -59,7 +59,7 @@
 		            </tr>
 		          </tbody>
 		        </table>
-		        <div class="btn">
+		        <div class="button">
 		          <input class="submit-btn" type="button" value="공지사항 등록">
 		        </div>
 		      </div>
