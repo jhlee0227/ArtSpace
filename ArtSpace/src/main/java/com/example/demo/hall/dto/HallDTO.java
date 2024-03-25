@@ -21,5 +21,6 @@ public class HallDTO {
 	private Integer views;		// 조회수
 	private LocalDate create_date;		// 등록 날짜
 	private Integer user_id;		// 유저ID FK
+
 	
 }

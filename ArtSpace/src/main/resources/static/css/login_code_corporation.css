@@ -60,7 +60,7 @@ body {
 .container .login-box .login-wrapper>h2 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #888888;
+  color: #878787;
   margin-bottom: 20px;
   text-align: center;
    border-bottom: var(--border);
@@ -95,7 +95,7 @@ body {
 #login-form>label {
   display: flex;
   justify-content: center;
-  color: #9c5b5b;
+  color: #3c3c3c;
   font-size: 1.5rem;
 }
 
