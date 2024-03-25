@@ -20,4 +20,13 @@ public class HallDAO {
 		return sqlSession.selectOne("hall.findById", id);
 	}
 
+	public Integer findLastIndex() {
+		return sqlSession.selectOne("hall.findLastIndex");
+	}
+
+	public void update(HallDTO hallDTO) {
+		sqlSession.update("hall.update_info", hallDTO);
+		
+	}
+
 }
