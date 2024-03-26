@@ -3,12 +3,28 @@
 <mapper namespace="hall">
 
 	<insert id="insert">
-		insert into hall(hall_id, hall_name, address1, address2, hall_description, warning,
+		insert into hall(hall_id, hall_name, zip_code, address1, address2, hall_description, warning,
 						create_date, area, width, length, height, maximum)
-		values(#{hall_id}, #{hall_name}, #{address1}, #{address2}, #{hall_description}, #{warning},
+		values(#{hall_id}, #{hall_name}, #{zip_code}, #{address1}, #{address2}, #{hall_description}, #{warning},
 					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
 	</insert>
-
+	
+	<delete id="equi_delete_all">
+		delete from equipment
+		where hall_id = #{id}
+	</delete>
+	
+	<delete id="delete">
+		delete from hall
+		where hall_id = #{id}
+	</delete>
+	
+	
+	<insert id="equi_insert">
+		insert into equipment(hall_id, equip_type, equip_name, equip_num, equip_price)
+		values(#{hall_id}, #{equip_type}, #{equip_name}, #{equip_num}, #{equip_price})
+	</insert>
+	
 	<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
 		select * from hall
 		where hall_id = #{id}
@@ -16,12 +32,13 @@
 	
 	<select id="findLastIndex" resultType="Integer">
 		select hall_id from hall
-		order by hall_id desc limit 1;
+		order by hall_id desc limit 1
 	</select>
 
 	<update id="update_info">
 	   UPDATE hall
 	      SET hall_name = #{hall_name},
+	      	  zip_code = #{zip_code},
 	          address1 = #{address1},
 	          address2 = #{address2},
 	          hall_description = #{hall_description},
@@ -39,14 +56,12 @@
 	       WHERE hall_id = #{hall_id}
 	</update>	
 	
+	
 	<select id="getEquiList" resultType="com.example.demo.hall.dto.EquipmentDTO">
 		select * from equipment
 		where hall_id = #{id}
+		order by equip_type
 	</select>
-	
-	
-	
-	
 	
 
 </mapper>

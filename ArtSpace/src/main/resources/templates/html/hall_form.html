@@ -18,10 +18,15 @@
           <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">
         </label>
 
+       <label class="zip-code">
+         <p class="input-name">우편번호</p>
+		 <input th:value="${hall_info.zip_code}" type="number" name="zip_code" id="zip_code" readonly>
+         <div class="addr-btn" onclick="execDaumPostcode()" >주소 검색</div>
+       </label>		
+		
         <label>
           <p class="input-name">주소</p>
-          <input type="text" name="address1" id="address1" th:value="${hall_info.address1}">
-          <div class="addr-btn">주소 검색</div>
+          <input type="text" name="address1" id="address1" th:value="${hall_info.address1}"	readonly>
         </label>
 		
         <label>
@@ -29,6 +34,7 @@
           <input type="text" name="address2" id="address2" th:value="${hall_info.address2}">
         </label>
 
+		
         <label id='image_wrap' for="imgfile">
           <p class="input-name">사진</p>
           <a href="javascript:" onclick="fileUploadAction();" class="addr-btn">파일 업로드</a>
@@ -60,6 +66,17 @@
           <input type="number" name="maximum" id="maximum" th:value="${hall_info.maximum}"><span>명</span>
         </label>
         
+
+		<div class="input-time-box">
+		  <p class="input-name">예약 가능 시간</p>
+		  <div class="input-time">
+			  <label><input type="checkbox" name="morning" value="1"><span>오전</span></label>
+			  <label><input type="checkbox" name="after" value="1"><span>오후</span></label>
+			  <label><input type="checkbox" name="eve" value="1"><span>저녁</span></label>
+			  <label><input type="checkbox" name="full" value="1"><span>하루</span></label>			
+		  </div>
+		</div>
+		
         <label class="text-area">
           <p class="input-name">상세 설명</p>
           <textarea name="hall_description" id="hall_description" cols="30" rows="10" th:text="${hall_info.hall_description}" placeholder="공연장에 대한 상세한 설명을 작성해 주십시오. "></textarea>
@@ -76,11 +93,12 @@
       <!-- <a href="javascript:" class="btn" onclick="submitAction();">다음</a> -->
     </section>
 
-	</div>
 
 
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="/js/hall_form.js"></script>
-    <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+
+	</div>
   </body>
 </html>

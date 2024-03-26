@@ -17,7 +17,12 @@ public interface HallService {
 
 	public List<EquipmentDTO> getEquiList(Integer id);
 
-	public void insertEqui(List<EquipmentDTO> equiDTOList, Integer id);
+	public void insertEqui(EquipmentDTO equiDTO, Integer id);
+
+	public void cancelHall(Integer id);
+
+	public void deleteEqui(Integer id);
+
 
 
 }
