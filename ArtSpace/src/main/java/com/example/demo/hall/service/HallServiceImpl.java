@@ -41,7 +41,6 @@ public class HallServiceImpl implements HallService{
 		return hallDAO.findLastIndex();
 	}
 
-
 	// 해당 공연장의 장비 목록 다 가져오기
 	@Override
 	public List<EquipmentDTO> getEquiList(Integer id) {
@@ -50,11 +49,21 @@ public class HallServiceImpl implements HallService{
 
 	// 해당 공연장의 장비 정보 저장(insert)하기
 	@Override
-	public void insertEqui(List<EquipmentDTO> equiDTOList, Integer id) {		
-		for (EquipmentDTO equipmentDTO : equiDTOList) {			
-			equipmentDTO.setHallId(id);
-			hallDAO.insertEquiList(equipmentDTO);
-		}
+	public void insertEqui(EquipmentDTO equiDTO, Integer id) {		
+		equiDTO.setHall_id(id);
+		hallDAO.insertEquiList(equiDTO);
+	}
+
+	// 공연장 등록 취소해서 내용 전부 삭제
+	@Override
+	public void cancelHall(Integer id) {
+		deleteEqui(id);
+		hallDAO.deleteHall(id);
+	}
+
+	@Override
+	public void deleteEqui(Integer id) {
+		hallDAO.deleteAllEquiList(id);
 	}
 	
 }

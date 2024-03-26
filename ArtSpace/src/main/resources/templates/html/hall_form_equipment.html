@@ -8,79 +8,143 @@
   </head>
   <body>
 	<div layout:fragment="content">	
-
+		
     <section class="hall-form">
       <h1 class="header-text">공연장 장비 등록</h1>
 
-      <form name="hall_equip" method="post">
+      <form th:action  name="hall_equip" method="post">
         <div>
           <div class="btn" id="plus-btn">+</div>
 
           <div class="item-container">
-			<div class="item-row">
+			<div class="item-row" th:if="${equiList.size() == 0}">
 			  <div class="btn" onclick="removeRow(this);">-</div>
 			  <div class="input-con">			
-				<select name="eq_type">
+				<select name="equiList[0].equip_type" id="equip_type">
 			      <option value="none" selected>선택</option>
 			      <option value="mic">마이크</option>
-			      <option value="english">스피커</option>
-			      <option value="chinese">조명</option>
-			      <option value="spanish">무대장치</option>
-			      <option value="spanish">영상</option>
-			      <option value="spanish">기타</option>
+			      <option value="speaker">스피커</option>
+			      <option value="Lighting">조명</option>
+			      <option value="stage_equip">무대장치</option>
+			      <option value="video">영상</option>
+			      <option value="etc">기타</option>
 			    </select>
 				
-			    <input type="text" name="equip_name" id="equip_name" placeholder="장비 이름 ex)무선 마이크"/>
-			    <input type="number" name="equip_num" id="equip_num" placeholder="보유 개수" />
-			    <input type="number" name="equip_price" id="equip_price" placeholder="개당 가격(원)" />
+			    <input type="text" name="equiList[0].equip_name" id="equip_name" placeholder="장비 이름 ex)무선 마이크"/>
+			    <input type="number" name="equiList[0].equip_num" id="equip_num" placeholder="보유 개수" />
+			    <input type="number" name="equiList[0].equip_price" id="equip_price" placeholder="개당 가격(원)" />
 			  </div>
 			</div>
-			
-			
+
 			<div class="item-row" th:each="equi : ${equiList}">
               <div class="btn" onclick="removeRow(this);">-</div>
-              <div class="input-con">			
-				<select name="eq_type">
-                  <option value="none" selected>선택</option>
-                  <option value="mic">마이크</option>
-                  <option value="english">스피커</option>
-                  <option value="chinese">조명</option>
-                  <option value="spanish">무대장치</option>
-                  <option value="spanish">영상</option>
-                  <option value="spanish">기타</option>
+              <div class="input-con">
+				<select th:value="${equi.equip_type}" th:name="|equiList[${equiList.indexOf(equi)}].equip_type|" id="equip_type">
+                  <option value="none" th:selected="${equi.equip_type}=='none'">선택</option>
+                  <option value="mic" th:selected="${equi.equip_type}=='mic'">마이크</option>
+                  <option value="speaker" th:selected="${equi.equip_type}=='speaker'">스피커</option>
+                  <option value="lighting" th:selected="${equi.equip_type}=='lighting'">조명</option>
+                  <option value="stage_equip" th:selected="${equi.equip_type}=='stage_equip'">무대장치</option>
+                  <option value="video" th:selected="${equi.equip_type}=='video'">영상</option>
+                  <option value="etc" th:selected="${equi.equip_type}=='etc'">기타</option>
                 </select>
 				
-                <input type="text" th:text="${equi.equip_name}"  name="equip_name" id="equip_name" placeholder="장비 이름 ex)무선 마이크"/>
-                <input type="number" th:text="${equi.equip_num}" name="equip_num" id="equip_num" placeholder="보유 개수" />
-                <input type="number" th:text="${equi.equip_price}" name="equip_price" id="equip_price" placeholder="개당 가격(원)" />
+                <input type="text" th:value="${equi.equip_name}"  th:name="|equiList[${equiList.indexOf(equi)}].equip_name|" id="equip_name" placeholder="장비 이름 ex)무선 마이크"/>
+                <input type="number" th:value="${equi.equip_num}" th:name="|equiList[${equiList.indexOf(equi)}].equip_num|" id="equip_num" placeholder="보유 개수" />
+                <input type="number" th:value="${equi.equip_price}" th:name="|equiList[${equiList.indexOf(equi)}].equip_price|" id="equip_price" placeholder="개당 가격(원)" />
               </div>
             </div>
           </div>
         </div>
-		
-		  <button onclick="reSubmitAction();" class="btn">이전</input>
-<!--		  <a href="javascript:" class="btn" onclick="pushSubmitAction();">등록</a>
-		  <a href="javascript:" class="btn" onclick="removeSubmitAction();">취소</a>-->
+		  <button type="button" onclick="reSubmitAction();" class="btn">이전</button>
+		  <button type="button" class="btn" onclick="pushSubmitAction();">등록</button>
+		  <button type="button" class="btn" onclick="removeSubmitAction();">취소</button>
 		  
       </form>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="/js/hall_form.js"></script>
-	<script th:inline="javascript">		
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	
+	<script>
+		let plusBtn = document.querySelector("#plus-btn");
+		let index = (document.querySelectorAll(".item-row").length) - 1;
+		
+		plusBtn.addEventListener("click", function () {
+		  index++;
+		  const itemRow = document.querySelector(".item-row"); //복사할 노드
+		  const newNode = itemRow.cloneNode(true); // 노드 복사
+		
+		
+		  newNode.lastElementChild.lastElementChild.value = null;
+		  newNode.lastElementChild.lastElementChild.name = "equiList[" + index + "].equip_price";
+		
+		  newNode.lastElementChild.lastElementChild.previousElementSibling.value = null;
+		  newNode.lastElementChild.lastElementChild.previousElementSibling.name = "equiList[" + index + "].equip_num";
+		
+		  newNode.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.value = null;
+		  newNode.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.name = "equiList[" + index + "].equip_name";
+		
+		  newNode.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.value = "none";
+		  newNode.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.name = "equiList[" + index + "].equip_type";
+		
+		  document.querySelector(".item-container").appendChild(newNode);
+		});
+		
+		function removeRow(e) {
+		index--;
+		if(index < 0) index = 0;
+		
+		  if(e.parentNode.parentNode.childElementCount > 1){
+		    e.parentNode.remove();
+			  let rows = document.querySelectorAll(".input-con");
+		
+			  for(let i=0; i<[...rows].length; i++){
+		  	rows[i].firstElementChild.name = "equiList["+ i +"].equip_type";	
+		    	rows[i].firstElementChild.nextElementSibling.name = "equiList["+ i +"].equip_name";
+		    rows[i].firstElementChild.nextElementSibling.nextElementSibling.name = "equiList["+ i +"].equip_num";
+		    rows[i].firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.name = "equiList["+ i +"].equip_price";	    
+		  }
+		  } else {
+		    e.nextElementSibling.lastElementChild.value = null;
+		    e.nextElementSibling.lastElementChild.name = "equiList[0].equip_price";
+		
+		    e.nextElementSibling.lastElementChild.previousElementSibling.value = null;
+		    e.nextElementSibling.lastElementChild.previousElementSibling.name = "equiList[0].equip_num";
+		
+		    e.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.value = null;
+		    e.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.name = "equiList[0].equip_name";
+		    
+		    e.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.value = "none";
+		    e.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.name = "equiList[0].equip_type";            
+		  }
+		}
+	</script>
+	
+	<script th:inline="javascript">				
+		let id = [[${hall_id}]];
+
 		function reSubmitAction(){
-			let id = [[${hall_id}]];
-			document.hall_equip.action = "/hall/form/equipment/insert/"+id;
-			document.hall_equip.submit();
+			if (confirm("이전 정보화면으로 돌아가시겠습니까?\n전부 채워지지 않은 장비 정보는 저장되지 않습니다.")) {
+				document.hall_equip.action = "/hall/form/equipment/insert/"+id;
+				document.hall_equip.submit();
+			}
 		}
 		
 		function pushSubmitAction(){
-			
+			if (confirm("등록 하시겠습니까?\n전부 채워지지 않은 장비 정보는 저장되지 않습니다.")) {
+				alert("공연장 정보가 성공적으로 등록 되었습니다.");
+				document.hall_equip.action = "/hall/form/complete/"+id;
+				document.hall_equip.submit();			
+			}
 		}
 		
 		function removeSubmitAction(){
+			if (confirm("공연장 등록을 취소하시겠습니까?\n입력한 내용은 전부 사라집니다.")) {
+				document.hall_equip.action = "/hall/form/cancel/"+id;
+				document.hall_equip.submit();
+			} 
 		}
-				
 	</script>
 
 	

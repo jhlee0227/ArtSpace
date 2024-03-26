@@ -1,11 +1,16 @@
 package com.example.demo.hall.dto;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import jakarta.validation.constraints.NotEmpty;
+
 
 public class HallDTO {
 
 	private Integer hall_id;		// 공연장ID PK
-	private String hall_name;	// 공연장명
+	private String hall_name;		// 공연장명
+	private Integer zip_code;
 	private String address1;		// 주소
 	private String address2;		// 상세주소
 	private String hall_description;	// 공연장설명
@@ -18,8 +23,17 @@ public class HallDTO {
 	private Integer views;		// 조회수
 	private LocalDate create_date;		// 등록 날짜
 	private Integer user_id;		// 유저ID FK
+	
+	private List<EquipmentDTO> equiList;
 
-
+	// 예약 가능 시간 오전 오후 저녁 종일
+	private Integer morning;
+	private Integer after;
+	private Integer eve;
+	private Integer full;
+	
+	
+	
 	public Integer getHall_id() {
 		return hall_id;
 	}
@@ -31,6 +45,12 @@ public class HallDTO {
 	}
 	public void setHall_name(String hall_name) {
 		this.hall_name = hall_name;
+	}
+	public Integer getZip_code() {
+		return zip_code;
+	}
+	public void setZip_code(Integer zip_code) {
+		this.zip_code = zip_code;
 	}
 	public String getAddress1() {
 		return address1;
@@ -104,6 +124,14 @@ public class HallDTO {
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
+	public List<EquipmentDTO> getEquiList() {
+		return equiList;
+	}
+	public void setEquiList(List<EquipmentDTO> equiList) {
+		this.equiList = equiList;
+	}
 
+
+	
 	
 }
