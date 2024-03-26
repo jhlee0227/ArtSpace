@@ -50,9 +50,21 @@ public class UserController {
 	} 
 	
 	// 법인 데이터 회원가입 화면 띄움
-	@GetMapping("/user/joincorporation")
+	@PostMapping("/user/joincorporation")
 	public String joinCor() {
 		return "html/login_joincorporation";
+	} 
+	
+	// 법인 회원가입인증코드 화면 띄움
+	@PostMapping("/user/codecorporation")
+	public String codeCor() {
+		return "html/login_code_corporation";
+	} 
+	
+	// 법인 회원가입 완료 화면 띄움
+	@PostMapping("/user/welcomecorporation")
+	public String welcomeCor() {
+		return "html/login_welcome_corporation";
 	} 
 	
 	
