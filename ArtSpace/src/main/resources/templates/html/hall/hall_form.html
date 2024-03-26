@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{html/layout/default_layout}" lang="en">
+<html layout:decorate="~{layout/default_layout}" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,7 @@
     <section class="hall-form">
       <h1 class="header-text">내 공연장 등록</h1>
       
-      <form th:action="${action}" method="post">
+      <form name="hall_info_form" th:action="${action}" method="post">
         <label for="hall_name">
           <p class="input-name">장소 이름 (제목)</p>
           <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">
@@ -70,10 +70,18 @@
 		<div class="input-time-box">
 		  <p class="input-name">예약 가능 시간</p>
 		  <div class="input-time">
-			  <label><input type="checkbox" name="morning" value="1"><span>오전</span></label>
-			  <label><input type="checkbox" name="after" value="1"><span>오후</span></label>
-			  <label><input type="checkbox" name="eve" value="1"><span>저녁</span></label>
-			  <label><input type="checkbox" name="full" value="1"><span>하루</span></label>			
+			<label><input type="checkbox" name="morning" th:value="${hall_info.morning}" th:checked="${hall_info.morning == 1}">
+				<span>오전</span>
+			</label>
+			<label><input type="checkbox" name="after" th:value="${hall_info.after}" th:checked="${hall_info.after == 1}" >
+				<span>오후</span>
+			</label>
+			<label><input type="checkbox" name="eve" th:value="${hall_info.eve}" th:checked="${hall_info.eve == 1}">
+				<span>저녁</span>
+			</label>
+			<label><input type="checkbox" name="full" th:value="${hall_info.full}" th:checked="${hall_info.full == 1}">
+				<span>하루</span>
+			</label>			
 		  </div>
 		</div>
 		
@@ -87,17 +95,21 @@
           <textarea name="warning" id="warning" cols="30" rows="10" th:text="${hall_info.warning}" placeholder="시설 이용자가 숙지해야할 주의사항을 작성해 주십시오."></textarea>
         </label>
 		
-        <input type="submit" value="다음" class="btn">
+		<button type="button" onclick="checkValue();" class="btn">다음</button>
       </form>
       
       <!-- <a href="javascript:" class="btn" onclick="submitAction();">다음</a> -->
     </section>
 
-
-
+	
+	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="/js/hall_form.js"></script>
+	
+	<script>	
+
+	</script>
 
 	</div>
   </body>

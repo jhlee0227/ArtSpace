@@ -130,7 +130,32 @@ public class HallDTO {
 	public void setEquiList(List<EquipmentDTO> equiList) {
 		this.equiList = equiList;
 	}
+	public Integer getMorning() {
+		return morning;
+	}
+	public void setMorning(Integer morning) {
+		this.morning = morning;
+	}
+	public Integer getAfter() {
+		return after;
+	}
+	public void setAfter(Integer after) {
+		this.after = after;
+	}
+	public Integer getEve() {
+		return eve;
+	}
+	public void setEve(Integer eve) {
+		this.eve = eve;
+	}
+	public Integer getFull() {
+		return full;
+	}
+	public void setFull(Integer full) {
+		this.full = full;
+	}
 
+	
 
 	
 	

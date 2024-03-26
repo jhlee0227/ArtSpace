@@ -8,6 +8,12 @@
 		values(#{hall_id}, #{hall_name}, #{zip_code}, #{address1}, #{address2}, #{hall_description}, #{warning},
 					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
 	</insert>
+
+	<insert id="insert_time">
+		insert into hall_time(morning, after, eve, full, hall_id)
+		values(#{morning}, #{after}, #{eve}, #{full}, #{hall_id})
+	</insert>
+
 	
 	<delete id="equi_delete_all">
 		delete from equipment
@@ -56,11 +62,26 @@
 	       WHERE hall_id = #{hall_id}
 	</update>	
 	
+	<update id="update_hall_time">
+	   UPDATE hall_time
+	      SET morning = #{morning},
+	      	  after = #{after},
+	          eve = #{eve},
+	          full = #{full}
+	       WHERE hall_id = #{hall_id}	
+	</update>
+	
 	
 	<select id="getEquiList" resultType="com.example.demo.hall.dto.EquipmentDTO">
 		select * from equipment
 		where hall_id = #{id}
 		order by equip_type
+	</select>
+	
+	<select id="getTimeList" resultType="hashmap">
+		select morning, after, eve, full
+		from hall_time
+		where hall_id = #{id}
 	</select>
 	
 
