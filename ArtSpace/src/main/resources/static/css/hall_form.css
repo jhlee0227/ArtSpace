@@ -8,8 +8,6 @@ input::-webkit-inner-spin-button {
 .hall-form {
   padding: 8rem 20rem;
   background-color: var(--light_gray);
-  
-
 }
 
 .hall-form h1 {
@@ -46,9 +44,18 @@ input::-webkit-inner-spin-button {
   color: var(--light_gray);
 }
 
-#addr1:disabled {
+.hall-form form .zip-code{
+	max-width: 35rem;
+}
+
+#zip_code, #address1 {
   background-color: #f3f3f3;
 }
+
+#zip_code:focus, #address1:focus{
+	outline: none;	
+}
+
 
 .hall-form form label .addr-btn {
   cursor: pointer;
@@ -64,7 +71,7 @@ input::-webkit-inner-spin-button {
   box-shadow: var(--box-shadow);
 }
 
-.hall-form form label .input-name {
+.hall-form form .input-name {
   font-size: 1.5rem;
   min-width: 15rem;
   font-weight: 600;
@@ -107,6 +114,41 @@ input::-webkit-inner-spin-button {
   font-size: 2rem;
 }
 
+
+/*==== 체크박스 ====*/
+
+.hall-form form .input-time-box{
+	margin: 3rem 0;
+}
+
+.hall-form form .input-time-box p{
+	margin: 2rem 0;
+}
+
+.hall-form form .input-time {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+
+.hall-form form .input-time label{
+	font-weight: 600;
+	font-size: 1.5rem;
+	text-align: center;
+	margin-right: 5rem;
+}
+
+.hall-form form .input-time label input{
+	margin-top: .5rem;
+	box-shadow: none;
+}
+.hall-form form .input-time label span{
+	width: 5.8rem;
+}
+
+
+/*========================*/
 
 .img-input-wrap{
   display: grid;
@@ -153,7 +195,6 @@ input::-webkit-inner-spin-button {
   box-shadow: var(--box-shadow);
   border-radius: 1rem;
   padding: 1rem;
-  width: 100%; 
 }
 
 .item-container .item-row select{
@@ -162,7 +203,7 @@ input::-webkit-inner-spin-button {
   padding: 1rem;
   font-size: 2rem;
   height: 5rem;
-  width: 90%;
+  width: 14rem;
 }
 
 .item-container .item-row input {

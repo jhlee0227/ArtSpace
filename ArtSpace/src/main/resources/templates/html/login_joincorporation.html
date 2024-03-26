@@ -26,7 +26,7 @@
     <section class="container">
         <div class="login-box">
             
-            <form method="post" action="서버의url" id="login-form">
+            <form method="post" th:action="@{/user/codecorporation}" id="login-form">
                 <div class="login-wrapper">
                 <h2>법인 회원 가입</h2>
                     <label for="">
@@ -67,11 +67,11 @@
                         <span>개인 정보 처리 방침</span>
                         <span class="login-chk"><input type="checkbox" name="" id="">동의</span> 
                     </div>
-                    <div class="text2">""</div>
-                    <div class="btn1">다음</div>
-                </div>
-            </form>
-
+					<div class="text2">""</div>
+							
+							<input type="submit" value="다음" class="btn1">
+					       </div>
+					   </form>
 
         </div>
       </section>

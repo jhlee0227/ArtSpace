@@ -36,9 +36,19 @@ public class HallDAO {
 		return sqlSession.selectList("hall.getEquiList", id);
 	}
 
+	public void deleteAllEquiList(Integer id) {
+		sqlSession.delete("hall.equi_delete_all", id);
+	}
+
+	public void deleteHall(Integer id) {
+		sqlSession.delete("hall.delete", id);		
+	}
+
+	
 	public void insertEquiList(EquipmentDTO equiDTO) {
-		sqlSession.insert("equi_insert", equiDTO);
+		sqlSession.insert("hall.equi_insert", equiDTO);
 		
 	}
+
 
 }
