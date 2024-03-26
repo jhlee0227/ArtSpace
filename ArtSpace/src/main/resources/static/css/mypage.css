@@ -182,7 +182,7 @@ body {
 .con .content .list .pw {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 40%;
 }
 
 .con .content .list label {
@@ -196,7 +196,7 @@ body {
 
 .con .content .list .pw input {
   margin-left: 1rem;
-  width: 200px;
+  width: 150px;
   margin-bottom: 0.2rem;
 }
 
@@ -205,12 +205,12 @@ body {
   border: 2px solid var(--main-color);
 }
 
-.con .content .list .pw #check {
-  margin-left: 3rem;
-  font-size: 1.1rem;
+.con .content .list #check {
+  margin-left: 1rem;
+  font-size: 1.3rem;
 }
 
-.con .content .list div .btn {
+.con .content .list div .button {
   cursor: pointer;
   padding: 0 1rem;
   margin-left: auto;
@@ -225,7 +225,7 @@ body {
   box-shadow: var(--box-shadow);
 }
 
-.con .content .list div .btn:hover {
+.con .content .list div .button:hover {
   filter: brightness(0.9);
   transition: 0.5s;
 }
