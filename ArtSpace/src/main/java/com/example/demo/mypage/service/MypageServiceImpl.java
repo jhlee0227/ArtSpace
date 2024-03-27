@@ -42,10 +42,12 @@ public class MypageServiceImpl implements MypageService{
 
 	@Override
 	public void insert(PerformerDTO dto) {
-		if (dto.getUser_id() == null) {
+		
+		PerformerDTO existPerformer = mypageDAO.findByPID(dto.getUser_id());
+		if (existPerformer == null) {
 			mypageDAO.insertPerformer(dto);
 		} else {
-//			mypageDAO.updatePerformer(dto);
+			mypageDAO.updatePerformer(dto);
 		}
 	}
 
