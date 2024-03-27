@@ -56,8 +56,6 @@ public class MypageServiceImpl implements MypageService{
 
 	@Override
 	public void leave(UserDTO dto) {
-
-		dto.setLeave_status('Y');
 		mypageDAO.leave(dto);
 	}
 
