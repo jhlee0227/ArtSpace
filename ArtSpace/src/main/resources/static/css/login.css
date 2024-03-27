@@ -7,9 +7,19 @@
   border: none;
 }
 
+a {
+	
+}
+
 html,
 body {
   height: 100%;
+}
+body{
+	background-image: url("https://cdn.pixabay.com/photo/2017/08/02/23/42/dark-2574089_1280.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
 }
 
 /* container */
@@ -18,15 +28,15 @@ body {
   min-height: 100vh;
   /* flex 화면 레이아웃 구성할 때 사용 */
   display: flex;
+  justify-content: space-between;
   align-items: center;
   /* align 상하 정렬 */
   /* justify-content: center; */
   /* justify 좌우 정렬*/
+  z-index: 200;
 }
 
 .container .login-box {
-  height: 500px;
-  
   background-color: var(--white);
   margin-left: 10%;
   border-radius: 30px;
@@ -39,14 +49,12 @@ body {
   justify-content: center;
 
   flex-direction: column;
-  padding: 40px;
-
+  padding: 6rem; 
+ 
 }
 
 
 .container .login-box .login-wrapper {
-  
-  height: 350px;
   box-sizing: border-box;
 }
 
@@ -54,10 +62,18 @@ body {
   font-size: 3rem;
   font-weight: 600;
   color: #000000;
-  margin-bottom: 20px;
   text-align: center;
-  margin-top: 30px;
+  margin-bottom:1rem;
 }
+
+.container .login-box .login-wrapper .search-login-info{
+	text-align: center;
+	color: var(--black);
+	padding: .5rem;
+	font-size: 1.5rem;
+  margin:1rem 0;
+}
+
 
 #login-form>input {
   width: 100%;
@@ -73,11 +89,14 @@ body {
   color: #D2D2D2;
 }
 
-#login-form>input[type="submit"] {
+#login-form #login-btn{
+  cursor: pointer;
+  width: 100%;
+  height: 48px;
   color: #fff;
   font-size: 2rem;
   background-color: var(--main-color);
-  margin-top: 20px;
+  border-radius: 6px;
   
 }
 
@@ -114,85 +133,76 @@ body {
 }
 
 
-.sign{
-
-}
-
 .sign .title{
   text-align: center;
-  padding-bottom: 20px;
   font-size: 2rem;
   border-top: var(--border);
   border-color: gray;
+  padding-top: 2rem;
+  line-height: 4rem;
 }
 .sign .title>h1{
   text-align: center;
-  padding-bottom: 20px;
   font-size: 3rem;
-  margin-top: 15px;
-
 }
 .sign .title>h2{
   text-align: center;
-  padding-bottom: 20px;
   font-size: 1.5rem;
-
 }
-
-
-
 
 .sign .btn-box {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 60px;
 }
 
 .sign .btn-box .con {
   width: 100%;
   margin: 0 10px;
-  
+  text-align: center;
+  font-size: 1.4rem;
 }
 
 .sign .btn-box .con .box {
-  width: 100%;
-  height: 100px;
-  font-size: 2rem;
+  cursor: pointer;
   background-color: #FFCA63;
-  display: table-cell;
-  vertical-align: middle;
   border-radius: 10px;
-  margin-bottom: 100px;
   color: white;
-  
-}
-.sign .btn-box .con .box2 {
-  width: 100%;
-  height: 100px;
-  font-size: 2rem;
-  background-color: #43361d;
-  display: table-cell;
-  vertical-align: middle;
-  border-radius: 10px;
-  margin-bottom: 100px;
-  color: white;
-  
+  padding: 3rem 0;
 }
 
-.ttt{
-  text-align: right; 
-position: absolute; 
-top: 60%; 
-right: 20%; 
-font-size: 3.75rem; 
-color: white;
+.sign .btn-box .con .box2 {
+  cursor: pointer;
+  background-color: #43361d;
+  border-radius: 10px;
+  color: white;
+  padding: 3rem 0;
 }
+
+.sign .btn-box .con h2{
+	font-weight: 600;
+	margin-top: 1rem;
+}
+
+
+.ttt{
+	text-align: right; 
+	font-size: 3.75rem; 
+	color: white;
+	z-index: 0;
+	
+	margin-right: 20rem;
+	margin-top: 20rem;
+}
+
+.ttt span {
+	cursor: pointer;
+}
+
 .ttt>h2{
-text-align: right; 
-/* position: ab=]olute;  */
-/* top: 70%;  */
-right: 20%; 
-font-size: 2.2rem; 
-color: white;
+	text-align: right; 
+	/* position: ab=]olute;  */
+	/* top: 70%;  */
+	font-size: 2.2rem; 
+	color: white;
 }
 /* container end */

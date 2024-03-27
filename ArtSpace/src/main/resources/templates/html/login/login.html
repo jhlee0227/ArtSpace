@@ -5,43 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/css/login.css">
-  <style>
-    body{
-        background-repeat: no-repeat;
-    }
-  </style>
 </head>
 <body>
 <body>
-    <style>
-        body {
-            background-image: url("https://cdn.pixabay.com/photo/2017/08/02/23/42/dark-2574089_1280.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;}
-    </style>
-    
-    <div class="ttt">
-        <h1>공연의 <span style="color: #FFCA63;">공간</span></h1> <br>
-        <h2>빠른 예약과</h2> 
-        <h2>확실한 정보로</h2> 
-        <h2>꿈이 이루어지는 공간 입니다.</h2>
-    </div>
+	
+
 
     <section class="container">
         <div class="login-box">
-
             <div class="login-wrapper">
-                <h2>로그인</h2>
-                <form method="post" action="서버의url" id="login-form">
-                    <input type="text" name="userName" placeholder="아이디">
-                    <input type="password" name="userPassword" placeholder="비밀번호">
-                
-                    <input type="submit" value="로그인">
-                    <label for="remember-check">
-                        <div> <a href="#">아이디 & 비밀번호 찾기</a> </div>
-                    </label>
-                </form>
+				
+	            <h2><a th:href="@{/login}">로그인</a></h2>
+				<th:block th:if="${status == 0}">
+					<div style="color:red">
+					   아이디 또는 비밀번호가 일치하지 않습니다.
+					</div>
+				</th:block>
+				
+	            <form method="post" name="login_form" th:action="@{/login/result}" id="login-form">
+	                <input type="email" id="user_id" name="user_id" placeholder="아이디">
+	                <input type="password" id="password" name="password" placeholder="비밀번호">
+	                <button id="login-btn" type="button" onclick="checkValue();" value="로그인">로그인</button>
+	            </form>
+					
+	           <div class="search-login-info">
+	               <a href="#">아이디 & 비밀번호 찾기</a>
+	           </div>
             </div>
 
             <div class="sign">
@@ -64,9 +53,37 @@
                 </div>
             </div>
         </div>
+		
+		<div class="ttt">
+		    <h1>공연의 <span	th:onclick="|location.href='@{/}'|" style="color: #FFCA63;">공간</span></h1> <br>
+		    <h2>빠른 예약과</h2> 
+		    <h2>확실한 정보로</h2> 
+		    <h2>꿈이 이루어지는 공간 입니다.</h2>
+		</div>
+		
       </section>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+	
+	function checkValue(){
+		
+		let value = $('#user_id').val().trim();
+		
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#user_id").focus();
+			return;
+		}
+		
+		value = $('#password').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#zip_code").focus();
+			return;
+		}
 
+		document.login_form.submit();
+	}
+  </script>
 
 </body>
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("admin")
 public class AdminController {
 
-	
+	// 기본 관리자 페이지
 	@GetMapping("")
 	public String admin() {
 		return "html/admin";
