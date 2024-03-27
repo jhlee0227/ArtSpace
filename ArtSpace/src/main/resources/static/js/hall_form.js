@@ -90,5 +90,64 @@ function execDaumPostcode(){
 
 //============================================/
 
+/*======== 유형성 검사 ==========*/
 
+		// 넘어온 값이 빈값인지 체크합니다.
+		// !value 하면 생기는 논리적 오류를 제거하기 위해
+		// 명시적으로 value == 사용
+		// [], {} 도 빈값으로 처리
+		
+		function checkValue(){
+			
+			let value = $('#hall_name').val();
+			
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#hall_name").focus();
+				return;
+			}
+			
+			value = $('#zip_code').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#zip_code").focus();
+				return;
+			}
+
+			value = $('#area').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#area").focus();
+				return;
+			}
+			value = $('#width').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#width").focus();
+				return;
+			}
+			value = $('#length').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#length").focus();
+				return;
+			}
+			value = $('#height').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#height").focus();
+				return;
+			}									
+			value = $('#maximum').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#maximum").focus();
+				return;
+			}		
+										
+			value = $('#hall_description').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#hall_description").focus();
+				return;
+			}								
+			value = $('#warning').val();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#warning").focus();
+				return;
+			}			
+			document.hall_info_form.submit();
+		}
 
