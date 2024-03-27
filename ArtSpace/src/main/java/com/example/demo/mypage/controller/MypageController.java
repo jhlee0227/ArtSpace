@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.mypage.service.MypageService;
 import com.example.demo.user.dto.UserDTO;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("mypage")
@@ -25,18 +28,26 @@ public class MypageController {
 	MypageService mypageService;
 
 	// 마이페이지 기본
-	@GetMapping("")
-	public String mypage(Model model) {
-		model.addAttribute("my_info", new UserDTO());
-		return "html/mypage/mypage";
-	}
+//	@GetMapping("")
+//	public String mypage(Model model) {
+//		model.addAttribute("my_info", new UserDTO());
+//		return "html/mypage/mypage";
+//	}
 
 	// 로그인 회원 마이페이지
-	@GetMapping("/{id}")
-	public String mpage(Model model, @PathVariable("id") Integer id) {
-		UserDTO myInfo = mypageService.findByID(id);
+//	@GetMapping("/{id}")
+//	public String mpage(Model model, @PathVariable("id") Integer id) {
+//		UserDTO myInfo = mypageService.findByID(id);
+//		model.addAttribute("my_info", myInfo);
+//		model.addAttribute("id", id);
+//		return "html/mypage/mypage";
+//	}
+	
+	@GetMapping("")
+	public String mypage(Model model, HttpSession session) {
+//		Integer id = (Integer) session.getAttribute("user_id");
+		UserDTO myInfo = mypageService.findByID(1);
 		model.addAttribute("my_info", myInfo);
-		model.addAttribute("id", id);
 		return "html/mypage/mypage";
 	}
 
@@ -47,23 +58,23 @@ public class MypageController {
 	}
 
 	// 로그인 회원 공연자 정보 조회
-	@GetMapping("/{id}/performer")
-	public String perform(Model model, @PathVariable("id") Integer id) {
-		UserDTO myInfo = mypageService.findByID(id);
-		PerformerDTO perfoInfo = mypageService.findByPID(id);
-		model.addAttribute("my_info", myInfo);
-		model.addAttribute("perfo_info", perfoInfo);
-		model.addAttribute("id", id);
-		return "html/mypage/performer_info";
-	}
+//	@GetMapping("/{id}/performer")
+//	public String perform(Model model, @PathVariable("id") Integer id) {
+//		UserDTO myInfo = mypageService.findByID(id);
+//		PerformerDTO perfoInfo = mypageService.findByPID(id);
+//		model.addAttribute("my_info", myInfo);
+//		model.addAttribute("perfo_info", perfoInfo);
+//		model.addAttribute("id", id);
+//		return "html/mypage/performer_info";
+//	}
 
 	// 공연자 정보 등록 및 수정
-	@PostMapping("{id}/performer")
-	public String insertPerformer(@ModelAttribute PerformerDTO dto, @PathVariable("id") Integer id) {
-		dto.setUser_id(id);
-		mypageService.insert(dto);
-		return "redirect:/mypage/" + id + "/performer";
-	}
+//	@PostMapping("{id}/performer")
+//	public String insertPerformer(@ModelAttribute PerformerDTO dto, @PathVariable("id") Integer id) {
+//		dto.setUser_id(id);
+//		mypageService.insert(dto);
+//		return "redirect:/mypage/" + id + "/performer";
+//	}
 
 	// 내 즐겨찾기
 	@GetMapping("/favorite")
@@ -72,13 +83,13 @@ public class MypageController {
 	}
 
 	// 로그인 회원 내 즐겨찾기
-	@GetMapping("/{id}/favorite")
-	public String favor(Model model, @PathVariable("id") Integer id) {
-		UserDTO myInfo = mypageService.findByID(id);
-		model.addAttribute("my_info", myInfo);
-		model.addAttribute("id", id);
-		return "html/mypage/my_favorites";
-	}
+//	@GetMapping("/{id}/favorite")
+//	public String favor(Model model, @PathVariable("id") Integer id) {
+//		UserDTO myInfo = mypageService.findByID(id);
+//		model.addAttribute("my_info", myInfo);
+//		model.addAttribute("id", id);
+//		return "html/mypage/my_favorites";
+//	}
 	
 	
 	// 예약 내역
