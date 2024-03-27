@@ -29,14 +29,14 @@
         values (#{group_name}, #{leader_name}, #{member_num}, #{leader_phone}, #{perform_num}, #{perfo_work}, #{user_id})
 	</insert>
 	
-	<!-- <update id="updatePerformer">
+	<update id="updatePerformer">
 		update performer
-		set group_name = #{group_name}
-			leader_name = #{leader_name}
-			member_num = #{member_num}
-			leader_phone = #{leader_phone}
-			perform_num = #{perform_num}
+		set group_name = #{group_name},
+			leader_name = #{leader_name},
+			member_num = #{member_num},
+			leader_phone = #{leader_phone},
+			perform_num = #{perform_num},
 			perfo_work = #{perfo_work}
-		where perfo_id = #{perfo_id}
-	</update> -->
+		where user_id = #{user_id}
+	</update>
 </mapper>

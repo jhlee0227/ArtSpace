@@ -38,8 +38,8 @@ public class MypageDAO {
 		sqlSession.insert("mypage.insertPerformer", dto);
 	}
 
-//	public void updatePerformer(PerformerDTO dto) {
-//		sqlSession.update("mypage.updatePerformer", dto);
-//	}
+	public void updatePerformer(PerformerDTO dto) {
+		sqlSession.update("mypage.updatePerformer", dto);
+	}
 
 }

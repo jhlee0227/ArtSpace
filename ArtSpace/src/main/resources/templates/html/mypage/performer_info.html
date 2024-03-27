@@ -18,7 +18,7 @@
 					<div class="img">
 						<img src="/img/hongsnow1.jpg" class="profile" alt="">
 					</div>
-					<h2 class="username">000</h2>
+					<h2 class="username" th:text="${my_info.nickname}"></h2>
 				</div>
 				<div class="left-menu">
 					<ul>
@@ -47,9 +47,10 @@
 
 			<div class="content">
 				<h2 class="content-main">공연자 정보</h2>
+				<form th:action="@{|/mypage/${id}/performer|}" method="post">
 				<div class="list" th:if="${perfo_info == null}">
 
-					<form th:action="@{|/mypage/${id}/performer|}" method="post">
+					
 						<input type="hidden" th:value="${id}" name="user_id">
 						<div>
 							<div class="list-name">단체명</div>
@@ -82,7 +83,7 @@
 							<div class="list-name">공연횟수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="number" name="perfo_num">
+								<input type="number" name="perform_num">
 							</div>
 
 						</div>
@@ -94,10 +95,63 @@
 							</div>
 
 						</div>
+						<button class="button" type="submit">수정</button>
 
-						
 				</div>
-				<button class="button" type="submit">수정</button>
+				
+				</form>
+				<form th:action="@{|/mypage/${id}/performer|}" method="post">
+				<div class="list" th:if="${perfo_info != null}">
+
+					
+						<input type="hidden" th:value="${id}" name="user_id">
+						<div>
+							<div class="list-name">단체명</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con"><input type="text" name="group_name" th:value="${perfo_info.group_name}">
+							</div>
+
+						</div>
+						<div>
+							<div class="list-name">대표명</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con"><input type="text" name="leader_name" th:value="${perfo_info.leader_name}"></div>
+
+						</div>
+						<div>
+							<div class="list-name">대표전화번호</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="leader_phone" th:value="${perfo_info.leader_phone}">
+							</div>
+
+						</div>
+						<div>
+							<div class="list-name">인원수</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con"><input type="number" name="member_num" th:value="${perfo_info.member_num}" maxlength="3">명</div>
+
+						</div>
+						<div>
+							<div class="list-name">공연횟수</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="number" name="perform_num" th:value="${perfo_info.perform_num}">
+							</div>
+
+						</div>
+						<div class="last">
+							<div class="list-name">공연한 작품</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="perfo_work" th:value="${perfo_info.perfo_work}">
+							</div>
+
+						</div>
+
+						<button class="button" type="submit">수정</button>
+				</div>
+				
 				</form>
 			</div>
 		</section>
