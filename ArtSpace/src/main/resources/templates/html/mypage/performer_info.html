@@ -1,84 +1,111 @@
 <!DOCTYPE html>
-<html layout:decorate="~{html/layout/default_layout}" lang="en">
+<html layout:decorate="~{/layout/default_layout}" lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/performer_info.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/performer_info.css">
 </head>
+
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		    <!-- 좌측 메뉴 -->
-		    <div class="left">
-		      <div class="left-main">
-		        <h2 class="mypage">마이페이지</h2>
-		        <div class="img">
-		          <img src="/img/hongsnow1.jpg" class="profile" alt="">
-		        </div>
-		        <h2 class="username">000</h2>
-		      </div>
-		      <div class="left-menu">
-		        <ul>
-		          <a th:href="@{/mypage}" target="_self">
-		            <li>내 정보</li>
-		          </a>
-		          <a href="#" target="_self">
-		            <li class="open">공연자 정보</li>
-		          </a>
-		          <a th:href="@{/mypage/favorite}" target="_self">
-		            <li>내 즐겨찾기</li>
-		          </a>
-		          <a th:href="@{/mypage/reserve}" target="_self">
-		            <li>예약 내역</li>
-		          </a>
-		          <a th:href="@{/mypage/uselist}" target="_self">
-		            <li>이용 내역</li>
-		          </a>
-		          <a th:href="@{/mypage/review}" target="_self">
-		            <li>내 리뷰</li>
-		          </a>
-		        </ul>
-		      </div>
-		    </div>
-		    <!-- 내용 -->
-		    <div class="content">
-		      <h2 class="content-main">공연자 정보</h2>
-		      <div class="list">
-		        <!-- 버튼마다 수정 기능 넣어야.. -->
-		        <div>
-		          <div class="list-name">단체명</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con"><input type="text" value="멍멍"></div>
-		          <button class="btn">수정</button>
-		        </div>
-		        <div>
-		          <div class="list-name">대표명</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con"><input type="text" value="강아지"></div>
-		          <button class="btn">수정</button>
-		        </div>
-		        <div>
-		          <div class="list-name">대표전화번호</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con">
-		            <input type="text" value="010" maxlength="3">-
-		            <input type="text" value="5555" maxlength="4">-
-		            <input type="text" value="5555" maxlength="4">
-		          </div>
-		          <button class="btn">수정</button>
-		        </div>
-		        <div class="last">
-		          <div class="list-name">인원수</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con"><input type="number" value="30" maxlength="3">명</div>
-		          <button class="btn">수정</button>
-		        </div>
-		      </div>
-		    </div>
-		  </section>		
-	</div>
+			<!-- 좌측 메뉴 -->
+			<div class="left">
+				<div class="left-main">
+					<h2 class="mypage">마이페이지</h2>
+					<div class="img">
+						<img src="/img/hongsnow1.jpg" class="profile" alt="">
+					</div>
+					<h2 class="username">000</h2>
+				</div>
+				<div class="left-menu">
+					<ul>
+						<a th:href="@{/mypage}" target="_self">
+							<li>내 정보</li>
+						</a>
+						<a href="#" target="_self">
+							<li class="open">공연자 정보</li>
+						</a>
+						<a th:href="@{/mypage/favorite}" target="_self">
+							<li>내 즐겨찾기</li>
+						</a>
+						<a th:href="@{/mypage/reserve}" target="_self">
+							<li>예약 내역</li>
+						</a>
+						<a th:href="@{/mypage/uselist}" target="_self">
+							<li>이용 내역</li>
+						</a>
+						<a th:href="@{/mypage/review}" target="_self">
+							<li>내 리뷰</li>
+						</a>
+					</ul>
+				</div>
+			</div>
+			<!-- 내용 -->
 
-  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+			<div class="content">
+				<h2 class="content-main">공연자 정보</h2>
+				<div class="list" th:if="${perfo_info == null}">
+
+					<form th:action="@{|/mypage/${id}/performer|}" method="post">
+						<input type="hidden" th:value="${id}" name="user_id">
+						<div>
+							<div class="list-name">단체명</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con"><input type="text" name="group_name" required>
+							</div>
+
+						</div>
+						<div>
+							<div class="list-name">대표명</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con"><input type="text" name="leader_name" required></div>
+
+						</div>
+						<div>
+							<div class="list-name">대표전화번호</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="leader_phone" required>
+							</div>
+
+						</div>
+						<div>
+							<div class="list-name">인원수</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con"><input type="number" name="member_num" maxlength="3" required>명</div>
+
+						</div>
+						<div>
+							<div class="list-name">공연횟수</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="number" name="perfo_num">
+							</div>
+
+						</div>
+						<div class="last">
+							<div class="list-name">공연한 작품</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="perfo_work">
+							</div>
+
+						</div>
+
+						
+				</div>
+				<button class="button" type="submit">수정</button>
+				</form>
+			</div>
+		</section>
+
+
+		<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+
+	</div>
 </body>
+
 </html>
