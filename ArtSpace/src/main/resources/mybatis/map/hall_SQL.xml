@@ -70,8 +70,12 @@
 	          full = #{full}
 	       WHERE hall_id = #{hall_id}	
 	</update>
-	
-	
+
+	<select id="getHallList" resultType="com.example.demo.hall.dto.HallDTO">
+		select * from hall
+		order by #{sort} desc
+	</select>
+		
 	<select id="getEquiList" resultType="com.example.demo.hall.dto.EquipmentDTO">
 		select * from equipment
 		where hall_id = #{id}

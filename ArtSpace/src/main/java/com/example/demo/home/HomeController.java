@@ -12,10 +12,6 @@ public class HomeController {
 		return "html/index";
 	}
 	
-	@GetMapping("/list")
-	public String showHallList() {
-		return "html/hall_list";
-	}
-	
+
 	
 }

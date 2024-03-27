@@ -97,57 +97,72 @@ function execDaumPostcode(){
 		// 명시적으로 value == 사용
 		// [], {} 도 빈값으로 처리
 		
-		function checkValue(){
-			
-			let value = $('#hall_name').val();
-			
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#hall_name").focus();
-				return;
-			}
-			
-			value = $('#zip_code').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#zip_code").focus();
-				return;
-			}
-
-			value = $('#area').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#area").focus();
-				return;
-			}
-			value = $('#width').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#width").focus();
-				return;
-			}
-			value = $('#length').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#length").focus();
-				return;
-			}
-			value = $('#height').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#height").focus();
-				return;
-			}									
-			value = $('#maximum').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#maximum").focus();
-				return;
-			}		
-										
-			value = $('#hall_description').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#hall_description").focus();
-				return;
-			}								
-			value = $('#warning').val();
-			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-				$("#warning").focus();
-				return;
-			}			
-			document.hall_info_form.submit();
+	function checkValue(){
+		
+		let value = $('#hall_name').val().trim();
+		
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#hall_name").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
 		}
+		
+		value = $('#zip_code').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#zip_code").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}
+
+		value = $('#area').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#area").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}
+		value = $('#width').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#width").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}
+		value = $('#length').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#length").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}
+		value = $('#height').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#height").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}									
+		value = $('#maximum').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#maximum").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}
+		
+		if(!$("#morning").is(':checked') && !$("#after").is(':checked') && !$("#eve").is(':checked') && !$("#full").is(':checked') ){
+			$("#morning").focus();
+			alert("시간은 최소 1개는 선택해야 합니다.");
+			return;				
+		}		
+									
+		value = $('#hall_description').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#hall_description").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}								
+		value = $('#warning').val().trim();
+		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+			$("#warning").focus();
+			alert("모든 값을 입력 해주십시오.");
+			return;
+		}
+		document.hall_info_form.submit();
+	}
 

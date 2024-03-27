@@ -70,17 +70,25 @@
 		<div class="input-time-box">
 		  <p class="input-name">예약 가능 시간</p>
 		  <div class="input-time">
-			<label><input type="checkbox" name="morning" th:value="${hall_info.morning}" th:checked="${hall_info.morning == 1}">
-				<span>오전</span>
+			<label>
+				<input id="morning" type="checkbox" name="morning" th:value="${hall_info.morning}" th:checked="${hall_info.morning == 1}">
+				<span>오전<br/>09:00 ~ 13:00</span>
+				<input class="price_input" type="number" id="m_price" name="m_price"/><span>원</span>
 			</label>
-			<label><input type="checkbox" name="after" th:value="${hall_info.after}" th:checked="${hall_info.after == 1}" >
-				<span>오후</span>
+			<label>
+				<input id="after" type="checkbox" name="after" th:value="${hall_info.after}" th:checked="${hall_info.after == 1}" >
+				<span>오후<br/>13:00 ~ 18:00</span>
+				<input class="price_input" type="number" id="a_price" name="a_price"/><span>원</span>
 			</label>
-			<label><input type="checkbox" name="eve" th:value="${hall_info.eve}" th:checked="${hall_info.eve == 1}">
-				<span>저녁</span>
+			<label>
+				<input id="eve" type="checkbox" name="eve" th:value="${hall_info.eve}" th:checked="${hall_info.eve == 1}">
+				<span>저녁<br/>18:00 ~ 22:00</span>
+				<input class="price_input" type="number" id="e_price" name="e_price"/><span>원</span>
 			</label>
-			<label><input type="checkbox" name="full" th:value="${hall_info.full}" th:checked="${hall_info.full == 1}">
-				<span>하루</span>
+			<label>
+				<input id="full" type="checkbox" name="full" th:value="${hall_info.full}" th:checked="${hall_info.full == 1}">
+				<span>하루<br/>09:00 ~ 22:00</span>
+				<input class="price_input" type="number" id="f_price" name="f_price"/><span>원</span>
 			</label>			
 		  </div>
 		</div>
