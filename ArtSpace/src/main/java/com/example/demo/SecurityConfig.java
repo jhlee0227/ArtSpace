@@ -23,6 +23,15 @@ public class SecurityConfig {
 	SecurityFilterChain filterChanin(HttpSecurity http) throws Exception{
 		http.authorizeHttpRequests((authorizeHttpRequests) 
 				-> authorizeHttpRequests.requestMatchers(new AntPathRequestMatcher("/**")).permitAll()) // '/'경로는 모두 인증 
+		.headers((headers) -> headers
+				.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
+		.formLogin((formLogin) -> formLogin
+				.loginPage("/login")
+				.defaultSuccessUrl("/"))
+        .logout((logout) -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true))
 		;
 		
 		return http.build();
