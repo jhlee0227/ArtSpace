@@ -21,8 +21,9 @@ public class UserServiceImpl implements UserService{
 
 	// 로그인 처리
 	@Override
-	public String login(UserDTO userDTO) {
+	public UserDTO login(UserDTO userDTO) {
 		return userDAO.login(userDTO);
 	}
+
 
 }
