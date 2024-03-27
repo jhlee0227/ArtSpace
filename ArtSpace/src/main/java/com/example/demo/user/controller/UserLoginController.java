@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.user.dto.UserDTO;
 import com.example.demo.user.service.UserService;
@@ -21,35 +22,37 @@ public class UserLoginController {
 	private UserService userService;
 	
 	// 로그인 화면 띄움
-	@GetMapping("login")
+	@RequestMapping("login")
 	public String showLogin() {
 		return "html/login/login";
 	}
 	
 	// 로그인 결과 처리
 	@PostMapping("login/result")
-	public ModelAndView login_result(ModelAndView mv, @RequestParam("user_id") String user_id, @RequestParam("password") String password, HttpSession session) {
+	public String login_result(Model model, RedirectAttributes redirectAttributes, @RequestParam("user_id") String user_id, @RequestParam("password") String password, HttpSession session) {
 		UserDTO userDTO = new UserDTO();
 		try {
 			userDTO.setEmail(user_id);
 			userDTO.setPassword(password);
 			
-			String nickname = userService.login(userDTO);
-			System.out.println(nickname);
+			userDTO = userService.login(userDTO);
 			
-			if(nickname !=null) {
+			if(userDTO !=null) {
 				session.setAttribute("user_id", userDTO.getUser_id());
-				session.setAttribute("nickname", nickname);
-				mv.setViewName("redirect:/");
+				session.setAttribute("nickname", userDTO.getNickname());
+				
+				return "redirect:/";
 			}else {
-				mv.addObject("status", 0);
-				mv.setViewName("html/login/login");
+				model.addAttribute("errorMessage", "아이디 또는 비밀번호가 일치하지 않습니다.");
+//				redirectAttributes.addAttribute("status", "error");
+				return "html/login/login";
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return mv;
+		model.addAttribute("errorMessage", "아이디 또는 비밀번호가 일치하지 않습니다.");
+		return "redirect:/login";
 	}
 	
 	@RequestMapping("/logout")

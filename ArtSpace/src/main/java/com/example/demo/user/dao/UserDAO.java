@@ -17,8 +17,9 @@ public class UserDAO {
 	}
 
 	// 로그인 후 이름 뱉어내기
-	public String login(UserDTO userDTO) {
+	public UserDTO login(UserDTO userDTO) {
 		return sqlSession.selectOne("user.login", userDTO);
 	}
+
 	
 }

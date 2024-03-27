@@ -8,20 +8,16 @@
 </head>
 <body>
 <body>
-	
-
-
     <section class="container">
         <div class="login-box">
             <div class="login-wrapper">
 				
 	            <h2><a th:href="@{/login}">로그인</a></h2>
-				<th:block th:if="${status == 0}">
-					<div style="color:red">
-					   아이디 또는 비밀번호가 일치하지 않습니다.
-					</div>
-				</th:block>
 				
+				<div style="color:red" th:text="${errorMessage}">
+					dsdasd
+				</div>
+								
 	            <form method="post" name="login_form" th:action="@{/login/result}" id="login-form">
 	                <input type="email" id="user_id" name="user_id" placeholder="아이디">
 	                <input type="password" id="password" name="password" placeholder="비밀번호">
@@ -67,7 +63,6 @@
   <script>
 	
 	function checkValue(){
-		
 		let value = $('#user_id').val().trim();
 		
 		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){

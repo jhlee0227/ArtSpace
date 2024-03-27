@@ -24,6 +24,7 @@ public class UserController {
 	// 유저 데이터 insert 처리
 	@PostMapping("/user/insert")
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
+		
 		userService.insert(userDTO);
 		return "html/login/logincode";
 	}

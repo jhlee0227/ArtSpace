@@ -54,7 +54,6 @@ public class HallController {
 		return "html/hall/hall_form";
 	}
 	
-
 	// insert 처리
 	@PostMapping("/form/insert")
 	public String hallCreate(@ModelAttribute HallDTO hallDTO) {				
@@ -91,7 +90,6 @@ public class HallController {
 		return "html/hall/hall_form_equipment";
 	}
 	
-
 	// 이전 누르면 장비 저장하고 이전 화면으로 연결
 	@PostMapping("form/equipment/insert/{id}")
 	public String insertEquipment(@Valid @ModelAttribute HallDTO hallDTO, @PathVariable("id") Integer id) {
