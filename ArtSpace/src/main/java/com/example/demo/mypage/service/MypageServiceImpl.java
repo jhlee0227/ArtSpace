@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mypage.dao.MypageDAO;
+import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
 
 @Service
@@ -31,6 +32,21 @@ public class MypageServiceImpl implements MypageService{
 		dto.setUser_id(id);
 		mypageDAO.updatePw(dto);
 		
+	}
+
+	@Override
+	public PerformerDTO findByPID(Integer id) {
+		
+		return mypageDAO.findByPID(id);
+	}
+
+	@Override
+	public void insert(PerformerDTO dto) {
+		if (dto.getUser_id() == null) {
+			mypageDAO.insertPerformer(dto);
+		} else {
+//			mypageDAO.updatePerformer(dto);
+		}
 	}
 
 	

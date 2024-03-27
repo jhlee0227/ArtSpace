@@ -18,4 +18,25 @@
 		select * from user
 		where user_id = #{id}
 	</select>
+	
+	<select id="findByPID" resultType="com.example.demo.mypage.dto.PerformerDTO">
+		select * from performer
+		where user_id=#{id}
+	</select>
+	
+	<insert id="insertPerformer">
+		insert into performer (group_name, leader_name, member_num, leader_phone, perform_num, perfo_work, user_id)
+        values (#{group_name}, #{leader_name}, #{member_num}, #{leader_phone}, #{perform_num}, #{perfo_work}, #{user_id})
+	</insert>
+	
+	<!-- <update id="updatePerformer">
+		update performer
+		set group_name = #{group_name}
+			leader_name = #{leader_name}
+			member_num = #{member_num}
+			leader_phone = #{leader_phone}
+			perform_num = #{perform_num}
+			perfo_work = #{perfo_work}
+		where perfo_id = #{perfo_id}
+	</update> -->
 </mapper>
