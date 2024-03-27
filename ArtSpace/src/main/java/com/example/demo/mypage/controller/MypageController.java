@@ -46,7 +46,7 @@ public class MypageController {
 		return "html/mypage/performer_info";
 	}
 
-	// 로그인 회원 공연자 정보
+	// 로그인 회원 공연자 정보 조회
 	@GetMapping("/{id}/performer")
 	public String perform(Model model, @PathVariable("id") Integer id) {
 		UserDTO myInfo = mypageService.findByID(id);
@@ -113,4 +113,5 @@ public class MypageController {
 		return "redirect:/mypage/" + id;
 	}
 
+	
 }
