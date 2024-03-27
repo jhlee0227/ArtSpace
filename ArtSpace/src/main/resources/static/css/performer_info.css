@@ -117,7 +117,7 @@ body {
   margin-top: 50px;
 }
 
-.con .content .list > div {
+.con .content .list  div {
   padding: 2rem 3.5rem 2rem;
   font-weight: bold;
   border-top: 2px solid var(--light_gray);
@@ -131,7 +131,7 @@ body {
   font-size: 1.5rem;
 }
 
-.con .content .list > div .list-con {
+.con .content .list  div .list-con {
   font-size: 1.5rem;
 }
 
@@ -145,10 +145,28 @@ body {
   padding: 0.3rem 0;
 }
 
-.con .content .list div .btn {
+.con .content .list div .list-con input {
+  width: 150px;
+  font-size: 1.5rem;
+  border: none;
+  border-bottom: 2px solid var(--black);
+  outline: none;
+  padding: 0.5rem;
+}
+
+.con .content .list div .list-con input:focus {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.con .content .list .last {
+  border-bottom: 2px solid var(--light_gray);
+}
+
+.con .content .button {
   cursor: pointer;
   padding: 0 1rem;
   margin-left: auto;
+  margin-top: 3rem;
   display: inline-block;
   background-color: var(--main-color);
   border: var(--border);
@@ -160,34 +178,3 @@ body {
   box-shadow: var(--box-shadow);
 }
 
-.con .content .list div .btn:hover {
-  filter: brightness(0.9);
-  transition: 0.5s;
-}
-
-.con .content .list > div .list-con input {
-  width: 150px;
-  font-size: 1.5rem;
-  border: none;
-  border-bottom: 2px solid var(--black);
-  outline: none;
-  padding: 0.5rem;
-}
-
-.con .content .list>div .list-con input:focus {
-  border-bottom: 2px solid var(--main-color);
-}
-
-.con .content .list .last {
-  border-bottom: 2px solid var(--light_gray);
-}
-
-
-
-
-
-
-
-.footer {
-  height: 100px;
-}

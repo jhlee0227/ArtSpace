@@ -1,6 +1,7 @@
 package com.example.demo.hall.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class HallDAO {
 	
 	public void insert(HallDTO hallDTO) {
 		sqlSession.insert("hall.insert", hallDTO);
+		sqlSession.insert("hall.insert_time", hallDTO);
 	}
 
 	public HallDTO findById(Integer id) {
@@ -29,6 +31,7 @@ public class HallDAO {
 
 	public void update(HallDTO hallDTO) {
 		sqlSession.update("hall.update_info", hallDTO);
+		sqlSession.update("hall.update_hall_time", hallDTO);
 		
 	}
 
@@ -43,11 +46,14 @@ public class HallDAO {
 	public void deleteHall(Integer id) {
 		sqlSession.delete("hall.delete", id);		
 	}
-
 	
 	public void insertEquiList(EquipmentDTO equiDTO) {
 		sqlSession.insert("hall.equi_insert", equiDTO);
 		
+	}
+
+	public List<Map<String, Integer>> findHallTime(Integer id) {
+		return sqlSession.selectList("hall.getTimeList", id);
 	}
 
 

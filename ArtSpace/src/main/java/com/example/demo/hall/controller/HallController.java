@@ -35,19 +35,23 @@ public class HallController {
 	// 기본 공연장 정보 입력 화면 띄우기
 	@GetMapping("form")
 	public String showForm(Model model) {
-		model.addAttribute("hall_info", new HallDTO());
+		HallDTO dto = new HallDTO();
+		model.addAttribute("hall_info", dto);
+		
 		model.addAttribute("action", "/hall/form/insert");
-		return "html/hall_form";
+		return "html/hall/hall_form";
 	}
 
 	// 이전 버튼을 눌렀을때 공연장 정보 수정 화면 띄우기
 	@GetMapping("form/{id}")
 	public String shwForm(Model model, @PathVariable("id") Integer id) {
-		HallDTO hallInfo = hallService.findById(id);		
+		HallDTO hallInfo = hallService.findById(id);
+		hallInfo = hallService.findHallTime(hallInfo);
+		
 		model.addAttribute("hall_info", hallInfo);
 		model.addAttribute("action", "/hall/form/update/" + id);
-		
-		return "html/hall_form";
+
+		return "html/hall/hall_form";
 	}
 	
 
@@ -84,7 +88,7 @@ public class HallController {
 		model.addAttribute("equiList", equiList);
 		
 		model.addAttribute("hall_id", id);
-		return "html/hall_form_equipment";
+		return "html/hall/hall_form_equipment";
 	}
 	
 
@@ -117,7 +121,6 @@ public class HallController {
 				hallService.insertEqui(equiList.get(i), id);
 			}
 		}
-		
 		return "redirect:/hall/detail_page/"+id;
 	}
 	
@@ -132,7 +135,7 @@ public class HallController {
 	@GetMapping("detail_page/{id}")
 	public String detailPage(Model model, HallDTO hallDTO, EquipmentDTO equipDTO, @PathVariable("id") Integer id) {
 		
-		return "html/detail_page";
+		return "html/hall/detail_page";
 	}
 	
 	

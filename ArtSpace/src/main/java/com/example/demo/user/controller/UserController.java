@@ -18,13 +18,13 @@ public class UserController {
 	// 로그인 화면 띄움
 	@GetMapping("login")
 	public String showLogin() {
-		return "html/login";
+		return "html/login/login";
 	}
 
 	// 일반 회원가입 화면 띄움
 	@GetMapping("/user/singin")
 	public String showJoin() {
-		return "html/loginjoin";
+		return "html/login/loginjoin";
 	}
 
 	// 유저 데이터 insert 처리
@@ -32,7 +32,7 @@ public class UserController {
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
 		userService.insert(userDTO);
 		
-		return "html/logincode";
+		return "html/login/logincode";
 	}
 	
 	
@@ -40,31 +40,31 @@ public class UserController {
 	@PostMapping("user/welcome")
 	public String welcome() {
 		
-		return "html/loginwelcome";
+		return "html/login/loginwelcome";
 	}
 	
 	// 법인 회원가입인증 화면 띄움
 	@GetMapping("/user/corporation")
 	public String checkCor() {
-		return "html/login_corporation";
+		return "html/login/login_corporation";
 	} 
 	
 	// 법인 데이터 회원가입 화면 띄움
 	@PostMapping("/user/joincorporation")
 	public String joinCor() {
-		return "html/login_joincorporation";
+		return "html/login/login_joincorporation";
 	} 
 	
 	// 법인 회원가입인증코드 화면 띄움
 	@PostMapping("/user/codecorporation")
 	public String codeCor() {
-		return "html/login_code_corporation";
+		return "html/login/login_code_corporation";
 	} 
 	
 	// 법인 회원가입 완료 화면 띄움
 	@PostMapping("/user/welcomecorporation")
 	public String welcomeCor() {
-		return "html/login_welcome_corporation";
+		return "html/login/login_welcome_corporation";
 	} 
 	
 	
