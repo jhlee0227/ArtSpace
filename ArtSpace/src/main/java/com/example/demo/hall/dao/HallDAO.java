@@ -31,10 +31,13 @@ public class HallDAO {
 
 	public void update(HallDTO hallDTO) {
 		sqlSession.update("hall.update_info", hallDTO);
-		sqlSession.update("hall.update_hall_time", hallDTO);
-		
+		sqlSession.update("hall.update_hall_time", hallDTO);	
 	}
 
+	public List<HallDTO> getHallList(String sort) {
+		return sqlSession.selectList("hall.getHallList", sort);
+	}
+	
 	public List<EquipmentDTO> getEquiList(Integer id) {
 		return sqlSession.selectList("hall.getEquiList", id);
 	}
@@ -56,5 +59,12 @@ public class HallDAO {
 		return sqlSession.selectList("hall.getTimeList", id);
 	}
 
+
+	
+	
+	//	========================================
+	// -- hall list 작업 --
+
+	
 
 }

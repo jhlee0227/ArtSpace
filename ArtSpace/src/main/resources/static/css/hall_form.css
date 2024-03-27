@@ -121,30 +121,30 @@ input::-webkit-inner-spin-button {
 	margin: 3rem 0;
 }
 
-.hall-form form .input-time-box p{
-	margin: 2rem 0;
-}
-
 .hall-form form .input-time {
-	display: flex;
-	align-items: center;
 	width: 100%;
 }
-
 
 .hall-form form .input-time label{
 	font-weight: 600;
 	font-size: 1.5rem;
-	text-align: center;
-	margin-right: 5rem;
+	width: auto;
 }
 
 .hall-form form .input-time label input{
+	width: 2rem;
 	margin-top: .5rem;
 	box-shadow: none;
 }
+
+.hall-form form .input-time label input.price_input{
+	width: 8rem;
+}
+
+
 .hall-form form .input-time label span{
-	width: 5.8rem;
+	margin: 0 1.5rem;
+	width: auto;
 }
 
 

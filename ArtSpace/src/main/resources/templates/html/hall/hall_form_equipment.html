@@ -50,8 +50,8 @@
                 </select>
 				
                 <input type="text" th:value="${equi.equip_name}"  th:name="|equiList[${equiList.indexOf(equi)}].equip_name|" id="equip_name" placeholder="장비 이름 ex)무선 마이크"/>
-                <input type="number" th:value="${equi.equip_num}" th:name="|equiList[${equiList.indexOf(equi)}].equip_num|" id="equip_num" placeholder="보유 개수" />
-                <input type="number" th:value="${equi.equip_price}" th:name="|equiList[${equiList.indexOf(equi)}].equip_price|" id="equip_price" placeholder="개당 가격(원)" />
+                <input type="number" min="1" th:value="${equi.equip_num}" th:name="|equiList[${equiList.indexOf(equi)}].equip_num|" id="equip_num" placeholder="보유 개수" />
+                <input type="number" min="1" th:value="${equi.equip_price}" th:name="|equiList[${equiList.indexOf(equi)}].equip_price|" id="equip_price" placeholder="개당 가격(원)" />
               </div>
             </div>
           </div>
@@ -145,6 +145,7 @@
 				document.hall_equip.submit();
 			} 
 		}
+		
 	</script>
 
 	
