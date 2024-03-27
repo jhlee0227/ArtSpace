@@ -39,4 +39,10 @@
 			perfo_work = #{perfo_work}
 		where user_id = #{user_id}
 	</update>
+	
+	<update id="leave">
+		update user
+		set leave_status = 'Y'
+		where user_id = #{user_id}
+	</update>
 </mapper>

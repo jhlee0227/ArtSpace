@@ -1,9 +1,12 @@
 package com.example.demo.mypage.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mypage.dao.MypageDAO;
+import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
 
@@ -50,6 +53,14 @@ public class MypageServiceImpl implements MypageService{
 			mypageDAO.updatePerformer(dto);
 		}
 	}
+
+	@Override
+	public void leave(UserDTO dto) {
+
+		dto.setLeave_status('Y');
+		mypageDAO.leave(dto);
+	}
+
 
 	
 }
