@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
@@ -48,13 +49,15 @@ public class MypageController {
 	// 로그인 회원 공연자 정보
 	@GetMapping("/{id}/performer")
 	public String perform(Model model, @PathVariable("id") Integer id) {
+		UserDTO myInfo = mypageService.findByID(id);
 		PerformerDTO perfoInfo = mypageService.findByPID(id);
+		model.addAttribute("my_info", myInfo);
 		model.addAttribute("perfo_info", perfoInfo);
 		model.addAttribute("id", id);
 		return "html/mypage/performer_info";
 	}
 
-	// 공연자 정보 등록
+	// 공연자 정보 등록 및 수정
 	@PostMapping("{id}/performer")
 	public String insertPerformer(@ModelAttribute PerformerDTO dto, @PathVariable("id") Integer id) {
 		dto.setUser_id(id);
@@ -68,6 +71,16 @@ public class MypageController {
 		return "html/mypage/my_favorites";
 	}
 
+	// 로그인 회원 내 즐겨찾기
+	@GetMapping("/{id}/favorite")
+	public String favor(Model model, @PathVariable("id") Integer id) {
+		UserDTO myInfo = mypageService.findByID(id);
+		model.addAttribute("my_info", myInfo);
+		model.addAttribute("id", id);
+		return "html/mypage/my_favorites";
+	}
+	
+	
 	// 예약 내역
 	@GetMapping("/reserve")
 	public String reserve() {

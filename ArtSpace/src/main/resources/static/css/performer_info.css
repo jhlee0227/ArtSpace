@@ -174,7 +174,7 @@ body {
   color: var(--black);
   font-size: 1.5rem;
   font-weight: 600;
-  text-align: center;
+  text-align: right;
   box-shadow: var(--box-shadow);
 }
 
