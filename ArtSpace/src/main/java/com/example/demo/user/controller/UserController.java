@@ -15,12 +15,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	// 로그인 화면 띄움
-	@GetMapping("login")
-	public String showLogin() {
-		return "html/login/login";
-	}
-
 	// 일반 회원가입 화면 띄움
 	@GetMapping("/user/singin")
 	public String showJoin() {
@@ -31,7 +25,6 @@ public class UserController {
 	@PostMapping("/user/insert")
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
 		userService.insert(userDTO);
-		
 		return "html/login/logincode";
 	}
 	
