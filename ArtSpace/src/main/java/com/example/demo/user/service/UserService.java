@@ -6,6 +6,6 @@ public interface UserService {
 
 	public void insert(UserDTO userDTO);
 
-	public String login(UserDTO userDTO);
+	public UserDTO login(UserDTO userDTO);
 
 }
