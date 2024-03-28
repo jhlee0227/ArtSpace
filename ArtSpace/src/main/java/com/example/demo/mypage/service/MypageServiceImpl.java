@@ -30,10 +30,8 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public void updatePw(UserDTO dto, Integer id) {
-		dto.setUser_id(id);
+	public void updatePw(UserDTO dto) {
 		mypageDAO.updatePw(dto);
-		
 	}
 
 	@Override

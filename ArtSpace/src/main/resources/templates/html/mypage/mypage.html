@@ -11,7 +11,7 @@
 
 <body>
 	<div layout:fragment="content">
-		<form name="form1" method="post" th:action="@{|/mypage/update/${id}|}">
+		<form name="form1" method="post" th:action="@{/mypage/update}">
 
 			<section class="con">
 				<!-- 좌측 메뉴 -->
@@ -81,7 +81,7 @@
 										oninput="pwCheck()" placeholder="비밀번호 확인"></div>
 							</div>
 							<span id="check"></span>
-							<button id="btn" class="button" th:formaction="@{|/mypage/update/pw/${id}|}"
+							<button id="btn" class="button" th:formaction="@{/mypage/update/pw}"
 								onclick="return pwCheck();">수정</button>
 						</div>
 
@@ -92,7 +92,7 @@
 							<div class="list-con"><input name="nickname" type="text" th:value="${my_info.nickname}"
 									maxlength="8"></div>
 							<button class="button" id="btnUpdate"
-								th:formaction="@{|/mypage/update/nickname/${id}|}">수정</button>
+								th:formaction="@{/mypage/update/nickname}">수정</button>
 
 						</div>
 
@@ -106,8 +106,7 @@
 		<form name="form2" method="post" th:action="@{/}">
 			<div class="button">
 				<span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>
-				<button class="leave-btn">회원 탈퇴</button>
-				<input type="hidden" th:value="${id}" name="user_id">
+				<button class="leave-btn" onclick="return confirmLeave()">회원 탈퇴</button>
 			</div>
 		</form>
 
@@ -145,6 +144,16 @@
 
 				}
 			}
+			// 회원 탈퇴 확인
+			    function confirmLeave() {
+			        var result = confirm("정말 회원 탈퇴를 하시겠습니까?");
+			        if (result) {
+						alert("회원 탈퇴가 완료되었습니다.");
+						return true;        
+			        } else {
+						return false;
+			        }
+			    }
 
 
 		</script>

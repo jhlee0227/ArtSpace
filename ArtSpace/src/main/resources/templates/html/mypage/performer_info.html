@@ -47,11 +47,9 @@
 
 			<div class="content">
 				<h2 class="content-main">공연자 정보</h2>
-				<form th:action="@{|/mypage/${id}/performer|}" method="post">
-				<div class="list" th:if="${perfo_info == null}">
+				<form th:action="@{/mypage/performer}" method="post">
+					<div class="list" th:if="${perfo_info == null}">
 
-					
-						<input type="hidden" th:value="${id}" name="user_id">
 						<div>
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
@@ -97,25 +95,25 @@
 						</div>
 						<button class="button" type="submit">수정</button>
 
-				</div>
-				
-				</form>
-				<form th:action="@{|/mypage/${id}/performer|}" method="post">
-				<div class="list" th:if="${perfo_info != null}">
+					</div>
 
-					
-						<input type="hidden" th:value="${id}" name="user_id">
+				</form>
+				<form th:action="@{/mypage/performer}" method="post">
+					<div class="list" th:if="${perfo_info != null}">
+
 						<div>
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" name="group_name" th:value="${perfo_info.group_name}">
+							<div class="list-con"><input type="text" name="group_name"
+									th:value="${perfo_info.group_name}">
 							</div>
 
 						</div>
 						<div>
 							<div class="list-name">대표명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" name="leader_name" th:value="${perfo_info.leader_name}"></div>
+							<div class="list-con"><input type="text" name="leader_name"
+									th:value="${perfo_info.leader_name}"></div>
 
 						</div>
 						<div>
@@ -129,7 +127,8 @@
 						<div>
 							<div class="list-name">인원수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="number" name="member_num" th:value="${perfo_info.member_num}" maxlength="3">명</div>
+							<div class="list-con"><input type="number" name="member_num"
+									th:value="${perfo_info.member_num}" maxlength="3">명</div>
 
 						</div>
 						<div>
@@ -149,16 +148,27 @@
 
 						</div>
 
-						<button class="button" type="submit">수정</button>
-				</div>
-				
+						<button class="button" type="submit" onclick="return confirmUpdate()">수정</button>
+					</div>
+
 				</form>
 			</div>
 		</section>
 
 
 		<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
-
+		<script>
+			// 수정완료 확인/취소
+			function confirmUpdate() {
+				var result = confirm("공연자 정보를 수정하시겠습니까?");
+				if (result) {
+					alert("정보 수정이 완료되었습니다.");
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
 	</div>
 </body>
 

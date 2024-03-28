@@ -14,7 +14,7 @@ public interface MypageService {
 
 	public void updateNickname(UserDTO dto);
 
-	public void updatePw(UserDTO dto, Integer id);
+	public void updatePw(UserDTO dto);
 
 	public void insert(PerformerDTO dto);
 

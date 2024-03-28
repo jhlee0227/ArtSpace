@@ -19,15 +19,20 @@
            <i id="submit-btn" class="fa fa-search fa-3x" aria-hidden="true"></i>
          </form>
        </div>
-
-       <!-- <a class="mypage-btn" href="">
+	   
+       <a th:if="${user_id} != null" class="mypage-btn" th:href="@{|/mypage/${user_id}|}">
          <i class="fa-solid fa-user fa-4x"></i>
          <p>My</p>
-       </a> -->
-       <a class="mypage-btn" th:href="@{|/login|}">
+       </a>
+       <a th:if="${user_id} == null" class="mypage-btn" th:href="@{|/login|}">
          <i class="fa-regular fa-user fa-4x"></i>
          <p>로그인</p>
        </a>
+
+	  <a th:if="${user_id} != null" class="mypage-btn" th:href="@{|/logout|}">
+       <p>로그아웃</p>
+     </a>
+	   
      </div>
    </div>
    <script>
