@@ -15,15 +15,15 @@
                 <div class="login-wrapper">
                 <h2>일반 회원 가입</h2>
                     <label for="">
-                        <input type="text" name="email" placeholder="아이디 ex)abc12@gmail.com">
-                        <p>아이디는 이메일 형식으로 입력해 주세요.</p>
+                        <input type="text" name="email" id="email" placeholder="아이디 ex)abc12@gmail.com">
+                        <p class="emailchk">아이디는 이메일 형식으로 입력해 주세요.</p>
                     </label>
                     <label>
                         <input type="password" name="password" placeholder="비밀 번호">
                         <p>대소문자와 숫자를 포함한 8~16자</p>
                     </label>
                     <label>
-                    <input type="password" name="Password2" placeholder="비밀 번호 확인">
+                    <input type="password" name="password2" placeholder="비밀 번호 확인">
                         <p>비밀 번호를 한 번 더 입력해 주세요.</p>
                     </label>
                     <label>
@@ -35,7 +35,7 @@
                         <p>실명을 입력해 주세요.</p>
                     </label>
                     <label>
-                    <input type="text" name="phone" placeholder="">
+                    <input type="text" name="phone" placeholder="010-xxxx-xxxx">
                         <p>핸드폰 번호를 하이픈(-)를 제외하고 입력해 주세요.</p>
                     </label>
                 </div>
@@ -43,21 +43,19 @@
                 <div class="login-wrapper">
                     <div class="login-chkbox">
                         <span>이용 약관</span>
-                        <span class="login-chk"><input type="checkbox" name="" id="">동의</span> 
+                        <span class="login-chk"><input type="checkbox" name="check1" id="check1">동의</span> 
                     </div>
                     
                     <div class="text1">""</div> 
                     <div class="login-chkbox">
                         <span>개인 정보 처리 방침</span>
-                        <span class="login-chk"><input type="checkbox" name="" id="">동의</span> 
+                        <span class="login-chk"><input type="checkbox" name="check2" id="check2">동의</span> 
                     </div>
                     <div class="text2">""</div>
 					
 					<input type="submit" value="다음" class="btn1">
                 </div>
             </form>
-
-
         </div>
       </section>
     <div class="ttt">
@@ -66,9 +64,49 @@
         <h2>확실한 정보로</h2> 
         <h2>꿈이 이루어지는 공간 입니다.</h2>
     </div>
-
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script>
+		//아이디 유효성검사
+		$(document).ready(function() {
+			var patternEmail = /^[a-z0-9_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+
+			$('#email').blur(function() {				
+				if(!patternEmail.test($.trim($("#email").val()))){
+					$('.emailchk').css('color','red');
+					$('#email').val("");
+				} else {
+					var email = $('#email').val();
+					 $.ajax(
+				   		 {
+							url: '/emailCheck',
+							method: 'post',
+							data : {
+									"email" : email
+							},
+							dataType : 'text',
+							
+							success : function(data) {
+															
+								if (data == "redundancy") {
+									$('.emailchk').html("중복된 아이디입니다").css('color', 'red');
+									$('#email').val("");
+								} else if (data == "noredundancy") {
+									$('.emailchk').html("사용가능한 아이디입니다").css('color', 'green');
+									;
+								} else {
+									$('.emailchk').html("아이디를 입력해주세요").css('color', 'red');
+								}
+							},
+							error: function (data, status, err) {
 		
+							   },
+				
+						});
+							}
+							;
+						});
+				})
 	</script>
 
 </body>

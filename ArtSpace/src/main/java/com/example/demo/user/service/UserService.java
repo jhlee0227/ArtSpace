@@ -8,4 +8,6 @@ public interface UserService {
 
 	public UserDTO login(UserDTO userDTO);
 
+	public int emailCheck(String email);
+
 }

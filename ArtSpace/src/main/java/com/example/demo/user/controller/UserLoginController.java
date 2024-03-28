@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -59,6 +61,25 @@ public class UserLoginController {
 	public String logout(HttpSession session) {
 		session.invalidate(); // 세션클리어
 		return "redirect:/login";
+	}
+	
+	@RequestMapping(value="/emailCheck" ,method = RequestMethod.POST)
+	@ResponseBody
+	public String idcheck(@RequestParam(value="email")  String email) {
+		String chk = "";
+		int result = 0;
+		
+		result = userService.emailCheck(email);
+		System.out.println("zzz");
+		System.out.println(result);
+		
+		if(result > 0) {
+			chk = "redundancy"; 	// 아이디 중복
+		} else if(result == 0){
+			chk = "noredundancy";	// 아이디 중복 아님
+		}
+		System.out.println("1234");
+		return chk;
 	}
 	
 	

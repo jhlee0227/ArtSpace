@@ -13,5 +13,10 @@
 		where email = #{email} and password = #{password}
 	</select>
 	
+	<select id="email_check" resultType="int">
+		select count(*) from user
+		where email = #{email}
+	</select>
+	
 
 </mapper>
