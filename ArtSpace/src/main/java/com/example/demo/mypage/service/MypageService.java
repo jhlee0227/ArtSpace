@@ -12,7 +12,7 @@ public interface MypageService {
 	
 	public PerformerDTO findByPID(Integer id);
 
-	public void updateNickname(UserDTO dto, Integer id);
+	public void updateNickname(UserDTO dto);
 
 	public void updatePw(UserDTO dto, Integer id);
 

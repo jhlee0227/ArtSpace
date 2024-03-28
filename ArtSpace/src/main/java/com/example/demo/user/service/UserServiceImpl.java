@@ -25,5 +25,10 @@ public class UserServiceImpl implements UserService{
 		return userDAO.login(userDTO);
 	}
 
+	@Override
+	public int emailCheck(String email) {
+		return userDAO.emailCheck(email);
+	}
+
 
 }

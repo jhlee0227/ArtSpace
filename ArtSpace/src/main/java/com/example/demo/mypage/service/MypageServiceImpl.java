@@ -24,8 +24,7 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public void updateNickname(UserDTO dto, Integer id) {
-		dto.setUser_id(id);
+	public void updateNickname(UserDTO dto) {
 		mypageDAO.updateNickname(dto);
 		
 	}
