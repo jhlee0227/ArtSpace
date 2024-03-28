@@ -43,8 +43,6 @@
 		      <div class="tabs">
 		        <input id="all" type="radio" name="tab_item" checked>
 		        <label class="tab_item" for="all">전체 회원</label>
-		        <input id="block" type="radio" name="tab_item">
-		        <label class="tab_item" for="block">차단 회원</label>
 		        <input id="leave" type="radio" name="tab_item">
 		        <label class="tab_item" for="leave">탈퇴 회원</label>
 		        <div class="tab_content" id="all_content">
@@ -53,107 +51,44 @@
 		            <form name="search">
 		              <select class="select" name="type" id="">
 		                <option value="id">아이디</option>
-		                <option value="group">단체명</option>
+		                <option value="nickname">닉네임</option>
 		              </select>
 		              <input type="text">
 		              <input type="button" value="검색">
 		            </form>
 		          </div>
 		          <div class="main">
-		            <div class="search-result">전체 사용자 0명</div> 
 		            <table class="table">
 		              <thead>
 		                <tr>
 		                  <th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll" onclick="selectAll1(this)">
 		                  </th>
-		                  <th>닉네임</th>
-		                  <th>이메일</th>
-		                  <th>유저타입</th>
-		                  <th class="block">차단상태</th>
-		                  <th class="leave">탈퇴상태</th>
-		                </tr>
-		              </thead>
-		              <tbody>
-		                <tr><!-- th:each -->
-		                  <td><input type="checkbox" class="chkbox" name="check1" onclick="checkSelectAll1()"></td>
-		                  <!-- th:text -->
-		                  <td>test1</td>
-		                  <td>테스트</td>
-		                  <td>일반</td>
-		                  <td>차단</td>
-		                  <td>탈퇴x</td>
-		                </tr>
-		                <tr>
-		                  <td><input type="checkbox" class="chkbox" name="check1" onclick="checkSelectAll1()"></td>
-		                  <td>test2</td>
-		                  <td>테스트2</td>
-		                  <td>법인</td>
-		                  <td>차단x</td>
-		                  <td>탈퇴o</td>
-		                </tr>
-		              </tbody>
-		            </table>
-		          </div>
-		          <div class="button">
-		            <form name="block">
-		              <input class="block-btn" type="button" value="차단">
-		            </form>
-		            <form name="leave">
-		              <input class="leave-btn" type="button" value="탈퇴">
-		            </form>
-		          </div>
-		        </div>
-		        <div class="tab_content" id="block_content">
-		          <!-- 차단 회원 탭 -->
-		          <div class="search">
-		            <form name="search">
-		              <select class="select" name="type" id="">
-		                <option value="id">아이디</option>
-		                <option value="group">단체명</option>
-		              </select>
-		              <input type="text">
-		              <input type="button" value="검색">
-		            </form>
-		          </div>
-		          <div class="main">
-		            <div class="search-result">전체 사용자 0명</div>
-		            <table class="table">
-		              <thead>
-		                <tr>
-		                  <th><input type="checkbox" class="chkbox" name="selectAll2" value="selectAll" onclick="selectAll2(this)">
-		                  </th>
 		                  <th>아이디</th>
-		                  <th>단체명</th>
+		                  <th>닉네임</th>
 		                  <th>유저타입</th>
-		                  <th class="block">차단상태</th>
 		                  <th class="leave">탈퇴상태</th>
 		                </tr>
 		              </thead>
 		              <tbody>
 		                <tr><!-- th:each -->
-		                  <td><input type="checkbox" class="chkbox" name="check2" onclick="checkSelectAll2()"></td>
+		                  <td><input type="checkbox" class="chkbox" name="check1" onclick="checkSelectAll1()"></td>
 		                  <!-- th:text -->
 		                  <td>test1</td>
 		                  <td>테스트</td>
 		                  <td>일반</td>
-		                  <td>차단</td>
 		                  <td>탈퇴x</td>
 		                </tr>
 		                <tr>
-		                  <td><input type="checkbox" class="chkbox" name="check2" onclick="checkSelectAll2()"></td>
+		                  <td><input type="checkbox" class="chkbox" name="check1" onclick="checkSelectAll1()"></td>
 		                  <td>test2</td>
 		                  <td>테스트2</td>
 		                  <td>법인</td>
-		                  <td>차단</td>
 		                  <td>탈퇴o</td>
 		                </tr>
 		              </tbody>
 		            </table>
 		          </div>
 		          <div class="button">
-		            <form name="block">
-		              <input class="block-btn" type="button" value="차단 해제">
-		            </form>
 		            <form name="leave">
 		              <input class="leave-btn" type="button" value="탈퇴">
 		            </form>
@@ -165,51 +100,44 @@
 		            <form name="search">
 		              <select class="select" name="type" id="">
 		                <option value="id">아이디</option>
-		                <option value="group">단체명</option>
+		                <option value="group">닉네임</option>
 		              </select>
 		              <input type="text">
 		              <input type="button" value="검색">
 		            </form>
 		          </div>
 		          <div class="main">
-		            <div class="search-result">전체 사용자 0명</div>
 		            <table class="table">
 		              <thead>
 		                <tr>
-		                  <th><input type="checkbox" class="chkbox" name="selectAll3" value="selectAll" onclick="selectAll3(this)">
+		                  <th><input type="checkbox" class="chkbox" name="selectAll2" value="selectAll" onclick="selectAll2(this)">
 		                  </th>
 		                  <th>아이디</th>
-		                  <th>단체명</th>
+		                  <th>닉네임</th>
 		                  <th>유저타입</th>
-		                  <th class="block">차단상태</th>
 		                  <th class="leave">탈퇴상태</th>
 		                </tr>
 		              </thead>
 		              <tbody>
 		                <tr><!-- th:each -->
-		                  <td><input type="checkbox" class="chkbox" name="check3" onclick="checkSelectAll3()"></td>
+		                  <td><input type="checkbox" class="chkbox" name="check2" onclick="checkSelectAll2()"></td>
 		                  <!-- th:text -->
 		                  <td>test1</td>
 		                  <td>테스트</td>
 		                  <td>일반</td>
-		                  <td>차단</td>
 		                  <td>탈퇴o</td>
 		                </tr>
 		                <tr>
-		                  <td><input type="checkbox" class="chkbox" name="check3" onclick="checkSelectAll3()"></td>
+		                  <td><input type="checkbox" class="chkbox" name="check2" onclick="checkSelectAll2()"></td>
 		                  <td>test2</td>
 		                  <td>테스트2</td>
 		                  <td>법인</td>
-		                  <td>차단x</td>
 		                  <td>탈퇴o</td>
 		                </tr>
 		              </tbody>
 		            </table>
 		          </div>
 		          <div class="button">
-		            <form name="block">
-		              <input class="block-btn" type="button" value="차단">
-		            </form>
 		            <form name="leave">
 		              <input class="leave-btn" type="button" value="탈퇴 해제">
 		            </form>
