@@ -10,16 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.mypage.service.MypageService;
 import com.example.demo.user.dto.UserDTO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LeaveController {
 
 	@Autowired
 	MypageService mypageService;
 	
+	@Autowired
+	HttpSession session;
+	
 	// 탈퇴
 	@PostMapping("/")
 	public String leave(@ModelAttribute UserDTO dto) {
-		
+		Integer userId = (Integer) session.getAttribute("user_id");
+		dto.setUser_id(userId);
 		mypageService.leave(dto);
 		return "redirect:";
 	}
