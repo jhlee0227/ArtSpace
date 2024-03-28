@@ -16,7 +16,7 @@ public class AdminDAO {
 	
 	public List<UserDTO> getAllUsers() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("admin.getAllUsers", )
+		return sqlSession.selectList("admin.getAllUsers");
 	}
 
 }
