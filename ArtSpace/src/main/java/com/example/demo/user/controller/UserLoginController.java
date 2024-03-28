@@ -39,9 +39,10 @@ public class UserLoginController {
 			
 			userDTO = userService.login(userDTO);
 			
-			if(userDTO !=null) {
+			if(userDTO != null) {
 				session.setAttribute("user_id", userDTO.getUser_id());
 				session.setAttribute("nickname", userDTO.getNickname());
+				session.setAttribute("authority", userDTO.getAuthority());
 				
 				return "redirect:/";
 			}else {
