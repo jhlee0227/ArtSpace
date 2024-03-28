@@ -27,26 +27,13 @@ public class MypageController {
 	@Autowired
 	MypageService mypageService;
 
-	// 마이페이지 기본
-//	@GetMapping("")
-//	public String mypage(Model model) {
-//		model.addAttribute("my_info", new UserDTO());
-//		return "html/mypage/mypage";
-//	}
-
-	// 로그인 회원 마이페이지
-//	@GetMapping("/{id}")
-//	public String mpage(Model model, @PathVariable("id") Integer id) {
-//		UserDTO myInfo = mypageService.findByID(id);
-//		model.addAttribute("my_info", myInfo);
-//		model.addAttribute("id", id);
-//		return "html/mypage/mypage";
-//	}
+	@Autowired
+	HttpSession session;
 	
 	@GetMapping("")
 	public String mypage(Model model, HttpSession session) {
-//		Integer id = (Integer) session.getAttribute("user_id");
-		UserDTO myInfo = mypageService.findByID(1);
+		Integer id = (Integer) session.getAttribute("user_id");
+		UserDTO myInfo = mypageService.findByID(id);
 		model.addAttribute("my_info", myInfo);
 		return "html/mypage/mypage";
 	}
@@ -110,18 +97,29 @@ public class MypageController {
 		return "html/mypage/my_review";
 	}
 
+	
 	// 닉네임 수정
-	@PostMapping("update/nickname/{id}")
-	public String updateNickname(@ModelAttribute UserDTO dto, @PathVariable("id") Integer id) {
-		mypageService.updateNickname(dto, id);
-		return "redirect:/mypage/" + id;
-	}
+	@PostMapping("/update/nickname")
+    public String updateNickname(@ModelAttribute UserDTO dto) {
+        
+        Integer userId = (Integer) session.getAttribute("user_id");
+        dto.setUser_id(userId); 
+        mypageService.updateNickname(dto);
+        return "redirect:/mypage";
+    }
+	
+	// 닉네임 수정
+//	@PostMapping("update/nickname")
+//	public String updateNickname(@ModelAttribute UserDTO dto) {
+//		mypageService.updateNickname(dto);
+//		return "redirect:/mypage";
+//	}
 
 	// 패스워드 수정
-	@PostMapping("update/pw/{id}")
-	public String updatePw(@ModelAttribute UserDTO dto, @PathVariable("id") Integer id) {
-		mypageService.updatePw(dto, id);
-		return "redirect:/mypage/" + id;
+	@PostMapping("update/pw")
+	public String updatePw(@ModelAttribute UserDTO dto) {
+		mypageService.updatePw(dto);
+		return "redirect:/mypage";
 	}
 
 	
