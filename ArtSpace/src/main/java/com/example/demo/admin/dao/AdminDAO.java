@@ -24,4 +24,9 @@ public class AdminDAO {
 		sqlSession.update("admin.leave", user_id);
 	}
 
+	public void resign(Integer user_id) {
+		
+		sqlSession.update("admin.resign", user_id);
+	}
+
 }
