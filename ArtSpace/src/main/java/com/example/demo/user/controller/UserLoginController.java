@@ -23,9 +23,16 @@ public class UserLoginController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired 
+	HttpSession session;
+	
 	// 로그인 화면 띄움
 	@RequestMapping("login")
 	public String showLogin() {
+		Integer user_id = (Integer) session.getAttribute("user_id");		
+		if(user_id != null)
+			return "redirect:/";
+		
 		return "html/login/login";
 	}
 	
@@ -43,6 +50,7 @@ public class UserLoginController {
 				session.setAttribute("user_id", userDTO.getUser_id());
 				session.setAttribute("nickname", userDTO.getNickname());
 				session.setAttribute("authority", userDTO.getAuthority());
+				
 				
 				return "redirect:/";
 			}else {
@@ -71,8 +79,6 @@ public class UserLoginController {
 		int result = 0;
 		
 		result = userService.emailCheck(email);
-		System.out.println("zzz");
-		System.out.println(result);
 		
 		if(result > 0) {
 			chk = "redundancy"; 	// 아이디 중복
