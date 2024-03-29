@@ -12,4 +12,10 @@
 		 where user_id = #{user_id}
 	</update>
 
+	<update id="resign">
+		update user
+		   set leave_status = 'N'
+		 where user_id = #{user_id}
+	</update>
+
 </mapper>

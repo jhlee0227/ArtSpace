@@ -1,0 +1,37 @@
+<!DOCTYPE html>  
+<html layout:decorate="~{layout/default_layout}" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="/static/css/ccc.css">
+ 
+</head>
+<body>
+    <div class="card">
+        <div class="card-header4"><a href="http://127.0.0.1:5500/templates/board/ddd.html#"><h1>게시판</h1></a></div>
+        <div class="card-edit">
+            <div class="myinfo">
+                이름<input type="text" placeholder="이름을 입력하세요." value="">
+                비밀번호<input type="password" placeholder="비밀번호를 입력하세요." value="">
+            </div>
+            <div class="title">
+                제목<input type="text" placeholder="제목을 입력하세요." value="">
+            </div>
+            <div class="msg">
+                <!-- textarea에서는 input의 value와는 다르게 textarea 안에 내용을 작성하며 tab을 없앤다. -->
+                내용<textarea placeholder="내용을 입력하세요.">
+
+                </textarea>
+                <input type="file">
+            </div>
+        </div>
+
+        <div class="btn-edit">
+            <a href="../BOARD/index.html">작성</a>
+        </div>
+    </div>
+
+
+</body>
+</html>

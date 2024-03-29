@@ -26,4 +26,10 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public void resign(Integer user_id) {
+		adminDAO.resign(user_id);
+		
+	}
+
 }

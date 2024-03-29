@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 
 public interface HallService {
 
@@ -23,7 +24,7 @@ public interface HallService {
 
 	public void deleteEqui(Integer id);
 
-	public HallDTO findHallTime(HallDTO hallInfo);
+	public HallTimeDTO findHallTime(Integer id);
 
 
 

@@ -71,24 +71,24 @@
 		  <p class="input-name">예약 가능 시간</p>
 		  <div class="input-time">
 			<label>
-				<input id="morning" type="checkbox" name="morning" th:value="${hall_info.morning}" th:checked="${hall_info.morning == 1}">
+				<input id="morning" type="checkbox" name="hallTime.morning" th:value="${hall_info.hallTime.morning}" th:checked="${hall_info.hallTime.morning == 1}">
 				<span>오전<br/>09:00 ~ 13:00</span>
-				<input class="price_input" type="number" id="m_price" name="m_price"/><span>원</span>
+				<input class="price_input" type="number" id="m_price" name="hallTime.m_price" th:value="${hall_info.hallTime.m_price}" th:disabled="${hall_info.hallTime.morning != 1} ? 'disabled'"/><span>원</span>
 			</label>
 			<label>
-				<input id="after" type="checkbox" name="after" th:value="${hall_info.after}" th:checked="${hall_info.after == 1}" >
+				<input id="after" type="checkbox" name="hallTime.after" th:value="${hall_info.hallTime.after}" th:checked="${hall_info.hallTime.after == 1}" >
 				<span>오후<br/>13:00 ~ 18:00</span>
-				<input class="price_input" type="number" id="a_price" name="a_price"/><span>원</span>
+				<input class="price_input" type="number" id="a_price" name="hallTime.a_price" th:value="${hall_info.hallTime.a_price}" th:disabled="${hall_info.hallTime.after != 1} ? 'disabled'"/><span>원</span>
 			</label>
 			<label>
-				<input id="eve" type="checkbox" name="eve" th:value="${hall_info.eve}" th:checked="${hall_info.eve == 1}">
+				<input id="eve" type="checkbox" name="hallTime.eve" th:value="${hall_info.hallTime.eve}" th:checked="${hall_info.hallTime.eve == 1}">
 				<span>저녁<br/>18:00 ~ 22:00</span>
-				<input class="price_input" type="number" id="e_price" name="e_price"/><span>원</span>
+				<input class="price_input" type="number" id="e_price" name="hallTime.e_price" th:value="${hall_info.hallTime.e_price}" th:disabled="${hall_info.hallTime.eve != 1} ? 'disabled'"/><span>원</span>
 			</label>
 			<label>
-				<input id="full" type="checkbox" name="full" th:value="${hall_info.full}" th:checked="${hall_info.full == 1}">
+				<input id="full" type="checkbox" name="hallTime.full" th:value="${hall_info.hallTime.full}" th:checked="${hall_info.hallTime.full == 1}">
 				<span>하루<br/>09:00 ~ 22:00</span>
-				<input class="price_input" type="number" id="f_price" name="f_price"/><span>원</span>
+				<input class="price_input" type="number" id="f_price" name="hallTime.f_price" th:value="${hall_info.hallTime.f_price}" th:disabled="${hall_info.hallTime.full != 1} ? 'disabled'"/><span>원</span>
 			</label>			
 		  </div>
 		</div>
@@ -116,7 +116,44 @@
     <script src="/js/hall_form.js"></script>
 	
 	<script>	
-
+		$("#morning").click(function(){
+			if(this.checked){
+				$("#m_price").prop("disabled", false);
+				$("#morning").val("1");								
+			} else {
+				$("#m_price").prop("disabled", true);			
+				$("#morning").val("0");
+			}
+		});
+		$("#after").click(function(){
+			if(this.checked){
+				$("#a_price").prop("disabled", false);
+				$("#after").val("1");	
+			} else {
+				$("#a_price").prop("disabled", true);
+				$("#after").val("0");				
+			}
+		});
+		$("#eve").click(function(){
+			if(this.checked){
+				$("#e_price").prop("disabled", false);
+				$("#eve").val("1");	
+			} else {
+				$("#e_price").prop("disabled", true);				
+				$("#eve").val("0");	
+			}
+		});
+		$("#full").click(function(){
+			if(this.checked){
+				$("#f_price").prop("disabled", false);
+				$("#full").val("1");	
+			}else {
+				$("#f_price").prop("disabled", true);				
+				$("#full").val("0");	
+			}
+		});				
+		
+		
 	</script>
 
 	</div>

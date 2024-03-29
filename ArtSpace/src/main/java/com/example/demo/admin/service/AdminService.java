@@ -10,4 +10,6 @@ public interface AdminService {
 
 	public void leave(Integer user_id);
 
+	public void resign(Integer user_id);
+
 }

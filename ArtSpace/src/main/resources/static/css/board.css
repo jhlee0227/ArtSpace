@@ -1,11 +1,12 @@
 @import "reset.css";
 
-body{
-    display: flex;
-    margin: 200px
-
+body {
+    margin-left: 180px;
+    height: 100vh;
+    margin-right: 180px 
 
 }
+
 
 .font {
     margin-bottom: 10px;
