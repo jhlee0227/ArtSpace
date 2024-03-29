@@ -1,6 +1,7 @@
-body{
-    margin: 200px;
-}
+@import "reset.css";
+
+
+
 h2 { font-weight: border; }
 .hr1 { border: 0;
 height: 2px;
