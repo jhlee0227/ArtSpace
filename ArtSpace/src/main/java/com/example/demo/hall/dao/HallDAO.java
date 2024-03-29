@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.HallTimeDTO;
 
 @Repository
 public class HallDAO {
@@ -19,7 +18,10 @@ public class HallDAO {
 	
 	public void insert(HallDTO hallDTO) {
 		sqlSession.insert("hall.insert", hallDTO);
-		sqlSession.insert("hall.insert_time", hallDTO.getHallTime());
+	}
+	
+	public void insertHallTime(Map<String, Integer> hallTimes) {
+		sqlSession.insert("hall.insert_time", hallTimes);		
 	}
 
 	public HallDTO findById(Integer id) {
@@ -32,7 +34,10 @@ public class HallDAO {
 
 	public void update(HallDTO hallDTO) {
 		sqlSession.update("hall.update_info", hallDTO);
-		sqlSession.update("hall.update_hall_time",  hallDTO.getHallTime());	
+	}
+	
+	public void updateHallTime(Map<String, Integer> hallTimes) {
+		sqlSession.update("hall.update_hall_time",  hallTimes);
 	}
 
 	public List<HallDTO> getHallList(String sort) {
@@ -53,11 +58,10 @@ public class HallDAO {
 	
 	public void insertEquiList(EquipmentDTO equiDTO) {
 		sqlSession.insert("hall.equi_insert", equiDTO);
-		
 	}
 
-	public HallTimeDTO findHallTime(Integer id) {
-		return sqlSession.selectOne("hall.getTime", id);
+	public Integer checkTimeType(Map<String, Integer> time) {
+		return sqlSession.selectOne("hall.checkTimeType", time);
 	}
 
 
