@@ -19,6 +19,7 @@ import com.example.demo.SessionUtil;
 import com.example.demo.UUIDgeneration;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 import com.example.demo.hall.service.HallService;
 
 import jakarta.servlet.http.HttpSession;
@@ -53,6 +54,7 @@ public class HallController {
 		}
 		
 		HallDTO dto = new HallDTO();
+		dto.setHallTime(new HallTimeDTO());
 		model.addAttribute("hall_info", dto);		
 		model.addAttribute("action", "/hall/form/insert");
 		return "html/hall/hall_form";
@@ -71,7 +73,6 @@ public class HallController {
 		}
 
 		HallDTO hallInfo = hallService.findById(id);
-		hallInfo = hallService.findHallTime(hallInfo);
 		
 		model.addAttribute("hall_info", hallInfo);
 		model.addAttribute("action", "/hall/form/update/" + id);

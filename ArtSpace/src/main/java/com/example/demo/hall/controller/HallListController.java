@@ -19,7 +19,6 @@ public class HallListController {
 	@GetMapping("/list")
 	public String showHallList(Model model) {
 		List<HallDTO> hallList = hallListService.getList("create_date");
-		
 		model.addAttribute("hallList", hallList);
 		return "html/hall/hall_list";	
 	}

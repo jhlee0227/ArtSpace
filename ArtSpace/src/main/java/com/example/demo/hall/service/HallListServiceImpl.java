@@ -20,14 +20,10 @@ public class HallListServiceImpl implements HallListService{
 		List<HallDTO> hallList = hallDAO.getHallList(sort);
 		
 		for (HallDTO hallDTO : hallList) {
-			List<Map<String, Integer>> time = hallDAO.findHallTime(hallDTO.getHall_id());
-			hallDTO.setMorning(time.get(0).get("morning"));			
-			hallDTO.setAfter(time.get(0).get("after"));
-			hallDTO.setEve(time.get(0).get("eve"));
-			hallDTO.setFull(time.get(0).get("full"));
-		}
-		
+			hallDTO.setHallTime(hallDAO.findHallTime(hallDTO.getHall_id()));
+		}	
 		return hallList;
 	}
+	
 
 }
