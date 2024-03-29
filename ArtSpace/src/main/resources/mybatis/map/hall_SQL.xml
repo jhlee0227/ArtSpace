@@ -4,9 +4,9 @@
 
 	<insert id="insert">
 		insert into hall(hall_id, hall_name, zip_code, address1, address2, hall_description, warning,
-						create_date, area, width, length, height, maximum)
+						create_date, area, width, length, height, maximum, user_id)
 		values(#{hall_id}, #{hall_name}, #{zip_code}, #{address1}, #{address2}, #{hall_description}, #{warning},
-					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum})
+					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum}, #{user_id})
 	</insert>
 
 	<insert id="insert_time">

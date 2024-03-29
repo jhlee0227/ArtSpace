@@ -20,4 +20,10 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getAllUsers();
 	}
 
+	@Override
+	public void leave(Integer user_id) {
+		adminDAO.leave(user_id);
+		
+	}
+
 }
