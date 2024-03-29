@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/board.css">
+ 
+</head>
+<body>
+  
+    <div id="board_write">
+        <div class="font">
+        <h2>글을 작성하는 공간입니다.</h2>
+    </div>
+            <div id="write_area">
+                <form enctype="multipart/form-data" action="write_ok.php?board_id=<?echo $board_id;?>" method="post">
+                    <div id="in_title">
+                        <textarea name="title" id="utitle"  placeholder="제목" maxlength="100" rows="1" cols="30" required></textarea>
+                    </div>
+ 
+                    <div class="wi_line"></div>
+                    <div id="in_content">
+                        <textarea name="content" id="ucontent" rows="20" cols="70" required></textarea>
+                    </div>
+ 
+                      <input type="file" name="SelectFile" />
+ 
+ 
+                    <div class="bt_se">
+                        <button type="submit">글 작성</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

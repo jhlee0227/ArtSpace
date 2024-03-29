@@ -1,0 +1,24 @@
+@import "reset.css";
+
+body{
+    display: flex;
+    margin: 200px
+
+
+}
+
+.font {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+#in_title {
+margin-bottom: 10px;
+}
+
+#in_content {
+
+}
+
+.bt_se {
+    margin-top: 10px;
+}
