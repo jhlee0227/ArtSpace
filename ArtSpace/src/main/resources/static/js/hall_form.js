@@ -145,11 +145,46 @@ function execDaumPostcode(){
 			return;
 		}
 		
+		
+		// 시간선택
 		if(!$("#morning").is(':checked') && !$("#after").is(':checked') && !$("#eve").is(':checked') && !$("#full").is(':checked') ){
 			$("#morning").focus();
 			alert("시간은 최소 1개는 선택해야 합니다.");
 			return;				
 		}		
+		
+		// 선택했는데 값을 안쓰면 빠꾸
+		if($("#morning").is(':checked') ){
+			value = $('#m_price').val().trim();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#m_price").focus();
+				return;		
+			}		
+		}
+		if($("#after").is(':checked') ){
+			value = $('#a_price').val().trim();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#a_price").focus();
+				return;		
+			}		
+		}
+		if($("#eve").is(':checked') ){
+			value = $('#e_price').val().trim();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#e_price").focus();
+				return;		
+			}		
+		}
+		if($("#full").is(':checked') ){
+			value = $('#f_price').val().trim();
+			if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+				$("#f_price").focus();
+				return;		
+			}		
+		}
+		
+		
+		
 									
 		value = $('#hall_description').val().trim();
 		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){

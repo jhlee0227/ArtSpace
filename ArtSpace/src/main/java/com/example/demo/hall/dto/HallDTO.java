@@ -25,14 +25,8 @@ public class HallDTO {
 	private Integer user_id;		// 유저ID FK
 	
 	private List<EquipmentDTO> equiList;
+	private HallTimeDTO hallTime;
 
-	// 예약 가능 시간 오전 오후 저녁 종일
-	private Integer morning;
-	private Integer after;
-	private Integer eve;
-	private Integer full;
-	
-	
 	
 	public Integer getHall_id() {
 		return hall_id;
@@ -130,30 +124,13 @@ public class HallDTO {
 	public void setEquiList(List<EquipmentDTO> equiList) {
 		this.equiList = equiList;
 	}
-	public Integer getMorning() {
-		return morning;
+	public HallTimeDTO getHallTime() {
+		return hallTime;
 	}
-	public void setMorning(Integer morning) {
-		this.morning = morning;
+	public void setHallTime(HallTimeDTO hallTime) {
+		this.hallTime = hallTime;
 	}
-	public Integer getAfter() {
-		return after;
-	}
-	public void setAfter(Integer after) {
-		this.after = after;
-	}
-	public Integer getEve() {
-		return eve;
-	}
-	public void setEve(Integer eve) {
-		this.eve = eve;
-	}
-	public Integer getFull() {
-		return full;
-	}
-	public void setFull(Integer full) {
-		this.full = full;
-	}
+
 
 	
 

@@ -10,6 +10,7 @@ import com.example.demo.UUIDgeneration;
 import com.example.demo.hall.dao.HallDAO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 
 
 @Service
@@ -21,89 +22,33 @@ public class HallServiceImpl implements HallService{
 	// 공연장 기본 정보 insert
 	@Override
 	public void insert(HallDTO hallDTO) {
-		
-		if(hallDTO.getMorning() == null) {
-			hallDTO.setMorning(0);
-		}
-		if(hallDTO.getAfter() == null) {
-			hallDTO.setAfter(0);
-		}
-		if(hallDTO.getEve() == null) {
-			hallDTO.setEve(0);
-		}		
-		if(hallDTO.getFull() == null) {
-			hallDTO.setFull(0);
-		}
-		
+		hallDTO.getHallTime().setHall_id(hallDTO.getHall_id());
 		hallDAO.insert(hallDTO);
 	}
 
 	// 공연장 기본정보 update
 	@Override
-	public void update(HallDTO hallDTO) {
-		if(hallDTO.getMorning() == null) {
-			hallDTO.setMorning(0);
-		} else {
-			hallDTO.setMorning(1);			
-		}
-		
-		if(hallDTO.getAfter() == null) {
-			hallDTO.setAfter(0);
-		} else {
-			hallDTO.setAfter(1);			
-		}
-		
-		if(hallDTO.getEve() == null) {
-			hallDTO.setEve(0);
-		}else {
-			hallDTO.setEve(1);			
-		}
-		
-		if(hallDTO.getFull() == null) {
-			hallDTO.setFull(0);
-		} else {
-			hallDTO.setFull(1);			
-		}
-
+	public void update(HallDTO hallDTO) {	
+		hallDTO.getHallTime().setHall_id(hallDTO.getHall_id());
 		hallDAO.update(hallDTO);
 	}
 
 	// id로 해당 공연장 찾기
 	@Override
 	public HallDTO findById(Integer id) {
-		return hallDAO.findById(id);
+		HallDTO hall = hallDAO.findById(id);
+		
+		if(hall != null) {
+			hall.setHallTime(findHallTime(hall.getHall_id()));
+		}
+		
+		return hall;
 	}
 	
 	// 해당 공연장의 예약가능 시간 찾기
 	@Override
-	public HallDTO findHallTime(HallDTO hallDTO) {
-		List<Map<String, Integer>> time = hallDAO.findHallTime(hallDTO.getHall_id());
-
-		if(time.get(0).get("morning") == null) {
-			hallDTO.setMorning(1);				
-		} else {
-			hallDTO.setMorning(time.get(0).get("morning"));			
-		}
-
-		if(time.get(0).get("after") == null) {
-			hallDTO.setAfter(1);				
-		} else {
-			hallDTO.setAfter(time.get(0).get("after"));
-		}
-
-		if(time.get(0).get("eve") == null) {
-			hallDTO.setEve(1);
-		} else {
-			hallDTO.setEve(time.get(0).get("eve"));
-		}
-
-		if(time.get(0).get("full") == null) {
-			hallDTO.setFull(1);
-		} else {
-			hallDTO.setFull(time.get(0).get("full"));
-		}
-	
-		return hallDTO;
+	public HallTimeDTO findHallTime(Integer id) {	
+		return hallDAO.findHallTime(id);
 	}
 	
 
