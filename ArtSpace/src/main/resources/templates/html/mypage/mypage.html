@@ -60,7 +60,6 @@
 					</div>
 
 					<div class="list">
-						<!-- 버튼마다 수정 기능 넣어야.. -->
 						<div>
 							<div class="list-name">이름</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
@@ -123,11 +122,11 @@
 			function pwCheck() {
 				let pw = document.getElementById('pw').value;
 				let pwChk = document.getElementById('pwChk').value;
-				// 하나 이상의 대문자, 소문자, 숫자 포함 4~15자
-				const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#.~_-]{4,15}$/;
+				// 영문과 숫자를 포함한 8~16자
+				const regExp = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d]{8,16}$/;
 
 				if (!pw.match(regExp)) {
-					document.getElementById('check').innerHTML = '대소문자, 숫자포함 4~15자를 입력하세요';
+					document.getElementById('check').innerHTML = '영문과 숫자를 포함한 8~16자를 입력하세요';
 					document.getElementById('check').style.color = 'red';
 					return false;
 				} else {

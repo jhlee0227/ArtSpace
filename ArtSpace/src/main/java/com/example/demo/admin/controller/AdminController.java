@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.admin.service.AdminService;
 import com.example.demo.user.dto.UserDTO;
@@ -18,12 +20,7 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 	
-	// 기본 관리자 페이지
-//	@GetMapping("")
-//	public String admin() {
-//		return "html/admin";
-//	}
-	
+	// 회원관리 : 유저 정보 불러오기
 	@GetMapping("")
 	public String admin(Model model) {
 		List<UserDTO> userList = adminService.getAllUsers();
@@ -31,19 +28,33 @@ public class AdminController {
 		return "html/admin/admin";
 	}
 	
+	// 회원관리 : 선택한 유저 탈퇴시키기
+	@PostMapping("/leave")
+	public String leave(@RequestParam("check1") List<Integer> selectUser) {
+		for (Integer user_id : selectUser) {
+			adminService.leave(user_id);
+		}
+		return "redirect:/admin";
+	}
+	
+	// 회원관리 : 선택한 유저 탈퇴 해제
+//	@PostMapping("")
+	
+	
+	// 임시 - html 연결만
 	@GetMapping("/hallinfo")
 	public String hallinfo() {
-		return "html/hall_info";
+		return "html/admin/hall_info";
 	}
 	
 	@GetMapping("/notice")
 	public String notice() {
-		return "html/admin_notice";
+		return "html/admin/admin_notice";
 	}
 	
 	@GetMapping("/review")
 	public String review() {
-		return "html/admin_review";
+		return "html/admin/admin_review";
 	}
 	
 }

@@ -19,4 +19,9 @@ public class AdminDAO {
 		return sqlSession.selectList("admin.getAllUsers");
 	}
 
+	public void leave(Integer user_id) {
+		
+		sqlSession.update("admin.leave", user_id);
+	}
+
 }

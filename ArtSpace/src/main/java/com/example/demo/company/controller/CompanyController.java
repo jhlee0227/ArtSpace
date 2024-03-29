@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("company")
 public class CompanyController {
 
+	
+	
+	// 임시로 html 연결만
 	@GetMapping("")
 	public String company() {
 		return "html/company_page";

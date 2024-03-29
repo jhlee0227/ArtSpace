@@ -8,4 +8,6 @@ public interface AdminService {
 
 	public List<UserDTO> getAllUsers();
 
+	public void leave(Integer user_id);
+
 }

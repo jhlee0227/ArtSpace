@@ -2,157 +2,164 @@
 <html layout:decorate="~{/layout/default_layout}" lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>관리자</title>
-  <link rel="stylesheet" href="/css/admin.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>관리자</title>
+	<link rel="stylesheet" href="/css/admin.css">
 </head>
 
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		    <!-- 좌측 메뉴 -->
-		    <div class="left">
-		      <div class="left-main">
-		        <h2>관리자</h2>
-		        <i class="fas fa-user-cog fa-4x"></i>
-		      </div>
-		      <div class="left-menu">
-		        <ul>
-		          <a href="#" target="_self">
-		            <li class="open">회원 관리</li>
-		          </a>
-		          <a th:href="@{/admin/hallinfo}" target="_self">
-		            <li>공연장 정보</li>
-		          </a>
-		          <a th:href="@{/admin/notice}" target="_self">
-		            <li>공지사항</li>
-		          </a>
-		          <a th:href="@{/admin/review}" target="_self">
-		            <li>리뷰 관리</li>
-		          </a>
-		          <a href="#" target="_self">
-		            <li>통계</li>
-		          </a>
-		        </ul>
-		      </div>
-		    </div>
-		    <!-- 내용 -->
-		    <div class="content">
-		      <h2 class="content-main">회원관리</h2>
-		      <div class="tabs">
-		        <input id="all" type="radio" name="tab_item" checked>
-		        <label class="tab_item" for="all">전체 회원</label>
-		        <input id="leave" type="radio" name="tab_item">
-		        <label class="tab_item" for="leave">탈퇴 회원</label>
-		        <div class="tab_content" id="all_content">
-		          <!-- 전체 회원 Tab -->
-		          <div class="search">
-		            <form name="search">
-		              <select class="select" name="type" id="">
-		                <option value="id">아이디</option>
-		                <option value="nickname">닉네임</option>
-		              </select>
-		              <input type="text">
-		              <input type="button" value="검색">
-		            </form>
-		          </div>
-		          <div class="main">
-		            <table class="table">
-		              <thead>
-		                <tr>
-		                  <th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll" onclick="selectAll1(this)">
-		                  </th>
-		                  <th>아이디</th>
-		                  <th>닉네임</th>
-		                  <th>유저타입</th>
-		                  <th class="leave">탈퇴상태</th>
-		                </tr>
-		              </thead>
-		              <tbody>
-		                <tr><!-- th:each -->
-		                  <td><input type="checkbox" class="chkbox" name="check1" onclick="checkSelectAll1()"></td>
-		                  <!-- th:text -->
-		                  <td>test1</td>
-		                  <td>테스트</td>
-		                  <td>일반</td>
-		                  <td>탈퇴x</td>
-		                </tr>
-		                <tr>
-		                  <td><input type="checkbox" class="chkbox" name="check1" onclick="checkSelectAll1()"></td>
-		                  <td>test2</td>
-		                  <td>테스트2</td>
-		                  <td>법인</td>
-		                  <td>탈퇴o</td>
-		                </tr>
-		              </tbody>
-		            </table>
-		          </div>
-		          <div class="button">
-		            <form name="leave">
-		              <input class="leave-btn" type="button" value="탈퇴">
-		            </form>
-		          </div>
-		        </div>
-		        <div class="tab_content" id="leave_content">
-		          <!-- 탈퇴 상태 -->
-		          <div class="search">
-		            <form name="search">
-		              <select class="select" name="type" id="">
-		                <option value="id">아이디</option>
-		                <option value="group">닉네임</option>
-		              </select>
-		              <input type="text">
-		              <input type="button" value="검색">
-		            </form>
-		          </div>
-		          <div class="main">
-		            <table class="table">
-		              <thead>
-		                <tr>
-		                  <th><input type="checkbox" class="chkbox" name="selectAll2" value="selectAll" onclick="selectAll2(this)">
-		                  </th>
-		                  <th>아이디</th>
-		                  <th>닉네임</th>
-		                  <th>유저타입</th>
-		                  <th class="leave">탈퇴상태</th>
-		                </tr>
-		              </thead>
-		              <tbody>
-		                <tr><!-- th:each -->
-		                  <td><input type="checkbox" class="chkbox" name="check2" onclick="checkSelectAll2()"></td>
-		                  <!-- th:text -->
-		                  <td>test1</td>
-		                  <td>테스트</td>
-		                  <td>일반</td>
-		                  <td>탈퇴o</td>
-		                </tr>
-		                <tr>
-		                  <td><input type="checkbox" class="chkbox" name="check2" onclick="checkSelectAll2()"></td>
-		                  <td>test2</td>
-		                  <td>테스트2</td>
-		                  <td>법인</td>
-		                  <td>탈퇴o</td>
-		                </tr>
-		              </tbody>
-		            </table>
-		          </div>
-		          <div class="button">
-		            <form name="leave">
-		              <input class="leave-btn" type="button" value="탈퇴 해제">
-		            </form>
-		          </div>
-		        </div>
-		      </div>
-		    </div>    
-		  </section>
-	
-  
-  
+			<!-- 좌측 메뉴 -->
+			<div class="left">
+				<div class="left-main">
+					<h2>관리자</h2>
+					<i class="fas fa-user-cog fa-4x"></i>
+				</div>
+				<div class="left-menu">
+					<ul>
+						<a href="#" target="_self">
+							<li class="open">회원 관리</li>
+						</a>
+						<a th:href="@{/admin/hallinfo}" target="_self">
+							<li>공연장 정보</li>
+						</a>
+						<a th:href="@{/admin/notice}" target="_self">
+							<li>공지사항</li>
+						</a>
+						<a th:href="@{/admin/review}" target="_self">
+							<li>리뷰 관리</li>
+						</a>
+						<a href="#" target="_self">
+							<li>통계</li>
+						</a>
+					</ul>
+				</div>
+			</div>
+			<!-- 내용 -->
+			<div class="content">
+				<h2 class="content-main">회원관리</h2>
+				<div class="tabs">
+					<input id="all" type="radio" name="tab_item" checked>
+					<label class="tab_item" for="all">전체 회원</label>
+					<input id="leave" type="radio" name="tab_item">
+					<label class="tab_item" for="leave">탈퇴 회원</label>
+					<div class="tab_content" id="all_content">
+						<!-- 전체 회원 Tab -->
+						<div class="search">
+							<form name="search">
+								<select class="select" name="type" id="">
+									<option value="id">아이디</option>
+									<option value="nickname">닉네임</option>
+								</select>
+								<input type="text">
+								<input type="button" value="검색">
+							</form>
+						</div>
+						<div class="main">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll"
+												onclick="selectAll1(this)">
+										</th>
+										<th>아이디</th>
+										<th>닉네임</th>
+										<th>유저타입</th>
+										<th class="leave">탈퇴상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<form name="leave" th:action="@{/admin/leave}" method="post">
+										<tr th:each="user : ${user_list}"><!-- th:each -->
+											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
+													name="check1" onclick="checkSelectAll1()"></td>
+											<!-- th:text -->
+											<td th:text="${user.email}"></td>
+											<td th:text="${user.nickname}"></td>
+											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
+											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
+											<td th:if="${#strings.equals(user.authority, 'SC')}" th:text="법인"></td>
+											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
+											<td th:if="${#strings.equals(user.leave_status, 'N')}" th:text="탈퇴X"></td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="button">
+							<input class="leave-btn" type="submit" value="탈퇴" onclick="return checkMsg()">
+						</div>
+						</form>
+					</div>
+					<div class="tab_content" id="leave_content">
+						<!-- 탈퇴 상태 -->
+						<div class="search">
+							<form name="search">
+								<select class="select" name="type" id="">
+									<option value="id">아이디</option>
+									<option value="nickname">닉네임</option>
+								</select>
+								<input type="text">
+								<input type="button" value="검색">
+							</form>
+						</div>
+						<div class="main">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><input type="checkbox" class="chkbox" name="selectAll2" value="selectAll"
+												onclick="selectAll2(this)">
+										</th>
+										<th>아이디</th>
+										<th>닉네임</th>
+										<th>유저타입</th>
+										<th class="leave">탈퇴상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<form name="leave2">
+										<!-- th:each -->
+										<tr th:each="user : ${user_list}" th:if="${#strings.equals(user.leave_status, 'Y')}">
+											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
+													name="check2" onclick="checkSelectAll2()"></td>
+											<!-- th:text -->
+											<td th:text="${user.email}"></td>
+											<td th:text="${user.nickname}"></td>
+											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
+											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
+											<td th:if="${#strings.equals(user.authority, 'SC')}" th:text="법인"></td>
+											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="button">
+							<input class="leave-btn" type="submit" value="탈퇴 해제">
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
 
-  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
-  <script src="/js/admin.js"></script>
-  </div>
+
+
+
+		<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+		<script src="/js/admin.js"></script>
+		<script>
+			function checkMsg() {
+				var result = confirm("선택된 회원을 탈퇴시키시겠습니까?");
+				if (result) {
+					alert("회원 탈퇴가 완료되었습니다.");
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
+	</div>
 </body>
 
 </html>
