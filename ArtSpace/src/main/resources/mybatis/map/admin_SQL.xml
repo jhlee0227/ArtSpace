@@ -6,4 +6,10 @@
 		select * from user
 	</select>
 
+	<update id="leave">
+		update user
+		   set leave_status = 'Y'
+		 where user_id = #{user_id}
+	</update>
+
 </mapper>
