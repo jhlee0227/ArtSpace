@@ -1,6 +1,11 @@
 @import "reset.css";
 
+body {
+    margin-left: 180px;
+    height: 100vh;
+    margin-right: 180px 
 
+}
 
 h2 { font-weight: border; }
 .hr1 { border: 0;
@@ -39,10 +44,11 @@ background:  #d3d3d3;}
   font-weight: 900;
   color: white;
   text-align: center;
-  background-color: #FFCA63;;
+  background-color: #FFCA63;
   border: solid 2px white;
   border-radius: 5px;
   }
+  
 
             .left {text-align: left;}
             .right {  float: right;}
