@@ -46,7 +46,7 @@ public class MypageController {
 	}
 
 	// 패스워드 수정
-	@PostMapping("update/pw")
+	@PostMapping("/update/pw")
 	public String updatePw(@ModelAttribute UserDTO dto) {
 
 		Integer userId = (Integer) session.getAttribute("user_id");
