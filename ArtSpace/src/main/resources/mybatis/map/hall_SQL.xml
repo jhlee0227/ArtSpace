@@ -10,8 +10,8 @@
 	</insert>
 
 	<insert id="insert_time">
-		insert into hall_time(morning, m_price, after, a_price, eve, e_price, full, f_price, hall_id)
-		values(#{morning}, #{m_price}, #{after}, #{a_price}, #{eve}, #{e_price}, #{full}, #{f_price}, #{hall_id})
+		insert into hall_time(type, price, hall_id)
+		values(#{type}, #{price}, #{hall_id})
 	</insert>
 
 	
@@ -24,7 +24,6 @@
 		delete from hall
 		where hall_id = #{id}
 	</delete>
-	
 	
 	<insert id="equi_insert">
 		insert into equipment(hall_id, equip_type, equip_name, equip_num, equip_price)
@@ -64,15 +63,9 @@
 	
 	<update id="update_hall_time">
 	   UPDATE hall_time
-	      SET morning = #{morning},
-		      m_price = #{m_price},
-	      	  after = #{after},
-	      	  a_price = #{a_price},
-	          eve = #{eve},
-	          e_price = #{e_price},
-	          full = #{full},
-	          f_price = #{f_price}
-	       WHERE hall_id = #{hall_id}	
+	      SET type = #{type},
+		      price = #{price}
+	       WHERE hall_id = #{hall_id} and type = {#type}
 	</update>
 
 	<select id="getHallList" resultType="com.example.demo.hall.dto.HallDTO">
@@ -91,6 +84,9 @@
 		from hall_time
 		where hall_id = #{id}
 	</select>
-	
+
+	<select id="checkTimeType" resultType="int">
+		select hall_time (select * from hall_time where type=#{type} limit 1) as success
+	</select>	
 
 </mapper>

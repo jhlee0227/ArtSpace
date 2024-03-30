@@ -2,7 +2,10 @@ package com.example.demo.hall.controller;
 
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +22,6 @@ import com.example.demo.SessionUtil;
 import com.example.demo.UUIDgeneration;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.HallTimeDTO;
 import com.example.demo.hall.service.HallService;
 
 import jakarta.servlet.http.HttpSession;
@@ -36,8 +38,11 @@ public class HallController {
 	private Integer hall_id;
 	
 	SessionUtil user_session = new SessionUtil();
+	
 	@Autowired
 	HttpSession session;
+	
+	
 	// 기본 공연장 정보 입력 화면 띄우기
 	@GetMapping("form")
 	public String showForm(Model model) {
@@ -54,7 +59,15 @@ public class HallController {
 		}
 		
 		HallDTO dto = new HallDTO();
-		dto.setHallTime(new HallTimeDTO());
+		List<Map<String, Integer>> timeList = new LinkedList<>();
+		
+		// 맵 수정하기
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		//map.put("type", "morning");
+		
+		dto.setHallTimeList(timeList);
+		
+		
 		model.addAttribute("hall_info", dto);		
 		model.addAttribute("action", "/hall/form/insert");
 		return "html/hall/hall_form";
