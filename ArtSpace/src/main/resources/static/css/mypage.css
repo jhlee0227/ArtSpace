@@ -243,16 +243,17 @@ body {
   border-bottom: 2px solid var(--main-color);
 }
 
+.con .content .list>div span {
+	margin-left: auto;
+	font-size: 1.2rem;
+}
+
 .con .content .list .last {
   border-bottom: 2px solid var(--light_gray);
 }
 
 .con .content .button {
   text-align: right;
-}
-
-.con .content .button span {
-  font-size: 1.2rem;
 }
 
 .con .content .button .leave-btn {

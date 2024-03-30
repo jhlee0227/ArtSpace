@@ -2,6 +2,7 @@ package com.example.demo.hall.dto;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.validation.constraints.NotEmpty;
 
@@ -25,7 +26,7 @@ public class HallDTO {
 	private Integer user_id;		// 유저ID FK
 	
 	private List<EquipmentDTO> equiList;
-	private HallTimeDTO hallTime;
+	private List<Map<String, Integer>> hallTimeMap;
 
 	
 	public Integer getHall_id() {
@@ -124,12 +125,13 @@ public class HallDTO {
 	public void setEquiList(List<EquipmentDTO> equiList) {
 		this.equiList = equiList;
 	}
-	public HallTimeDTO getHallTime() {
-		return hallTime;
+	public List<Map<String, Integer>> getHallTimeList() {
+		return hallTimeMap;
 	}
-	public void setHallTime(HallTimeDTO hallTime) {
-		this.hallTime = hallTime;
+	public void setHallTimeList(List<Map<String, Integer>> hallTimeMap) {
+		this.hallTimeMap = hallTimeMap;
 	}
+	
 
 
 	
