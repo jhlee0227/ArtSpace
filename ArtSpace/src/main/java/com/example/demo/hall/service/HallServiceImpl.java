@@ -39,21 +39,56 @@ public class HallServiceImpl implements HallService{
 
 
 	@Override
-	public void setHallTimeList(HallDTO hallInfo) {
-		List<HallTimeDTO> timeList = hallDAO.getHallTimeList(hallInfo.getHall_id());
-		
-		
+	public List<HallTimeDTO> setHallTimeList(HallDTO hallInfo) {
+		List<HallTimeDTO> timeList = new LinkedList<>();
+		List<HallTimeDTO> hallTimes = hallDAO.getHallTimeList(hallInfo.getHall_id());
+		String[] timeArr = {"오전", "오후", "저녁", "하루"};
+
+		for (int i = 0; i < timeArr.length; i++) {
+			HallTimeDTO time = new HallTimeDTO();
+			time.setType(timeArr[i]);
+			time.setPrice(0);
+			time.setIscheck(false);
+
+			for (int j = 0; j < hallTimes.size(); j++) {
+				if(time.getType().equals(hallTimes.get(j).getType())) {
+					time.setPrice(hallTimes.get(j).getPrice());					
+					time.setIscheck(true);
+					break;
+				}
+			}
+			timeList.add(time);
+		}
+		return timeList;
 	}
 	
 	// 공연장 기본 정보 insert
 	@Override
 	public void insert(HallDTO hallDTO) {
 		hallDAO.insert(hallDTO);
+
+		for (int i = 0; i < hallDTO.getHallTimeList().size(); i++) {
+			if(hallDTO.getHallTimeList().get(i).getType() != null) {
+				hallDTO.getHallTimeList().get(i).setHall_id(hallDTO.getHall_id());
+				hallDTO.getHallTimeList().get(i).setIscheck(true);
+				hallDAO.insertHallTime(hallDTO.getHallTimeList().get(i));				
+			}
+		}
+		
 	}
 
 	// 공연장 기본정보 update
 	@Override
-	public void update(HallDTO hallDTO) {				
+	public void update(HallDTO hallDTO) {	
+		hallDAO.deleteAllTime(hallDTO.getHall_id());
+		
+		for (int i = 0; i < hallDTO.getHallTimeList().size(); i++) {
+			if(hallDTO.getHallTimeList().get(i).getType() != null) {
+				hallDTO.getHallTimeList().get(i).setHall_id(hallDTO.getHall_id());
+				hallDTO.getHallTimeList().get(i).setIscheck(true);
+				hallDAO.insertHallTime(hallDTO.getHallTimeList().get(i));				
+			}
+		}
 		hallDAO.update(hallDTO);
 	}
 
