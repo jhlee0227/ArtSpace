@@ -1,19 +1,17 @@
-package com.example.demo.hall.dao;
+package com.example.demo.admin.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.hall.dto.HallDTO;
-
 @Repository
-public class DetailDAO {
-	
+public class AdminLoginDAO {
+
 	@Autowired
 	SqlSessionTemplate sqlSession;
-	
-	public HallDTO findById(Integer id) {
-		return sqlSession.selectOne("detailPage.findById", id);
+
+	public int emailCheck(String email) {
+		return sqlSession.selectOne("adminLogin.email_check", email);
 	}
 
 }

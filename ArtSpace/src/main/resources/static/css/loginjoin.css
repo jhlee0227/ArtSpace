@@ -104,7 +104,9 @@ color: white;
 }
 /* container end */
 
-
+.ttt span {
+	cursor: pointer;
+}
 
 .btn1 {
   color: #fff;

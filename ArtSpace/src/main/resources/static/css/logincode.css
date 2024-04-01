@@ -169,6 +169,10 @@ body {
   
 }
 
+.ttt span {
+	cursor: pointer;
+}
+
 .ttt{
   text-align: right; 
 position: absolute; 

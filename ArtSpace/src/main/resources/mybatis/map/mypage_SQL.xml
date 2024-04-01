@@ -49,7 +49,6 @@
 		where user_id = #{user_id}
 	</update>
 
-
 	<select id="getLike" resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_name, h.address1, h.address2
 		from hall h
@@ -58,9 +57,16 @@
 		where l.status = 'Y' and u.user_id = #{id}
 	</select>
 	
+	<select id="getLikeInfo" resultType="com.example.demo.mypage.dto.LikeDTO">
+		select *
+		from like_hall
+		where user_id = #{id}
+	</select>
+	
 	<update id="likeDelete">
-		update like
+		update like_hall
 		set status = 'N'
-		where like_id = #{like_id}
-	</update>
+		where user_id = #{user_id} and hall_id = #{hall_id}
+	</update> 
+	
 </mapper>

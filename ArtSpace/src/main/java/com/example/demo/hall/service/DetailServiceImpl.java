@@ -13,7 +13,7 @@ public class DetailServiceImpl implements DetailService {
 	DetailDAO detailDAO;
 
 	@Override
-	public HallDTO findByID(Integer id) {
+	public HallDTO findById(Integer id) {
 		
 		return detailDAO.findById(id);
 	}

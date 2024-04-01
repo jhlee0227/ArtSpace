@@ -14,10 +14,10 @@ public class BoardDao {
 	SqlSessionTemplate sqlSession;
 	
 	public void insert(BoardDto boardDto) {
-		sqlSession.insert("user.insert", boardDto);
+		sqlSession.insert("board.insertboard", boardDto);
 	}
 
-	// 로그인 후 이름 뱉어내기
+	
 	public BoardDto login(BoardDto boardDto) {
 		return sqlSession.selectOne("user.login", boardDto);
 	}
