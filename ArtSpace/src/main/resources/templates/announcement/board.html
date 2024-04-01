@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+<html layout:decorate="~{layout/default_layout}" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="/static/css/board.css">
+    
+</head>
+<body>
+    <!-- 1. 게시판의 화면은 class="card"로 적용 -->
+    <div class="card">
+
+        <!-- 1-1. 게시판 이름은 class="card-header"로  <div>로 구역 설정 -->
+        <div class="card-header"><h1>게시판</h1></div>
+
+        <!-- 1-2. 내용은 class="card-body"로 <div>로 구역 설정 -->
+        <div class="card-body">
+
+            <!-- 검색어 입력하기 -->
+            <input type="search" placeholder="검색어를 입력하세요.">
+            	<a class="search" href="#">검색</a>
+
+            <!-- 내용을 HTML로 작성하기 -->
+            <div class="content-box">
+                <div class="check"><input type="checkbox" name="" id=""></div>
+                <div class="title"><a href="view.html">게시판게시판게시판게시팔.</a></div>
+                <div class="delete"><button>X</button></div>
+            </div>
+            <div class="content-list">
+                <div class="check"><input type="checkbox" name="" id=""></div>
+                <div class="title"><a href="view.html">어쩔티비 저쩔티비 안물안궁.</a></div>
+                <div class="delete"><button>X</button></div>
+            </div>
+            <div class="content-box">
+                <div class="check"><input type="checkbox" name="" id=""></div>
+                <div class="title"><a href="view.html">살빼야한다 유산소 운동해야집!.</a></div>
+                <div class="delete"><button>X</button></div>
+            </div>
+            <div class="content-box">
+                <div class="check"><input type="checkbox" name="" id=""></div>
+                <div class="title"><a href="view.html">김민서는 천재다.</a></div>
+                <div class="delete"><button>X</button></div>
+            </div>
+
+            <ul class="number">
+                <li><a href="#">&lt;</a></li>
+                <li><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">&gt;</a></li>
+            </ul>
+        </div>
+
+        
+        <div class="btn">
+            <a href="write.html">글쓰기</a>
+        </div>
+    </div>
+</body>
+</html>
