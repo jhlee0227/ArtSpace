@@ -20,6 +20,6 @@ public interface MypageService {
 
 	public void leave(UserDTO dto);
 
-//	public List<LikeDTO> getAllLike();
+	public List<LikeDTO> getAllLike();
 
 }
