@@ -23,6 +23,10 @@ public interface HallService {
 
 	public void deleteEqui(Integer id);
 
+	public HallDTO newHallform();
+
+	public void setHallTimeList(HallDTO hallInfo);
+
 
 
 

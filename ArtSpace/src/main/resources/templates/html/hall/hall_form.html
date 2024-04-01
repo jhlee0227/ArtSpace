@@ -66,17 +66,20 @@
           <input type="number" name="maximum" id="maximum" th:value="${hall_info.maximum}"><span>명</span>
         </label>
         
-
 		<div class="input-time-box">
 		  <p class="input-name">예약 가능 시간</p>
 		  <div class="input-time">
+			
 			<label>
-				<input id="morning" type="checkbox" name="morning" value="오전" th:checked="${hall_info.hallTime.morning == 1}">
+				<input id="morning" type="checkbox" name="hallTimeList.get(0).type" value="오전" 
+				th:checked="${hall_info.hallTimeList.get(0).ischeck}">
 				<span>오전<br/>09:00 ~ 13:00</span>
-				<input class="price_input" type="number" id="m_price" name="hallTime.m_price" 
-				th:value="${hall_info.hallTime.m_price}" th:disabled="${hall_info.hallTime.morning != 1} ? 'disabled'"/><span>원</span>
+				<input class="price_input" type="number" id="m_price" name="hallTimeList.get(0).price" 
+				th:value="${hall_info.hallTimeList.get(0).price}>0 ? ${hall_info.hallTimeList.get(0).price}"
+				 th:disabled="${hall_info.hallTimeList.get(0).ischeck==false} ? 'disabled'"/><span>원</span>
 			</label>
-			<label>
+			
+<!--			<label>
 				<input id="after" type="checkbox" name="after" value="오후" 
 				th:checked="${hall_info.hallTime.after == 1}" >
 				<span>오후<br/>13:00 ~ 18:00</span>
@@ -94,7 +97,7 @@
 				<span>하루<br/>09:00 ~ 22:00</span>
 				<input class="price_input" type="number" id="f_price" name="hallTime.f_price" 
 				th:value="${hall_info.hallTime.f_price}" th:disabled="${hall_info.hallTime.full != 1} ? 'disabled'"/><span>원</span>
-			</label>			
+			</label>	-->		
 		  </div>
 		</div>
 		
