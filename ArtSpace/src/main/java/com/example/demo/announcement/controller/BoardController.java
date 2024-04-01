@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.announcement.service.BoardService;
 import com.example.demo.user.dto.UserDTO;
 import com.example.demo.user.service.UserService;
 
@@ -16,7 +17,7 @@ public class BoardController {
 
 	
 	@Autowired
-	private UserBoard userBoard;
+	private BoardService boardService;
 	
 	@GetMapping("/announcement/board")
 	public String showboardPage() {
@@ -28,7 +29,7 @@ public class BoardController {
 	@PostMapping("/user/insert")
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
 		
-		userboard.insert(userDTO);
-		return "html/login/logincode";
+		//.userBoard.insert(userDTO);
+		return "html/announcement/";
 	}
 }
