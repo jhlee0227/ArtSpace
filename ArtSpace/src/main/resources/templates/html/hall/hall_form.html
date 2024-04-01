@@ -71,33 +71,37 @@
 		  <div class="input-time">
 			
 			<label>
-				<input id="morning" type="checkbox" name="hallTimeList.get(0).type" value="오전" 
+				<input id="morning" type="checkbox" name="hallTimeList[0].type" value="오전" 
 				th:checked="${hall_info.hallTimeList.get(0).ischeck}">
 				<span>오전<br/>09:00 ~ 13:00</span>
-				<input class="price_input" type="number" id="m_price" name="hallTimeList.get(0).price" 
-				th:value="${hall_info.hallTimeList.get(0).price}>0 ? ${hall_info.hallTimeList.get(0).price}"
-				 th:disabled="${hall_info.hallTimeList.get(0).ischeck==false} ? 'disabled'"/><span>원</span>
+				<input class="price_input" type="number" id="m_price" name="hallTimeList[0].price" 
+					th:value="${hall_info.hallTimeList.get(0).price}>0 ? ${hall_info.hallTimeList.get(0).price}"
+				 	th:disabled="${hall_info.hallTimeList.get(0).ischeck==false} ? 'disabled'"/><span>원</span>
 			</label>
-			
-<!--			<label>
-				<input id="after" type="checkbox" name="after" value="오후" 
-				th:checked="${hall_info.hallTime.after == 1}" >
+			<label>
+				<input id="after" type="checkbox" name="hallTimeList[1].type" value="오후" 
+					th:checked="${hall_info.hallTimeList.get(1).ischeck}">
 				<span>오후<br/>13:00 ~ 18:00</span>
-				<input class="price_input" type="number" id="a_price" name="hallTime.a_price" 
-				th:value="${hall_info.hallTime.a_price}" th:disabled="${hall_info.hallTime.after != 1} ? 'disabled'"/><span>원</span>
+				<input class="price_input" type="number" id="a_price" name="hallTimeList[1].price" 
+					th:value="${hall_info.hallTimeList.get(1).price}>0 ? ${hall_info.hallTimeList.get(1).price}"
+					th:disabled="${hall_info.hallTimeList.get(1).ischeck==false} ? 'disabled'"/><span>원</span>
 			</label>
 			<label>
-				<input id="eve" type="checkbox" name="eve" value="저녁" th:checked="${hall_info.hallTime.eve == 1}">
+				<input id="eve" type="checkbox" name="hallTimeList[2].type" value="저녁" 
+					th:checked="${hall_info.hallTimeList.get(2).ischeck}">
 				<span>저녁<br/>18:00 ~ 22:00</span>
-				<input class="price_input" type="number" id="e_price" name="hallTime.e_price" 
-				th:value="${hall_info.hallTime.e_price}" th:disabled="${hall_info.hallTime.eve != 1} ? 'disabled'"/><span>원</span>
+				<input class="price_input" type="number" id="e_price" name="hallTimeList[2].price" 
+					th:value="${hall_info.hallTimeList.get(2).price}>0 ? ${hall_info.hallTimeList.get(2).price}"
+					th:disabled="${hall_info.hallTimeList.get(2).ischeck==false} ? 'disabled'"/><span>원</span>				
 			</label>
 			<label>
-				<input id="full" type="checkbox" name="full" value="하루" th:checked="${hall_info.hallTime.full == 1}">
+				<input id="full" type="checkbox" name="hallTimeList[3].type" value="하루" 
+					th:checked="${hall_info.hallTimeList.get(3).ischeck}">
 				<span>하루<br/>09:00 ~ 22:00</span>
-				<input class="price_input" type="number" id="f_price" name="hallTime.f_price" 
-				th:value="${hall_info.hallTime.f_price}" th:disabled="${hall_info.hallTime.full != 1} ? 'disabled'"/><span>원</span>
-			</label>	-->		
+				<input class="price_input" type="number" id="f_price" name="hallTimeList[3].price" 
+					th:value="${hall_info.hallTimeList.get(3).price}>0 ? ${hall_info.hallTimeList.get(3).price}"
+					th:disabled="${hall_info.hallTimeList.get(3).ischeck==false} ? 'disabled'"/><span>원</span>	
+			</label>	
 		  </div>
 		</div>
 		
@@ -127,37 +131,29 @@
 		$("#morning").click(function(){
 			if(this.checked){
 				$("#m_price").prop("disabled", false);
-				$("#morning").val("1");								
 			} else {
 				$("#m_price").prop("disabled", true);			
-				$("#morning").val("0");
 			}
 		});
 		$("#after").click(function(){
 			if(this.checked){
 				$("#a_price").prop("disabled", false);
-				$("#after").val("1");	
 			} else {
 				$("#a_price").prop("disabled", true);
-				$("#after").val("0");				
 			}
 		});
 		$("#eve").click(function(){
 			if(this.checked){
 				$("#e_price").prop("disabled", false);
-				$("#eve").val("1");	
 			} else {
 				$("#e_price").prop("disabled", true);				
-				$("#eve").val("0");	
 			}
 		});
 		$("#full").click(function(){
 			if(this.checked){
 				$("#f_price").prop("disabled", false);
-				$("#full").val("1");	
 			}else {
 				$("#f_price").prop("disabled", true);				
-				$("#full").val("0");	
 			}
 		});				
 		

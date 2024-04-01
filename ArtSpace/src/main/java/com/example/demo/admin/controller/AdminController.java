@@ -40,7 +40,7 @@ public class AdminController {
 	// 회원관리 : 선택한 유저 탈퇴 해제
 	@PostMapping("/resign")
 	public String resign(@RequestParam(value = "check1", required = false) List<Integer> selectUser1,
-						 @RequestParam(value = "check2", required = false) List<Integer> selectUser2) {
+			@RequestParam(value = "check2", required = false) List<Integer> selectUser2) {
 		// 전체 회원 탭
 		if (selectUser1 != null) {
 			for (Integer user_id : selectUser1) {
@@ -56,6 +56,28 @@ public class AdminController {
 
 		return "redirect:/admin";
 	}
+
+//	 회원관리 : 검색으로 회원조회
+//	@PostMapping("/search")
+//	public String searchUsers(Model model, @RequestParam String type, @RequestParam String keyword) {
+//		List<UserDTO> userList = adminService.searchUsers(type, keyword);
+//		model.addAttribute("userList", userList);
+//		return "admin";
+//	}
+	
+//	@PostMapping("/search")
+//	public String searchUsers(Model model, @RequestParam String type, @RequestParam String keyword) {
+//		List<UserDTO> userList;
+//		if ("email".equals(type)) {
+//			userList = adminService.searchUsersByEmail(keyword);
+//			model.addAttribute("user_list", userList);
+//		} else if ("nickname".equals(type)) {
+//			userList = adminService.searchUsersByNickname(keyword);
+//			model.addAttribute("user_list", userList);
+//		}
+//		
+//		return "html/admin/admin :: #searchResults";
+//	}
 
 	// 임시 - html 연결만
 	@GetMapping("/hallinfo")

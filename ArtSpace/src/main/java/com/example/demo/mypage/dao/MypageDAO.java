@@ -49,5 +49,10 @@ public class MypageDAO {
 		
 	}
 
+//	public List<LikeDTO> getAllLike() {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectList("mypage.getLike");
+//	}
+
 
 }

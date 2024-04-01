@@ -81,8 +81,8 @@
 										oninput="pwCheck()" placeholder="비밀번호 확인"></div>
 							</div>
 							<span id="check"></span>
-							<button id="btn" class="button" th:formaction="@{/mypage/update/pw}"
-								onclick="if(pwCheck()) updatePw();">수정</button>
+							<button id="updatePwBtn" class="button" th:formaction="@{/mypage/update/pw}" disabled
+								onclick="updatePw()">수정</button>
 						</div>
 
 						<div>
@@ -92,7 +92,7 @@
 							<div class="list-con"><input name="nickname" id="nickname" type="text" th:value="${my_info.nickname}" oninput="nicknameCheck()">
 							</div>
 							<span id="nicknameCheck"></span>
-							<button class="button" id="btnUpdate" th:formaction="@{/mypage/update/nickname}" onclick="if(nicknameCheck()) updateNickname();">수정</button>
+							<button class="button" id="updateNicknameBtn" th:formaction="@{/mypage/update/nickname}" disabled onclick="updateNickname()">수정</button>
 
 						</div>
 
@@ -134,16 +134,16 @@
 				if (!pw.match(regExp)) {
 					document.getElementById('check').innerHTML = '영문과 숫자를 포함한 8~16자를 입력하세요';
 					document.getElementById('check').style.color = 'red';
-					return false;
+					document.getElementById('updatePwBtn').disabled = true;
 				} else {
 					if (pw == pwChk) {
 						document.getElementById('check').innerHTML = '비밀번호가 일치합니다';
 						document.getElementById('check').style.color = 'green';
-						return true;
+						document.getElementById('updatePwBtn').disabled = false;
 					} else {
 						document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다';
 						document.getElementById('check').style.color = 'red';
-						return false;
+						document.getElementById('updatePwBtn').disabled = true;
 					}
 
 
@@ -159,11 +159,11 @@
 				if (!nickname.match(regExp)) {
 					document.getElementById('nicknameCheck').innerHTML = '한글, 영문, 숫자를 이용해 2~6자를 입력하세요.';
 					document.getElementById('nicknameCheck').style.color = 'red';
-					return false;
+					document.getElementById('updateNicknameBtn').disabled = true;
 				} else {
 					document.getElementById('nicknameCheck').innerHTML = '올바른 닉네임입니다.'
 					document.getElementById('nicknameCheck').style.color = 'green';
-					return true;
+					document.getElementById('updateNicknameBtn').disabled = false;
 				}
 			}
 			// 닉네임 수정 알림

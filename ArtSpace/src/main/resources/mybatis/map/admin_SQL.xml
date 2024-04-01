@@ -18,4 +18,15 @@
 		 where user_id = #{user_id}
 	</update>
 
+ 	<!-- <select id="searchUsersByEmail" resultType="com.example.demo.user.dto.UserDTO">
+		select * 
+		from user 
+		where email = #{keyword}
+	</select>
+	
+	<select id="searchUsersByNickname" resultType="com.example.demo.user.dto.UserDTO">
+		select * 
+		from user 
+		where nickname = #{keyword}
+	</select> -->
 </mapper>
