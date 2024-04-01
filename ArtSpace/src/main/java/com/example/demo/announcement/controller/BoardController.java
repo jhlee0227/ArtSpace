@@ -18,17 +18,17 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@GetMapping("/announcement/board")
+	@GetMapping("")
 	public String showboardPage() {
 		return "html/announcement/board";
 		
 	}
 	
-	// 유저 데이터 insert 처리
-	@PostMapping("/user/insert")
+	
+	@PostMapping("insert")
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
 		
-		//.userBoard.insert(userDTO);
-		return "html/announcement/";
+		userBoard.insert(userDTO);
+		return "html/announcement/boder_notice";
 	}
 }

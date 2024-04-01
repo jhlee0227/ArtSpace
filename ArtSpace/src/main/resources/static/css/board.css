@@ -1,19 +1,8 @@
  
  body {
-    margin-left: 180px;
     height: 100vh;
-    margin-right: 180px 
-
-}
- style.css
-* {
-    margin: 0;
-    padding: 0;
 }
 
-li {
-    list-style: non; /* list 생성시 나오는 '-' 마크 제거 */
-}
 
 a {
     color: inherit; /* 글자 색생은 부모로부터 상속 */
@@ -123,7 +112,7 @@ body {
     background-color: rgb(252, 212, 205);
 }
 
-.btn {
+.writeBtn {
     /* position: absolute; 는 절대적인 값으로 상대적인 값이 필요하다. */
     /* 상대적인 값은 전체 영역을 담당하는 class="card"에 position: relative; 을 추가한다. */
     position: absolute; /* 절대적인 값 */
@@ -132,7 +121,7 @@ body {
     padding: 10px;
     margin: 10px 10px 20px 10px  ;
 }
-.btn a {
+.writeBtn a {
     padding: 10px;
     background-color:#FFCA63;
     color: #fff;
