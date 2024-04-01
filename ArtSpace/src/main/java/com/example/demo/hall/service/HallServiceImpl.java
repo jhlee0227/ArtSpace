@@ -1,5 +1,6 @@
 package com.example.demo.hall.service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.hall.dao.HallDAO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 
 
 @Service
@@ -15,6 +17,33 @@ public class HallServiceImpl implements HallService{
 
 	@Autowired
 	HallDAO hallDAO;
+	
+
+	@Override
+	public HallDTO newHallform() {
+		HallDTO hall = new HallDTO();
+
+		List<HallTimeDTO> timeList = new LinkedList<>();
+		HallTimeDTO time = new HallTimeDTO();
+		String[] timeArr = {"오전", "오후", "저녁", "하루"};
+
+		for (int i = 0; i < timeArr.length; i++) {
+			time.setType(timeArr[i]);
+			time.setPrice(0);
+			time.setIscheck(false);
+			timeList.add(time);			
+		}
+		hall.setHallTimeList(timeList);
+		return hall;
+	}
+
+
+	@Override
+	public void setHallTimeList(HallDTO hallInfo) {
+		List<HallTimeDTO> timeList = hallDAO.getHallTimeList(hallInfo.getHall_id());
+		
+		
+	}
 	
 	// 공연장 기본 정보 insert
 	@Override
@@ -69,5 +98,5 @@ public class HallServiceImpl implements HallService{
 	}
 
 
-	
+
 }

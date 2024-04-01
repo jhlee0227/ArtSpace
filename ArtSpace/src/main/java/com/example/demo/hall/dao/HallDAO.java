@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 
 @Repository
 public class HallDAO {
@@ -62,6 +63,10 @@ public class HallDAO {
 
 	public Integer checkTimeType(Map<String, Integer> time) {
 		return sqlSession.selectOne("hall.checkTimeType", time);
+	}
+
+	public List<HallTimeDTO> getHallTimeList(Integer id) {
+		return sqlSession.selectList("hall.getHallTimeList", id);
 	}
 
 

@@ -26,7 +26,7 @@ public class HallDTO {
 	private Integer user_id;		// 유저ID FK
 	
 	private List<EquipmentDTO> equiList;
-	private List<Map<String, Integer>> hallTimeMap;
+	private List<HallTimeDTO> hallTimeList;
 
 	
 	public Integer getHall_id() {
@@ -125,13 +125,13 @@ public class HallDTO {
 	public void setEquiList(List<EquipmentDTO> equiList) {
 		this.equiList = equiList;
 	}
-	public List<Map<String, Integer>> getHallTimeList() {
-		return hallTimeMap;
+	public List<HallTimeDTO> getHallTimeList() {
+		return hallTimeList;
 	}
-	public void setHallTimeList(List<Map<String, Integer>> hallTimeMap) {
-		this.hallTimeMap = hallTimeMap;
+	public void setHallTimeList(List<HallTimeDTO> hallTimeList) {
+		this.hallTimeList = hallTimeList;
 	}
-	
+
 
 
 	
