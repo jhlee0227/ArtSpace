@@ -11,6 +11,12 @@ html,
 body {
   height: 100%;
 }
+body{
+	background-image: url("https://cdn.pixabay.com/photo/2017/08/02/23/42/dark-2574089_1280.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
 
 /* container */
 .container {
@@ -39,7 +45,7 @@ body {
   justify-content: center;
 
   flex-direction: column;
-  padding: 40px;
+  padding: 2rem 7rem;
 
 }
 
@@ -75,6 +81,8 @@ body {
   margin-bottom: 16px;
   border-radius: 6px;
   background-color: #F8F8F8;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 #login-form>input::placeholder {
@@ -121,10 +129,6 @@ body {
   border-color: gray;
 }
 
-
-.sign{
-
-}
 
 .sign .title{
   text-align: center;

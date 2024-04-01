@@ -1,0 +1,34 @@
+@import "reset.css";
+
+/* ==================================================중요 안내 사항================================================== */
+
+.hall-detail .container {
+    width: 1250px;
+    height: 220px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(235, 235, 235);
+    border-radius: 20px;
+}
+
+.hall-detail .container h1 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 35px;
+}
+
+.hall-detail .container p {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 88px;
+    line-height: normal;
+}
+
+.text-red {
+    color: red;
+}

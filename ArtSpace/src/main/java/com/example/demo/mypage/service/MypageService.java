@@ -2,6 +2,7 @@ package com.example.demo.mypage.service;
 
 import java.util.List;
 
+import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -20,6 +21,8 @@ public interface MypageService {
 
 	public void leave(UserDTO dto);
 
-	public List<LikeDTO> getAllLike();
+	public List<HallDTO> getAllLike(Integer id);
+
+	public void likeDelete(Integer like_id);
 
 }

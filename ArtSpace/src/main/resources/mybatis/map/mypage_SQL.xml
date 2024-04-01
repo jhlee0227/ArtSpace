@@ -5,25 +5,21 @@
 	<update id="updateNickname">
 		update user
 		set nickname=#{nickname}
-		where
-		user_id=#{user_id}
+		where user_id=#{user_id}
 	</update>
 
 	<update id="updatePw">
 		update user
 		set password=#{password}
-		where
-		user_id=#{user_id}
+		where user_id=#{user_id}
 	</update>
 
-	<select id="findById"
-		resultType="com.example.demo.user.dto.UserDTO">
+	<select id="findById" resultType="com.example.demo.user.dto.UserDTO">
 		select * from user
 		where user_id = #{id}
 	</select>
 
-	<select id="findByPID"
-		resultType="com.example.demo.mypage.dto.PerformerDTO">
+	<select id="findByPID" resultType="com.example.demo.mypage.dto.PerformerDTO">
 		select * from performer
 		where user_id=#{id}
 	</select>
@@ -31,7 +27,8 @@
 	<insert id="insertPerformer">
 		insert into performer (group_name, leader_name,
 		member_num, leader_phone, perform_num, perfo_work, user_id)
-		values (#{group_name}, #{leader_name}, #{member_num}, #{leader_phone},
+		values
+		(#{group_name}, #{leader_name}, #{member_num}, #{leader_phone},
 		#{perform_num}, #{perfo_work}, #{user_id})
 	</insert>
 
@@ -49,17 +46,21 @@
 	<update id="leave">
 		update user
 		set leave_status = 'Y'
-		where user_id =
-		#{user_id}
+		where user_id = #{user_id}
 	</update>
 
 
-
-
-	<select id="getLike" resultType="com.example.demo.mypage.dto.LikeDTO">
-		select hall.hall_name, hall.address1, hall.address2
-		from `like`
-		join hall on `like`.hall_id = hall.hall_id
-		where `like`.user_id = #{user_id};
+	<select id="getLike" resultType="com.example.demo.hall.dto.HallDTO">
+		select h.hall_name, h.address1, h.address2
+		from hall h
+		join like_hall l on l.hall_id = h.hall_id
+		join user u on l.user_id = u.user_id
+		where l.status = 'Y' and u.user_id = #{id}
 	</select>
+	
+	<update id="likeDelete">
+		update like
+		set status = 'N'
+		where like_id = #{like_id}
+	</update>
 </mapper>

@@ -1,0 +1,15 @@
+@import "reset.css";
+
+/* ==================================================기본 전체 적용================================================== */
+
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+.hall-detail {
+    background-color: white;
+    width: 1500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
