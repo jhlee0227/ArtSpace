@@ -23,6 +23,8 @@ public interface MypageService {
 
 	public List<HallDTO> getAllLike(Integer id);
 
-	public void likeDelete(Integer like_id);
+	public void likeDelete(List<LikeDTO> like);
+
+	public List<LikeDTO> getLikeInfo(Integer id);
 
 }
