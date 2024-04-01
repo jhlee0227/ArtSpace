@@ -47,14 +47,14 @@
 		    <div class="content">
 		      <h2 class="content-main">내 즐겨찾기</h2>
 		      <!-- 여기에 th:each -->
-		      <div class="list">
+		      <div class="list" th:each="like : ${like_list}">
 		        <!-- 여기에 th:text -->
 		        <div class="item">
 		          <div class="hall-img">
 		            <img src="/img/hallex.jpg" class="hall-thumb" alt="">
 		          </div>
 		          <div class="hall">
-		            <div class="hall-name">안녕하세요홀</div>
+		            <div class="hall-name" th:text="${like.">안녕하세요홀</div>
 		            <div class="hall-loca">서울</div>
 		          </div>
 		          <div class="button">

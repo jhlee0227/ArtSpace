@@ -53,11 +53,10 @@
 		#{user_id}
 	</update>
 
-	<!-- <select id="getLike"
-		resultType="com.example.demo.mypage.dto.LikeDTO">
-		SELECT hall.hall_name, hall.address1, hall.address2
-		FROM `like`
-		JOIN hall ON `like`.hall_id = hall.hall_id
-		WHERE `like`.user_id = #{user_id};
-	</select>  -->
+	<select id="getLike" resultType="com.example.demo.mypage.dto.LikeDTO">
+		select hall.hall_name, hall.address1, hall.address2
+		from `like`
+		join hall on `like`.hall_id = hall.hall_id
+		where `like`.user_id = #{user_id};
+	</select>
 </mapper>

@@ -78,12 +78,12 @@ public class MypageController {
 	}
 
 	// 내 즐겨찾기
-//	@GetMapping("/favorite")
-//	public String favorite(Model model) {
-//		List<LikeDTO> likeList = mypageService.getAllLike();
-//		model.addAttribute("like_list", likeList);
-//		return "html/mypage/my_favorites";
-//	}
+	@GetMapping("/favorite")
+	public String favorite(Model model) {
+		List<LikeDTO> likeList = mypageService.getAllLike();
+		model.addAttribute("like_list", likeList);
+		return "html/mypage/my_favorites";
+	}
 
 	// 로그인 회원 내 즐겨찾기
 //	@GetMapping("/{id}/favorite")
