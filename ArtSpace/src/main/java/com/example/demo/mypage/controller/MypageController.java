@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.SessionUtil;
+import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.mypage.service.MypageService;
@@ -32,8 +35,11 @@ public class MypageController {
 	@GetMapping("")
 	public String mypage(Model model, HttpSession session) {
 		Integer id = (Integer) session.getAttribute("user_id");
+		String nickname = (String) session.getAttribute("nickname");
 		UserDTO myInfo = mypageService.findByID(id);
 		model.addAttribute("my_info", myInfo);
+		model.addAttribute("user_id", id);
+		model.addAttribute("nickname", nickname);
 		return "html/mypage/mypage";
 	}
 
@@ -61,10 +67,13 @@ public class MypageController {
 	@GetMapping("/performer")
 	public String performer(Model model, HttpSession session) {
 		Integer id = (Integer) session.getAttribute("user_id");
+		String nickname = (String) session.getAttribute("nickname");
 		PerformerDTO perfoInfo = mypageService.findByPID(id);
 		UserDTO myInfo = mypageService.findByID(id);
 		model.addAttribute("perfo_info", perfoInfo);
 		model.addAttribute("my_info", myInfo);
+		model.addAttribute("user_id", id);
+		model.addAttribute("nickname", nickname);
 		return "html/mypage/performer_info";
 	}
 
@@ -80,19 +89,24 @@ public class MypageController {
 	// 내 즐겨찾기
 	@GetMapping("/favorite")
 	public String favorite(Model model) {
-		List<LikeDTO> likeList = mypageService.getAllLike();
+		
+		Integer id = (Integer) session.getAttribute("user_id");
+		String nickname = (String) session.getAttribute("nickname");
+		UserDTO myInfo = mypageService.findByID(id);
+		List<HallDTO> likeList = mypageService.getAllLike(id);
+		model.addAttribute("my_info", myInfo);
 		model.addAttribute("like_list", likeList);
+		model.addAttribute("user_id", id);
+		model.addAttribute("nickname", nickname);
 		return "html/mypage/my_favorites";
 	}
 
-	// 로그인 회원 내 즐겨찾기
-//	@GetMapping("/{id}/favorite")
-//	public String favor(Model model, @PathVariable("id") Integer id) {
-//		UserDTO myInfo = mypageService.findByID(id);
-//		model.addAttribute("my_info", myInfo);
-//		model.addAttribute("id", id);
-//		return "html/mypage/my_favorites";
-//	}
+	// 찜 삭제
+	@PostMapping("/favorite/delete")
+	public String likeDelete(@RequestParam("like_id") Integer like_id) {
+		mypageService.likeDelete(like_id);
+		return "redirect:/mypage/favorite";
+	}
 
 	// 예약 내역
 	@GetMapping("/reserve")

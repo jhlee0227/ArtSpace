@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -49,9 +50,14 @@ public class MypageDAO {
 		
 	}
 
-	public List<LikeDTO> getAllLike() {
+	public List<HallDTO> getAllLike(Integer id) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("mypage.getLike");
+		return sqlSession.selectList("mypage.getLike", id);
+	}
+
+	public void likeDelete(Integer like_id) {
+		
+		sqlSession.update("mypage.likeDelete", like_id);
 	}
 
 
