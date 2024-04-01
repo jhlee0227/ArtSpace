@@ -1,0 +1,61 @@
+@import "reset.css";
+
+/* ==================================================리뷰 목록================================================== */
+
+.hall-detail .content .review {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hall-detail .content .review .title span {
+    font-size: 25px;
+    color: gold;
+}
+
+.hall-detail .content .review .nickname span {
+    font-size: 18px;
+}
+
+.hall-detail .content .review .nickname #name {
+    margin-left: 4.5%;
+}
+
+.hall-detail .content .review .nickname .min {
+    color: gold;
+}
+
+.hall-detail .content .review .nickname #date {
+    margin-left: 60%;
+}
+
+.hall-detail .content .review .review-content {
+    background-color: rgb(235, 235, 235);
+    border-top: 2px solid rgb(200, 200, 200);
+    border-bottom: 2px solid rgb(200, 200, 200);
+    padding: 1% 2.5% 1% 2.5%;
+    margin: 1% 10% 0% 2%;
+    white-space: pre-line;
+}
+
+.hall-detail .content .review .pagination {
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+}
+
+.hall-detail .content .review .pagination a {
+    padding: 0.5% 1%;
+    margin: 0.5%;
+    border-radius: 20%;
+    background-color: rgb(235, 235, 235);
+    color: black;
+}
+
+.hall-detail .content .review .pagination a:hover {
+    background-color: rgb(150, 150, 150);
+}
+
+.hall-detail .content .review .pagination a:active {
+    background-color: rgb(150, 150, 150);
+}

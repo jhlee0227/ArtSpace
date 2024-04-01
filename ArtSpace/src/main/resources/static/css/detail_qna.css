@@ -1,0 +1,83 @@
+@import "reset.css";
+
+/* ==================================================문의 사항 목록================================================== */
+
+.hall-detail .content .qna {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hall-detail .content .qna .title span {
+    font-size: 25px;
+    color: gold;
+}
+
+.hall-detail .content .qna .edit textarea {
+    width: 85%;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+input[type=submit] {
+    margin-top: 1%;
+    margin-left: 84.5%;
+}
+
+.hall-detail .content .qna .question-nickname #name {
+    margin-left: 5%;
+}
+
+.hall-detail .content .qna .question-nickname #date {
+    margin-left: 60%;
+}
+
+.hall-detail .content .qna .question-content {
+    background-color: white;
+    border-top: 2px solid rgb(200, 200, 200);
+    padding: 1% 2.5% 1% 2.5%;
+    margin: 1% 12.5% 0% 2.5%;
+    white-space: pre-line;
+}
+
+.hall-detail .content .qna .answer-nickname {
+    background-color: rgb(235, 235, 235);
+    border-top: 2px solid rgb(200, 200, 200);
+    padding: 1% 2.5% 1% 2.5%;
+    margin: 1% 12.5% 0% 2.5%;
+}
+
+.hall-detail .content .qna .answer-nickname #date {
+    margin-left: 58.5%;
+}
+
+.hall-detail .content .qna .answer-content {
+    background-color: rgb(235, 235, 235);
+    border-top: 2px solid rgb(200, 200, 200);
+    border-bottom: 2px solid rgb(200, 200, 200);
+    padding: 1% 2.5% 1% 2.5%;
+    margin: 0% 12.5% 0% 2.5%;
+    white-space: pre-line;
+}
+
+.hall-detail .content .qna .pagination {
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+}
+
+.hall-detail .content .qna .pagination a {
+    padding: 0.5% 1%;
+    margin: 0.5%;
+    border-radius: 20%;
+    background-color: rgb(235, 235, 235);
+    color: black;
+}
+
+.hall-detail .content .qna .pagination a:hover {
+    background-color: rgb(150, 150, 150);
+}
+
+.hall-detail .content .qna .pagination a:active {
+    background-color: rgb(150, 150, 150);
+}

@@ -1,0 +1,44 @@
+@import "reset.css";
+
+/* ==================================================상세 정보 목록================================================== */
+
+.hall-detail .content h1 {
+    font-size: 40px;
+}
+
+.hall-detail .content p {
+    font-size: 20px;
+}
+
+.hall-detail .content table {
+    font-weight: bold;
+    white-space: pre;
+}
+
+.hall-detail .content tr {
+    border-top: 2px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+    border-left: 1px solid rgb(200, 200, 200);
+    border-bottom: 2px solid rgb(200, 200, 200);
+}
+
+.hall-detail .content .color {
+    background-color: rgb(235, 235, 235);
+    width: 125px;
+    height: 30px;
+    text-align: center;
+}
+
+.hall-detail .content td {
+    width: 1000px;
+}
+
+.hall-detail .content hr {
+    float: left;
+    width: 80.5%;
+    margin-top: 30px;
+}
+
+.hall-detail .content .fa-location-dot {
+    margin-left: 10px;
+}

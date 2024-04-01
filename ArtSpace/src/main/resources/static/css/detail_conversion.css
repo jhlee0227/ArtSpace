@@ -1,0 +1,88 @@
+@import "reset.css";
+
+/* ==================================================목록 변환================================================== */
+
+.hall-detail .tab {
+    position: sticky;
+    width: 100%;
+    top: 90.7px;
+    z-index: 1000;
+}
+
+.hall-detail .main input[type=radio] {
+	display: none;
+}
+
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2),
+#tab-3:checked ~ .tab label:nth-child(3),
+#tab-4:checked ~ .tab label:nth-child(4) {
+    background-color: white;
+    color: black;
+    box-shadow: none;
+}
+
+.hall-detail .content > div {
+	display: none;
+}
+
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2),
+#tab-3:checked ~ .content div:nth-child(3),
+#tab-4:checked ~ .content div:nth-child(4)  {
+	display: block;
+}
+
+.hall-detail .main {
+  margin: 0 auto;
+  min-width: 1380px;
+  max-width: 100%;
+}
+
+.hall-detail .tab {
+    background-color: rgb(235, 235, 235);
+    color: gray;
+    padding: 0px 0px 3px 0px;
+    overflow: hidden;
+}
+
+.hall-detail .tab #t1 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t2 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t3 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t4 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab label {
+    font-size: 25px;
+    cursor: pointer;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 20px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.hall-detail .content {
+  background-color: white;
+  min-height: 250px;
+}
+
+.hall-detail .content > div{
+   padding: 60px 0px 60px 100px;
+   line-height: 1.5;
+   font-size: 17px;
+}
