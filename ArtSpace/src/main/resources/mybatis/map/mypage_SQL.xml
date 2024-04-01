@@ -53,6 +53,9 @@
 		#{user_id}
 	</update>
 
+
+
+
 	<select id="getLike" resultType="com.example.demo.mypage.dto.LikeDTO">
 		select hall.hall_name, hall.address1, hall.address2
 		from `like`

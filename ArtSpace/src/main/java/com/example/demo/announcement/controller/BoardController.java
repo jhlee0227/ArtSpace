@@ -15,7 +15,6 @@ import com.example.demo.user.service.UserService;
 @RequestMapping("board")
 public class BoardController {
 
-	
 	@Autowired
 	private BoardService boardService;
 	
