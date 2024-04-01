@@ -12,4 +12,7 @@ public interface AdminService {
 
 	public void resign(Integer user_id);
 
+//	public List<UserDTO> searchUsersByEmail(String keyword);
+//	
+//	public List<UserDTO> searchUsersByNickname(String keyword);
 }

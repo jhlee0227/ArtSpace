@@ -48,9 +48,9 @@
 					<div class="tab_content" id="all_content">
 						<!-- 전체 회원 Tab -->
 						<div class="search">
-							<form name="search">
+							<form id="searchForm" name="search" th:action="@{/admin/search}" method="post">
 								<select class="select" name="type" id="">
-									<option value="id">아이디</option>
+									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
 								</select>
 								<input type="text">
@@ -70,7 +70,7 @@
 										<th class="leave">탈퇴상태</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="searchResults">
 									<form name="leave" th:action="@{/admin/leave}" method="post">
 										<tr th:each="user : ${user_list}"><!-- th:each -->
 											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
@@ -97,9 +97,9 @@
 					<div class="tab_content" id="leave_content">
 						<!-- 탈퇴 상태 -->
 						<div class="search">
-							<form name="search">
+							<form id="searchForm" name="search" action="/admin/search" method="post">
 								<select class="select" name="type" id="">
-									<option value="id">아이디</option>
+									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
 								</select>
 								<input type="text">
@@ -119,7 +119,7 @@
 										<th class="leave">탈퇴상태</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="searchResults">
 									<form name="leave2" th:action="@{/admin/resign}" method="post">
 										<!-- th:each -->
 										<tr th:each="user : ${user_list}"
@@ -151,50 +151,18 @@
 
 		<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
 		<script src="/js/admin.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script>
-			// tab을 클릭했을 때 다른 tab의 체크박스 체크 해제
-			function checkboxClear() {
-				// tab들의 ID값
-				var tabIds = ['all', 'leave'];
-
-				var selectTabId = document.querySelector('input[name="tab_item"]:checked').id;
-
-				tabIds.forEach(function (tabId) {
-					if (tabId !== selectTabId) {
-						var checkboxes = document.querySelectorAll('#' + tabId + '_content input[type="checkbox"]');
-						checkboxes.forEach(function (checkbox) {
-							checkbox.checked = false;
-						})
-					}
-				})
-			}
-			// 체크박스 해제 적용
-			var tabItems = document.querySelectorAll('input[name="tab_item"]');
-			tabItems.forEach(function (tabItem) {
-				tabItem.addEventListener('change', checkboxClear);
-			})
-
-
-			function checkLeave() {
-				var result = confirm("선택된 회원을 탈퇴시키시겠습니까?");
-				if (result) {
-					alert("회원 탈퇴가 완료되었습니다.");
-					return true;
-				} else {
-					return false;
-				}
-			}
-
-			function checkResign() {
-				var result = confirm("선택된 회원을 재가입시키시겠습니까?");
-				if (result) {
-					alert("회원 재가입이 완료되었습니다.")
-					return true;
-				} else {
-					return false;
-				}
-			}
-		</script>
+			$("#searchForm").submit(function(event) {
+				event.preventDefault();
+				var formData = $(this).serialize();
+				
+				$.post("/admin/search", formData, function(response) {
+					$("#searchResults").html(response);
+				});
+			});
+			
+		</script>-->
 	</div>
 </body>
 

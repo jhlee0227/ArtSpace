@@ -56,6 +56,11 @@ public class MypageServiceImpl implements MypageService{
 		mypageDAO.leave(dto);
 	}
 
+//	@Override
+//	public List<LikeDTO> getAllLike() {
+//		return mypageDAO.getAllLike();
+//	}
+
 
 	
 }
