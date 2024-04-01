@@ -11,7 +11,7 @@
 
 	<insert id="insert_time">
 		insert into hall_time(type, price, hall_id)
-		values(#{type}, #{price}, #{hall_id})
+		values(#{type}, #{price}, #{hall_id}) 
 	</insert>
 
 	

@@ -22,6 +22,7 @@ import com.example.demo.SessionUtil;
 import com.example.demo.UUIDgeneration;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 import com.example.demo.hall.service.HallService;
 
 import jakarta.servlet.http.HttpSession;
@@ -42,12 +43,12 @@ public class HallController {
 	@Autowired
 	HttpSession session;
 	
-	
 	// 기본 공연장 정보 입력 화면 띄우기
 	@GetMapping("form")
 	public String showForm(Model model) {
 		user_session.setSesstionValue(session);
 
+		// 로그인 권한 체크
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		} else if (!user_session.getAuthority().equals("SC")){
@@ -57,18 +58,11 @@ public class HallController {
 			model.addAttribute("user_id", user_session.getUser_id());
 			model.addAttribute("nickname", user_session.getNickname());
 		}
-		
-		HallDTO dto = new HallDTO();
-		List<Map<String, Integer>> timeList = new LinkedList<>();
-		
-		// 맵 수정하기
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		//map.put("type", "morning");
-		
-		dto.setHallTimeList(timeList);
-		
-		
-		model.addAttribute("hall_info", dto);		
+				
+		// 초기화
+		HallDTO hall = hallService.newHallform();
+
+		model.addAttribute("hall_info", hall);		
 		model.addAttribute("action", "/hall/form/insert");
 		return "html/hall/hall_form";
 	}
@@ -86,6 +80,7 @@ public class HallController {
 		}
 
 		HallDTO hallInfo = hallService.findById(id);
+		hallService.setHallTimeList(hallInfo);
 		
 		model.addAttribute("hall_info", hallInfo);
 		model.addAttribute("action", "/hall/form/update/" + id);
