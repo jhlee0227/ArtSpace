@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/login/login.css">
 </head>
 <body>
 <body>
@@ -17,8 +17,8 @@
 				<div style="color:red" th:text="${errorMessage}">
 				</div>
 								
-	            <form method="post" name="login_form" th:action="@{/login/result}" id="login-form">
-	                <input type="email" id="user_id" name="user_id" placeholder="아이디">
+	            <form method="post" name="login_form" th:action="@{/yjh-console/result}" id="login-form">
+	                <input type="text" id="email" name="email" placeholder="아이디">
 	                <input type="password" id="password" name="password" placeholder="비밀번호">
 	                <button id="login-btn" type="button" onclick="checkValue();" value="로그인">로그인</button>
 	            </form>
@@ -50,10 +50,10 @@
   <script>
 	
 	function checkValue(){
-		let value = $('#user_id').val().trim();
+		let value = $('#email').val().trim();
 		
 		if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
-			$("#user_id").focus();
+			$("#email").focus();
 			return;
 		}
 		

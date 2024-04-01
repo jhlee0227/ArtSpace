@@ -143,7 +143,7 @@ $(document).ready(function() {
 		isSubmit();
 	});		
 	
-	// 번호 확인
+/*	// 번호 확인
 	$("#phone").on("propertychange change keyup paste input", function(){
 		//빈값		
 		if(!$('#phone').val()){
@@ -158,7 +158,53 @@ $(document).ready(function() {
 			a[5] = 1;
 		}
 		isSubmit();
-	});			
+	});	*/		
+	
+	$(document).on("propertychange change keyup paste input", "#phone", function(){
+
+		
+	     $(this).val( $(this).val()
+		 	.replace(/[^0-9]/g, "")
+			.replace(/([0-9]{3})+([0-9]{4})+([0-9]{4})$/,"$1-$2-$3")
+			.replace("--", "-"));
+
+		
+		
+		if(!phonePattern.test($.trim($("#phone").val()))){
+			$('#phonechk').html("핸드폰 번호를 입력해 주세요.(010-xxxx-xxxx)").css('color','red');
+			a[0] = 0;
+		} else {
+			var phone = $('#phone').val();
+			$.ajax({
+				url: '/phoneCheck',
+				method: 'post',
+				data : {
+					"phone" : phone
+				},
+				dataType : 'text',
+				
+				success : function(data) {
+					if (data == "redundancy") {
+						$('#phonechk').html("중복된 핸드폰 번호입니다").css('color', 'red');
+						a[5] = 0;
+					} else if (data == "noredundancy") {
+						$('#phonechk').html("사용가능한 번호 입니다").css('color', 'green');
+						a[5] = 1;
+					;
+					} else {
+						$('#phonechk').html("아이디를 입력해주세요").css('color', 'red');
+						a[5] = 0;
+					}
+					
+					isSubmit();
+				},
+			});
+		}
+		;
+		isSubmit();
+	});
+	
+	
 	
   $("#check1").change(function(){
 	isSubmit();
