@@ -103,8 +103,12 @@ public class MypageController {
 
 	// 찜 삭제
 	@PostMapping("/favorite/delete")
-	public String likeDelete(@RequestParam("like_id") Integer like_id) {
-		mypageService.likeDelete(like_id);
+	public String likeDelete(Model model) {
+		Integer id = (Integer) session.getAttribute("user_id");
+		List<LikeDTO> likeInfo = mypageService.getLikeInfo(id);
+		mypageService.likeDelete(likeInfo);
+		model.addAttribute("user_id", id);
+		model.addAttribute("like_info", likeInfo);
 		return "redirect:/mypage/favorite";
 	}
 

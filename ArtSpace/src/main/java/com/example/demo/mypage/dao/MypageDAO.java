@@ -1,6 +1,8 @@
 package com.example.demo.mypage.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,9 +57,13 @@ public class MypageDAO {
 		return sqlSession.selectList("mypage.getLike", id);
 	}
 
-	public void likeDelete(Integer like_id) {
-		
-		sqlSession.update("mypage.likeDelete", like_id);
+	public void likeDelete(List<LikeDTO> like) {
+		sqlSession.update("mypage.likeDelete", like);
+	}
+
+	public List<LikeDTO> getLikeInfo(Integer id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mypage.getLikeInfo", id);
 	}
 
 
