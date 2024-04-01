@@ -15,8 +15,8 @@ import com.example.demo.user.service.UserService;
 public class BoardController {
 
 	
-	@Autowired
-	private UserBoard userBoard;
+//	@Autowired
+//	private UserBoard userBoard;
 	
 	@GetMapping("/announcement/board")
 	public String showboardPage() {
@@ -28,7 +28,7 @@ public class BoardController {
 	@PostMapping("/user/insert")
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
 		
-		userboard.insert(userDTO);
+//		userboard.insert(userDTO);
 		return "html/login/logincode";
 	}
 }
