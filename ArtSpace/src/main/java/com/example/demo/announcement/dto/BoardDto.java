@@ -9,6 +9,8 @@ public class BoardDto {
 	private String subject;
 	private String content;
 	private LocalDate create_date;
+	
+	
 	public Integer getAnnoun_id() {
 		return announ_id;
 	}
