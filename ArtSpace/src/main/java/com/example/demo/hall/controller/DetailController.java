@@ -24,8 +24,8 @@ public class DetailController {
 	@GetMapping("detail")
 	public String detailPage(Model model, HttpSession session) {
 		Integer id = (Integer) session.getAttribute("hall_id");
-		HallDTO detailPage = detailService.findByID(id);
-		model.addAttribute("detailPage", detailPage);
+		HallDTO detailID = detailService.findById(id);
+		model.addAttribute("detailID", detailID);
 		return "html/hall/detail_page";
 	}
 

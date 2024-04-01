@@ -13,7 +13,7 @@ public class DetailDAO {
 	SqlSessionTemplate sqlSession;
 	
 	public HallDTO findById(Integer id) {
-		return sqlSession.selectOne("detailPage.findByID", id);
+		return sqlSession.selectOne("detailPage.findById", id);
 	}
 
 }

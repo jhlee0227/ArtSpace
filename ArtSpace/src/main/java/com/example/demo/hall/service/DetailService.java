@@ -4,6 +4,6 @@ import com.example.demo.hall.dto.HallDTO;
 
 public interface DetailService {
 	
-	public HallDTO findByID(Integer id);
+	public HallDTO findById(Integer id);
 
 }
