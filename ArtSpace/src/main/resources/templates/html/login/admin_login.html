@@ -12,7 +12,7 @@
         <div class="login-box">
             <div class="login-wrapper">
 				
-	            <h2><a th:href="@{/login}">로그인</a></h2>
+	            <h2><a th:href="@{/yjh-console}">관리자 로그인</a></h2>
 				
 				<div style="color:red" th:text="${errorMessage}">
 				</div>
@@ -22,27 +22,16 @@
 	                <input type="password" id="password" name="password" placeholder="비밀번호">
 	                <button id="login-btn" type="button" onclick="checkValue();" value="로그인">로그인</button>
 	            </form>
-					
-	           <div class="search-login-info">
-	               <a href="#">아이디 & 비밀번호 찾기</a>
-	           </div>
             </div>
 
             <div class="sign">
                 <div class="title">
-                    <h1>신규 회원가입</h1>
-                    <h2>공간은 처음이신가요?</h2>
+                    <h1>관리자 회원가입</h1>
                 </div>
 
                 <div class="btn-box">
                     <div class="con">
-                        <div th:onclick="|location.href='@{/user/join}'|" id="user-sign" class="box">일반 회원가입</div>
-                        <h2>공연장을 <span class="point">대여</span> 하고 싶은 분</h2>
-                    </div>
-
-                    <div class="con">
-                        <div th:onclick="|location.href='@{/cor/corporation}'|" id="con-sign" class="box2">법인 회원가입</div>
-                        <h2>공연장을 <span class="point">등록</span>하고 싶은 분</h2>
+                        <div th:onclick="|location.href='@{/yjh-console/join}'|" id="user-sign" class="box">관리자 회원가입</div>
                     </div>
                 </div>
             </div>
