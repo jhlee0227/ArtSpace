@@ -37,12 +37,12 @@
                 <div class="btn-box">
                     <div class="con">
                         <div th:onclick="|location.href='@{/user/singin}'|" id="user-sign" class="box">일반 회원가입</div>
-                        <h2>공연장을 <span style="color: #FFCA63;">대여</span> 하고 싶은 분</h2>
+                        <h2>공연장을 <span class="point">대여</span> 하고 싶은 분</h2>
                     </div>
 
                     <div class="con">
-                        <div th:onclick="|location.href='@{/user/corporation}'|" id="con-sign" class="box2">법인 회원가입</div>
-                        <h2>공연장을 <span style="color: #FFCA63;">등록</span>하고 싶은 분</h2>
+                        <div th:onclick="|location.href='@{/com/corporation}'|" id="con-sign" class="box2">법인 회원가입</div>
+                        <h2>공연장을 <span class="point">등록</span>하고 싶은 분</h2>
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@
         </div>
 		
 		<div class="ttt">
-		    <h1>공연의 <span	th:onclick="|location.href='@{/}'|" style="color: #FFCA63;">공간</span></h1> <br>
+		    <h1>공연의 <span	th:onclick="|location.href='@{/}'|" class="point">공간</span></h1> <br>
 		    <h2>빠른 예약과</h2> 
 		    <h2>확실한 정보로</h2> 
 		    <h2>꿈이 이루어지는 공간 입니다.</h2>
