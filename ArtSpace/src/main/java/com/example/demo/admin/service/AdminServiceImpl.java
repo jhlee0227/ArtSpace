@@ -13,23 +13,33 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	AdminDAO adminDAO;
-	
+
 	@Override
 	public List<UserDTO> getAllUsers() {
-		
+
 		return adminDAO.getAllUsers();
 	}
 
 	@Override
 	public void leave(Integer user_id) {
 		adminDAO.leave(user_id);
-		
+
 	}
 
 	@Override
 	public void resign(Integer user_id) {
 		adminDAO.resign(user_id);
-		
+
 	}
+
+//	@Override
+//	public List<UserDTO> searchUsersByEmail(String keyword) {
+//		return adminDAO.searchUsersByEmail(keyword);
+//	}
+//	
+//	@Override
+//	public List<UserDTO> searchUsersByNickname(String keyword) {
+//		return adminDAO.searchUsersByNickname(keyword);
+//	}
 
 }

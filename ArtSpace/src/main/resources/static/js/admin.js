@@ -69,3 +69,46 @@ function selectAll2(selectAll2) {
         checkbox.checked = selectAll2.checked
     })
 }
+
+// tab을 클릭했을 때 다른 tab의 체크박스 체크 해제
+function checkboxClear() {
+	// tab들의 ID값
+	var tabIds = ['all', 'leave'];
+
+	var selectTabId = document.querySelector('input[name="tab_item"]:checked').id;
+
+	tabIds.forEach(function(tabId) {
+		if (tabId !== selectTabId) {
+			var checkboxes = document.querySelectorAll('#' + tabId + '_content input[type="checkbox"]');
+			checkboxes.forEach(function(checkbox) {
+				checkbox.checked = false;
+			})
+		}
+	})
+}
+// 체크박스 해제 적용
+var tabItems = document.querySelectorAll('input[name="tab_item"]');
+tabItems.forEach(function(tabItem) {
+	tabItem.addEventListener('change', checkboxClear);
+})
+
+
+function checkLeave() {
+	var result = confirm("선택된 회원을 탈퇴시키시겠습니까?");
+	if (result) {
+		alert("회원 탈퇴가 완료되었습니다.");
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function checkResign() {
+	var result = confirm("선택된 회원을 재가입시키시겠습니까?");
+	if (result) {
+		alert("회원 재가입이 완료되었습니다.")
+		return true;
+	} else {
+		return false;
+	}
+}

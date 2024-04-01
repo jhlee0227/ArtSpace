@@ -1,6 +1,7 @@
 package com.example.demo.mypage.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.mypage.service.MypageService;
 import com.example.demo.user.dto.UserDTO;
@@ -76,10 +78,12 @@ public class MypageController {
 	}
 
 	// 내 즐겨찾기
-	@GetMapping("/favorite")
-	public String favorite() {
-		return "html/mypage/my_favorites";
-	}
+//	@GetMapping("/favorite")
+//	public String favorite(Model model) {
+//		List<LikeDTO> likeList = mypageService.getAllLike();
+//		model.addAttribute("like_list", likeList);
+//		return "html/mypage/my_favorites";
+//	}
 
 	// 로그인 회원 내 즐겨찾기
 //	@GetMapping("/{id}/favorite")
