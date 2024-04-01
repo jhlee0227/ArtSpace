@@ -80,8 +80,8 @@ public class HallController {
 		}
 
 		HallDTO hallInfo = hallService.findById(id);
-		hallService.setHallTimeList(hallInfo);
-		
+		hallInfo.setHallTimeList(hallService.setHallTimeList(hallInfo));
+
 		model.addAttribute("hall_info", hallInfo);
 		model.addAttribute("action", "/hall/form/update/" + id);
 
