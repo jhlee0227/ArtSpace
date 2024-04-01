@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.mypage.dao.MypageDAO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
@@ -57,8 +58,14 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public List<LikeDTO> getAllLike() {
-		return mypageDAO.getAllLike();
+	public List<HallDTO> getAllLike(Integer id) {
+		return mypageDAO.getAllLike(id);
+	}
+
+	@Override
+	public void likeDelete(Integer like_id) {
+		mypageDAO.likeDelete(like_id);
+		
 	}
 
 

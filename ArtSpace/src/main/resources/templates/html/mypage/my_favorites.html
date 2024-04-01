@@ -18,7 +18,7 @@
 		        <div class="img">
 		          <img src="/img/hongsnow1.jpg" class="profile" alt="">
 		        </div>
-		        <h2 class="username">000</h2>
+		        <h2 class="username" th:text="${my_info.nickname}"></h2>
 		      </div>
 		      <div class="left-menu">
 		        <ul>
@@ -47,6 +47,7 @@
 		    <div class="content">
 		      <h2 class="content-main">내 즐겨찾기</h2>
 		      <!-- 여기에 th:each -->
+			  <form method="post" action="">
 		      <div class="list" th:each="like : ${like_list}">
 		        <!-- 여기에 th:text -->
 		        <div class="item">
@@ -54,29 +55,17 @@
 		            <img src="/img/hallex.jpg" class="hall-thumb" alt="">
 		          </div>
 		          <div class="hall">
-		            <div class="hall-name" th:text="${like.">안녕하세요홀</div>
-		            <div class="hall-loca">서울</div>
+					<!--<input type="hidden" name="like_id" th:value="${like.like_id}">-->
+		            <div class="hall-name" th:text="${like.hall_name}"></div>
+		            <div class="hall-loca" th:text="${like.address1 + ' ' + like.address2}"></div>
 		          </div>
 		          <div class="button">
-		            <button>찜 취소</button>
+		            <button th:formaction="@{/mypage/favorite/delete}">찜 취소</button>
 		            <button>상세보기</button>
 		          </div>
 		        </div>
-		        <div class="item">
-		          <div class="hall-img">
-		            <img src="../../static/img/hallex.jpg" class="hall-thumb" alt="">
-		          </div>
-		          <div class="hall">
-		            <div class="hall-name">안녕못해요홀</div>
-		            <div class="hall-loca">서울</div>
-		          </div>
-		          <div class="button">
-		            <button>찜 취소</button>
-		            <!-- 공연장 상세 페이지 링크 걸기 -->
-		            <button onclick = "location.href = '#'">상세보기</button>
-		          </div>
-		        </div>
 		      </div>
+			  </form>
 		    </div>
 		  </section>	
 	</div>
