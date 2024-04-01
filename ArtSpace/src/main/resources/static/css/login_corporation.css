@@ -190,3 +190,7 @@ font-size: 2.2rem;
 color: white;
 }
 /* container end */
+
+.ttt span {
+	cursor: pointer;
+}

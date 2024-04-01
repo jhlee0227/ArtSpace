@@ -7,7 +7,10 @@
   border: none;
 }
 
-
+a {
+    color: inherit; /* 글자 색생은 부모로부터 상속 */
+    text-decoration: none;
+}
 html,
 body {
   height: 100%;
