@@ -8,6 +8,8 @@ public class CorporationDTO {
 	private String owner_email;
 	private String owner_phone;
 	private Integer user_id;
+	
+	
 	public Integer getCompany_id() {
 		return company_id;
 	}

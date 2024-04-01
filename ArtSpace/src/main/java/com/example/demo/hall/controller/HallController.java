@@ -36,8 +36,6 @@ public class HallController {
 	@Autowired
 	private HallService hallService;
 	
-	private Integer hall_id;
-	
 	SessionUtil user_session = new SessionUtil();
 	
 	@Autowired
@@ -97,13 +95,7 @@ public class HallController {
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
-
-		hall_id = hallService.findLastIndex();
-		if(hall_id == null) hall_id = 0;
-		hall_id++;
-		
 		hallDTO.setCreate_date(LocalDate.now());
-		hallDTO.setHall_id(hall_id);
 		hallDTO.setUser_id(user_session.getUser_id());
 
 		hallService.insert(hallDTO);
