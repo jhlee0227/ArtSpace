@@ -8,7 +8,6 @@
   </head>
   <body>	
 	<div layout:fragment="content">	
-
 		  <!-- 베너 부분 -->
 		  <section class="main-banner">
 		    <div class="container">
@@ -76,7 +75,8 @@
 					<div class="box" th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
 					  <div class="imgbox">            
 					    <img src="" alt="">
-					    <i id="like-btn" class="fa fa-star fa-4x" aria-hidden="true"></i>
+					    <i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>
+						<!--<i class="fa-solid fa-heart"></i> 꽉찬하트-->
 					  </div>
 					  <div class="content">
 					    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
@@ -128,7 +128,6 @@
 		      </div>
 		    </section>
 		  <!-- 공연장 공연자 바로가기 End -->
-		
 		     
 	</div>
 

@@ -160,9 +160,7 @@ $(document).ready(function() {
 		isSubmit();
 	});	*/		
 	
-	$(document).on("propertychange change keyup paste input", "#phone", function(){
-
-		
+	$(document).on("propertychange change keyup paste input", "#phone", function(){		
 	     $(this).val( $(this).val()
 		 	.replace(/[^0-9]/g, "")
 			.replace(/([0-9]{3})+([0-9]{4})+([0-9]{4})$/,"$1-$2-$3")
@@ -172,7 +170,7 @@ $(document).ready(function() {
 		
 		if(!phonePattern.test($.trim($("#phone").val()))){
 			$('#phonechk').html("핸드폰 번호를 입력해 주세요.(010-xxxx-xxxx)").css('color','red');
-			a[0] = 0;
+			a[5] = 0;
 		} else {
 			var phone = $('#phone').val();
 			$.ajax({

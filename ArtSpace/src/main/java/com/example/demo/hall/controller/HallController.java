@@ -2,27 +2,20 @@ package com.example.demo.hall.controller;
 
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.SessionUtil;
-import com.example.demo.UUIDgeneration;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.HallTimeDTO;
 import com.example.demo.hall.service.HallService;
 
 import jakarta.servlet.http.HttpSession;

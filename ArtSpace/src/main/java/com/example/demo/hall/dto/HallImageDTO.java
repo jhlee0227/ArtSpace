@@ -1,7 +1,5 @@
 package com.example.demo.hall.dto;
 
-import java.time.LocalDate;
-
 public class HallImageDTO {
 	// 공연장 사진 시간에 대한 table
 	

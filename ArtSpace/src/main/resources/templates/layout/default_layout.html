@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" th:href="@{/css/reset.css}">
+<!--  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">  -->
   <title>Document</title>
 </head>
 <body>
@@ -14,13 +15,7 @@
   
   <footer th:replace="fragments/footer :: footerFragment"></footer>
 
-
-<!--	# insert : 코드 불러오기
-	<div th:insert="fragments/filename::fragmentname"></div>
-	
-	# include: 코드 불러오기 (no longer recommended since Thymeleaf 3.0)
-	<div th:include="fragments/filename::fragmentname"></div>-->
-	
 	<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+<!--	<script th:src="@{/js/bootstrap.min.js}"></script>	-->
 </body>
 </html>
