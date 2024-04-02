@@ -3,10 +3,10 @@
 /* ==================================================공연장 사진 및 이름================================================== */
 
 .hall-detail .imgbox {
-    width: 1500px;
+    width: 100%;
     height: 500px;
-    margin-top: 200px;
-    margin-bottom: 10px;
+    margin-top: 13%;
+    margin-bottom: 1%;
     background: #fff5e2;
 }
 

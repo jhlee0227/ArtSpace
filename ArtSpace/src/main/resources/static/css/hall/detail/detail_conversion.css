@@ -35,14 +35,14 @@
 
 .hall-detail .main {
   margin: 0 auto;
-  min-width: 1380px;
+  min-width: 100%;
   max-width: 100%;
 }
 
 .hall-detail .tab {
     background-color: rgb(235, 235, 235);
     color: gray;
-    padding: 0px 0px 3px 0px;
+    padding: 0% 0% 0.2% 0%;
     overflow: hidden;
 }
 
@@ -68,7 +68,7 @@
     float: left;
     width: 25%;
     text-align: center;
-    padding: 20px 0;
+    padding: 1.5% 0%;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;

@@ -24,18 +24,18 @@
 
 .hall-detail .content .color {
     background-color: rgb(235, 235, 235);
-    width: 125px;
+    width: 135px;
     height: 30px;
     text-align: center;
 }
 
 .hall-detail .content td {
-    width: 1000px;
+    width: 88.2%;
 }
 
 .hall-detail .content hr {
     float: left;
-    width: 80.5%;
+    width: 81%;
     margin-top: 30px;
 }
 
