@@ -26,24 +26,9 @@
 				</form>
 	-->
 	            <!-- 내용을 HTML로 작성하기 -->
-	            <div class="content-box">
+	            <div class="content-box" th:each="notice : ${noticeList}">
 	                <div class="check"><input type="checkbox" name="" id=""></div>
-	                <div class="title"><a href="view.html">게시판게시판게시판게시팔.</a></div>
-	                <div class="delete"><button>X</button></div>
-	            </div>
-	            <div class="content-list">
-	                <div class="check"><input type="checkbox" name="" id=""></div>
-	                <div class="title"><a href="view.html">어쩔티비 저쩔티비 안물안궁.</a></div>
-	                <div class="delete"><button>X</button></div>
-	            </div>
-	            <div class="content-box">
-	                <div class="check"><input type="checkbox" name="" id=""></div>
-	                <div class="title"><a href="view.html">살빼야한다 유산소 운동해야집!.</a></div>
-	                <div class="delete"><button>X</button></div>
-	            </div>
-	            <div class="content-box">
-	                <div class="check"><input type="checkbox" name="" id=""></div>
-	                <div class="title"><a href="view.html">김민서는 천재다.</a></div>
+	                <div class="title"><a href="view.html"><span th:text="${notice.subject}"></span></a></div>
 	                <div class="delete"><button>X</button></div>
 	            </div>
 	

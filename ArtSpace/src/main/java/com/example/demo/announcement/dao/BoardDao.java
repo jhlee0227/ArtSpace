@@ -1,5 +1,7 @@
 package com.example.demo.announcement.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,13 +19,18 @@ public class BoardDao {
 		sqlSession.insert("board.insertboard", boardDto);
 	}
 
-	
-	public BoardDto login(BoardDto boardDto) {
-		return sqlSession.selectOne("user.login", boardDto);
+	public List<BoardDto> getNotice() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.getNotice");
 	}
 
-	public int emailCheck(String email) {
-		return sqlSession.selectOne("user.email_check", email);
-	}
+	
+//	public BoardDto login(BoardDto boardDto) {
+//		return sqlSession.selectOne("user.login", boardDto);
+//	}
+//
+//	public int emailCheck(String email) {
+//		return sqlSession.selectOne("user.email_check", email);
+//	}
 
 }

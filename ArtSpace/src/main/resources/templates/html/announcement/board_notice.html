@@ -8,29 +8,30 @@
  
 </head>
 <body>
-    <div class="card">
-        <div class="card-header4"><a href="http://127.0.0.1:5500/templates/board/ddd.html#"><h1>게시판</h1></a></div>
-        <div class="card-edit">
-			<form method="post" th:action="@{}">
-	            <div class="title">
-	                제목<input type="text" name="" placeholder="제목을 입력하세요." value="">
-	            </div>
-	            <div class="msg">
-	                <!-- textarea에서는 input의 value와는 다르게 textarea 안에 내용을 작성하며 tab을 없앤다. -->
-	                내용<textarea name="" placeholder="내용을 입력하세요.">
-	
-	                </textarea>
-	                <input type="file">
-	            </div>
-
-		        <div class="btn-edit">
-					<button>작성</button>
-		            <!--<a href="../BOARD/index.html">작성</a>-->
-		        </div>
-			</form>
+	<div layout:fragment="content">
+		<div class="card">
+		    <div class="card-header4"><a href="http://127.0.0.1:5500/templates/board/ddd.html#"><h1>게시판</h1></a></div>
+		    <div class="card-edit">
+				<form method="post" th:action="@{/board/insert}">
+		            <div class="title">
+		                제목<input type="text" name="subject" placeholder="제목을 입력하세요." value="">
+		            </div>
+		            <div class="msg">
+		                <!-- textarea에서는 input의 value와는 다르게 textarea 안에 내용을 작성하며 tab을 없앤다. -->
+		                내용<textarea name="content" placeholder="내용을 입력하세요.">
+		
+		                </textarea>
+		                <input type="file">
+		            </div>
+		
+			        <div class="btn-edit">
+						<button>작성</button>
+			            <!--<a href="../BOARD/index.html">작성</a>-->
+			        </div>
+				</form>
+			</div>
 		</div>
-    </div>
-
-
+	</div>
+	
 </body>
 </html>
