@@ -23,8 +23,9 @@ public interface MypageService {
 
 	public List<HallDTO> getAllLike(Integer id);
 
-	public void likeDelete(LikeDTO likeInfo);
+	public void likeDelete(Integer user_id, Integer hall_id);
 
-	public LikeDTO getLikeInfo(Integer id);
+	public List<HallDTO> getAllReserve(Integer user_id);
+
 
 }

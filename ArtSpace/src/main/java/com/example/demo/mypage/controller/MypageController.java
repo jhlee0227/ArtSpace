@@ -27,6 +27,8 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("mypage")
 public class MypageController {
 
+	SessionUtil user_session = new SessionUtil();
+	
 	@Autowired
 	MypageService mypageService;
 
@@ -35,13 +37,14 @@ public class MypageController {
 
 	// 마이페이지 내 정보
 	@GetMapping("")
-	public String mypage(Model model, HttpSession session) {
-		Integer id = (Integer) session.getAttribute("user_id");
-		String nickname = (String) session.getAttribute("nickname");
-		UserDTO myInfo = mypageService.findByID(id);
+	public String mypage(Model model) {
+		
+		user_session.setSesstionValue(session);
+		
+		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
 		model.addAttribute("my_info", myInfo);
-		model.addAttribute("user_id", id);
-		model.addAttribute("nickname", nickname);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
 		return "html/mypage/mypage";
 	}
 
@@ -49,8 +52,9 @@ public class MypageController {
 	@PostMapping("/update/nickname")
 	public String updateNickname(@ModelAttribute UserDTO dto) {
 
-		Integer userId = (Integer) session.getAttribute("user_id");
-		dto.setUser_id(userId);
+		user_session.setSesstionValue(session);
+		
+		dto.setUser_id(user_session.getUser_id());
 		mypageService.updateNickname(dto);
 		return "redirect:/mypage";
 	}
@@ -59,31 +63,33 @@ public class MypageController {
 	@PostMapping("/update/pw")
 	public String updatePw(@ModelAttribute UserDTO dto) {
 
-		Integer userId = (Integer) session.getAttribute("user_id");
-		dto.setUser_id(userId);
+		user_session.setSesstionValue(session);
+
+		dto.setUser_id(user_session.getUser_id());
 		mypageService.updatePw(dto);
 		return "redirect:/mypage";
 	}
 
 	// 공연자 정보 기본
 	@GetMapping("/performer")
-	public String performer(Model model, HttpSession session) {
-		Integer id = (Integer) session.getAttribute("user_id");
-		String nickname = (String) session.getAttribute("nickname");
-		PerformerDTO perfoInfo = mypageService.findByPID(id);
-		UserDTO myInfo = mypageService.findByID(id);
+	public String performer(Model model) {
+		user_session.setSesstionValue(session);
+
+		PerformerDTO perfoInfo = mypageService.findByPID(user_session.getUser_id());
+		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
 		model.addAttribute("perfo_info", perfoInfo);
 		model.addAttribute("my_info", myInfo);
-		model.addAttribute("user_id", id);
-		model.addAttribute("nickname", nickname);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
 		return "html/mypage/performer_info";
 	}
 
 	// 공연자 정보 등록 및 수정
 	@PostMapping("/performer")
-	public String insertPerformer(@ModelAttribute PerformerDTO dto, HttpSession session) {
-		Integer id = (Integer) session.getAttribute("user_id");
-		dto.setUser_id(id);
+	public String insertPerformer(@ModelAttribute PerformerDTO dto) {
+		user_session.setSesstionValue(session);
+		
+		dto.setUser_id(user_session.getUser_id());
 		mypageService.insert(dto);
 		return "redirect:/mypage/performer";
 	}
@@ -91,47 +97,37 @@ public class MypageController {
 	// 내 즐겨찾기
 	@GetMapping("/favorite")
 	public String favorite(Model model) {
+		user_session.setSesstionValue(session);
 		
-		Integer id = (Integer) session.getAttribute("user_id");
-		String nickname = (String) session.getAttribute("nickname");
-		UserDTO myInfo = mypageService.findByID(id);
-		List<HallDTO> likeList = mypageService.getAllLike(id);
+		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
+		List<HallDTO> likeList = mypageService.getAllLike(user_session.getUser_id());
 		model.addAttribute("my_info", myInfo);
 		model.addAttribute("like_list", likeList);
-		model.addAttribute("user_id", id);
-		model.addAttribute("nickname", nickname);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
 		return "html/mypage/my_favorites";
 	}
 
 	// 찜 삭제
 	@PostMapping("/favorite/delete")
 	public String likeDelete(Model model, @RequestParam("hall_id") Integer hall_id) {
-	    Integer user_id = (Integer) session.getAttribute("user_id");
-	    LikeDTO likeInfo = mypageService.getLikeInfo(user_id);
-//	    likeInfo.setHall_id(hall_id);
-	    mypageService.likeDelete(likeInfo);
-	    
-	    model.addAttribute("user_id", user_id);
+		user_session.setSesstionValue(session);
+
+	    mypageService.likeDelete(user_session.getUser_id(), hall_id);
 	    return "redirect:/mypage/favorite";
 	}
-	
-//	@PostMapping("/favorite/delete")
-//	public String likeDelete(Model model, @RequestParam("hall_ids") List<Integer> hall_ids) {
-//	    Integer user_id = (Integer) session.getAttribute("user_id");
-//	    for (Integer hall_id : hall_ids) {
-//	        LikeDTO likeInfo = new LikeDTO();
-//	        likeInfo.setUser_id(user_id);
-//	        likeInfo.setHall_id(hall_id);
-//	        mypageService.likeDelete(likeInfo);
-//	    }
-//	    model.addAttribute("user_id", user_id);
-//	    return "redirect:/mypage/favorite";
-//	}
-	
 
 	// 예약 내역
 	@GetMapping("/reserve")
-	public String reserve() {
+	public String reserve(Model model) {
+		user_session.setSesstionValue(session);
+		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
+		model.addAttribute("my_info", myInfo);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
+		
+		List<HallDTO> reserveList = mypageService.getAllReserve(user_session.getUser_id());
+		model.addAttribute("reserve_list", reserveList);
 		return "html/mypage/reservation_list";
 	}
 
