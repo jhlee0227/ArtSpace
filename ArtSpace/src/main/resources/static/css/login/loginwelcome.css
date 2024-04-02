@@ -12,6 +12,13 @@ body {
   height: 100%;
 }
 
+body{
+	background-image: url("https://cdn.pixabay.com/photo/2017/08/02/23/42/dark-2574089_1280.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
 /* container */
 .container {
   /* 100vh : 화면 전체 넓이로 설정 */
