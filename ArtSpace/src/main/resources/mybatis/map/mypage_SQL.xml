@@ -49,8 +49,10 @@
 		where user_id = #{user_id}
 	</update>
 
+
+
 	<select id="getLike" resultType="com.example.demo.hall.dto.HallDTO">
-		select h.hall_name, h.address1, h.address2
+		select h.hall_name, h.address1, h.address2, h.hall_id
 		from hall h
 		join like_hall l on l.hall_id = h.hall_id
 		join user u on l.user_id = u.user_id
@@ -60,7 +62,7 @@
 	<select id="getLikeInfo" resultType="com.example.demo.mypage.dto.LikeDTO">
 		select *
 		from like_hall
-		where user_id = #{id}
+		where user_id = #{id} and hall_id = #{hall_id}
 	</select>
 	
 	<update id="likeDelete">
