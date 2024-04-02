@@ -30,5 +30,10 @@ public class UserServiceImpl implements UserService{
 		return userDAO.emailCheck(email);
 	}
 
+	@Override
+	public int phoneCheck(String phone) {
+		return userDAO.phoneCheck(phone);
+	}
+
 
 }

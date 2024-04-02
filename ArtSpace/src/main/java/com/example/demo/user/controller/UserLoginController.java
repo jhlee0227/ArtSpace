@@ -85,9 +85,26 @@ public class UserLoginController {
 		} else if(result == 0){
 			chk = "noredundancy";	// 아이디 중복 아님
 		}
-		System.out.println("1234");
 		return chk;
 	}
+	
+	@RequestMapping(value="/phoneCheck" ,method = RequestMethod.POST)
+	@ResponseBody
+	public String phoneCheck(@RequestParam(value="phone")  String phone) {
+		String chk = "";
+		int result = 0;
+		
+		result = userService.phoneCheck(phone);
+		
+		if(result > 0) {
+			chk = "redundancy"; 	// 아이디 중복
+		} else if(result == 0){
+			chk = "noredundancy";	// 아이디 중복 아님
+		}
+		return chk;
+	}
+	
+	
 	
 	
 }
