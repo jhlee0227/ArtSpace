@@ -57,13 +57,13 @@ public class MypageDAO {
 		return sqlSession.selectList("mypage.getLike", id);
 	}
 
-	public void likeDelete(List<LikeDTO> like) {
+	public void likeDelete(LikeDTO like) {
 		sqlSession.update("mypage.likeDelete", like);
 	}
 
-	public List<LikeDTO> getLikeInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("mypage.getLikeInfo", id);
+	public LikeDTO getLikeInfo(Integer id) {
+		
+		return sqlSession.selectOne("mypage.getLikeInfo", id);
 	}
 
 

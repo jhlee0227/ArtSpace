@@ -63,13 +63,13 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public void likeDelete(List<LikeDTO> like) {
+	public void likeDelete(LikeDTO like) {
 		mypageDAO.likeDelete(like);
 		
 	}
 
 	@Override
-	public List<LikeDTO> getLikeInfo(Integer id) {
+	public LikeDTO getLikeInfo(Integer id) {
 		return mypageDAO.getLikeInfo(id);
 	}
 
