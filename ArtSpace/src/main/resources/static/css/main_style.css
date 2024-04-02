@@ -223,6 +223,11 @@ section {
 .hall-list .con .box-container .content .time-text {
   font-size: 1.5rem;
   color: var(--gray);
+  display: flex;
+}
+
+.hall-list .con .box-container .content .time-text span {
+	margin: 0, 1rem;
 }
 
 .hall-list .con .btn {

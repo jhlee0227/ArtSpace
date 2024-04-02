@@ -8,4 +8,5 @@ public interface HallListService {
 
 	List<HallDTO> getList(String sort);
 
+
 }

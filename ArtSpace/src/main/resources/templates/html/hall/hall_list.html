@@ -60,19 +60,28 @@
 			</div>
 			
 	        <div class="box-container">
-				
-	          <div class="box" th:each="hall : ${hallList}">
-	            <div class="imgbox">            
-	              <img src="" alt="">
-	              <i id="like-btn" class="fa fa-star fa-4x" aria-hidden="true"></i>
-	            </div>
-	            <div class="content">
-	              <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
-	              <p class="title-text" th:text="${hall.hall_name}">난파 음악관 콘서트 홀</p>
-	              <p class="price-text"><span class="point">300,000</span>원~</p>
-	              <p class="time-text">오전 | 오후 | 야간 | 1일</p>
-	            </div>
-	          </div>
+	
+			  <!-- 상자 반복 일단 8개까지 보이기 -->
+  			  <th:block th:each="hall,index : ${hallList}" th:if="${index.index} < 8" >
+  				<div class="box" th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
+  				  <div class="imgbox">            
+  				    <img src="" alt="">
+  				    <i id="like-btn" class="fa fa-star fa-4x" aria-hidden="true"></i>
+  				  </div>
+  				  <div class="content">
+  				    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
+  				    <p class="title-text" th:text="${hall.hall_name}">난파 음악관 콘서트 홀</p>
+  				    <p class="price-text"><span th:text="${hall.minPrice}" class="point">300,000</span>원~</p>
+  					<div class="time-text">
+  					  <th:block th:each="time, index : ${hall.hallTimeList}">
+  						<p th:text="|${time.type}|"></p>
+  						<span th:if="${index.index}+1 < ${hall.hallTimeList.size()}">|</span>							
+  					  </th:block>
+  					</div>
+  				  </div>
+  				</div>
+  			  </th:block>
+
 
 	        </div>
 	      </div>
