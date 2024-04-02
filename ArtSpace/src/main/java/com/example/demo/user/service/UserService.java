@@ -10,4 +10,6 @@ public interface UserService {
 
 	public int emailCheck(String email);
 
+	public int phoneCheck(String phone);
+
 }

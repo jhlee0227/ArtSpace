@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="/css/my_favorites.css">
+  <link rel="stylesheet" href="/css/mypage/user/my_favorites.css">
 </head>
 
 <body>
@@ -54,12 +54,12 @@
 		          <div class="hall-img">
 		            <img src="/img/hallex.jpg" class="hall-thumb" alt="">
 		          </div>
-		          <div class="hall">
-					<!--<input type="hidden" name="user_id" th:value="${like_info.user_id}">-->
+		          <div class="hall">	
 		            <div class="hall-name" th:text="${like.hall_name}"></div>
 		            <div class="hall-loca" th:text="${like.address1 + ' ' + like.address2}"></div>
 		          </div>
 		          <div class="button">
+					<input name="hall_id" th:value="${like.hall_id}">
 		            <button th:formaction="@{/mypage/favorite/delete}">찜 취소</button>
 		            <button>상세보기</button>
 		          </div>

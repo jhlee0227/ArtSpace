@@ -1,6 +1,7 @@
 package com.example.demo.mypage.controller;
 
 import java.time.LocalDate;
+import java.util.Enumeration;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.mypage.service.MypageService;
 import com.example.demo.user.dto.UserDTO;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -103,14 +105,29 @@ public class MypageController {
 
 	// 찜 삭제
 	@PostMapping("/favorite/delete")
-	public String likeDelete(Model model) {
-		Integer id = (Integer) session.getAttribute("user_id");
-		List<LikeDTO> likeInfo = mypageService.getLikeInfo(id);
-		mypageService.likeDelete(likeInfo);
-		model.addAttribute("user_id", id);
-		model.addAttribute("like_info", likeInfo);
-		return "redirect:/mypage/favorite";
+	public String likeDelete(Model model, @RequestParam("hall_id") Integer hall_id) {
+	    Integer user_id = (Integer) session.getAttribute("user_id");
+	    LikeDTO likeInfo = mypageService.getLikeInfo(user_id);
+//	    likeInfo.setHall_id(hall_id);
+	    mypageService.likeDelete(likeInfo);
+	    
+	    model.addAttribute("user_id", user_id);
+	    return "redirect:/mypage/favorite";
 	}
+	
+//	@PostMapping("/favorite/delete")
+//	public String likeDelete(Model model, @RequestParam("hall_ids") List<Integer> hall_ids) {
+//	    Integer user_id = (Integer) session.getAttribute("user_id");
+//	    for (Integer hall_id : hall_ids) {
+//	        LikeDTO likeInfo = new LikeDTO();
+//	        likeInfo.setUser_id(user_id);
+//	        likeInfo.setHall_id(hall_id);
+//	        mypageService.likeDelete(likeInfo);
+//	    }
+//	    model.addAttribute("user_id", user_id);
+//	    return "redirect:/mypage/favorite";
+//	}
+	
 
 	// 예약 내역
 	@GetMapping("/reserve")

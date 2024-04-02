@@ -17,6 +17,13 @@
 		select count(*) from user
 		where email = #{email}
 	</select>
+
+	<select id="phone_check" resultType="int">
+		select count(*) from user
+		where phone = #{phone}
+	</select>
+	
+	
 	
 
 </mapper>

@@ -7,4 +7,14 @@
 		where email = #{email}
 	</select>
 	
+	<insert id="insert">
+		insert into admin(nickname, email, password, authority)
+		values(#{nickname},#{email},#{password},#{authority})
+	</insert>
+		
+	<select id="login" resultType="com.example.demo.admin.dto.AdminDTO">
+		select *
+		from admin
+		where email = #{email} and password = #{password}
+	</select>
 </mapper>

@@ -25,5 +25,9 @@ public class UserDAO {
 		return sqlSession.selectOne("user.email_check", email);
 	}
 
+	public int phoneCheck(String phone) {
+		return sqlSession.selectOne("user.phone_check", phone);
+	}
+
 	
 }
