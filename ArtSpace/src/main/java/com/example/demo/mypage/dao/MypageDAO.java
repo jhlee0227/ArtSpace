@@ -69,5 +69,12 @@ public class MypageDAO {
 		return sqlSession.selectList("mypage.getReserve", user_id);
 	}
 
+	public void reserveDelete(Integer user_id, Integer hall_id) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("hall_id", hall_id);
+		sqlSession.update("mypage.reserveDelete", map);
+	}
+
 
 }

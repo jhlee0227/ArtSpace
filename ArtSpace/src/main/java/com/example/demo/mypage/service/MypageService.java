@@ -27,5 +27,7 @@ public interface MypageService {
 
 	public List<HallDTO> getAllReserve(Integer user_id);
 
+	public void reserveDelete(Integer user_id, Integer hall_id);
+
 
 }
