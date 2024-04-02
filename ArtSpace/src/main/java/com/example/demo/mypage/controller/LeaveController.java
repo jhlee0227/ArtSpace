@@ -22,12 +22,13 @@ public class LeaveController {
 	HttpSession session;
 	
 	// 탈퇴
-	@PostMapping("/")
+	@PostMapping("/leave")
 	public String leave(@ModelAttribute UserDTO dto) {
 		Integer userId = (Integer) session.getAttribute("user_id");
 		dto.setUser_id(userId);
 		mypageService.leave(dto);
-		return "redirect:";
+		session.invalidate();
+		return "redirect:/login";
 	}
 
 }

@@ -45,7 +45,17 @@ public class MypageController {
 		model.addAttribute("my_info", myInfo);
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
-		return "html/mypage/mypage";
+		String authority = user_session.getAuthority();
+		if (authority.equals("SU")) {
+			return "html/mypage/mypage";
+		} else if (authority.equals("SC")) {
+			return "html/company/company_page";
+		} else if (authority.equals("SA")) {
+			return "html/admin/admin";
+		} else {
+			return "html/index";
+		}
+		
 	}
 
 	// 닉네임 수정
@@ -56,6 +66,7 @@ public class MypageController {
 		
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updateNickname(dto);
+		session.setAttribute("nickname", dto.getNickname());
 		return "redirect:/mypage";
 	}
 
@@ -131,6 +142,15 @@ public class MypageController {
 		return "html/mypage/reservation_list";
 	}
 
+	// 예약 취소
+	@PostMapping("/reserve/delete")
+	public String reserveDelete(Model model, @RequestParam("hall_id") Integer hall_id) {
+		user_session.setSesstionValue(session);
+		
+		mypageService.reserveDelete(user_session.getUser_id(), hall_id);
+		return "redirect:/mypage/reserve";
+	}
+	
 	// 이용 내역
 	@GetMapping("/uselist")
 	public String uselist() {
