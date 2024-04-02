@@ -67,10 +67,19 @@
 	</update> 
 	
 	<select id="getReserve" resultType="com.example.demo.hall.dto.HallDTO">
-		select h.hall_name, h.address1, h.address2, rd.start_date, rd.end_date, rd.start_time, rd.end_time
+		select h.hall_name, h.address1, h.address2, h.hall_id,
+				date_format(rd.start_date, '%Y-%m-%d') as start_date, 
+				date_format(rd.end_date, '%Y-%m-%d') as end_date, 
+				rd.start_time, rd.end_time
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
 		join reserve_date rd on r.reserve_id = rd.reserve_id
 		where r.reserve_status = 'Y' and r.user_id = #{user_id}
 	</select>
+	
+	<update id="reserveDelete">
+		update reservation
+		set reserve_status = 'N'
+		where user_id = #{user_id} and hall_id = #{hall_id}
+	</update>
 </mapper>

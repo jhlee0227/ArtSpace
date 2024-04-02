@@ -15,8 +15,10 @@
 
 .hall-detail .content .qna .edit textarea {
     width: 85%;
+    height: 80px;
     margin-top: 1%;
     margin-left: 2%;
+    resize: none;
 }
 
 input[type=submit] {

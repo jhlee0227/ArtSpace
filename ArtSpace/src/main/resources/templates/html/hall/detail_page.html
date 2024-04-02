@@ -140,7 +140,7 @@
                 7500924868004!2d126.92247877632376!3d37.
                 58450202309692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c985b23292a2d%3A0x459427c4b994b6b7!
                 2z7ISc7Jq47Yq567OE7IucIOyEnOuMgOusuOq1rCDqsIDsoozroZwgMTM0!5e0!3m2!1sko!2skr!4v1710923727190!5m2!1sko!2skr" 
-                width="1125" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                width="81%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <br>
 
@@ -198,7 +198,7 @@
                     <span class="start-date">시작일</span>
                     <input type="date" placeholder="날짜 선택">
                     <span class="start-time">시작 시간 선택</span>
-                    <select name="am-pm" id="am-pm">
+                    <select name="sam-pm" id="am-pm">
                       <option value="sel">선택</option>
                       <option value="am">오전</option>
                       <option value="pm">오후</option>
@@ -210,7 +210,7 @@
                     <span class="end-date">종료일</span>
                     <input type="date" placeholder="날짜 선택">
                     <span class="end-time">종료 시간 선택</span>
-                    <select name="am-pm" id="am-pm">
+                    <select name="eam-pm" id="am-pm">
                       <option value="sel">선택</option>
                       <option value="am">오전</option>
                       <option value="pm">오후</option>
@@ -242,7 +242,7 @@
                       <div class="mic-noline">
                         <input type="checkbox" name="mics" value="noline" id="noline"> 무선 마이크
                         <span class="count">개수</span>
-                        <select name="mic-count" id="mic-count">
+                        <select name="nmic-count" id="mic-count">
                           <option value="sel">선택</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -256,7 +256,7 @@
                       <div class="main-speaker">
                         <input type="checkbox" name="speakers" value="main" id="main"> 메인 스피커
                         <span class="use">사용 여부</span>
-                        <select name="speaker-use" id="speaker-use">
+                        <select name="mspeaker-use" id="speaker-use">
                           <option value="sel">선택</option>
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
@@ -267,7 +267,7 @@
                       <div class="sub-speaker">
                         <input type="checkbox" name="speakers" value="sub" id="sub"> 서브 스피커
                         <span class="use">사용 여부</span>
-                        <select name="speaker-use" id="speaker-use">
+                        <select name="suspeaker-use" id="speaker-use">
                           <option value="sel">선택</option>
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
@@ -278,7 +278,7 @@
                       <div class="woofer-speaker">
                         <input type="checkbox" name="speakers" value="woofer" id="woofer"> 우퍼 스피커
                         <span class="use">사용 여부</span>
-                        <select name="speaker-use" id="speaker-use">
+                        <select name="wspeaker-use" id="speaker-use">
                           <option value="sel">선택</option>
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
@@ -289,7 +289,7 @@
                       <div class="stage-speaker">
                         <input type="checkbox" name="speakers" value="stage" id="stage"> 스테이지 스피커
                         <span class="use">사용 여부</span>
-                        <select name="speaker-use" id="speaker-use">
+                        <select name="stspeaker-use" id="speaker-use">
                           <option value="sel">선택</option>
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
@@ -580,28 +580,143 @@
       <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
       
       <script>
-		  var onDate = document.querySelector('select[name="am-pm"] > option:checked').innerText;
-		  if(onDate == "오전") {
-			  onDate = "100000";
-			  Number(onDate);
-		  } else if(onDate == "오후") {
-			  onDate = "100000";
-			  Number(onDate);
-		  } else if(onDate == "야간") {
-			  onDate = "150000";
-			  Number(onDate);
+		  var onSdate = document.querySelector('select[name="sam-pm"] > option:checked').innerText;
+		  if(onSdate == "오전") {
+			  onSdate = "100000";
+			  Number(onSdate);
+		  } else if(onSdate == "오후") {
+			  onSdate = "150000";
+			  Number(onSdate);
+		  } else if(onSdate == "야간") {
+			  onSdate = "100000";
+			  Number(onSdate);
 		  } else {
-			  onDate = "0";
-			  Number(onDate);
+			  onSdate = "0";
+			  Number(onSdate);
 		  }
+		  
+		  console.log(onSdate);
+		  
+		  
+		  var onEdate = document.querySelector('select[name="eam-pm"] > option:checked').innerText;
+		  if(onEdate == "오전") {
+			  onEdate = "100000";
+			  Number(onEdate);
+		  } else if(onEdate == "오후") {
+			  onEdate = "150000";
+			  Number(onEdate);
+		  } else if(onEdate == "야간") {
+			  onEdate = "100000";
+			  Number(onEdate);
+		  } else {
+			  onEdate = "0";
+			  Number(onEdate);
+		  }
+		  
+		  console.log(onEdate);
+		  
 		  
 		  var onMic = document.querySelector('select[name="mic-count"] > option:checked').value;
-		  if(onMic == 1) {
-			  onMic = 7000;
+		  if(("#line").is(":checked") == true) {
+		  	if(onMic == 1) {
+			  	onMic = 7000;
+		  	} else if(onMic == 2) {
+			  	onMic = 14000;
+		  	} else {
+			  	onMic = 0;
+		  	}
+		  } else {
+			  onMic = 0;
 		  }
 		  
-		  var onSpeaker = $('select[name="speaker-use"] > option:checked').text();
-		  var onLight = $('select[name="light-use"] > option:checked').text();
+		  console.log(onMic);
+		  
+		  
+		  var onNmic = document.querySelector('select[name="nmic-count"] > option:checked').value;
+		  if(("#noline").is(":checked") == true) {
+		  	if(onNmic == 1) {
+			  	onNmic = 10000;
+		  	} else if(onNmic == 2) {
+			  	onNmic = 20000;
+		  	} else {
+			  	onNmic = 0;
+		  	}
+		  } else {
+			  onNmic = 0;
+		  }
+		  
+		  console.log(onNmic);
+		  
+		  
+		  var onMsk = document.querySelector('select[name="mspeaker-use"] > option:checked').innerText;
+		  if(("#main").is(":checked") == true) {
+			  if(onMsk == "예") {
+				  onMsk = "150000";
+				  Number(onMsk);
+			  } else {
+				  onMsk = "0";
+				  Number(onMsk);
+			  }
+		  } else {
+			  onMsk = "0";
+			  Number(onMsk);
+		  }
+		  
+		  console.log(onMsk);
+		  
+		  
+		  var onSusk = document.querySelector('select[name="suspeaker-use"] > option:checked').innerText;
+		  if(("#sub").is(":checked") == true) {
+			  if(onSusk == "예") {
+				  onSusk = "100000";
+				  Number(onSusk);
+			  } else {
+				  onSusk = "0";
+				  Number(onSusk);
+			  }
+		  } else {
+			  onSusk = "0";
+			  Number(onSusk);
+		  }
+		  
+		  console.log(onSusk);
+		  
+		  
+		  var onWsk = document.querySelector('select[name="wspeaker-use"] > option:checked').innerText;
+		  if(("#woofer").is(":checked") == true) {
+			  if(onWsk == "예") {
+				  onWsk = "100000";
+				  Number(onWsk);
+			  } else {
+				  onWsk = "0";
+				  Number(onWsk);
+			  }
+		  } else {
+			  onWsk = "0";
+			  Number(onWsk);
+		  }
+		  
+		  console.log(onWsk);
+		  
+		  
+		  var onStsk = document.querySelector('select[name="stspeaker-use"] > option:checked').innerText;
+		  if(("#stage").is(":checked") == true) {
+			  if(onStsk == "예") {
+				  onStsk = "100000";
+				  Number(onStsk);
+			  } else {
+				  onStsk = "0";
+				  Number(onStsk);
+			  }
+		  } else {
+			  onStsk = "0";
+			  Number(onStsk);
+		  }
+		  
+		  console.log(onStsk);
+		  
+		  
+		  var onLight = document.querySelector('select[name="stspeaker-use"] > option:checked').innerText;
 		  var onMoving = $('select[name="moving-count"] > option:checked').val();
 		  
 		  

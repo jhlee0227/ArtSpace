@@ -47,10 +47,15 @@ public class UserLoginController {
 			userDTO = userService.login(userDTO);
 			
 			if(userDTO != null) {
+				
+				if(userDTO.getLeave_status() == 'Y') {
+					model.addAttribute("errorMessage", "탈퇴 회원입니다 고객 센터에 문의 바랍니다.");
+					return "html/login/login";					
+				}
+				
 				session.setAttribute("user_id", userDTO.getUser_id());
 				session.setAttribute("nickname", userDTO.getNickname());
 				session.setAttribute("authority", userDTO.getAuthority());
-				
 				
 				return "redirect:/";
 			}else {
