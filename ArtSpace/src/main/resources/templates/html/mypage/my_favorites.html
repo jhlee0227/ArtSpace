@@ -47,7 +47,7 @@
 		    <div class="content">
 		      <h2 class="content-main">내 즐겨찾기</h2>
 		      <!-- 여기에 th:each -->
-			  <form method="post" action="">
+			  
 		      <div class="list" th:each="like : ${like_list}">
 		        <!-- 여기에 th:text -->
 		        <div class="item">
@@ -59,13 +59,15 @@
 		            <div class="hall-loca" th:text="${like.address1 + ' ' + like.address2}"></div>
 		          </div>
 		          <div class="button">
-					<input name="hall_id" th:value="${like.hall_id}">
-		            <button th:formaction="@{/mypage/favorite/delete}">찜 취소</button>
+					<form method="post" action="/mypage/favorite/delete">
+						<input type="hidden" name="hall_id" th:value="${like.hall_id}">
+		            	<button type="submit">찜 취소</button>
 		            <button>상세보기</button>
+					</form>
 		          </div>
 		        </div>
 		      </div>
-			  </form>
+			  
 		    </div>
 		  </section>	
 	</div>
