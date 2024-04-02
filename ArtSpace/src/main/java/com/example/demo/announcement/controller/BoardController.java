@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.announcement.dto.BoardDto;
 import com.example.demo.announcement.service.BoardService;
 import com.example.demo.user.dto.UserDTO;
 import com.example.demo.user.service.UserService;
@@ -26,9 +27,10 @@ public class BoardController {
 	
 	
 	@PostMapping("insert")
-	public String insertUser(@ModelAttribute UserDTO userDTO) {
-		
-		userBoard.insert(userDTO);
+	public String insertUser(@ModelAttribute BoardDto boardDTO) {
+		System.out.println(boardDTO.getSubject());
+		//boardDTO.setCreate_date(null);
+//		userBoard.insert(userDTO);
 		return "html/announcement/boder_notice";
 	}
 }
