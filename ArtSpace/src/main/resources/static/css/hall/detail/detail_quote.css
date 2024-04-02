@@ -15,7 +15,7 @@
 }
 
 .hall-detail .content .quote .rental-date {
-    width: 1250px;
+    width: 90%;
     height: 270px;
     border: 1px solid rgb(235, 235, 235);
     background-color: rgb(235, 235, 235);
@@ -24,7 +24,7 @@
 }
 
 .hall-detail .content .quote .rental-date .start {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -47,7 +47,7 @@
 }
 
 .hall-detail .content .quote .rental-date .end {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -138,7 +138,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .hall-detail .content .equipment .equipment-list {
-    width: 1250px;
+    width: 90%;
     height: 830px;
     border: 1px solid rgb(235, 235, 235);
     background-color: rgb(235, 235, 235);
@@ -168,7 +168,7 @@ input[type=checkbox] {
 
 
 .hall-detail .content .equipment .equipment-list .mic-line {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -189,7 +189,7 @@ input[type=checkbox] {
 }
 
 .hall-detail .content .equipment .equipment-list .mic-noline {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -232,7 +232,7 @@ input[type=checkbox] {
 
 
 .hall-detail .content .equipment .equipment-list .main-speaker {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -248,7 +248,7 @@ input[type=checkbox] {
 }
 
 .hall-detail .content .equipment .equipment-list .sub-speaker {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -265,7 +265,7 @@ input[type=checkbox] {
 }
 
 .hall-detail .content .equipment .equipment-list .woofer-speaker {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -282,7 +282,7 @@ input[type=checkbox] {
 }
 
 .hall-detail .content .equipment .equipment-list .stage-speaker {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -330,7 +330,7 @@ input[type=checkbox] {
 
 
 .hall-detail .content .equipment .equipment-list .non-moving {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -368,7 +368,7 @@ input[type=checkbox] {
 }
 
 .hall-detail .content .equipment .equipment-list .moving {
-    width: 1150px;
+    width: 90%;
     height: 70px;
     background-color: white;
     display: block;
@@ -423,7 +423,7 @@ input[type=checkbox] {
 }
 
 .hall-detail .content .etc .etc-list {
-    width: 1250px;
+    width: 90%;
     height: 510px;
     border: 1px solid rgb(235, 235, 235);
     background-color: rgb(235, 235, 235);
@@ -447,7 +447,7 @@ input[type=checkbox] {
 
 
 .hall-detail .content .etc .etc-list .eat {
-    width: 1150px;
+    width: 90%;
     height: 210px;
     background-color: white;
     display: block;
@@ -468,7 +468,7 @@ input[type=checkbox] {
 
 
 .hall-detail .content .etc .etc-list .heat-cool {
-    width: 1150px;
+    width: 90%;
     height: 160px;
     background-color: white;
     display: block;
