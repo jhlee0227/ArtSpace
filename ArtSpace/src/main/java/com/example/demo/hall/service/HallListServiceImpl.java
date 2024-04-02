@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.hall.dao.HallDAO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallTimeDTO;
 
 @Service
 public class HallListServiceImpl implements HallListService{
@@ -17,8 +18,13 @@ public class HallListServiceImpl implements HallListService{
 	@Override
 	public List<HallDTO> getList(String sort) {
 		List<HallDTO> hallList = hallDAO.getHallList(sort);
+		
+		for (HallDTO hallDTO : hallList) {
+			List<HallTimeDTO> time = hallDAO.getHallTimeList(hallDTO.getHall_id());
+			hallDTO.setHallTimeList(time);
+		}
 		return hallList;
 	}
-	
 
+	
 }

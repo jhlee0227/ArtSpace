@@ -233,10 +233,10 @@
                         <span class="count">개수</span>
                         <select name="mic-count" id="mic-count">
                           <option value="sel">선택</option>
-                          <option value="one">1</option>
-                          <option value="two">2</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
                         </select>
-                        <span class="price">각 7,000원</span>
+                        <span class="price" value="7000">7,000원</span>
                       </div>
 
                       <div class="mic-noline">
@@ -244,10 +244,10 @@
                         <span class="count">개수</span>
                         <select name="mic-count" id="mic-count">
                           <option value="sel">선택</option>
-                          <option value="one">1</option>
-                          <option value="two">2</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
                         </select>
-                        <span class="price">각 10,000원</span>
+                        <span class="price" value="10000">10,000원</span>
                       </div>
 
                       <br>
@@ -261,7 +261,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
-                        <span class="price">150,000원</span>
+                        <span class="price" value="150000">150,000원</span>
                       </div>
 
                       <div class="sub-speaker">
@@ -272,7 +272,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
-                        <span class="price">100,000원</span>
+                        <span class="price" value="100000">100,000원</span>
                       </div>
 
                       <div class="woofer-speaker">
@@ -283,7 +283,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
-                        <span class="price">100,000원</span>
+                        <span class="price" value="100000">100,000원</span>
                       </div>
 
                       <div class="stage-speaker">
@@ -294,7 +294,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
-                        <span class="price">50,000원</span>
+                        <span class="price" value="50000">50,000원</span>
                       </div>
 
                       <br>
@@ -308,7 +308,7 @@
                           <option value="yes">예</option>
                           <option value="no">아니오</option>
                         </select>
-                        <span class="price">100,000원</span>
+                        <span class="price" value="100000">100,000원</span>
                       </div>
 
                       <div class="moving">
@@ -316,16 +316,16 @@
                         <span class="count">개수</span>
                         <select name="moving-count" id="moving-count">
                           <option value="sel">선택</option>
-                          <option value="one">1</option>
-                          <option value="two">2</option>
-                          <option value="three">3</option>
-                          <option value="four">4</option>
-                          <option value="five">5</option>
-                          <option value="six">6</option>
-                          <option value="seven">7</option>
-                          <option value="eight">8</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
                         </select>
-                        <span class="price">각 20,000원</span>
+                        <span class="price" value="20000">20,000원</span>
                       </div>
                     </div>
               </section>
@@ -567,9 +567,9 @@
       <section class="hall-expectation">
       <div class="expectation">
         <div class="estimate">예상 견적: </div>
-        <div class="amount"></div>
+        <div class="amount">0</div>
         <div>원</div>
-        <a class="reservation">예약 하기</a>
+        <a class="reservation" th:href="@{|/list|}">예약 하기</a>
       </div>
       </section>
 
@@ -580,21 +580,31 @@
       <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
       
       <script>
-		  $(".equipment-list").on("click", "input:checkbox", function() {
-			  var $items = $(".equipment-list").find("input:checkbox:checked", "select:option");
-			  var $total = $(".amount" * "select:option:value");
-			  var cur_total = 0;
-			  
-			  $items.each(function() {
-				  var $this = $(this);
-				  var $target = $("span='" + $this.attr("class") + "'");
-				  var item_value = +($target.html().replace("원", "") || 0);
-				  
-				  cur_total += item_value;
-			  });
-			  
-			  $total.html(cur_total);
-		  });
+		  var onDate = document.querySelector('select[name="am-pm"] > option:checked').innerText;
+		  if(onDate == "오전") {
+			  onDate = "100000";
+			  Number(onDate);
+		  } else if(onDate == "오후") {
+			  onDate = "100000";
+			  Number(onDate);
+		  } else if(onDate == "야간") {
+			  onDate = "150000";
+			  Number(onDate);
+		  } else {
+			  onDate = "0";
+			  Number(onDate);
+		  }
+		  
+		  var onMic = document.querySelector('select[name="mic-count"] > option:checked').value;
+		  if(onMic == 1) {
+			  onMic = 7000;
+		  }
+		  
+		  var onSpeaker = $('select[name="speaker-use"] > option:checked').text();
+		  var onLight = $('select[name="light-use"] > option:checked').text();
+		  var onMoving = $('select[name="moving-count"] > option:checked').val();
+		  
+		  
 		  
 	  </script>
       

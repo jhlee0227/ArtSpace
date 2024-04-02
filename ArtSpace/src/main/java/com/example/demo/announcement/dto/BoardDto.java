@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class BoardDto {
 	
-	private Integer announ_id;	// 유저 아이디 PK
+	private Integer announ_id;	//
 	private String subject;
 	private String content;
 	private LocalDate create_date;

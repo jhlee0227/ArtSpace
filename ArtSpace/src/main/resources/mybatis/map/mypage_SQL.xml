@@ -59,11 +59,6 @@
 		where l.status = 'Y' and u.user_id = #{id}
 	</select>
 	
-	<select id="getLikeInfo" resultType="com.example.demo.mypage.dto.LikeDTO">
-		select *
-		from like_hall
-		where user_id = #{id} and hall_id = #{hall_id}
-	</select>
 	
 	<update id="likeDelete">
 		update like_hall
@@ -71,4 +66,11 @@
 		where user_id = #{user_id} and hall_id = #{hall_id}
 	</update> 
 	
+	<select id="getReserve" resultType="com.example.demo.hall.dto.HallDTO">
+		select h.hall_name, h.address1, h.address2, rd.start_date, rd.end_date, rd.start_time, rd.end_time
+		from hall h
+		join reservation r on h.hall_id = r.hall_id
+		join reserve_date rd on r.reserve_id = rd.reserve_id
+		where r.reserve_status = 'Y' and r.user_id = #{user_id}
+	</select>
 </mapper>

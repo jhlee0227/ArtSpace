@@ -194,7 +194,7 @@ public class HallController {
 
 	
 	// 임시 
-	@GetMapping("detail_page/{id}")
+	@GetMapping("detail/{id}")
 	public String detailPage(Model model, HallDTO hallDTO, EquipmentDTO equipDTO, @PathVariable("id") Integer id) {
 		user_session.setSesstionValue(session);
 
