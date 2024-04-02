@@ -28,6 +28,8 @@ public class HallDTO {
 	private List<EquipmentDTO> equiList;
 	private List<HallTimeDTO> hallTimeList;
 
+	// 내가가진 시간별 가격대의 최솟값
+	private Integer minPrice;
 	
 	public Integer getHall_id() {
 		return hall_id;
@@ -130,6 +132,12 @@ public class HallDTO {
 	}
 	public void setHallTimeList(List<HallTimeDTO> hallTimeList) {
 		this.hallTimeList = hallTimeList;
+	}
+	public Integer getMinPrice() {
+		return minPrice;
+	}
+	public void setMinPrice(Integer minPrice) {
+		this.minPrice = minPrice;
 	}
 
 

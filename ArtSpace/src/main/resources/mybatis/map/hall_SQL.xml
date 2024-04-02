@@ -78,11 +78,14 @@
 <!-- Update End -->
 
 <!-- SELECT  -->
-	<select id="getHallList" resultType="com.example.demo.hall.dto.HallDTO">
-		select * from hall
+	<select id="getHallList" resultType="com.example.demo.hall.dto.HallDTO">		
+		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
+		from hall h join hall_time ht
+		on h.hall_id = ht.hall_id
+		group by hall_id
 		order by #{sort} desc
 	</select>
-		
+	
 	<select id="getHallTimeList" resultType="com.example.demo.hall.dto.HallTimeDTO">
 		select *
 		from hall_time
