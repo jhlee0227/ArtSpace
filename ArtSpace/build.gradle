@@ -35,8 +35,6 @@ dependencies {
    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
    runtimeOnly 'com.mysql:mysql-connector-j'
-   implementation 'com.google.cloud:spring-cloud-gcp-starter-storage'
-   
 }
 
 tasks.named('test') {
