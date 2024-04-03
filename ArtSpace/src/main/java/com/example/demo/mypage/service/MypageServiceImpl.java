@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.mypage.dao.MypageDAO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
@@ -79,6 +80,19 @@ public class MypageServiceImpl implements MypageService{
 		
 		mypageDAO.reserveDelete(user_id, hall_id);
 	}
+
+	@Override
+	public ReservationDTO reserveDetail(Integer reserve_id) {
+		
+		return mypageDAO.reserveDetail(reserve_id);
+	}
+
+	@Override
+	public List<ReservationDTO> reserveEquip(Integer reserve_id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.reserveEquip(reserve_id);
+	}
+
 
 
 

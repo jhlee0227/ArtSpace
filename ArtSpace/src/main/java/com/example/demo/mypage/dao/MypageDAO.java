@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -65,7 +66,6 @@ public class MypageDAO {
 	}
 
 	public List<HallDTO> getAllReserve(Integer user_id) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("mypage.getReserve", user_id);
 	}
 
@@ -75,6 +75,17 @@ public class MypageDAO {
 		map.put("hall_id", hall_id);
 		sqlSession.update("mypage.reserveDelete", map);
 	}
+
+	public ReservationDTO reserveDetail(Integer reserve_id) {
+		
+		return sqlSession.selectOne("mypage.reserveDetail", reserve_id);
+	}
+
+	public List<ReservationDTO> reserveEquip(Integer reserve_id) {
+		
+		return sqlSession.selectList("mypage.reserveEquip", reserve_id);
+	}
+
 
 
 }
