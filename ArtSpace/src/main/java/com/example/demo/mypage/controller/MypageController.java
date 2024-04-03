@@ -51,7 +51,7 @@ public class MypageController {
 		} else if (authority.equals("SC")) {
 			return "html/company/company_page";
 		} else if (authority.equals("SA")) {
-			return "html/admin/admin";
+			return "redirect:/admin";
 		} else {
 			return "html/index";
 		}
