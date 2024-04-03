@@ -38,6 +38,7 @@ public class HallDTO {
 	private String end_date;
 	private String start_time;
 	private String end_time;
+	private Integer reserve_id;
 	
 	
 	public Integer getHall_id() {
@@ -172,7 +173,12 @@ public class HallDTO {
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
-	
+	public Integer getReserve_id() {
+		return reserve_id;
+	}
+	public void setReserve_id(Integer reserve_id) {
+		this.reserve_id = reserve_id;
+	}
 
 	
 	

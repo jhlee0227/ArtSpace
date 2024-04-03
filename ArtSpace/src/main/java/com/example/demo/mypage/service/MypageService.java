@@ -3,6 +3,7 @@ package com.example.demo.mypage.service;
 import java.util.List;
 
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -28,6 +29,11 @@ public interface MypageService {
 	public List<HallDTO> getAllReserve(Integer user_id);
 
 	public void reserveDelete(Integer user_id, Integer hall_id);
+
+	public ReservationDTO reserveDetail(Integer reserve_id);
+
+	public List<ReservationDTO> reserveEquip(Integer reserve_id);
+
 
 
 }
