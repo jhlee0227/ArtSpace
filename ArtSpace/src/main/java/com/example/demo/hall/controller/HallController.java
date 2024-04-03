@@ -37,7 +37,7 @@ public class HallController {
 	// 기본 공연장 정보 입력 화면 띄우기
 	@GetMapping("form")
 	public String showForm(Model model) {
-		user_session.setSesstionValue(session);
+		user_session.setSessionValue(session);
 
 		// 로그인 권한 체크
 		if(user_session.getUser_id() == null) {
@@ -61,7 +61,7 @@ public class HallController {
 	// 이전 버튼을 눌렀을때 공연장 정보 수정 화면 띄우기
 	@GetMapping("form/{id}")
 	public String shwForm(Model model, @PathVariable("id") Integer id) {
-		user_session.setSesstionValue(session);
+		user_session.setSessionValue(session);
 		
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
@@ -83,7 +83,7 @@ public class HallController {
 	// insert 처리
 	@PostMapping("/form/insert")
 	public String hallCreate(@ModelAttribute HallDTO hallDTO) {				
-		user_session.setSesstionValue(session);
+		user_session.setSessionValue(session);
 		
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
@@ -99,7 +99,7 @@ public class HallController {
 	// update 처리
 	@PostMapping("/form/update/{id}")
 	public String hallUpdate(@ModelAttribute HallDTO hallDTO, @PathVariable("id") Integer id) {	
-		user_session.setSesstionValue(session);	
+		user_session.setSessionValue(session);	
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
@@ -116,7 +116,7 @@ public class HallController {
 	// 장비 화면 띄우기
 	@GetMapping("form/equipment/{id}")
 	public String showFormEquipment(@PathVariable("id") Integer id, Model model) {
-		user_session.setSesstionValue(session);
+		user_session.setSessionValue(session);
 
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
@@ -135,7 +135,7 @@ public class HallController {
 	// 이전 누르면 장비 저장하고 이전 화면으로 연결
 	@PostMapping("form/equipment/insert/{id}")
 	public String insertEquipment(@Valid @ModelAttribute HallDTO hallDTO, @PathVariable("id") Integer id) {
-		user_session.setSesstionValue(session);		
+		user_session.setSessionValue(session);		
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
@@ -156,7 +156,7 @@ public class HallController {
 	// 등록 누르면 장비 저장하고 my페이지로 연결
 	@PostMapping("form/complete/{id}")
 	public String completeInsertHall(@Valid @ModelAttribute HallDTO hallDTO, @PathVariable("id") Integer id) {
-		user_session.setSesstionValue(session);		
+		user_session.setSessionValue(session);		
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
@@ -176,7 +176,7 @@ public class HallController {
 	
 	@PostMapping("form/cancel/{id}")
 	public String cancelHall(@PathVariable("id") Integer id) {
-		user_session.setSesstionValue(session);		
+		user_session.setSessionValue(session);		
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
@@ -189,7 +189,7 @@ public class HallController {
 	// 임시 
 	@GetMapping("detail/{id}")
 	public String detailPage(Model model, HallDTO hallDTO, EquipmentDTO equipDTO, @PathVariable("id") Integer id) {
-		user_session.setSesstionValue(session);
+		user_session.setSessionValue(session);
 
 		if(user_session.getUser_id() != null) {
 			model.addAttribute("user_id", user_session.getUser_id());
