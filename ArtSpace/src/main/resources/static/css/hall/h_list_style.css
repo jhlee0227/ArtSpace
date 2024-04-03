@@ -100,9 +100,29 @@ body {
 	color: var(--main-color);
 }
 
-.modal-content .middle .right-menu {
+.modal-content .middle .right-menu{
 	padding: 1rem;
+	overflow-y: scroll;
+	width: 80%;
 }
+
+.modal-content .middle .right-menu form{
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.modal-content .middle .right-menu form label{
+	display: none;
+	padding: 1rem;
+	width: 40%;
+	height: 3rem;
+}
+
+.modal-content .middle .right-menu form label input{
+	margin-right: 1rem;
+}
+
+
 
 
 

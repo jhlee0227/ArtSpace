@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.announcement.dto.BoardDto;
-import com.example.demo.announcement.service.BoardService;
+import com.example.demo.announcement.service.BoardService; 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.user.dto.UserDTO;
 import com.example.demo.user.service.UserService;
