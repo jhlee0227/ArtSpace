@@ -27,9 +27,9 @@
 	-->
 	            <!-- 내용을 HTML로 작성하기 -->
 	            <div class="content-box" th:each="notice : ${noticeList}">
-	                <div class="check"><input type="checkbox" name="" id=""></div>
+	                
 	                <div class="title"><a href="view.html"><span th:text="${notice.subject}"></span></a></div>
-	                <div class="delete"><button>X</button></div>
+	                <div class="delete"><span th:text="${notice.create_date}"></span></div>
 	            </div>
 	
 	            <ul class="number">
