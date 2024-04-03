@@ -95,6 +95,7 @@ public class MypageController {
 	public String updatePhone(@ModelAttribute UserDTO dto) {
 		
 		user_session.setSessionValue(session);
+		return "redirect:/mypage";
 	}
 	
 	// 공연자 정보 기본
