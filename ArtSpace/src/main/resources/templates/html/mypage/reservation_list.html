@@ -79,22 +79,63 @@
 	          <div class="modal-content">
 	              <span class="close" onclick="closeModal()">&times;</span>
 	              <!-- 모달 내용 -->
-	              <p>예약 정보를 여기에 표시합니다.</p>
+	              <div class="top">
+									<h2>예약 정보</h2>
+							 	</div>
+							 	<div class="middle">
+									<div>
+										<div class="modal-list">공연장 이름 :</div>
+										<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+										<div class="modal-con"></div>
+									</div>
+									<div>
+										<div class="modal-list">예약 시간 :</div>
+										<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+										<div class="modal-con"></div>
+									</div>
+									<div>
+										<div class="modal-list">공연장 주소 :</div>
+										<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+										<div class="modal-con"></div>
+									</div>
+									<div>
+										<div class="modal-list">견적가 :</div>
+										<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+										<div class="modal-con"></div>
+									</div>
+									<div>
+										<div class="modal-list">신청 장비 :</div>
+										<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+										<div class="modal-con"></div>
+									</div>									
+									<div class="user">
+										<h2>예약자 정보</h2>
+										<div class="modal-user-name">예약자명 :
+
+										</div>
+										<div class="modal-user-phone">전화번호 :
+
+										</div>
+									</div>
+							 	</div>
+							 	<div class="bottom">
+									<div class="btn">확인</div>
+							 	</div>
 	          </div>
 		  </div>
-		  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+		
 		  <script>
-	          // 모달 열기
-	          function openModal() {
-	              var modal = document.getElementById('myModal');
-	              modal.style.display = 'block';
-	          }
-	  
-	          // 모달 닫기
-	          function closeModal() {
-	              var modal = document.getElementById('myModal');
-	              modal.style.display = 'none';
-	          }
+				// 모달 열기
+				function openModal() {
+						var modal = document.getElementById('myModal');
+						modal.style.display = 'block';
+				}
+
+				// 모달 닫기
+				function closeModal() {
+						var modal = document.getElementById('myModal');
+						modal.style.display = 'none';
+				}
 			  
 			  window.onclick = function(event) {
 	              var modal = document.getElementById('myModal');
@@ -105,7 +146,7 @@
 	      </script>
 	  
 	  </div>
-    
+    </div>
   
 </body>
 </html>
