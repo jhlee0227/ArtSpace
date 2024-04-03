@@ -10,7 +10,7 @@ public class SessionUtil {
 	private String authority;
 	private String nickname;
 	
-	public void setSesstionValue(HttpSession session) {
+	public void setSessionValue(HttpSession session) {
 		this.user_id = (Integer) session.getAttribute("user_id");
 		this.authority = (String) session.getAttribute("authority");
 		this.nickname = (String) session.getAttribute("nickname");

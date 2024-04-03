@@ -29,7 +29,7 @@ public class HomeController{
 	@GetMapping("/")
 	public String showMain(Model model) {
 		
-		user_session.setSesstionValue(session);
+		user_session.setSessionValue(session);
 	
 		List<HallDTO> hallList = hallListService.getList("hall_id");
 		model.addAttribute("hallList", hallList);

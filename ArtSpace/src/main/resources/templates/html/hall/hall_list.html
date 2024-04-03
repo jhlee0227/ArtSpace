@@ -110,19 +110,139 @@
 					</ul>
 				</div>
 				<div class="right-menu">
-					a
+					<form name="region_filter_form" th:action="@{/list}" method="post">
+						<!--서울-->
+						<th:block th:each="item : ${서울}">
+							<label data-filter="서울" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+					   
+					    <!-- 경기 -->
+					    <th:block th:each="item : ${경기}">
+							<label data-filter="경기" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+					    </th:block>
+						<!-- 인천 -->
+						<th:block th:each="item : ${인천}">
+							<label data-filter="인천" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 부산 -->
+						<th:block th:each="item : ${부산}">
+							<label data-filter="부산" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 대전 -->
+						<th:block th:each="item : ${대전}">
+							<label data-filter="대전" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 대구 -->
+						<th:block th:each="item : ${대구}">
+							<label data-filter="대구" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 울산 -->
+						<th:block th:each="item : ${울산}">
+							<label data-filter="울산" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 세종 -->
+						<label data-filter="세종" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="${item}"/>
+							<p>세종 전체</p>													
+						</label>
+						<!-- 광주 -->
+						<th:block th:each="item : ${광주}">
+							<label data-filter="광주" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 강원 -->
+						<th:block th:each="item : ${강원}">
+							<label data-filter="강원" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 충북 -->
+						<th:block th:each="item : ${충북}">
+							<label data-filter="충북" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 충남 -->
+						<th:block th:each="item : ${충남}">
+							<label data-filter="충남" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 경북 -->
+						<th:block th:each="item : ${경북}">
+							<label data-filter="경북" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 경남 -->
+						<th:block th:each="item : ${경남}">
+							<label data-filter="경남" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>					
+						</th:block>
+						<!-- 전북 -->
+						<th:block th:each="item : ${전북}">
+							<label data-filter="전북" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>					
+						</th:block>
+						<!-- 전남 -->
+						<th:block th:each="item : ${전남}">
+							<label data-filter="전남" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>						
+						</th:block>
+						<!-- 제주 -->
+						<th:block th:each="item : ${제주}">
+							<label data-filter="제주" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>						
+						</th:block>
+					</form>	
 				</div>
 			</div>
+			
 			<div class="bottom">
-				<div class="btn">필터 적용</div>
+				<div class="btn" onclick="filterPush()">필터 적용</div>
 			</div>				
-				
+			
 		</div>
 	</div>
 	
-	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	  <script>
-	       // 모달 열기
+			// 모달 열기
 	       function openModal() {
 	           var modal = document.getElementById('myModal');
 	           modal.style.display = 'block';
@@ -157,21 +277,50 @@
 	   
 	                      filterLists.forEach(list => {
 	                          if (filterType === 'all'){
-	                              list.style.display = 'list-item';
+	                              list.style.display = 'flex';
 	                              return;
 	                          }
 	                          
-	                          list.style.display = list.getAttribute('data-filter') === filterType ? 'list-item' : 'none';
+	                          list.style.display = list.getAttribute('data-filter') === filterType ? 'flex' : 'none';
 	                      })
 	                  });
 	              })
 	          })
 	      };
-	      
-	      filterMenuInit();
-		   
+	      filterMenuInit();	
 	   </script>
 	   
+	   <script>
+			function filterPush(){
+				var checkArr = [];     // 배열 초기화    
+				
+				$("input[name='regionItem']:checked").each(function(i){
+			        checkArr.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push    
+				});				
+				
+				$.ajax({
+			        url: '/list/check',
+			        type: 'post',
+			        dataType: 'text',
+			        data: {
+		            	filterValueArr: checkArr        
+					},    
+					success : function(data) {
+						
+					},
+					error: function (data, status, err) {
+						console.log(data);
+						console.log(status);
+						console.log(err);
+					},
+				});
+				
+				
+				
+				
+				document.region_filter_form.submit();
+			}
+	   </script>
 	   
 	   
 	   </div>
