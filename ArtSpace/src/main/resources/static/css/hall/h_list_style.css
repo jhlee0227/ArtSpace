@@ -70,3 +70,40 @@ body {
 
 
 /* ===== Hall List End ===== */
+
+
+/*===== modal =====*/
+
+.modal-content .middle {
+	display: flex;
+	justify-content: start;
+	height: 35rem;
+}
+
+.modal-content .middle .left-menu {
+	overflow-y: scroll;
+	width: 20%;
+	border-left: .3rem solid #eee;
+	border-right: .3rem solid #eee;
+}
+
+.modal-content .middle .left-menu ul li{
+	font-size: 1.5rem;
+	cursor: pointer;
+	padding: 1.2rem 1rem;
+	background-color: #eee;
+	color: #888;
+}
+
+.modal-content .middle .left-menu ul li.active {
+	background-color: #fff;
+	color: var(--main-color);
+}
+
+.modal-content .middle .right-menu {
+	padding: 1rem;
+}
+
+
+
+/* ===== modal End =====*/

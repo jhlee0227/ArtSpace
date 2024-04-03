@@ -13,19 +13,11 @@
 	      <h1>필터</h1>
 	      <div class="fil-container">
 	        <div class="fil-name">
-	          <p>지역</p>
+	          <p onclick="openModal()" >지역</p>
 	        </div>
 	        <div class="tags">
 	          <div class="tag"><p>강서구</p></div>
 	          <div class="tag"><p>강남구</p></div>
-	        </div>
-	      </div>
-	      <div class="fil-container">
-	        <div class="fil-name">
-	          <p>공간유형</p>
-	        </div>
-	        <div class="tags">
-	          <div class="tag"><p>대강당/극장</p></div>
 	        </div>
 	      </div>
 	      <div class="fil-container">
@@ -87,11 +79,101 @@
 	    </section>
 	    <!-- Hall List End -->
 
+	<!-- 모달 진행중-->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal()">&times;</span>
+            <!-- 모달 내용 -->
+			<div class="top">
+				<h2>지역 필터</h2>
+			</div>
+			<div class="middle" data-filter-id="region">
+				<div class="left-menu">
+					<ul>
+					   <li data-filter="서울" class="filterbtn" >서울</li>
+			           <li data-filter="경기" class="filterbtn" >경기</li>
+			           <li data-filter="인천" class="filterbtn" >인천</li>
+			           <li data-filter="부산" class="filterbtn" >부산</li>
+			           <li data-filter="대전" class="filterbtn" >대전</li>
+			           <li data-filter="대구" class="filterbtn" >대구</li>
+			           <li data-filter="울산" class="filterbtn" >울산</li>
+			           <li data-filter="세종" class="filterbtn" >세종</li>
+			           <li data-filter="광주" class="filterbtn" >광주</li>
+			           <li data-filter="강원" class="filterbtn" >강원</li>
+			           <li data-filter="충북" class="filterbtn" >충북</li>
+			           <li data-filter="충남" class="filterbtn" >충남</li>
+			           <li data-filter="경북" class="filterbtn" >경북</li>
+			           <li data-filter="경남" class="filterbtn" >경남</li>
+			           <li data-filter="전북" class="filterbtn" >전북</li>
+			           <li data-filter="전남" class="filterbtn" >전남</li>
+			           <li data-filter="제주" class="filterbtn" >제주</li>
+					</ul>
+				</div>
+				<div class="right-menu">
+					a
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="btn">필터 적용</div>
+			</div>				
+				
+		</div>
 	</div>
-
-    <script
-      src="https://kit.fontawesome.com/194e6948f1.js"
-      crossorigin="anonymous"
-    ></script>
+	
+	
+	  <script>
+	       // 모달 열기
+	       function openModal() {
+	           var modal = document.getElementById('myModal');
+	           modal.style.display = 'block';
+	       }
+	
+	       // 모달 닫기
+	       function closeModal() {
+	           var modal = document.getElementById('myModal');
+	           modal.style.display = 'none';
+	       }
+	     
+		   window.onclick = function(event) {
+	           var modal = document.getElementById('myModal');
+	           if (event.target == modal) {
+	               modal.style.display = "none";
+	           }
+	       }
+		   
+	      const filterMenuInit = () => {
+	          const filters = document.querySelectorAll('[data-filter-id]');
+	   
+	          filters.forEach(filter => {
+	              const filterBtns = [...filter.querySelectorAll('[data-filter]')].filter(el => el.className === 'filterbtn');
+	              const filterLists = [...filter.querySelectorAll('[data-filter]')].filter(el => el.className=== 'filterList');
+	   
+	              filterBtns.forEach(btn => {
+	                  btn.addEventListener('click', () => {
+	                      const filterType = btn.getAttribute('data-filter');
+	   
+	                      filterBtns.forEach(btn => btn.classList.remove('active'));
+	                      btn.classList.add('active');
+	   
+	                      filterLists.forEach(list => {
+	                          if (filterType === 'all'){
+	                              list.style.display = 'list-item';
+	                              return;
+	                          }
+	                          
+	                          list.style.display = list.getAttribute('data-filter') === filterType ? 'list-item' : 'none';
+	                      })
+	                  });
+	              })
+	          })
+	      };
+	      
+	      filterMenuInit();
+		   
+	   </script>
+	   
+	   
+	   
+	   </div>
   </body>
 </html>
