@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -33,6 +34,16 @@ public interface MypageService {
 	public ReservationDTO reserveDetail(Integer reserve_id);
 
 	public List<ReservationDTO> reserveEquip(Integer reserve_id);
+
+	public void updatePhone(UserDTO dto);
+
+	public List<HallDTO> getNotReview(Integer user_id);
+
+	public List<ReviewDTO> getReview(Integer user_id);
+	
+	public void saveReview(ReviewDTO review);
+
+	public void updateReviewStatus(Integer reserve_id);
 
 
 

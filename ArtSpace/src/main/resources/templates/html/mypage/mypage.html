@@ -5,8 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="/static/css/mypage/user/mypage.css">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/> -->
+	<link rel="stylesheet" href="/css/mypage/user/mypage.css">
 </head>
 
 <body>
@@ -36,9 +35,6 @@
 							</a>
 							<a th:href="@{/mypage/reserve}" target="_self">
 								<li>예약 내역</li>
-							</a>
-							<a th:href="@{/mypage/uselist}" target="_self">
-								<li>이용 내역</li>
 							</a>
 							<a th:href="@{/mypage/review}" target="_self">
 								<li>내 리뷰</li>
@@ -99,7 +95,9 @@
 						<div class="last">
 							<div class="list-name">핸드폰</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input name="phone" type="text" th:value="${my_info.phone}"></div>
+							<div class="list-con"><input name="phone" id="phone" type="text" th:value="${my_info.phone}" oninput="phoneCheck()"></div>
+							<span id="phoneCheck"></span>
+							<button class="button" id="updatePhoneBtn" th:formaction="@{/mypage/update/phone}" disabled onclick="updatePhone()">수정</button>
 						</div>
 					</div>
 		</form>
@@ -116,8 +114,6 @@
 
 
 
-
-		<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
 		<script>
 			// 비밀번호 수정 알림
 			function updatePw() {
@@ -171,6 +167,26 @@
 				alert("닉네임이 수정되었습니다.");
 			}
 			
+			// 핸드폰 수정 알림
+			function updatePhone() {
+				alert("핸드폰 번호가 수정되었습니다.");
+			}
+			
+			// 핸드폰 유효성 검사
+			function phoneCheck() {
+				var phone = document.getElementById('phone').value;
+				const regExp = /^\d{3}-\d{4}-\d{4}$/;
+				
+				if (!phone.match(regExp)) {
+					document.getElementById('phoneCheck').innerHTML = "010-xxxx-xxxx 형식으로 입력해주세요."
+					document.getElementById('phoneCheck').style.color = 'red';
+					document.getElementById('updatePhoneBtn').disabled = true;
+				} else {
+					document.getElementById('phoneCheck').innerHTML = "올바른 핸드폰 번호입니다."
+					document.getElementById('phoneCheck').style.color = 'green';
+					document.getElementById('updatePhoneBtn').disabled = false;
+				}
+			}
 			
 			// 회원 탈퇴 확인
 			function confirmLeave() {

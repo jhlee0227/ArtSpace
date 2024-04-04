@@ -32,9 +32,6 @@
 		            <a href="#" target="_self">
 		              <li class="open">예약 내역</li>
 		            </a>
-		            <a th:href="@{/mypage/uselist}" target="_self">
-		              <li>이용 내역</li>
-		            </a>
 		            <a th:href="@{/mypage/review}" target="_self">
 		              <li>내 리뷰</li>
 		            </a>
@@ -163,8 +160,7 @@
 					               alert('예약 정보를 불러오는 데 실패했습니다.');
 					           }
 					       },
-					       error: function(xhr, status, error) {
-					           console.error(xhr.responseText);
+					       error: function(data, status, error) {
 					           alert('예약 정보를 불러오는 데 실패했습니다.');
 					       }
 					   });
