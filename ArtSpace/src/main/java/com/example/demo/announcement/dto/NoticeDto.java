@@ -3,14 +3,12 @@ package com.example.demo.announcement.dto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class BoardDto {
+public class NoticeDto {
 	
 	private Integer announ_id;	//
 	private String subject;
 	private String content;
 	private LocalDate create_date;
-	
-	
 	public Integer getAnnoun_id() {
 		return announ_id;
 	}
@@ -35,5 +33,6 @@ public class BoardDto {
 	public void setCreate_date(LocalDate create_date) {
 		this.create_date = create_date;
 	}
+	
 
 }

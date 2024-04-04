@@ -6,22 +6,22 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.announcement.dto.BoardDto;
+import com.example.demo.announcement.dto.NoticeDto;
 import com.example.demo.user.dto.UserDTO;
 
 @Repository
-public class BoardDao {
+public class NoticeDao {
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	public void insert(BoardDto boardDto) {
-		sqlSession.insert("board.insertboard", boardDto);
+	public void insert(NoticeDto noticeDto) {
+		sqlSession.insert("notice.insertboard", noticeDto);
 	}
 
-	public List<BoardDto> getNotice() {
+	public List<NoticeDto> getNotice() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("board.getNotice");
+		return sqlSession.selectList("notice.getNotice");
 	}
 
 	

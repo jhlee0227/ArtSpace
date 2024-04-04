@@ -14,6 +14,12 @@
 		where user_id=#{user_id}
 	</update>
 
+	<update id="updatePhone">
+		update user
+		set phone=#{phone}
+		where user_id=#{user_id}
+	</update>
+
 	<select id="findById" resultType="com.example.demo.user.dto.UserDTO">
 		select * from user
 		where user_id = #{id}
@@ -48,8 +54,6 @@
 		set leave_status = 'Y'
 		where user_id = #{user_id}
 	</update>
-
-
 
 	<select id="getLike" resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_name, h.address1, h.address2, h.hall_id
@@ -101,4 +105,36 @@
 		join reservation_equipment re on e.equip_id = re.equip_id
 		where re.reserve_id = #{reserve_id};
 	</select>
+	
+	<select id="getNotReview" resultType="com.example.demo.hall.dto.HallDTO">
+	 <![CDATA[
+		select h.hall_name, 
+				date_format(rd.start_date, '%Y-%m-%d') as start_date, 
+				date_format(rd.end_date, '%Y-%m-%d') as end_date, 
+				rd.start_time, rd.end_time, h.hall_id, r.reserve_id
+		from hall h
+		join reservation r on h.hall_id = r.hall_id
+		join reserve_date rd on r.reserve_id = rd.reserve_id
+		where r.user_id = #{user_id} and r.reserve_status = 'Y' 
+			and end_date < CURDATE() and r.write_review = 'N';
+		]]>
+	</select>
+	
+	<select id="getReview" resultType="com.example.demo.hall.dto.ReviewDTO">
+		select r.review_content, r.rating, r.create_date, h.hall_name
+		from review r
+		join hall h on h.hall_id = r.hall_id
+		where r.user_id = #{user_id};
+	</select>
+	
+	<insert id="saveReview">
+		insert into review(review_content, user_id, hall_id, rating, create_date)
+		values(#{review_content}, #{user_id}, #{hall_id}, #{rating}, #{create_date})
+	</insert>
+	
+	<update id="updateReviewStatus">
+		update reservation
+		set write_review = 'Y'
+		where reserve_id = #{reserve_id}
+	</update>
 </mapper>

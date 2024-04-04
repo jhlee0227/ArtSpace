@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공간</title>
+  <link rel="stylesheet" href="/css/board/notice.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+
+   
+  </style>
+</head>
+
+<body>
+  
+  
+
+    <div class="notice">
+		<div class="content-box" th:each="notice : ${noticeList}">
+		              
+		             
+		          </div>
+      <h1>공지사항</h1> <br> <hr> <br>
+      <ul>
+        <li>
+          <h3>
+            <a href="#" target="_blank" class="content-wrapper">최강김민서</a>
+            <span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+          </h3>
+          <div class="content">
+            <p>난 최강 김민서다 </p>
+          </div>
+        </li>
+        <li>
+          <h3>
+            <a href="#" target="_blank" class="content-wrapper">김설보고있나? 이게 김민서야</a>
+            <span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+          </h3>
+          <div class="content">
+            <p>김설 현피를 신청한다!</p>
+          </div>
+        </li>
+        <li>
+          <h3>
+            <a href="#" target="_blank" class="content-wrapper">킹준호 가쥬아아</a>
+            <span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+          </h3>
+          <div class="content">
+            <p>나이는 숫자일뿐 내 앞길을 막아선자 개박살 내주겠다.</p>
+          </div>
+        </li>
+        <li>
+          <h3>
+            <a href="#" target="_blank" class="content-wrapper">메롱메롱메롱메롱</a>
+            <span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+          </h3>
+          <div class="content">
+            <p>소원을 말해봐</p>
+          </div>
+        </li>
+        <li>
+          <h3>
+            <a href="#" target="_blank" class="content-wrapper">마귀할멈김설로 6행시 해보겠습니다</a>
+            <span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+          </h3>
+          <div class="content">
+            <p>마: 마귀할멈김설 귀: 마귀할멈김설 할: 마귀할멈기설 멈: 마귀할멈김설 김: 마귀할멈김설 설: 마귀할멈김설</p>
+          </div>
+        </li>
+        <li>
+          <h3>
+            <a href="#" target="_blank" class="content-wrapper">로또 당첨번호 알려드립니다!</a>
+            <span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+          </h3>
+          <div class="content">
+            <p>ㅋㅋ내가 그걸 어찌 알겠냐고 ㅋㅋ </p>
+          </div>
+        </li>
+
+        
+
+  
+   
+
+       
+        <div class="writeBtn">
+          <a href="write.html">글쓰기</a>
+      </div>
+
+    </div>
+    
+
+
+
+
+  <script>
+    $(document).ready(function() {
+    var itemsToShow = 10;
+    var loadButton = $("#load");
+    var listItems = $(".notice ul li");
+
+    listItems.slice(itemsToShow).hide();
+
+    loadButton.click(function(e) {
+        e.preventDefault();
+        var hiddenItems = listItems.filter(":hidden");
+        var itemsToLoad = hiddenItems.slice(0, 5);
+        itemsToLoad.slideDown();
+        
+        // 숨겨진 아이템이 1개 이상일 때 알람 표시
+        if (hiddenItems.length === 0) {
+            alert("끝입니다.");
+        }
+    });
+})
+
+var isContentVisible = false; // 추가 변수
+
+function toggleContent(button) {
+  var content = $(button).parent().next(".content");
+  content.slideToggle();
+  isContentVisible = !isContentVisible; // 상태를 반전시킴
+  $(button).text(isContentVisible ? "[ - ]" : "[ + ]"); // 상태에 따라 버튼 텍스트 설정
+}
+  </script>
+</body>
+</html>

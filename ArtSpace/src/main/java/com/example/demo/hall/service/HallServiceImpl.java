@@ -101,12 +101,6 @@ public class HallServiceImpl implements HallService{
 	}
 		
 
-	// 마지막 index 찾기
-	@Override
-	public Integer findLastIndex() {
-		return hallDAO.findLastIndex();
-	}
-
 	// 해당 공연장의 장비 목록 다 가져오기
 	@Override
 	public List<EquipmentDTO> getEquiList(Integer id) {
