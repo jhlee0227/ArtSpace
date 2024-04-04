@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -86,6 +87,29 @@ public class MypageDAO {
 		return sqlSession.selectList("mypage.reserveEquip", reserve_id);
 	}
 
+	public void updatePhone(UserDTO dto) {
+		sqlSession.update("mypage.updatePhone", dto);
+		
+	}
 
+	public List<HallDTO> getNotReview(Integer user_id) {
+
+		return sqlSession.selectList("mypage.getNotReview", user_id);
+	}
+
+	public List<ReviewDTO> getReview(Integer user_id) {
+		
+		return sqlSession.selectList("mypage.getReview", user_id);
+	}
+
+	public void saveReview(ReviewDTO review) {
+	    sqlSession.insert("mypage.saveReview", review);
+	    
+	}
+
+	public void updateReviewStatus(Integer reserve_id) {
+		sqlSession.update("mypage.updateReviewStatus", reserve_id);
+		
+	}
 
 }

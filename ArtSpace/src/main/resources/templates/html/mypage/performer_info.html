@@ -34,9 +34,6 @@
 						<a th:href="@{/mypage/reserve}" target="_self">
 							<li>예약 내역</li>
 						</a>
-						<a th:href="@{/mypage/uselist}" target="_self">
-							<li>이용 내역</li>
-						</a>
 						<a th:href="@{/mypage/review}" target="_self">
 							<li>내 리뷰</li>
 						</a>
@@ -53,28 +50,28 @@
 						<div>
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" name="group_name" required>
+							<div class="list-con"><input type="text" id="group_name" name="group_name" oninput="infoCheck()">
 							</div>
 
 						</div>
 						<div>
 							<div class="list-name">대표명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" name="leader_name" required></div>
+							<div class="list-con"><input type="text" id="leader_name" name="leader_name" oninput="infoCheck()"></div>
 
 						</div>
 						<div>
 							<div class="list-name">대표전화번호</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="leader_phone" required>
+								<input type="text" id="leader_phone" name="leader_phone" oninput="infoCheck()">
 							</div>
 
 						</div>
 						<div>
 							<div class="list-name">인원수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="number" name="member_num" maxlength="3" required>명</div>
+							<div class="list-con"><input type="number" id="member_num" name="member_num" maxlength="3" oninput="infoCheck()">명</div>
 
 						</div>
 						<div>
@@ -93,7 +90,7 @@
 							</div>
 
 						</div>
-						<button class="button" type="submit">수정</button>
+						<button class="button" id="perfoBtn" type="submit" onclick="return confirmInsert()" disabled>등록</button>
 
 					</div>
 
@@ -104,31 +101,31 @@
 						<div>
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" name="group_name"
-									th:value="${perfo_info.group_name}">
+							<div class="list-con"><input type="text" id="group_name" name="group_name"
+									th:value="${perfo_info.group_name}" oninput="infoCheck()">
 							</div>
 
 						</div>
 						<div>
 							<div class="list-name">대표명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" name="leader_name"
-									th:value="${perfo_info.leader_name}"></div>
+							<div class="list-con"><input type="text" id="leader_name" name="leader_name"
+									th:value="${perfo_info.leader_name}" oninput="infoCheck()"></div>
 
 						</div>
 						<div>
 							<div class="list-name">대표전화번호</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="leader_phone" th:value="${perfo_info.leader_phone}">
+								<input type="text" id="leader_phone" name="leader_phone" th:value="${perfo_info.leader_phone}" oninput="infoCheck()">
 							</div>
 
 						</div>
 						<div>
 							<div class="list-name">인원수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="number" name="member_num"
-									th:value="${perfo_info.member_num}" maxlength="3">명</div>
+							<div class="list-con"><input type="number" id="member_num" name="member_num"
+									th:value="${perfo_info.member_num}" maxlength="3" oninput="infoCheck()">명</div>
 
 						</div>
 						<div>
@@ -148,7 +145,7 @@
 
 						</div>
 
-						<button class="button" type="submit" onclick="return confirmUpdate()">수정</button>
+						<button class="button" id="perfoBtn" type="submit" onclick="return confirmUpdate()">수정</button>
 					</div>
 
 				</form>
@@ -156,13 +153,38 @@
 		</section>
 
 
-		<script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script>
+			// 필수입력 요소 확인
+			function infoCheck() {
+				var group_name = document.getElementById('group_name').value;
+				var leader_name = document.getElementById('leader_name').value;
+				var leader_phone = document.getElementById('leader_phone').value;
+				var member_num = document.getElementById('member_num').value;
+				
+				
+				if (group_name !== '' && leader_name !== '' && leader_phone !== '' && member_num !== '') {
+					document.getElementById('perfoBtn').disabled = false;
+				} else if (group_name == '' || leader_name == '' || leader_phone == '' || member_num == '') {
+					document.getElementById('perfoBtn').disabled = true;
+				}
+			}
+			
 			// 수정완료 확인/취소
 			function confirmUpdate() {
 				var result = confirm("공연자 정보를 수정하시겠습니까?");
 				if (result) {
 					alert("정보 수정이 완료되었습니다.");
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			function confirmInsert() {
+				var result = confirm("공연자 정보를 등록하시겠습니까?");
+				if (result) {
+					alert("정보 등록이 완료되었습니다.");
 					return true;
 				} else {
 					return false;

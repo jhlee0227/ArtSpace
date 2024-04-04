@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dao.MypageDAO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
@@ -91,6 +92,35 @@ public class MypageServiceImpl implements MypageService{
 	public List<ReservationDTO> reserveEquip(Integer reserve_id) {
 		// TODO Auto-generated method stub
 		return mypageDAO.reserveEquip(reserve_id);
+	}
+
+	@Override
+	public void updatePhone(UserDTO dto) {
+		mypageDAO.updatePhone(dto);
+	}
+
+	@Override
+	public List<HallDTO> getNotReview(Integer user_id) {
+		
+		return mypageDAO.getNotReview(user_id);
+	}
+
+	@Override
+	public List<ReviewDTO> getReview(Integer user_id) {
+		
+		return mypageDAO.getReview(user_id);
+	}
+
+	@Override
+	public void saveReview(ReviewDTO review) {
+		
+		mypageDAO.saveReview(review);
+	}
+
+	@Override
+	public void updateReviewStatus(Integer reserve_id) {
+		
+		mypageDAO.updateReviewStatus(reserve_id);
 	}
 
 

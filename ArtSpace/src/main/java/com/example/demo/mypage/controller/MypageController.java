@@ -1,6 +1,7 @@
 package com.example.demo.mypage.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.SessionUtil;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.mypage.service.MypageService;
@@ -28,7 +31,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("mypage")
+@RequestMapping("/mypage")
 public class MypageController {
 
 	SessionUtil user_session = new SessionUtil();
@@ -54,7 +57,7 @@ public class MypageController {
 			if (authority.equals("SU")) {
 				return "html/mypage/mypage";
 			} else if (authority.equals("SC")) {
-				return "html/company/company_page";
+				return "redirect:/company";
 			} else if (authority.equals("SA")) {
 				return "redirect:/admin";
 			} else {
@@ -95,6 +98,8 @@ public class MypageController {
 	public String updatePhone(@ModelAttribute UserDTO dto) {
 		
 		user_session.setSessionValue(session);
+		dto.setUser_id(user_session.getUser_id());
+		mypageService.updatePhone(dto);
 		return "redirect:/mypage";
 	}
 	
@@ -109,7 +114,13 @@ public class MypageController {
 		model.addAttribute("my_info", myInfo);
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
-		return "html/mypage/performer_info";
+		
+		if (user_session.getUser_id() != null) {
+			return "html/mypage/performer_info";
+		} else {
+			return "html/login/login"; 
+		}
+		
 	}
 
 	// 공연자 정보 등록 및 수정
@@ -133,7 +144,12 @@ public class MypageController {
 		model.addAttribute("like_list", likeList);
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
-		return "html/mypage/my_favorites";
+		
+		if (user_session.getUser_id() != null) {
+			return "html/mypage/my_favorites";			
+		} else {
+			return "html/login/login";
+		}
 	}
 
 	// 찜 삭제
@@ -157,8 +173,11 @@ public class MypageController {
 		List<HallDTO> reserveList = mypageService.getAllReserve(user_session.getUser_id());
 		model.addAttribute("reserve_list", reserveList);
 		
-		
-		return "html/mypage/reservation_list";
+		if (user_session.getUser_id() != null) {
+			return "html/mypage/reservation_list";			
+		} else {
+			return "html/login/login";
+		}
 	}
 	
 	// 예약 상세
@@ -190,16 +209,58 @@ public class MypageController {
 		return "redirect:/mypage/reserve";
 	}
 	
-	// 이용 내역
-	@GetMapping("/uselist")
-	public String uselist() {
-		return "html/mypage/use_list";
-	}
 
-	// 리뷰 작성 및 작성 내역
+	// 리뷰 작성 및 작성한 리뷰 조회
 	@GetMapping("/review")
-	public String review() {
-		return "html/mypage/my_review";
+	public String review(Model model) {
+		user_session.setSessionValue(session);
+		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
+		model.addAttribute("my_info", myInfo);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
+		
+		// 리뷰 작성가능한(리뷰를 아직 작성하지 않은) 예약목록
+		List<HallDTO> notReviewList = mypageService.getNotReview(user_session.getUser_id());
+		model.addAttribute("notReview_list", notReviewList);
+		
+		// 작성한 리뷰 목록
+		List<ReviewDTO> reviewList = mypageService.getReview(user_session.getUser_id());
+		model.addAttribute("review_list", reviewList);
+		
+		if (user_session.getUser_id() != null) {
+			return "html/mypage/my_review";
+		} else {
+			return "html/login/login";
+		}
 	}
 
+	// 리뷰 작성
+	@PostMapping("/saveReview")
+	@ResponseBody
+	public boolean saveReview(@RequestBody ReviewDTO review) {
+		try {
+			user_session.setSessionValue(session);
+			review.setUser_id(user_session.getUser_id());
+			review.setCreate_date(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            mypageService.saveReview(review);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+	}
+	
+	// 리뷰 목록 업데이트
+	@PostMapping("/updateReviewStatus")
+	@ResponseBody
+	public boolean updateReviewStatus(@RequestParam("reserve_id") Integer reserve_id) {
+		try {
+			mypageService.updateReviewStatus(reserve_id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 }
