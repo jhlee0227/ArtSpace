@@ -5,6 +5,11 @@ body {
     background-color: var(--bg);
 }
 
+.no-data{
+	font-size: 2rem;
+	margin: 10rem 0;
+}
+
 /* ===== Item Filter ===== */
 .filter {
     margin-top: 90px;

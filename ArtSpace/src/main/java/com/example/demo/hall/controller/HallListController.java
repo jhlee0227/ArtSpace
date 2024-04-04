@@ -72,11 +72,9 @@ public class HallListController {
 
 	@RequestMapping(value = "/list/check", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<?> testCheck(@RequestParam(value = "filterValueArr[]") List<String> valueArr, Model model) {
+	public ResponseEntity<?> testCheck(@RequestParam(value = "filterValueArr[]") List<String> valueArr) {
 
 		List<HallDTO> hallList = hallListService.getFilterData(valueArr);
-		System.out.println(hallList.get(0).getAddress1());
-		model.addAttribute("hallList", hallList);
 
 		return new ResponseEntity<List<HallDTO>>(hallList, HttpStatus.OK);
 	}

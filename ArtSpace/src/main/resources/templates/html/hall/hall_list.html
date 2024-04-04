@@ -112,7 +112,7 @@
 					<form name="region_filter_form" th:action="@{/list}" method="post">
 						<!--서울-->
 						<label data-filter="서울" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="서울" id="all" onclick="allSelect(this);"/>
+							<input type="checkbox" name="regionItem" th:value="서울" onclick="allSelect(this);" class="allSelect"/>
 							<p>서울 전체</p>													
 						</label>
 						
@@ -125,7 +125,7 @@
 					   
 					    <!-- 경기 -->
 						<label data-filter="경기" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="경기" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="경기" 	onclick="allSelect(this);" class="allSelect"/>
 							<p>경기 전체</p>													
 						</label>
 					    <th:block th:each="item : ${경기}">
@@ -136,7 +136,7 @@
 					    </th:block>
 						<!-- 인천 -->
 						<label data-filter="인천" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="인천" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="인천" 	onclick="allSelect(this);" class="allSelect"/>
 							<p>인천 전체</p>													
 						</label>						
 						<th:block th:each="item : ${인천}">
@@ -147,7 +147,7 @@
 						</th:block>
 						<!-- 부산 -->
 						<label data-filter="부산" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="부산" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="부산" onclick="allSelect(this);" class="allSelect"/>
 							<p>부산 전체</p>													
 						</label>						
 						<th:block th:each="item : ${부산}">
@@ -158,7 +158,7 @@
 						</th:block>
 						<!-- 대전 -->
 						<label data-filter="대전" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="대전" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="대전" 	onclick="allSelect(this);" class="allSelect"/>
 							<p>대전 전체</p>													
 						</label>
 						<th:block th:each="item : ${대전}">
@@ -169,7 +169,7 @@
 						</th:block>
 						<!-- 대구 -->
 						<label data-filter="대구" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="대구" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="대구" onclick="allSelect(this);" class="allSelect"/>
 							<p>대구 전체</p>													
 						</label>
 						<th:block th:each="item : ${대구}">
@@ -180,7 +180,7 @@
 						</th:block>
 						<!-- 울산 -->
 						<label data-filter="울산" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="울산" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="울산" onclick="allSelect(this);" class="allSelect"/>
 							<p>울산 전체</p>													
 						</label>
 						<th:block th:each="item : ${울산}">
@@ -191,7 +191,7 @@
 						</th:block>
 						<!-- 세종 -->
 						<label data-filter="세종" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="세종" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="세종" onclick="allSelect(this);" class="allSelect"/>
 							<p>세종 전체</p>													
 						</label>
 						<label data-filter="세종" class="filterList">
@@ -200,7 +200,7 @@
 						</label>
 						<!-- 광주 -->
 						<label data-filter="광주" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="광주" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="광주" onclick="allSelect(this);" class="allSelect"/>
 							<p>광주 전체</p>													
 						</label>
 						<th:block th:each="item : ${광주}">
@@ -211,7 +211,7 @@
 						</th:block>
 						<!-- 강원 -->
 						<label data-filter="강원" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="강원" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="강원" onclick="allSelect(this);" class="allSelect"/>
 							<p>강원 전체</p>													
 						</label>
 						<th:block th:each="item : ${강원}">
@@ -222,7 +222,7 @@
 						</th:block>
 						<!-- 충북 -->
 						<label data-filter="충북" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="충북" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="충북" onclick="allSelect(this);" class="allSelect"/>
 							<p>충북 전체</p>													
 						</label>
 						<th:block th:each="item : ${충북}">
@@ -233,7 +233,7 @@
 						</th:block>
 						<!-- 충남 -->
 						<label data-filter="충남" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="충남" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="충남" onclick="allSelect(this);" class="allSelect"/>
 							<p>충남 전체</p>													
 						</label>
 						<th:block th:each="item : ${충남}">
@@ -244,7 +244,7 @@
 						</th:block>
 						<!-- 경북 -->
 						<label data-filter="경북" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="경북" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="경북" onclick="allSelect(this);" class="allSelect"/>
 							<p>경북 전체</p>													
 						</label>
 						<th:block th:each="item : ${경북}">
@@ -255,7 +255,7 @@
 						</th:block>
 						<!-- 경남 -->
 						<label data-filter="경남" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="경남" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="경남" onclick="allSelect(this);" class="allSelect"/>
 							<p>경남 전체</p>													
 						</label>
 						<th:block th:each="item : ${경남}">
@@ -266,7 +266,7 @@
 						</th:block>
 						<!-- 전북 -->
 						<label data-filter="전북" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="전북" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="전북"  onclick="allSelect(this);" class="allSelect"/>
 							<p>전북 전체</p>													
 						</label>
 						<th:block th:each="item : ${전북}">
@@ -277,7 +277,7 @@
 						</th:block>
 						<!-- 전남 -->
 						<label data-filter="전남" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="전남" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="전남" onclick="allSelect(this);" class="allSelect"/>
 							<p>전남 전체</p>													
 						</label>
 						<th:block th:each="item : ${전남}">
@@ -288,7 +288,7 @@
 						</th:block>
 						<!-- 제주 -->
 						<label data-filter="제주" class="filterList">
-							<input type="checkbox" name="regionItem" th:value="제주" 	id="all" class="allSelect"/>
+							<input type="checkbox" name="regionItem" th:value="제주"  onclick="allSelect(this);" class="allSelect"/>
 							<p>제주 전체</p>													
 						</label>
 						<th:block th:each="item : ${제주}">
