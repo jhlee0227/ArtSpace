@@ -11,35 +11,33 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.announcement.dto.BoardDto;
-import com.example.demo.announcement.service.BoardService; 
-import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.user.dto.UserDTO;
-import com.example.demo.user.service.UserService;
+import com.example.demo.announcement.dto.NoticeDto;
+
+import com.example.demo.announcement.service.NoticeService;
 
 @Controller
-@RequestMapping("board")
-public class BoardController {
+@RequestMapping("/notice")
+public class NoticeController {
 
 	@Autowired
-	private BoardService boardService;
+	private NoticeService noticeService;
 	
 	@GetMapping("")
 	public String showboardPage(Model model) {
-		List<BoardDto> noticeList = boardService.getNotice();
+		List<NoticeDto> noticeList = noticeService.getNotice();
 		model.addAttribute("noticeList", noticeList);
-		return "html/announcement/board";	
+		return "html/announcement/notice";	
 	}
 	
-	@GetMapping("write")
+	@GetMapping("/write")
 	public String showWrite() {
 		return "html/announcement/board_notice";
 	}
 	
 	@PostMapping("/insert")
-	public String insertUser(@ModelAttribute BoardDto boardDTO) {
-		boardDTO.setCreate_date(LocalDate.now());
-		boardService.insert(boardDTO);
+	public String insertUser(@ModelAttribute NoticeDto noticeDTO) {
+		noticeDTO.setCreate_date(LocalDate.now());
+		noticeService.insert(noticeDTO);
 		return "html/announcement/board_notice";
 	}
 }
