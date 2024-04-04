@@ -21,8 +21,6 @@ public interface HallService {
 	// SELECT 관련
 	public HallDTO findById(Integer id);
 
-	public Integer findLastIndex();
-
 	public List<HallTimeDTO> setHallTimeList(HallDTO hallInfo);
 
 	public List<EquipmentDTO> getEquiList(Integer id);

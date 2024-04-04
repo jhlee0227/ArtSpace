@@ -26,6 +26,8 @@ body {
     box-shadow: var(--box-shadow-gray);
     display: flex;
     
+    
+    
 }
 .filter .fil-name {
     text-align: center;
@@ -40,6 +42,13 @@ body {
 
 .filter .tags {
     display: flex;
+    width: 100%;
+  	overflow-x: scroll; 
+  	  overflow: auto;
+  white-space: nowrap;
+}
+.filter .tags::-webkit-scrollbar {
+  display: none;
 }
 
 .filter .tags .tag {
@@ -48,6 +57,7 @@ body {
     padding: 1rem 2rem;
     margin-left: 1.5rem;
     border-radius: 2rem;
+    
 }
 
 /* ===== Item Filter End ===== */
