@@ -15,9 +15,8 @@
 	        <div class="fil-name">
 	          <p onclick="openModal()" >지역</p>
 	        </div>
-	        <div class="tags">
-	          <div class="tag"><p>강서구</p></div>
-	          <div class="tag"><p>강남구</p></div>
+	        <div class="tags" id="location-tag">
+	         
 	        </div>
 	      </div>
 	      <div class="fil-container">
@@ -112,6 +111,11 @@
 				<div class="right-menu">
 					<form name="region_filter_form" th:action="@{/list}" method="post">
 						<!--서울-->
+						<label data-filter="서울" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="서울" id="all" onclick="allSelect(this);"/>
+							<p>서울 전체</p>													
+						</label>
+						
 						<th:block th:each="item : ${서울}">
 							<label data-filter="서울" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -120,6 +124,10 @@
 						</th:block>
 					   
 					    <!-- 경기 -->
+						<label data-filter="경기" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="경기" 	id="all" class="allSelect"/>
+							<p>경기 전체</p>													
+						</label>
 					    <th:block th:each="item : ${경기}">
 							<label data-filter="경기" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -127,6 +135,10 @@
 							</label>
 					    </th:block>
 						<!-- 인천 -->
+						<label data-filter="인천" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="인천" 	id="all" class="allSelect"/>
+							<p>인천 전체</p>													
+						</label>						
 						<th:block th:each="item : ${인천}">
 							<label data-filter="인천" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -134,6 +146,10 @@
 							</label>
 						</th:block>
 						<!-- 부산 -->
+						<label data-filter="부산" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="부산" 	id="all" class="allSelect"/>
+							<p>부산 전체</p>													
+						</label>						
 						<th:block th:each="item : ${부산}">
 							<label data-filter="부산" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -141,6 +157,10 @@
 							</label>
 						</th:block>
 						<!-- 대전 -->
+						<label data-filter="대전" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="대전" 	id="all" class="allSelect"/>
+							<p>대전 전체</p>													
+						</label>
 						<th:block th:each="item : ${대전}">
 							<label data-filter="대전" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -148,6 +168,10 @@
 							</label>
 						</th:block>
 						<!-- 대구 -->
+						<label data-filter="대구" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="대구" 	id="all" class="allSelect"/>
+							<p>대구 전체</p>													
+						</label>
 						<th:block th:each="item : ${대구}">
 							<label data-filter="대구" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -155,6 +179,10 @@
 							</label>
 						</th:block>
 						<!-- 울산 -->
+						<label data-filter="울산" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="울산" 	id="all" class="allSelect"/>
+							<p>울산 전체</p>													
+						</label>
 						<th:block th:each="item : ${울산}">
 							<label data-filter="울산" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -163,10 +191,18 @@
 						</th:block>
 						<!-- 세종 -->
 						<label data-filter="세종" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="세종" 	id="all" class="allSelect"/>
+							<p>세종 전체</p>													
+						</label>
+						<label data-filter="세종" class="filterList">
 							<input type="checkbox" name="regionItem" th:value="${item}"/>
 							<p>세종 전체</p>													
 						</label>
 						<!-- 광주 -->
+						<label data-filter="광주" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="광주" 	id="all" class="allSelect"/>
+							<p>광주 전체</p>													
+						</label>
 						<th:block th:each="item : ${광주}">
 							<label data-filter="광주" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -174,6 +210,10 @@
 							</label>
 						</th:block>
 						<!-- 강원 -->
+						<label data-filter="강원" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="강원" 	id="all" class="allSelect"/>
+							<p>강원 전체</p>													
+						</label>
 						<th:block th:each="item : ${강원}">
 							<label data-filter="강원" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -181,6 +221,10 @@
 							</label>
 						</th:block>
 						<!-- 충북 -->
+						<label data-filter="충북" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="충북" 	id="all" class="allSelect"/>
+							<p>충북 전체</p>													
+						</label>
 						<th:block th:each="item : ${충북}">
 							<label data-filter="충북" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -188,6 +232,10 @@
 							</label>
 						</th:block>
 						<!-- 충남 -->
+						<label data-filter="충남" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="충남" 	id="all" class="allSelect"/>
+							<p>충남 전체</p>													
+						</label>
 						<th:block th:each="item : ${충남}">
 							<label data-filter="충남" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -195,6 +243,10 @@
 							</label>
 						</th:block>
 						<!-- 경북 -->
+						<label data-filter="경북" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="경북" 	id="all" class="allSelect"/>
+							<p>경북 전체</p>													
+						</label>
 						<th:block th:each="item : ${경북}">
 							<label data-filter="경북" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -202,6 +254,10 @@
 							</label>
 						</th:block>
 						<!-- 경남 -->
+						<label data-filter="경남" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="경남" 	id="all" class="allSelect"/>
+							<p>경남 전체</p>													
+						</label>
 						<th:block th:each="item : ${경남}">
 							<label data-filter="경남" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -209,6 +265,10 @@
 							</label>					
 						</th:block>
 						<!-- 전북 -->
+						<label data-filter="전북" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="전북" 	id="all" class="allSelect"/>
+							<p>전북 전체</p>													
+						</label>
 						<th:block th:each="item : ${전북}">
 							<label data-filter="전북" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -216,6 +276,10 @@
 							</label>					
 						</th:block>
 						<!-- 전남 -->
+						<label data-filter="전남" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="전남" 	id="all" class="allSelect"/>
+							<p>전남 전체</p>													
+						</label>
 						<th:block th:each="item : ${전남}">
 							<label data-filter="전남" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -223,6 +287,10 @@
 							</label>						
 						</th:block>
 						<!-- 제주 -->
+						<label data-filter="제주" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="제주" 	id="all" class="allSelect"/>
+							<p>제주 전체</p>													
+						</label>
 						<th:block th:each="item : ${제주}">
 							<label data-filter="제주" class="filterList">
 								<input type="checkbox" name="regionItem" th:value="${item}"/>
@@ -241,86 +309,8 @@
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	  <script>
-			// 모달 열기
-	       function openModal() {
-	           var modal = document.getElementById('myModal');
-	           modal.style.display = 'block';
-	       }
-	
-	       // 모달 닫기
-	       function closeModal() {
-	           var modal = document.getElementById('myModal');
-	           modal.style.display = 'none';
-	       }
-	     
-		   window.onclick = function(event) {
-	           var modal = document.getElementById('myModal');
-	           if (event.target == modal) {
-	               modal.style.display = "none";
-	           }
-	       }
-		   
-	      const filterMenuInit = () => {
-	          const filters = document.querySelectorAll('[data-filter-id]');
-	   
-	          filters.forEach(filter => {
-	              const filterBtns = [...filter.querySelectorAll('[data-filter]')].filter(el => el.className === 'filterbtn');
-	              const filterLists = [...filter.querySelectorAll('[data-filter]')].filter(el => el.className=== 'filterList');
-	   
-	              filterBtns.forEach(btn => {
-	                  btn.addEventListener('click', () => {
-	                      const filterType = btn.getAttribute('data-filter');
-	   
-	                      filterBtns.forEach(btn => btn.classList.remove('active'));
-	                      btn.classList.add('active');
-	   
-	                      filterLists.forEach(list => {
-	                          if (filterType === 'all'){
-	                              list.style.display = 'flex';
-	                              return;
-	                          }
-	                          
-	                          list.style.display = list.getAttribute('data-filter') === filterType ? 'flex' : 'none';
-	                      })
-	                  });
-	              })
-	          })
-	      };
-	      filterMenuInit();	
-	   </script>
-	   
-	   <script>
-			function filterPush(){
-				var checkArr = [];     // 배열 초기화    
-				
-				$("input[name='regionItem']:checked").each(function(i){
-			        checkArr.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push    
-				});				
-				
-				$.ajax({
-			        url: '/list/check',
-			        type: 'post',
-			        dataType: 'text',
-			        data: {
-		            	filterValueArr: checkArr        
-					},    
-					success : function(data) {
-						
-					},
-					error: function (data, status, err) {
-						console.log(data);
-						console.log(status);
-						console.log(err);
-					},
-				});
-				
-				
-				
-				
-				document.region_filter_form.submit();
-			}
-	   </script>
+	<script src="/js/hall_list.js"></script>
+
 	   
 	   
 	   </div>
