@@ -102,10 +102,33 @@
 		where hall_id = #{id}
 	</select>
 	
-	<select id="findLastIndex" resultType="Integer">
-		select hall_id from hall
-		order by hall_id desc limit 1
-	</select>
+	
+	<!-- 지역 필터 -->	
+	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
+		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
+		  from hall h join hall_time ht
+		    on h.hall_id = ht.hall_id 
+			 where h.address1 regexp #{filter}
+		group by hall_id
+		order by h.create_date desc;
+	</select> 
+	
+<!-- 	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
+	    select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
+	    from hall h 
+	    join hall_time ht on h.hall_id = ht.hall_id 
+	    <where>
+	        <if test="local_list != null and local_list.size() != 0">
+	            and h.address1 regexp
+	            <foreach collection="local_list" item="item" index="index" open="(" separator="|" close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    </where>
+	    group by h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id
+	    order by h.create_date desc;
+	</select> -->
+	
 
 <!-- SELECT End -->
 
