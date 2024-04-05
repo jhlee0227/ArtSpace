@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.admin.dao.AdminDAO;
+import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.user.dto.UserDTO;
 
 @Service
@@ -42,4 +44,16 @@ public class AdminServiceImpl implements AdminService {
 //		return adminDAO.searchUsersByNickname(keyword);
 //	}
 
+	@Override
+	public List<HallDTO> getAllHalls() {
+		
+		return adminDAO.getAllHalls();
+	}
+
+	@Override
+	public List<ReviewDTO> getAllReviews() {
+		
+		return adminDAO.getAllReviews();
+	}
+	
 }

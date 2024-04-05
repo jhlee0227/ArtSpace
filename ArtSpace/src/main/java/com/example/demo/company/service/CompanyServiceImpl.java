@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.company.dao.CompanyDAO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -31,6 +32,12 @@ public class CompanyServiceImpl implements CompanyService {
 	public void reserveDelete(Integer reserve_id) {
 		
 		companyDAO.reserveDelete(reserve_id);
+	}
+
+	@Override
+	public List<ReviewDTO> getReview() {
+		
+		return companyDAO.getReview();
 	}
 
 }

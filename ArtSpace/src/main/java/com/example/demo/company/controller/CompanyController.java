@@ -142,13 +142,13 @@ public class CompanyController {
 		return "redirect:/company/reserve";
 	}
 	
-	
 	// 등록한 공연장에 대한 리뷰 조회
 	@GetMapping("review")
 	public String companyReview(Model model) {
 		myInfo(model);
 		
-//		List<ReviewDTO> reviewList = companyService.getReview()
+		List<ReviewDTO> reviewList = companyService.getReview();
+		model.addAttribute("review_list", reviewList);
 		return "html/company/company_review";
 	}
 

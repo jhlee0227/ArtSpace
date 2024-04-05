@@ -35,18 +35,17 @@
 								<th>공연장</th>
 								<th>작성자</th>
 								<th class="review-content">리뷰내용</th>
+								<th class="review-date">작성일자</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr th:each="review : ${review_list}">
 								<td class="box"><input type="checkbox" class="chkbox" name="check"
 										onclick="checkSelectAll()"></td>
-								<td>안녕하세요홀</td>
-								<td>강아지</td>
-								<td class="review-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora voluptas aperiam sunt, asperiores adipisci, exercitationem consectetur rem
-									explicabo repellendus voluptatibus, aspernatur amet architecto nisi quae soluta quia
-									voluptatem accusamus voluptate!</td>
+								<td th:text="${review.hall_name}"></td>
+								<td th:text="${review.nickname}"></td>
+								<td class="review-content" th:text="${review.review_content}"></td>
+								<td class="review-date" th:text="${review.create_date}"></td>
 							</tr>
 						</tbody>
 					</table>
