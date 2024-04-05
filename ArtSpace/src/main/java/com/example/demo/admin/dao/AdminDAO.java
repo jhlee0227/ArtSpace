@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.user.dto.UserDTO;
 
 @Repository
@@ -29,6 +31,16 @@ public class AdminDAO {
 	public void resign(Integer user_id) {
 
 		sqlSession.update("admin.resign", user_id);
+	}
+
+	public List<HallDTO> getAllHalls() {
+		
+		return sqlSession.selectList("admin.getAllHalls");
+	}
+
+	public List<ReviewDTO> getAllReviews() {
+		
+		return sqlSession.selectList("admin.getAllReviews");
 	}
 
 //	public List<UserDTO> searchUsersByNickname(String keyword) {

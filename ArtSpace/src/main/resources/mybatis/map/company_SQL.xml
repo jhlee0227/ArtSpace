@@ -23,4 +23,12 @@
 		where reserve_id = #{reserve_id}
 	</update>
 
+	<select id="getReview" resultType="com.example.demo.hall.dto.ReviewDTO">
+		select h.hall_id, h.hall_name, r.review_content, r.rating, u.nickname
+		from review r
+		join hall h on r.hall_id = h.hall_id
+		join user u on r.user_id = u.user_id
+		order by h.hall_id;
+	</select>
+
 </mapper>

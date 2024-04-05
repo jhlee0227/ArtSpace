@@ -11,6 +11,8 @@ public class ReviewDTO {
 	
 	private String hall_name;			// 공연장명
 
+	private String nickname;			// 유저닉네임
+	
 	public Integer getReview_id() {
 		return review_id;
 	}
@@ -65,6 +67,14 @@ public class ReviewDTO {
 
 	public void setHall_name(String hall_name) {
 		this.hall_name = hall_name;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 }
