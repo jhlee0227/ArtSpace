@@ -42,16 +42,20 @@ public class MypageController {
 	@Autowired
 	HttpSession session;
 
-	// 마이페이지 내 정보
-	@GetMapping("")
-	public String mypage(Model model) {
-		
+	// 공통부분 (기본정보)
+	public void myInfo(Model model) {
 		user_session.setSessionValue(session);
-		
 		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
 		model.addAttribute("my_info", myInfo);
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
+	}
+	
+	// 마이페이지 내 정보
+	@GetMapping("")
+	public String mypage(Model model) {
+		
+		myInfo(model);
 		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
 			if (authority.equals("SU")) {
@@ -106,14 +110,10 @@ public class MypageController {
 	// 공연자 정보 기본
 	@GetMapping("/performer")
 	public String performer(Model model) {
-		user_session.setSessionValue(session);
+		myInfo(model);
 
 		PerformerDTO perfoInfo = mypageService.findByPID(user_session.getUser_id());
-		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
 		model.addAttribute("perfo_info", perfoInfo);
-		model.addAttribute("my_info", myInfo);
-		model.addAttribute("user_id", user_session.getUser_id());
-		model.addAttribute("nickname", user_session.getNickname());
 		
 		if (user_session.getUser_id() != null) {
 			return "html/mypage/performer_info";
@@ -136,14 +136,10 @@ public class MypageController {
 	// 내 즐겨찾기
 	@GetMapping("/favorite")
 	public String favorite(Model model) {
-		user_session.setSessionValue(session);
+		myInfo(model);
 		
-		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
 		List<HallDTO> likeList = mypageService.getAllLike(user_session.getUser_id());
-		model.addAttribute("my_info", myInfo);
 		model.addAttribute("like_list", likeList);
-		model.addAttribute("user_id", user_session.getUser_id());
-		model.addAttribute("nickname", user_session.getNickname());
 		
 		if (user_session.getUser_id() != null) {
 			return "html/mypage/my_favorites";			
@@ -164,13 +160,9 @@ public class MypageController {
 	// 예약 내역
 	@GetMapping("/reserve")
 	public String reserve(Model model) {
-		user_session.setSessionValue(session);
-		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
-		model.addAttribute("my_info", myInfo);
-		model.addAttribute("user_id", user_session.getUser_id());
-		model.addAttribute("nickname", user_session.getNickname());
+		myInfo(model);
 		
-		List<HallDTO> reserveList = mypageService.getAllReserve(user_session.getUser_id());
+		List<ReservationDTO> reserveList = mypageService.getAllReserve(user_session.getUser_id());
 		model.addAttribute("reserve_list", reserveList);
 		
 		if (user_session.getUser_id() != null) {
@@ -200,12 +192,11 @@ public class MypageController {
 	
 	
 
-	// 예약 취소
+	// 예약 취소	
 	@PostMapping("/reserve/delete")
-	public String reserveDelete(Model model, @RequestParam("hall_id") Integer hall_id) {
-		user_session.setSessionValue(session);
+	public String reserveDelete(Model model, @RequestParam("reserve_id") Integer reserve_id) {
 		
-		mypageService.reserveDelete(user_session.getUser_id(), hall_id);
+		mypageService.reserveDelete(reserve_id);
 		return "redirect:/mypage/reserve";
 	}
 	
@@ -213,11 +204,7 @@ public class MypageController {
 	// 리뷰 작성 및 작성한 리뷰 조회
 	@GetMapping("/review")
 	public String review(Model model) {
-		user_session.setSessionValue(session);
-		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
-		model.addAttribute("my_info", myInfo);
-		model.addAttribute("user_id", user_session.getUser_id());
-		model.addAttribute("nickname", user_session.getNickname());
+		myInfo(model);
 		
 		// 리뷰 작성가능한(리뷰를 아직 작성하지 않은) 예약목록
 		List<HallDTO> notReviewList = mypageService.getNotReview(user_session.getUser_id());

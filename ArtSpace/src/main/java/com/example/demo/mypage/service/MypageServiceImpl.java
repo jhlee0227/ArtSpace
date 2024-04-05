@@ -71,15 +71,21 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public List<HallDTO> getAllReserve(Integer user_id) {
+	public List<ReservationDTO> getAllReserve(Integer user_id) {
 		
 		return mypageDAO.getAllReserve(user_id);
 	}
 
+//	@Override
+//	public void reserveDelete(Integer user_id, Integer hall_id) {
+//		
+//		mypageDAO.reserveDelete(user_id, hall_id);
+//	}
+	
 	@Override
-	public void reserveDelete(Integer user_id, Integer hall_id) {
+	public void reserveDelete(Integer reserve_id) {
 		
-		mypageDAO.reserveDelete(user_id, hall_id);
+		mypageDAO.reserveDelete(reserve_id);
 	}
 
 	@Override
