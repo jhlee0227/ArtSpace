@@ -31,6 +31,8 @@ public interface HallService {
 
 	public void deleteEqui(Integer id);
 
+	public void deleteHallTime(Integer id);
+
 
 
 

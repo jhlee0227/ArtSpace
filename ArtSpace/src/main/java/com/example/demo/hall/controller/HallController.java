@@ -171,7 +171,7 @@ public class HallController {
 				hallService.insertEqui(equiList.get(i), id);
 			}
 		}
-		return "redirect:/hall/detail_page/"+id;
+		return "redirect:/hall/detail/"+id;
 	}
 	
 	@PostMapping("form/cancel/{id}")

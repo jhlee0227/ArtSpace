@@ -10,44 +10,18 @@
 	<div layout:fragment="content">	
 		<section class="con">
 		     <!-- 좌측 메뉴 -->
-		     <div class="left">
-		      <div class="left-main">
-		        <h2 class="mypage">마이페이지</h2>
-		        <div class="img">
-		          <img src="/img/hongsnow5.jpg" class="profile" alt="">
-		        </div>
-		        <h2 class="username">000</h2>
-		      </div>
-		      <div class="left-menu">
-		        <ul>
-		          <a th:href="@{/company}" target="_self">
-		            <li>내 정보</li>
-		          </a>
-		          <a th:href="@{/company/info}" target="_self">
-		            <li>사업자 정보</li>
-		          </a>
-		          <a href="#" target="_self">
-		            <li class="open">내 공연장</li>
-		          </a>
-		          <a th:href="@{/company/reserve}" target="_self">
-		            <li>예약 내역</li>
-		          </a>
-		          <a th:href="@{/company/review}" target="_self">
-		            <li>리뷰 관리</li>
-		          </a>
-		        </ul>
-		      </div>
-		     </div>
+			 <div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
+			 <!-- 내용 -->
 		     <div class="content">
 		      <h2 class="content-main">내 공연장</h2>
-		      <div class="list">
+		      <div class="list" th:each="hall : ${my_hall}">
 		        <div class="item">
 		          <div class="img">
 		            <img src="/img/hallex.jpg" class="profile" alt="">
 		          </div>
 		          <div class="hall-info">
-		            <div class="hall-name">광주무역회관 빛고을홀</div>
-		            <div class="hall-region">광주 광산구 무진대로 282</div>
+		            <div class="hall-name" th:text="${hall.hall_name}"></div>
+		            <div class="hall-region" th:text="${hall.address1 + ' ' + hall.address2}"></div>
 		          </div>
 		          <div class="button">
 		            <button onclick="location.href=''">상세 정보</button>
@@ -59,8 +33,11 @@
 			  <a th:href="@{/hall/form}"><div class="hall-insert">공연장 등록</div></a>
 		     </div>
 		  </section>
+		  
+		  
+		  <script src="/js/open_menu.js"></script>
 	</div>
 
-  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+ 
 </body>
 </html>

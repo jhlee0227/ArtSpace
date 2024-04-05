@@ -9,34 +9,9 @@
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		    <div class="left">
-		      <div class="left-main">
-		        <h2 class="mypage">마이페이지</h2>
-		        <div class="img">
-		          <img src="/img/hongsnow5.jpg" class="profile" alt="">
-		        </div>
-		        <h2 class="username">000</h2>
-		      </div>
-		      <div class="left-menu">
-		        <ul>
-		          <a th:href="@{/company}" target="_self">
-		            <li>내 정보</li>
-		          </a>
-		          <a th:href="@{/company/info}" target="_self">
-		            <li>사업자 정보</li>
-		          </a>
-		          <a th:href="@{/company/hall}" target="_self">
-		            <li>내 공연장</li>
-		          </a>
-		          <a th:href="@{/company/reserve}" target="_self">
-		            <li>예약 내역</li>
-		          </a>
-		          <a href="#" target="_self">
-		            <li class="open">리뷰 관리</li>
-		          </a>
-		        </ul>
-		      </div>
-		    </div>
+			<!-- 좌측 메뉴 -->
+			<div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
+			<!-- 내용 -->
 		    <div class="content">
 		      <h2 class="content-main">리뷰 관리</h2>
 		      <div class="main">
@@ -78,8 +53,8 @@
 	
   
 
-  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
   <script src="/js/admin.js"></script>
+  <script src="/js/open_menu.js"></script>
   </div>
 </body>
 </html>
