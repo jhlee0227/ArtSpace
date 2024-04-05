@@ -27,9 +27,9 @@ public interface MypageService {
 
 	public void likeDelete(Integer user_id, Integer hall_id);
 
-	public List<HallDTO> getAllReserve(Integer user_id);
-
-	public void reserveDelete(Integer user_id, Integer hall_id);
+	public List<ReservationDTO> getAllReserve(Integer user_id);
+	
+	public void reserveDelete(Integer reserve_id);
 
 	public ReservationDTO reserveDetail(Integer reserve_id);
 

@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layout/default_layout}" lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>예약 내역</title>
-  <link rel="stylesheet" href="/css/mypage/company/company_reserve.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>예약 내역</title>
+	<link rel="stylesheet" href="/css/mypage/company/company_reserve.css">
 </head>
+
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		      <!-- 좌측 메뉴 -->
-			  <div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
-			  <!-- 내용 -->
-		      <div class="content">
-		        <h2 class="content-main">예약 내역</h2>
-		        <div class="list">
-		          <div class="item">
-		            <div class="img">
-		              <img src="/img/hallex.jpg" class="profile" alt="">
-		            </div>
-		            <div class="hall-info">
-		              <div class="hall-name">광주무역회관 빛고을홀</div>
-		              <div class="user-name">군침이</div>
-		              <div class="date">
-		                <span>2024-03-21 pm 6 : 00</span>
-		                <span> ~ </span>
-		                <span>2024-03-21 pm 10 : 00</span>
-		              </div>
-		            </div>
-		            <div class="button">
-		              <button>예약 취소</button>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </section>
-			
-			<script src="/js/open_menu.js"></script>
+			<!-- 좌측 메뉴 -->
+			<div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
+			<!-- 내용 -->
+			<div class="content">
+				<h2 class="content-main">예약 내역</h2>
+				<div class="list" th:each="reserve : ${reserve_list}">
+					<div class="item">
+						<div class="img">
+							<img src="/img/hallex.jpg" class="profile" alt="">
+						</div>
+						<div class="hall-info">
+							<div class="hall-name" th:text="${reserve.hall_name}"></div>
+							<div class="user-name" th:text="${reserve.name}"></div>
+							<div class="date">
+								<span
+									th:text="${reserve.start_date + ' ' + reserve.start_time + ' ~ ' + reserve.end_date + '  ' + reserve.end_time}"></span>
+							</div>
+						</div>
+						<div class="button">
+							<form method="post" action="/company/reserve/delete">
+								<input type="hidden" name="reserve_id" th:value="${reserve.reserve_id}">
+								<button type="submit" onclick="return confirmDelete()">예약 취소</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="/js/open_menu.js"></script>
+		<script>
+			function confirmDelete() {
+				var result = confirm("예약 삭제를 하시겠습니까?");
+				if (result) {
+					alert("예약 삭제가 완료되었습니다.");
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
 	</div>
-    
+
 
 
 </body>
+
 </html>
