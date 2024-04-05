@@ -1,0 +1,257 @@
+<!--hall_list의 가격 필터 모달-->
+<div id="filterModal" class="modal" th:fragment="filterModal">
+	<div class="modal-content">
+		<span class="close" onclick="closeModal()">&times;</span>
+        <!-- 모달 내용 -->
+		<div class="top">
+			<h2>필터</h2>
+			<div class="tap-menu">
+				<h2 class="tap current" data-tab="tab-1">지역</h2>
+				<h2 class="tap"	data-tab="tab-2">가격</h2>	
+				<h2 class="tap"	data-tab="tab-3">인원수</h2>		
+			</div>
+		</div>
+		<div class="middle" data-filter-id="region">
+			<div id="tab-1" class="tab-content current">
+				<div class="con">
+					<div class="left-menu">
+						<ul>
+						   <li data-filter="서울" class="filterbtn" >서울</li>
+					       <li data-filter="경기" class="filterbtn" >경기</li>
+					       <li data-filter="인천" class="filterbtn" >인천</li>
+					       <li data-filter="부산" class="filterbtn" >부산</li>
+					       <li data-filter="대전" class="filterbtn" >대전</li>
+					       <li data-filter="대구" class="filterbtn" >대구</li>
+					       <li data-filter="울산" class="filterbtn" >울산</li>
+					       <li data-filter="세종" class="filterbtn" >세종</li>
+					       <li data-filter="광주" class="filterbtn" >광주</li>
+					       <li data-filter="강원" class="filterbtn" >강원</li>
+					       <li data-filter="충북" class="filterbtn" >충북</li>
+					       <li data-filter="충남" class="filterbtn" >충남</li>
+					       <li data-filter="경북" class="filterbtn" >경북</li>
+					       <li data-filter="경남" class="filterbtn" >경남</li>
+					       <li data-filter="전북" class="filterbtn" >전북</li>
+					       <li data-filter="전남" class="filterbtn" >전남</li>
+					       <li data-filter="제주" class="filterbtn" >제주</li>
+						</ul>
+					</div>
+					<div class="right-menu">
+						<!--서울-->
+						<label data-filter="서울" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="서울" onclick="allSelect(this);" class="allSelect"/>
+							<p>서울 전체</p>													
+						</label>
+						
+						<th:block th:each="item : ${서울}">
+							<label data-filter="서울" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+					   
+					    <!-- 경기 -->
+						<label data-filter="경기" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="경기" 	onclick="allSelect(this);" class="allSelect"/>
+							<p>경기 전체</p>													
+						</label>
+					    <th:block th:each="item : ${경기}">
+							<label data-filter="경기" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+					    </th:block>
+						<!-- 인천 -->
+						<label data-filter="인천" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="인천" 	onclick="allSelect(this);" class="allSelect"/>
+							<p>인천 전체</p>													
+						</label > 
+						<th:block th:each="item : ${인천}">
+							<label data-filter="인천" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 부산 -->
+						<label data-filter="부산" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="부산" onclick="allSelect(this);" class="allSelect"/>
+							<p>부산 전체</p>													
+						</label>						
+						<th:block th:each="item : ${부산}">
+							<label data-filter="부산" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 대전 -->
+						<label data-filter="대전" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="대전" 	onclick="allSelect(this);" class="allSelect"/>
+							<p>대전 전체</p>													
+						</label>
+						<th:block th:each="item : ${대전}">
+							<label data-filter="대전" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 대구 -->
+						<label data-filter="대구" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="대구" onclick="allSelect(this);" class="allSelect"/>
+							<p>대구 전체</p>													
+						</label>
+						<th:block th:each="item : ${대구}">
+							<label data-filter="대구" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 울산 -->
+						<label data-filter="울산" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="울산" onclick="allSelect(this);" class="allSelect"/>
+							<p>울산 전체</p>													
+						</label>
+						<th:block th:each="item : ${울산}">
+							<label data-filter="울산" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 세종 -->
+						<label data-filter="세종" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="세종" onclick="allSelect(this);" class="allSelect"/>
+							<p>세종 전체</p>													
+						</label>
+						<label data-filter="세종" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="${item}"/>
+							<p>세종 전체</p>													
+						</label>
+						<!-- 광주 -->
+						<label data-filter="광주" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="광주" onclick="allSelect(this);" class="allSelect"/>
+							<p>광주 전체</p>													
+						</label>
+						<th:block th:each="item : ${광주}">
+							<label data-filter="광주" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 강원 -->
+						<label data-filter="강원" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="강원" onclick="allSelect(this);" class="allSelect"/>
+							<p>강원 전체</p>													
+						</label>
+						<th:block th:each="item : ${강원}">
+							<label data-filter="강원" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 충북 -->
+						<label data-filter="충북" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="충북" onclick="allSelect(this);" class="allSelect"/>
+							<p>충북 전체</p>													
+						</label>
+						<th:block th:each="item : ${충북}">
+							<label data-filter="충북" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 충남 -->
+						<label data-filter="충남" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="충남" onclick="allSelect(this);" class="allSelect"/>
+							<p>충남 전체</p>													
+						</label>
+						<th:block th:each="item : ${충남}">
+							<label data-filter="충남" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 경북 -->
+						<label data-filter="경북" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="경북" onclick="allSelect(this);" class="allSelect"/>
+							<p>경북 전체</p>													
+						</label>
+						<th:block th:each="item : ${경북}">
+							<label data-filter="경북" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>
+						</th:block>
+						<!-- 경남 -->
+						<label data-filter="경남" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="경남" onclick="allSelect(this);" class="allSelect"/>
+							<p>경남 전체</p>													
+						</label>
+						<th:block th:each="item : ${경남}">
+							<label data-filter="경남" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>					
+						</th:block>
+						<!-- 전북 -->
+						<label data-filter="전북" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="전북"  onclick="allSelect(this);" class="allSelect"/>
+							<p>전북 전체</p>													
+						</label>
+						<th:block th:each="item : ${전북}">
+							<label data-filter="전북" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>					
+						</th:block>
+						<!-- 전남 -->
+						<label data-filter="전남" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="전남" onclick="allSelect(this);" class="allSelect"/>
+							<p>전남 전체</p>													
+						</label>
+						<th:block th:each="item : ${전남}">
+							<label data-filter="전남" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>						
+						</th:block>
+						<!-- 제주 -->
+						<label data-filter="제주" class="filterList">
+							<input type="checkbox" name="regionItem" th:value="제주"  onclick="allSelect(this);" class="allSelect"/>
+							<p>제주 전체</p>													
+						</label>
+						<th:block th:each="item : ${제주}">
+							<label data-filter="제주" class="filterList">
+								<input type="checkbox" name="regionItem" th:value="${item}"/>
+								<p  th:text="${item}" ></p>													
+							</label>						
+						</th:block>
+					</div>
+				</div>
+			</div>
+			<div id="tab-2" class="tab-content">
+				<p>가격 범위</p>
+				<div class="con">
+
+					<label id="min-price">
+						<p>최소</p>
+						<input type="number" />
+						<p>만원</p>
+					</label>
+					<label id="max-price">
+						<p>최대</p>
+						<input type="number" />
+						<p>만원</p>
+					</label>
+				</div>
+				
+			</div>
+			
+			<div id="tab-3" class="tab-content">
+
+			</div>
+		</div>
+		
+		<div class="bottom">
+			<div class="btn" onclick="filterPush()">필터 적용</div>
+		</div>				
+		
+	</div>
+</div>
