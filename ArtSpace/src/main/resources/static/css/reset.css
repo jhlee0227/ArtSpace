@@ -65,6 +65,7 @@ a{
   --box-shadow-gray: 0px 2px 1px 1px rgba(110, 110, 110, 0.123);
   --bg: #f9f9f9;
   --white: #fff;
+  --select-btn : rgb(253, 206, 136);
 }
 
 *, h1, p, a{

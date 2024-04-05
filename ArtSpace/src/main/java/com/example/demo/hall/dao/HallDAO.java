@@ -41,7 +41,6 @@ public class HallDAO {
 	
 	// 지역 필터 걸어서 공연장 리스트 가져옴
 	public List<HallDTO> getHallFilterList(String filter) {
-		System.out.println(filter.toString());
 		return sqlSession.selectList("hall.getFilterList", filter);
 	}
 	
@@ -80,6 +79,13 @@ public class HallDAO {
 	public void deleteAllTime(Integer id) {
 		sqlSession.delete("hall.deleteAllTime", id);
 	}
+	
+	public void deleteHallTime(Integer id) {
+		sqlSession.delete("hall.deleteTime", id);
+		
+	}
+	
+	
 	//	DELETE END //
 
 
@@ -95,7 +101,8 @@ public class HallDAO {
 		sqlSession.update("hall.update_hall_time",  hallTimes);
 	}
 	// UPDATE END //
-	
+
+
 	
 	//	========================================
 

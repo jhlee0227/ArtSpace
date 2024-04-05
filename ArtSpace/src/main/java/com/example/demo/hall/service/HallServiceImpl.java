@@ -118,6 +118,7 @@ public class HallServiceImpl implements HallService{
 	@Override
 	public void cancelHall(Integer id) {
 		deleteEqui(id);
+		deleteHallTime(id);
 		hallDAO.deleteHall(id);
 	}
 
@@ -126,6 +127,10 @@ public class HallServiceImpl implements HallService{
 		hallDAO.deleteAllEquiList(id);
 	}
 
+	@Override
+	public void deleteHallTime(Integer id) {
+		hallDAO.deleteAllTime(id);
+	}
 
 
 }

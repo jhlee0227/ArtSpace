@@ -88,21 +88,53 @@ body {
 
 
 /*===== modal =====*/
+.modal-content .top .tap-menu{
+	margin-top: 1rem;
+	display: flex;
+}
+
+.modal-content .top .tap-menu .tap{
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-right: 2rem;
+	cursor: pointer;
+	background-color: var(--light_gray);
+	color: var(--gray);
+}
+
+.modal-content .top .tap-menu .tap.current{
+	background-color: var(--select-btn);
+	color: var(--black);
+}
+
 
 .modal-content .middle {
+
+}
+
+.modal-content .middle .tab-content{
+  display: none;
+}
+
+.modal-content .middle .tab-content.current{
+	display: block;
+}
+
+
+.modal-content .middle #tab-1 .con{
 	display: flex;
 	justify-content: start;
 	height: 35rem;
 }
 
-.modal-content .middle .left-menu {
+.modal-content .middle #tab-1 .left-menu {
 	overflow-y: scroll;
 	width: 20%;
 	border-left: .3rem solid #eee;
 	border-right: .3rem solid #eee;
 }
 
-.modal-content .middle .left-menu ul li{
+.modal-content .middle #tab-1 .left-menu ul li{
 	font-size: 1.5rem;
 	cursor: pointer;
 	padding: 1.2rem 1rem;
@@ -110,34 +142,73 @@ body {
 	color: #888;
 }
 
-.modal-content .middle .left-menu ul li.active {
+.modal-content .middle #tab-1 .left-menu ul li.active {
 	background-color: #fff;
-	color: var(--main-color);
+	color: var(--black);
+	font-weight: 600;
 }
 
-.modal-content .middle .right-menu{
+.modal-content .middle #tab-1 .right-menu{
 	padding: 1rem;
 	overflow-y: scroll;
 	width: 80%;
 }
 
-.modal-content .middle .right-menu form{
+.modal-content .middle #tab-1 .right-menu{
 	display: flex;
 	flex-flow: row wrap;
 }
 
-.modal-content .middle .right-menu form label{
+.modal-content .middle #tab-1 .right-menu label{
 	display: none;
 	padding: 1rem;
 	width: 40%;
 	height: 3rem;
 }
 
-.modal-content .middle .right-menu form label input{
+.modal-content .middle #tab-1 .right-menu label input{
 	margin-right: 1rem;
 }
 
 
+.modal-content .middle #tab-2>p{
+	text-align: center;
+	padding: 3rem;
+	font-weight: 600;
+	font-size: 2rem;
+}
+.modal-content .middle #tab-2 .con{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.modal-content .middle #tab-2 .con label{
+	display: flex;
+	border: var(--border);
+	border-color: var(--light_gray);
+	margin: 0 2rem;
+	margin-bottom: 2rem;
+	padding: 2rem;
+	border-radius: 1rem;
+}
+
+.modal-content .middle #tab-2 .con label input{
+	text-align: right;
+	border: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.modal-content .middle #tab-2 .con label input:focus{
+	outline: none;
+}
 
 
 
