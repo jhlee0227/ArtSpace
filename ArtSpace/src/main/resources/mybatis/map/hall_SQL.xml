@@ -104,14 +104,25 @@
 	
 	
 	<!-- 지역 필터 -->	
-	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
+	<!-- <select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
 		  from hall h join hall_time ht
 		    on h.hall_id = ht.hall_id 
 			 where h.address1 regexp #{filter}
 		group by hall_id
-		order by h.create_date desc;
-	</select> 
+		order by h.create_date desc
+	</select>  -->
+	
+	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
+		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
+	  	  from hall h join hall_time ht
+			on h.hall_id = ht.hall_id 
+		 where h.address1 regexp #{filter}
+			and ht.price between 100 and 300 
+	        and h.maximum > 200
+		group by hall_id
+		order by h.create_date desc
+	</select>
 	
 <!-- 	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
 	    select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
