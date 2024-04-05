@@ -5,15 +5,15 @@
     <div class="img">
       <img src="/img/hongsnow5.jpg" class="profile" alt="">
     </div>
-    <h2 class="username">000</h2>
+    <h2 class="username" th:text="${my_info.nickname}"></h2>
   </div>
   <div class="left-menu">
     <ul>
       <a th:href="@{/company}" target="_self">
         <li>내 정보</li>
       </a>
-      <a href="#" target="_self">
-        <li class="open">사업자 정보</li>
+      <a th:href="@{/company/info}" target="_self">
+        <li>사업자 정보</li>
       </a>
       <a th:href="@{/company/hall}" target="_self">
         <li>내 공연장</li>

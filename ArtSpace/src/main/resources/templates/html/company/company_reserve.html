@@ -10,34 +10,8 @@
 	<div layout:fragment="content">
 		<section class="con">
 		      <!-- 좌측 메뉴 -->
-		      <div class="left">
-		        <div class="left-main">
-		          <h2 class="mypage">마이페이지</h2>
-		          <div class="img">
-		            <img src="/img/hongsnow5.jpg" class="profile" alt="">
-		          </div>
-		          <h2 class="username">000</h2>
-		        </div>
-		        <div class="left-menu">
-		          <ul>
-		            <a th:href="@{/company}" target="_self">
-		              <li>내 정보</li>
-		            </a>
-		            <a th:href="@{/company/info}" target="_self">
-		              <li>사업자 정보</li>
-		            </a>
-		            <a th:href="@{/company/hall}" target="_self">
-		              <li>내 공연장</li>
-		            </a>
-		            <a href="#" target="_self">
-		              <li class="open">예약 내역</li>
-		            </a>
-		            <a th:href="@{/company/review}" target="_self">
-		              <li>리뷰 관리</li>
-		            </a>
-		          </ul>
-		        </div>
-		      </div>
+			  <div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
+			  <!-- 내용 -->
 		      <div class="content">
 		        <h2 class="content-main">예약 내역</h2>
 		        <div class="list">
@@ -61,9 +35,11 @@
 		        </div>
 		      </div>
 		    </section>
+			
+			<script src="/js/open_menu.js"></script>
 	</div>
     
 
-    <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+
 </body>
 </html>

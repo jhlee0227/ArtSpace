@@ -12,34 +12,7 @@
 	<div layout:fragment="content">
 		<section class="con">
 			<!-- 좌측 메뉴 -->
-			<div class="left">
-				<div class="left-main">
-					<h2 class="mypage">마이페이지</h2>
-					<div class="img">
-						<img src="/img/hongsnow1.jpg" class="profile" alt="">
-					</div>
-					<h2 class="username" th:text="${my_info.nickname}"></h2>
-				</div>
-				<div class="left-menu">
-					<ul>
-						<a th:href="@{/mypage}" target="_self">
-							<li>내 정보</li>
-						</a>
-						<a href="#" target="_self">
-							<li class="open">공연자 정보</li>
-						</a>
-						<a th:href="@{/mypage/favorite}" target="_self">
-							<li>내 즐겨찾기</li>
-						</a>
-						<a th:href="@{/mypage/reserve}" target="_self">
-							<li>예약 내역</li>
-						</a>
-						<a th:href="@{/mypage/review}" target="_self">
-							<li>내 리뷰</li>
-						</a>
-					</ul>
-				</div>
-			</div>
+			<div th:replace="~{fragments/mypage_user :: mypage_user_fragment}"></div>
 			<!-- 내용 -->
 
 			<div class="content">
@@ -50,14 +23,16 @@
 						<div>
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" id="group_name" name="group_name" oninput="infoCheck()">
+							<div class="list-con"><input type="text" id="group_name" name="group_name"
+									oninput="infoCheck()">
 							</div>
 
 						</div>
 						<div>
 							<div class="list-name">대표명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="text" id="leader_name" name="leader_name" oninput="infoCheck()"></div>
+							<div class="list-con"><input type="text" id="leader_name" name="leader_name"
+									oninput="infoCheck()"></div>
 
 						</div>
 						<div>
@@ -71,7 +46,8 @@
 						<div>
 							<div class="list-name">인원수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con"><input type="number" id="member_num" name="member_num" maxlength="3" oninput="infoCheck()">명</div>
+							<div class="list-con"><input type="number" id="member_num" name="member_num" maxlength="3"
+									oninput="infoCheck()">명</div>
 
 						</div>
 						<div>
@@ -90,7 +66,8 @@
 							</div>
 
 						</div>
-						<button class="button" id="perfoBtn" type="submit" onclick="return confirmInsert()" disabled>등록</button>
+						<button class="button" id="perfoBtn" type="submit" onclick="return confirmInsert()"
+							disabled>등록</button>
 
 					</div>
 
@@ -117,7 +94,8 @@
 							<div class="list-name">대표전화번호</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" id="leader_phone" name="leader_phone" th:value="${perfo_info.leader_phone}" oninput="infoCheck()">
+								<input type="text" id="leader_phone" name="leader_phone"
+									th:value="${perfo_info.leader_phone}" oninput="infoCheck()">
 							</div>
 
 						</div>
@@ -161,15 +139,15 @@
 				var leader_name = document.getElementById('leader_name').value;
 				var leader_phone = document.getElementById('leader_phone').value;
 				var member_num = document.getElementById('member_num').value;
-				
-				
+
+
 				if (group_name !== '' && leader_name !== '' && leader_phone !== '' && member_num !== '') {
 					document.getElementById('perfoBtn').disabled = false;
 				} else if (group_name == '' || leader_name == '' || leader_phone == '' || member_num == '') {
 					document.getElementById('perfoBtn').disabled = true;
 				}
 			}
-			
+
 			// 수정완료 확인/취소
 			function confirmUpdate() {
 				var result = confirm("공연자 정보를 수정하시겠습니까?");
@@ -180,7 +158,7 @@
 					return false;
 				}
 			}
-			
+
 			function confirmInsert() {
 				var result = confirm("공연자 정보를 등록하시겠습니까?");
 				if (result) {
@@ -191,6 +169,7 @@
 				}
 			}
 		</script>
+		<script src="/js/open_menu.js"></script>
 	</div>
 </body>
 

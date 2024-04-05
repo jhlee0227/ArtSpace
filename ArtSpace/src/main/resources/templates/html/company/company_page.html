@@ -1,124 +1,95 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layout/default_layout}" lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/mypage/company/company_page.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/mypage/company/company_page.css">
 </head>
 
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		    <!-- 좌측 메뉴 -->
-		    <div class="left">
-		      <div class="left-main">
-		        <h2 class="mypage">마이페이지</h2>
-		        <div class="img">
-		          <img src="/img/hongsnow5.jpg" class="profile" alt="">
-		        </div>
-		        <h2 class="username" th:text="${my_info.nickname}"></h2>
-		      </div>
-		      <div class="left-menu">
-		        <ul>
-		          <a href="#" target="_self">
-		            <li class="open">내 정보</li>
-		          </a>
-		          <a th:href="@{/company/info}" target="_self">
-		            <li>사업자 정보</li>
-		          </a>
-		          <a th:href="@{/company/hall}" target="_self">
-		            <li>내 공연장</li>
-		          </a>
-		          <a th:href="@{/company/reserve}" target="_self">
-		            <li>예약 내역</li>
-		          </a>
-		          <a th:href="@{/company/review}" target="_self">
-		            <li>리뷰 관리</li>
-		          </a>
-		        </ul>
-		      </div>
-		    </div>
-		    <!-- 내용 -->
-		    <div class="content">
-		      <h2 class="content-main">내 정보</h2>
-		      <div class="my">
-		        <div class="img">
-		          <img src="/img/hongsnow5.jpg" class="profile" alt="">
-		        </div>
-		        <div class="nickname">
-		          <div th:text="${my_info.nickname}"></div>
-		          <button>사진 수정</button>
-		        </div>
-		      </div>
-		
-		      <div class="list">
-		        <!-- 버튼마다 수정 기능 넣어야.. -->
-		        <div>
-		          <div class="list-name">이름</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con" th:text="${my_info.name}"></div>
-		        </div>
-		        <div>
-		          <div class="list-name">이메일</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con" th:text="${my_info.email}"></div>
-		        </div>
-		        <div>
-		          <div class="list-name">비밀번호</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="pw">
-		            <div><label for="" class="list-con">새 비밀번호</label><input type="password" id="pw" oninput="pwCheck()"></div>
-		            <div><label for="" class="list-con">비밀번호 확인</label><input type="password" id="pwChk"
-		                oninput="pwCheck()"><span id="check"></span></div>
-		          </div>
-		          <button id="btn" class="button1">수정</button>
-		        </div>
-		        <div>
-		          <div class="list-name">닉네임</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con"><input type="text" th:value="${my_info.nickname}"></div>
-		          <button class="button1">수정</button>
-		        </div>
-		        <div class="last">
-		          <div class="list-name">핸드폰</div>
-		          <span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-		          <div class="list-con" th:value="${my_info.phone}"></div>
-		        </div>
-		      </div>
-		      <form action="">
-		        <div class="button">
-		          <span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>
-		          <button class="leave-btn">회원 탈퇴</button>
-		        </div>
-		      </form>
-		
-		    </div>
-		
-		  </section>	
-	
+			<!-- 좌측 메뉴 -->
+			<div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
+			<!-- 내용 -->
+			<div class="content">
+				<h2 class="content-main">내 정보</h2>
+				<div class="my">
+					<div class="img">
+						<img src="/img/hongsnow5.jpg" class="profile" alt="">
+					</div>
+					<div class="nickname">
+						<div th:text="${my_info.nickname}"></div>
+						<button>사진 수정</button>
+					</div>
+				</div>
 
-  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
-  <script>
-    function pwCheck() {
-      let pw = document.getElementById('pw').value;
-      let pwChk = document.getElementById('pwChk').value;
+				<div class="list">
+					<!-- 버튼마다 수정 기능 넣어야.. -->
+					<div>
+						<div class="list-name">이름</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="list-con" th:text="${my_info.name}"></div>
+					</div>
+					<div>
+						<div class="list-name">이메일</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="list-con" th:text="${my_info.email}"></div>
+					</div>
+					<div>
+						<div class="list-name">비밀번호</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="pw">
+							<div><label for="" class="list-con">새 비밀번호</label><input type="password" name="password"
+									id="pw" oninput="pwCheck()" placeholder="새 비밀번호"></div>
+							<div><label for="" class="list-con">비밀번호 확인</label><input type="password" id="pwChk"
+									oninput="pwCheck()" placeholder="비밀번호 확인"></div>
+						</div>
+						<span id="check"></span>
+						<button id="updatePwBtn" class="button" th:formaction="@{/mypage/update/pw}" disabled
+							onclick="updatePw()">수정</button>
+					</div>
 
-      if (pw.length > 0 && pwChk.length > 0) {
-        if (pw == pwChk) {
-          document.getElementById('check').innerHTML = '비밀번호가 일치합니다.';
-          document.getElementById('check').style.color = 'green';
-          btnActive();
-        } else {
-          document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
-          document.getElementById('check').style.color = 'red';
-        }
-      } else if (pw.length == 0 && pwChk.length == 0) {
-        document.getElementById('check').innerHTML = '';
-      }
-    }
-  </script>
-  </div>
+					<div>
+
+						<div class="list-name">닉네임</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="list-con"><input name="nickname" id="nickname" type="text"
+								th:value="${my_info.nickname}" oninput="nicknameCheck()">
+						</div>
+						<span id="nicknameCheck"></span>
+						<button class="button" id="updateNicknameBtn" th:formaction="@{/mypage/update/nickname}"
+							disabled onclick="updateNickname()">수정</button>
+
+					</div>
+
+					<div class="last">
+						<div class="list-name">핸드폰</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="list-con"><input name="phone" id="phone" type="text" th:value="${my_info.phone}"
+								oninput="phoneCheck()"></div>
+						<span id="phoneCheck"></span>
+						<button class="button" id="updatePhoneBtn" th:formaction="@{/mypage/update/phone}" disabled
+							onclick="updatePhone()">수정</button>
+					</div>
+				</div>
+				<form name="form2" method="post" th:action="@{/leave}">
+					<div class="button">
+						<span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>
+						<button class="leave-btn" onclick="return confirmLeave()">회원 탈퇴</button>
+					</div>
+				</form>
+
+			</div>
+
+		</section>
+
+
+		<script src="/js/mypage_check.js"></script>
+		<script src="/js/open_menu.js"></script>
+	</div>
 </body>
 
 </html>

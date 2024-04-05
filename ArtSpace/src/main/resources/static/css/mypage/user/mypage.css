@@ -2,255 +2,256 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	margin: 0;
+	padding: 0;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
 a {
-  text-decoration: none;
-  color: black;
+	text-decoration: none;
+	color: black;
 }
 
 body {
-  height: 100%;
-  color: var(--black);
-  background-color: #fff
+	height: 100%;
+	color: var(--black);
+	background-color: #fff
 }
 
 .con {
-  width: 100%;
-  height: 100vh;
-  padding-top: 90px;
-  display: flex;
+	width: 100%;
+	height: 100vh;
+	padding-top: 90px;
+	display: flex;
 }
 
 .con .left {
-  width: 20vw;
-  border-right: 2px solid var(--light_gray);
-  margin-left: 180px;
-  height: 100vh;
-  
+	width: 20vw;
+	border-right: 2px solid var(--light_gray);
+	margin-left: 180px;
+	height: 100vh;
+
 }
 
 .con .left .left-main {
-  font-size: 2rem;
-  border-width: 0 0 1px;
-  border-style: solid;
-  border-color: var(--light_gray);
-  padding: 1.75rem 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	font-size: 2rem;
+	border-width: 0 0 1px;
+	border-style: solid;
+	border-color: var(--light_gray);
+	padding: 1.75rem 20px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .con .left .left-main .img {
-  width: 100px;
-  height: 100px;
-  border-radius: 70%;
-  overflow: hidden;
+	width: 100px;
+	height: 100px;
+	border-radius: 70%;
+	overflow: hidden;
 }
 
 .con .left .left-main .img .profile {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .con .left .left-main .mypage {
-  font-size: 2.5rem;
-  padding-bottom: 1rem;
-  font-weight: bold;
+	font-size: 2.5rem;
+	padding-bottom: 1rem;
+	font-weight: bold;
 }
 
 .con .left .left-main .username {
-  font-size: 2.5rem;
-  padding-top: 1rem;
-  font-weight: bold
+	font-size: 2.5rem;
+	padding-top: 1rem;
+	font-weight: bold
 }
 
 .con .left .left-menu ul {
-  width: 100%;
-  font-weight: bold;
+	width: 100%;
+	font-weight: bold;
 }
 
 .con .left .left-menu .open {
-  color: var(--main-color);
-  background-color: var(--light_gray);
+	color: var(--black);
+	background-color: var(--light_gray);
 }
 
 .con .left .left-menu a:hover {
-  color: var(--main-color);
+	color: var(--black);
 }
 
 .con .left .left-menu li {
-  font-size: 1.5rem;
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  padding: 1.25rem;
-  padding-left: 2.5rem;
+	font-size: 1.5rem;
+	text-align: left;
+	color: gray;
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	padding: 1.25rem;
+	padding-left: 2.5rem;
 }
 
 .con .content {
-  width: 70vw;
-  margin-right: 180px;
-  margin-left: 50px;
-  display: flex;
-  flex-direction: column;
+	width: 70vw;
+	margin-right: 180px;
+	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
 }
 
 .con .content .content-main {
-  font-size: 3.5rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+	font-size: 3.5rem;
+	font-weight: bold;
+	text-align: center;
+	padding: 1rem 0;
+	margin-bottom: 1rem;
 }
 
 .con .content .my {
-  display: flex;
-  border: 1px solid var(--light_gray);
-  border-radius: 10px;
-  padding: 1rem;
+	display: flex;
+	border: 1px solid var(--light_gray);
+	border-radius: 10px;
+	padding: 1rem;
 }
 
 .con .content .my .img {
-  width: 150px;
-  height: 150px;
-  border-radius: 70%;
-  overflow: hidden;
+	width: 150px;
+	height: 150px;
+	border-radius: 70%;
+	overflow: hidden;
 }
 
 .con .content .my .img .profile {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .con .content .my .nickname {
-  margin-left: 4rem;
-  margin-top: 3rem;
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
+	margin-left: 4rem;
+	margin-top: 3rem;
+	font-size: 2rem;
+	font-weight: bold;
+	text-align: center;
 }
 
 .con .content .my .nickname button {
-  background-color: var(--light_gray);
-  border-radius: 10px;
-  border: none;
-  width: 7rem;
-  height: 3.5rem;
-  font-weight: bold;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-top: 2rem;
+	background-color: var(--light_gray);
+	border-radius: 10px;
+	border: none;
+	width: 7rem;
+	height: 3.5rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin-top: 2rem;
 }
 
 .con .content .my .nickname button:hover {
-  filter: brightness(0.9);
-  transition: 0.5s;
+	filter: brightness(0.9);
+	transition: 0.5s;
 }
 
 .con .content .list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
 }
 
 .con .content .list>div {
-  padding: 2rem 3.5rem 2rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  height: 2.5rem;
-  border-top: 2px solid var(--light_gray);
+	padding: 2rem 3.5rem 2rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	height: 2.5rem;
+	border-top: 2px solid var(--light_gray);
 }
 
 .con .content .list div .list-name {
-  width: 10%;
-  font-size: 1.5rem;
+	width: 10%;
+	font-size: 1.5rem;
 }
 
 .con .content .list>div .list-con {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .con .content .list .pw {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
+	display: flex;
+	flex-direction: column;
+	width: 40%;
 }
 
 .con .content .list label {
-  display: inline-block;
-  width: 110px;
+	display: inline-block;
+	width: 110px;
 }
 
 .con .content .list input[type=text] {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .con .content .list .pw input {
-  margin-left: 1rem;
-  width: 150px;
-  margin-bottom: 0.2rem;
+	margin-left: 1rem;
+	width: 150px;
+	margin-bottom: 0.2rem;
 }
 
 .con .content .list .pw input:focus {
-  outline: none;
-  border: 2px solid var(--main-color);
+	outline: none;
+	border: 2px solid var(--main-color);
 }
 
 .con .content .list #check {
-  margin-left: 1rem;
-  font-size: 1.3rem;
+	margin-left: 1rem;
+	font-size: 1.3rem;
 }
 
 .con .content .list div .button:disabled {
-  cursor: default;
-  padding: 0 1rem;
-  margin-left: auto;
-  display: inline-block;
-  background-color: var(--light_gray);
-  border: var(--border);
-  border-radius: 1rem;
-  color: var(--white);
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  box-shadow: var(--box-shadow);
+	cursor: default;
+	padding: 0 1rem;
+	margin-left: auto;
+	display: inline-block;
+	background-color: var(--light_gray);
+	border: var(--border);
+	border-radius: 1rem;
+	color: var(--white);
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+	box-shadow: var(--box-shadow);
 }
 
 .con .content .list div .button {
-  cursor: pointer;
-  padding: 0 1rem;
-  margin-left: auto;
-  display: inline-block;
-  background-color: var(--main-color);
-  border: var(--border);
-  border-radius: 1rem;
-  color: var(--black);
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  box-shadow: var(--box-shadow);
+	cursor: pointer;
+	padding: 0 1rem;
+	margin-left: auto;
+	display: inline-block;
+	background-color: var(--main-color);
+	border: var(--border);
+	border-radius: 1rem;
+	color: var(--black);
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+	box-shadow: var(--box-shadow);
 }
 
 .con .content .list>div .list-con input {
-  width: 150px;
-  font-size: 1.5rem;
-  border: none;
-  border-bottom: 2px solid var(--black);
-  outline: none;
-  padding: 0.5rem;
+	width: 150px;
+	font-size: 1.5rem;
+	border: none;
+	border-bottom: 2px solid var(--black);
+	outline: none;
+	padding: 0.5rem;
 }
 
 .con .content .list>div .list-con input:focus {
-  border-bottom: 2px solid var(--main-color);
+	border-bottom: 2px solid var(--main-color);
 }
 
 .con .content .list>div span {
@@ -259,20 +260,20 @@ body {
 }
 
 .con .content .list .last {
-  border-bottom: 2px solid var(--light_gray);
+	border-bottom: 2px solid var(--light_gray);
 }
 
 .con .content .button {
-  text-align: right;
+	text-align: right;
 }
 
 .con .content .button .leave-btn {
-  margin: 1rem 0 0;
-  background-color: var(--sub-color);
-  border-radius: 10px;
-  border: none;
-  width: 5rem;
-  height: 2.5rem;
-  cursor: pointer;
-  font-size: 1.2rem;
+	margin: 1rem 0 0;
+	background-color: var(--sub-color);
+	border-radius: 10px;
+	border: none;
+	width: 5rem;
+	height: 2.5rem;
+	cursor: pointer;
+	font-size: 1.2rem;
 }

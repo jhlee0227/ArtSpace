@@ -2,73 +2,50 @@
 <html layout:decorate="~{/layout/default_layout}" lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/mypage/admin/admin_notice.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/mypage/admin/admin_notice.css">
 </head>
 
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		    <!-- 좌측 메뉴 -->
-		    <div class="left">
-		      <div class="left-main">
-		        <h2>관리자</h2>
-		        <i class="fas fa-user-cog fa-4x"></i>
-		      </div>
-		      <div class="left-menu">
-		        <ul>
-		          <a th:href="@{/admin}" target="_self">
-		            <li>회원 관리</li>
-		          </a>
-		          <a th:href="@{/admin/hallinfo}" target="_self">
-		            <li>공연장 정보</li>
-		          </a>
-		          <a href="#" target="_self">
-		            <li class="open">공지사항</li>
-		          </a>
-		          <a th:href="@{/admin/review}">
-		            <li>리뷰 관리</li>
-		          </a>
-		          <a href="#" target="_self">
-		            <li>통계</li>
-		          </a>
-		        </ul>
-		      </div>
-		    </div>
-		    <!-- 내용 -->
-		    <div class="content">
-		      <h2 class="content-main">공지사항</h2>
-		      <div class="main">
-		        <table class="table">
-		          <thead>
-		            <tr>
-		              <th>번호</th>
-		              <th>분류</th>
-		              <th>제목</th>
-		              <th>작성날짜</th>
-		            </tr>
-		          </thead>
-		          <tbody>
-		            <tr>
-		              <td>1</td>
-		              <td>[예시공지]</td>
-		              <td>예를 들어 어쩌구 저쩌구</td>
-		              <td>2024-03-15</td>
-		            </tr>
-		          </tbody>
-		        </table>
-		        <div class="button">
-		          <input class="submit-btn" type="button" value="공지사항 등록">
-		        </div>
-		      </div>
-		    </div>
-		  </section>
+			<!-- 좌측 메뉴 -->
+			<div th:replace="~{fragments/mypage_admin :: mypage_admin_fragment}"></div>
+			<!-- 내용 -->
+			<div class="content">
+				<h2 class="content-main">공지사항</h2>
+				<div class="main">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>분류</th>
+								<th>제목</th>
+								<th>작성날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>[예시공지]</td>
+								<td>예를 들어 어쩌구 저쩌구</td>
+								<td>2024-03-15</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="button">
+						<input class="submit-btn" type="button" value="공지사항 등록">
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<script src="/js/open_menu.js"></script>
 	</div>
-  
-  
-  <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
