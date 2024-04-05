@@ -28,12 +28,12 @@ public class HallListServiceImpl implements HallListService{
 	}
 
 	@Override
-	public List<HallDTO> getFilterData(List<String> arrValue) {
+	public List<HallDTO> getFilterData(List<String> local) {
 		
 		String filter = "";
-		for (int i = 0; i < arrValue.size(); i++) {			
-			filter += arrValue.get(i);
-			if(i+1 < arrValue.size()) {
+		for (int i = 0; i < local.size(); i++) {			
+			filter += local.get(i);
+			if(i+1 < local.size()) {
 				filter += "|";
 			}
 		}
