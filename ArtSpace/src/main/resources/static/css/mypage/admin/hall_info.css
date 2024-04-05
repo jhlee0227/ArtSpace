@@ -20,7 +20,8 @@ body {
 
 .con {
 	width: 100%;
-	height: 100vh;
+	min-height: 100%;
+	height: auto;
 	padding-top: 90px;
 	display: flex;
 }
@@ -29,7 +30,8 @@ body {
 	width: 20vw;
 	border-right: 2px solid var(--light_gray);
 	margin-left: 180px;
-	height: 100vh;
+	min-height: 100%;
+	height: auto;
 }
 
 .con .left .left-main {
@@ -155,8 +157,8 @@ body {
 .con .content .main .table td {
 	text-align: center;
 	padding: 0.7rem;
-	font-size: 1.5rem;
-	font-weight: 600;
+	font-size: 1.3rem;
+	font-weight: 400;
 	width: calc(96%/4);
 }
 

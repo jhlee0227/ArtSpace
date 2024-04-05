@@ -91,49 +91,12 @@ function allSelect(btn){
 	}
 }
 
-// 가격 범위 (최소값)
-$(document).on("blur", "#input-min-price", function(){	
-	if(!$(this).val()){
-		$(this).val(0);
-	 }
-	if($(this).val() < 0){
-		$(this).val(0);
-	} else if($(this).val() > $('#input-max-price').val()){
-		$(this).val($('#input-max-price').val());
-	}
-});
-	
-// 가격 범위 (최대값)	
-$(document).on("blur", "#input-max-price", function(){	
-	if(!$(this).val()){
-		$(this).val(0);
-	 } else {
-		if($(this).val() < 0){
-			$(this).val(0);
-	    } 
-	    if($(this).val() > 3000) {
-			$(this).val(3000);
-		}
-	    
-		if($('#input-min-price').val()){
-			// 최대 값이 비어있지 않고 최소 값도 비어있지 않을 때
-			if($(this).val() < $('#input-min-price').val()){
-				console.log('최대가 더 작음');
-				return;
-	  		}	
-	  	} else {
-			console.log("최대 값이 비어있지 않고 최소 값은 비어있을 때");
-		}
-	 }
-	  console.log('정상');
-});
-
 // 필터 적용시키기
 function filterPush(){
-	$("#location-tag").children().remove();
+	$(".tags").children().remove();
 	$(".no-data").remove();
 			
-	var checkArr = [];     // 배열 초기화    
+	var checkArr = [];     // 배열 초기화
 	
 	$("input[name='regionItem']:checked").each(function(i){
 		console.log($(this).val());
@@ -143,44 +106,21 @@ function filterPush(){
 	let min_price = document.getElementById('input-min-price').value;
 	let max_price = document.getElementById('input-max-price').value;
 	let max_people = document.getElementById('input-max-people').value;
-	console.log("최소" + min_price);	
-	console.log("최대" + max_price);
-/*	
-	if(min_price != "" && max_price != ""){
-		console.log("값 있음");
-		if(min_price != "" && max_price == ""){
-			alert("범위를 확인해 주십시오.");		
-			return;
-		}
-		if(min_price == ""){
-			min_price = 0;
 
-		}	
-		console.log("최소" + min_price);	
-		console.log("최대" + max_price);
-		if(min_price >= max_price){
-			alert("최소값은 최대 값보다 작아야 합니다.");
-			return;
-		}	
-		console.log('통과');
-	}	*/
-	
-	return;
-	
-	var param= {
-		local: JSON.stringify(checkArr),
-	    "min_price": min_price,
-	    "max_price": max_price,
-	    "max_people": max_people
+	console.log(max_people);
+	//JSON.stringify(checkArr),
+	var hallFilterDTO = {
+		localList: checkArr,
+	    minPrice: min_price,
+	    maxPrice: max_price,
+	    maxPeople: max_people
 	}
 	
 	$.ajax({
         url: '/list/check',
-        type: 'get',
-		contentType: 'application/json; charset=UTF-8',
-        data: {
-			value: param     
-		},    
+        method: 'post',
+		contentType: "application/json",
+        data: JSON.stringify(hallFilterDTO),    
 		success : function(data) {
 			$(".box-container").children().remove();
 			
@@ -188,6 +128,17 @@ function filterPush(){
 				let tagStr = '<div class="tag"><p>'+ e +'</p></div>';	
 				$("#location-tag").append(tagStr);				
 			});
+			
+			if(max_price > 0){
+				let tagStr = '<div class="tag"><p>'+ min_price + '~' + max_price +' 만원</p></div>';	
+				$("#price-tag").append(tagStr);				
+			}
+			
+			if(max_people > 0){
+				let tagStr = '<div class="tag"><p>'+ max_people +'명 이상</p></div>';	
+				$("#people-tag").append(tagStr);				
+			}
+			
 				
 			if(data.length < 1){
 				let str = '<div class="no-data"><h1>결과가 없습니다.</h1></div>'

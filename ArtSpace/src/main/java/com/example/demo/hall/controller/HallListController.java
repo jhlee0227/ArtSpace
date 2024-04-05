@@ -17,9 +17,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallFilterDTO;
 import com.example.demo.hall.service.HallListService;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -73,18 +76,19 @@ public class HallListController {
 		return "html/hall/hall_list";
 	}	
 	
-	@RequestMapping(value = "/list/check", method = RequestMethod.GET)
+	@RequestMapping(value = "/list/check", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> testCheck(@RequestParam Map<String, Object> param) {	
-		System.out.println(param.toString());
-		Gson gson = new Gson();
-		@SuppressWarnings("serial")
-		List<String> local = gson.fromJson((String) param.get("value[local]"), new TypeToken<ArrayList<String>>(){}.getType());
+	public ResponseEntity<?> testCheck(@RequestBody HallFilterDTO filter){	
+		System.out.println(filter.getLocalList().toString());
+		System.out.println(filter.getMaxPeople());
 		
-		List<HallDTO> hallList = hallListService.getFilterData(local);
+		List<HallDTO> hallList = hallListService.getFilterData(filter.getLocalList());
 
 		return new ResponseEntity<List<HallDTO>>(hallList, HttpStatus.OK);
 	}
+
+	
+	
 	
 	// 지역 목록 CSV파일에서 불러오기
 	public Map<String, List<String>> readCsvRegion(){

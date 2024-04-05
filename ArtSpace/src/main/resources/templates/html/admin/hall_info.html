@@ -20,7 +20,7 @@
 					<form name="search">
 						<select class="select" name="type" id="">
 							<option value="hallname">공연장명</option>
-							<option value="group">단체명</option>
+							<option value="name">등록자명</option>
 							<option value="region">지역</option>
 						</select>
 						<input type="text">
@@ -34,19 +34,19 @@
 								<th class="box"><input type="checkbox" class="chkbox" name="selectAll" value="selectAll"
 										onclick="selectAll(this)"></th>
 								<th>공연장명</th>
-								<th>단체명</th>
+								<th>등록자명</th>
 								<th>지역</th>
 								<th>차단상태</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr th:each="halls : ${hall_list}">
 								<td class="box"><input type="checkbox" class="chkbox" name="check"
 										onclick="checkSelectAll()"></td>
 								<!-- 이름 누르면 상세페이지로.. -->
-								<td><a href="#">잠자는홀</a></td>
-								<td>숙면</td>
-								<td>광주</td>
+								<td><a href="#" th:text="${halls.hall_name}"></a></td>
+								<td th:text="${halls.name}"></td>
+								<td th:text="${halls.address1 + ' ' + halls.address2}"></td>
 								<td>차단x</td>
 							</tr>
 						</tbody>

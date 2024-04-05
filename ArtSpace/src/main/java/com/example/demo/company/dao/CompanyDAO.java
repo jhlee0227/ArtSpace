@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 
 @Repository
 public class CompanyDAO {
@@ -28,6 +29,11 @@ public class CompanyDAO {
 	public void reserveDelete(Integer reserve_id) {
 		
 		sqlSession.update("company.reserveDelete", reserve_id);
+	}
+
+	public List<ReviewDTO> getReview() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("company.getReview");
 	}
 	
 	

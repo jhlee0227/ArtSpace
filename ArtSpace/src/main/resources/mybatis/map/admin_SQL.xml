@@ -29,4 +29,18 @@
 		from user 
 		where nickname = #{keyword}
 	</select> -->
+	
+	<select id="getAllHalls" resultType="com.example.demo.hall.dto.HallDTO">
+		select h.hall_id, h.hall_name, h.address1, h.address2, u.name
+		from hall h
+		join user u on u.user_id = h.user_id; 
+	</select>
+	
+	<select id="getAllReviews" resultType="com.example.demo.hall.dto.ReviewDTO">
+		select h.hall_id, h.hall_name, r.review_content, u.nickname, r.create_date
+		from review r
+		join hall h on r.hall_id = h.hall_id
+		join user u on r.user_id = u.user_id
+		order by r.create_date;
+	</select>
 </mapper>

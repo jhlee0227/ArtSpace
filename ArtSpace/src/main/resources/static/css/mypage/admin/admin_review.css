@@ -139,8 +139,8 @@ body {
 	background-color: var(--main-color);
 	padding: 0.7rem;
 	font-size: 1.5rem;
-	font-weight: bold;
-	width: calc(50%/2);
+	font-weight: 600;
+	width: calc(30%/2);
 }
 
 .con .content .main .table thead .review-content {
@@ -153,15 +153,19 @@ body {
 
 .con .content .main .table td {
 	text-align: center;
-	padding: 0.7rem;
-	font-size: 1.5rem;
+	padding: 1rem 0.7rem;
+	font-size: 1.4rem;
 	font-weight: 600;
-	width: calc(50%/2);
+	width: calc(30%/2);
 	vertical-align: middle;
 }
 
 .con .content .main .table .box {
 	width: 4%;
+}
+
+.con .content .main .table .review-date {
+	width: 20%;
 }
 
 .con .content .main .table tbody .review-content {
@@ -171,7 +175,6 @@ body {
 .con .content .main .table tbody .review-content {
 	width: 46%;
 	font-size: 1.3rem;
-	font-weight: 400;
 }
 
 .con .content .main .button {

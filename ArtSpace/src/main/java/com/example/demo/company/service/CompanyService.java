@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 
 public interface CompanyService {
 
@@ -12,5 +13,7 @@ public interface CompanyService {
 	public List<ReservationDTO> getReserve(Integer user_id);
 
 	public void reserveDelete(Integer reserve_id);
+
+	public List<ReviewDTO> getReview();
 
 }
