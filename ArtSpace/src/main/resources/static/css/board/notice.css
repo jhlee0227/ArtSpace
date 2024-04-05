@@ -11,15 +11,19 @@
         
         
       }
+      .time {
+		float: inline-end;
+	  }
   
       .notice ul {
-        list-style-type: none;
+        margin-top: 15rem;
         padding: 0;
       }
   
       .notice ul li {
         margin-bottom: 20px;
-        border-bottom: 1px solid #e6e6e6;
+        
+        font-size: 2rem;
       }
   
       .notice ul li a {
@@ -28,11 +32,14 @@
       }
   
       .notice ul li h3 {
-        margin-top: 0;
+        margin-top: 5rem;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 1.3rem;
       }
   
       .notice ul li p {
-        margin-bottom: 5px;
+        margin-bottom: 6px;
+        margin-top: 5rem;
       }
   
       /* .notice ul li .date {
@@ -57,6 +64,7 @@
   }
   .notice .expand-btn{
     float: right;
+    margin-left: 1.5rem;
   }  
   .content {
     display: none; /* 기본적으로 본문 숨김 */
