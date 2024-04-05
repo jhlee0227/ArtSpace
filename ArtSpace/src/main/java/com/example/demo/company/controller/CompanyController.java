@@ -24,11 +24,9 @@ public class CompanyController {
 	@Autowired
 	HttpSession session;
 	
-	// 임시로 html 연결만
+	// 법인 마이페이지 기본
 	@GetMapping("")
 	public String company(Model model) {
-		user_session.setSessionValue(session);
-		
 		user_session.setSessionValue(session);
 		
 		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
@@ -39,8 +37,10 @@ public class CompanyController {
 		return "html/company/company_page";
 	}
 	
+	
 	@GetMapping("/info")
 	public String companyInfo() {
+		
 		return "html/company/company_info";
 	}
 	
