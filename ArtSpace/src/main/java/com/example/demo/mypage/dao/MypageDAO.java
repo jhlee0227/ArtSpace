@@ -66,15 +66,20 @@ public class MypageDAO {
 		sqlSession.update("mypage.likeDelete", map);
 	}
 
-	public List<HallDTO> getAllReserve(Integer user_id) {
+	public List<ReservationDTO> getAllReserve(Integer user_id) {
 		return sqlSession.selectList("mypage.getReserve", user_id);
 	}
 
-	public void reserveDelete(Integer user_id, Integer hall_id) {
-		Map<String, Integer> map = new HashMap<>();
-		map.put("user_id", user_id);
-		map.put("hall_id", hall_id);
-		sqlSession.update("mypage.reserveDelete", map);
+//	public void reserveDelete(Integer user_id, Integer hall_id) {
+//		Map<String, Integer> map = new HashMap<>();
+//		map.put("user_id", user_id);
+//		map.put("hall_id", hall_id);
+//		sqlSession.update("mypage.reserveDelete", map);
+//	}
+	
+	public void reserveDelete(Integer reserve_id) {
+		
+		sqlSession.update("mypage.reserveDelete", reserve_id);
 	}
 
 	public ReservationDTO reserveDetail(Integer reserve_id) {

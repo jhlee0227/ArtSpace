@@ -121,6 +121,7 @@ body {
 }
 
 
+/* == 1 지역 == */
 .modal-content .middle #tab-1 .con{
 	display: flex;
 	justify-content: start;
@@ -170,7 +171,7 @@ body {
 	margin-right: 1rem;
 }
 
-
+/* == 2 가격 == */
 .modal-content .middle #tab-2>p{
 	text-align: center;
 	padding: 3rem;
@@ -192,11 +193,19 @@ body {
 	margin-bottom: 2rem;
 	padding: 2rem;
 	border-radius: 1rem;
+	color: var(--gray);
 }
+.modal-content .middle #tab-2 .con label p{
+	margin: 0 .2rem;
+}
+
 
 .modal-content .middle #tab-2 .con label input{
 	text-align: right;
 	border: none;
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: var(--black);	
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -210,6 +219,52 @@ input[type="number"]::-webkit-inner-spin-button {
 	outline: none;
 }
 
+/* == 3인원수 == */
+.modal-content .middle #tab-3>p{
+	text-align: center;
+	padding: 3rem;
+	font-weight: 600;
+	font-size: 2rem;
+}
+.modal-content .middle #tab-3 .con{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
 
+.modal-content .middle #tab-3 .con label{
+	display: flex;
+	border: var(--border);
+	border-color: var(--light_gray);
+	margin: 0 2rem;
+	margin-bottom: 2rem;
+	padding: 2rem;
+	border-radius: 1rem;
+	color: var(--gray);
+}
+.modal-content .middle #tab-3 .con label p{
+	margin: 0 .2rem;
+}
+
+
+.modal-content .middle #tab-3 .con label input{
+	text-align: right;
+	border: none;
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: var(--black);	
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.modal-content .middle #tab-3 .con label input:focus{
+	outline: none;
+}
 
 /* ===== modal End =====*/

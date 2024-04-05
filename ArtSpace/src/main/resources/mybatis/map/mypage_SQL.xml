@@ -70,7 +70,7 @@
 		where user_id = #{user_id} and hall_id = #{hall_id}
 	</update> 
 	
-	<select id="getReserve" resultType="com.example.demo.hall.dto.HallDTO">
+	<select id="getReserve" resultType="com.example.demo.hall.dto.ReservationDTO">
 		select h.hall_name, h.address1, h.address2, h.hall_id,
 				date_format(rd.start_date, '%Y-%m-%d') as start_date, 
 				date_format(rd.end_date, '%Y-%m-%d') as end_date, 
@@ -80,12 +80,13 @@
 		join reserve_date rd on r.reserve_id = rd.reserve_id
 		where r.reserve_status = 'Y' and r.user_id = #{user_id}
 	</select>
-	
+	  
 	<update id="reserveDelete">
 		update reservation
 		set reserve_status = 'N'
-		where user_id = #{user_id} and hall_id = #{hall_id}
+		where reserve_id = #{reserve_id}
 	</update>
+	
 	
 	<select id="reserveDetail" resultType="com.example.demo.hall.dto.ReservationDTO">
 		select h.hall_name, h.address1, h.address2, h.hall_id,

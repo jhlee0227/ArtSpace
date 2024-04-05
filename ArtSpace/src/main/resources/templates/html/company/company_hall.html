@@ -25,7 +25,7 @@
 		          </div>
 		          <div class="button">
 		            <button onclick="location.href=''">상세 정보</button>
-		            <button onclick="location.href=''">정보 수정</button>
+					<button th:attr="data-hall-id=${hall.hall_id}" onclick="goHallForm(this)">정보 수정</button>
 		            <button onclick="location.href=''">공연장 삭제</button>
 		          </div>
 		        </div>
@@ -36,6 +36,12 @@
 		  
 		  
 		  <script src="/js/open_menu.js"></script>
+		  <script>
+			function goHallForm(button) {
+		        var hallId = button.getAttribute("data-hall-id");
+		        window.location.href = "/hall/form/" + hallId;
+			}
+		  </script>
 	</div>
 
  

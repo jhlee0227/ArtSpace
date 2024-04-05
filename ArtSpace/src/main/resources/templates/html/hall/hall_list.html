@@ -12,13 +12,13 @@
 	    <section class="filter">
 	      <h1>필터</h1>
 	      <div class="fil-container">
-	        <div onclick="openModal('local');" class="fil-name">
+	        <div onclick="openModal('tab-1');" class="fil-name">
 	          <p>지역</p>
 	        </div>
 	        <div class="tags" id="location-tag"></div>
 	      </div>
 	      <div class="fil-container">
-	        <div onclick="openModal('price');" class="fil-name">
+	        <div onclick="openModal('tab-2');" class="fil-name">
 	          <p>가격</p>
 	        </div>
 	        <div class="tags" id="price-tag">
@@ -26,7 +26,7 @@
 	        </div>
 	      </div>
 	      <div class="fil-container">
-	        <div class="fil-name">
+	        <div onclick="openModal('tab-3');" class="fil-name">
 	          <p>인원수</p>
 	        </div>
 	        <div class="tags" id="people-tag" >
@@ -38,7 +38,7 @@
 	
 	    <!-- Hall List -->
 	    <section class="hall-list">
-	      <div class="con">  
+	      <div class="con" id="main-con">  
 	        <div class="drop-menu">
 	          <p class="cur-item">인기순</p>
 	          <i class="fa-solid fa-chevron-down"></i>
