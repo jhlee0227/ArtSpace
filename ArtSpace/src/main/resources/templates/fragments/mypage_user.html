@@ -1,0 +1,29 @@
+<!-- 일반 유저 좌측 메뉴 -->
+<div class="left" th:fragment="mypage_user_fragment">
+	<div class="left-main">
+		<h2 class="mypage">마이페이지</h2>
+		<div class="img">
+			<img src="/img/hongsnow1.jpg" class="profile" alt="">
+		</div>
+		<h2 class="username" th:text="${my_info.nickname}"></h2>
+	</div>
+	<div class="left-menu">
+		<ul>
+			<a href="#" target="_self">
+				<li class="open">내 정보</li>
+			</a>
+			<a th:href="@{|/mypage/performer|}" target="_self">
+				<li>공연자 정보</li>
+			</a>
+			<a th:href="@{/mypage/favorite}" target="_self">
+				<li>내 즐겨찾기</li>
+			</a>
+			<a th:href="@{/mypage/reserve}" target="_self">
+				<li>예약 내역</li>
+			</a>
+			<a th:href="@{/mypage/review}" target="_self">
+				<li>내 리뷰</li>
+			</a>
+		</ul>
+	</div>
+</div>
