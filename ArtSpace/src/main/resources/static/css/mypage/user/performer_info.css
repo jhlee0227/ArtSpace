@@ -31,7 +31,6 @@ body {
   border-right: 2px solid var(--light_gray);
   margin-left: 180px;
   height: 100vh;
-  background-color: var(--sub-color);
 }
 
 .con .left .left-main {
@@ -76,12 +75,12 @@ body {
 }
 
 .con .left .left-menu .open {
-    color: blue;
-    background-color: var(--main-color);
+    color: var(--main-color);
+    background-color: var(--light_gray);
 }
 
 .con .left .left-menu a:hover {
-    color: blue;
+    color: var(--main-color);
 }
 
 .con .left .left-menu li {
