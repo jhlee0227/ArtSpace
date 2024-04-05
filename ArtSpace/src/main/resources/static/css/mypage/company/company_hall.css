@@ -32,7 +32,6 @@ body {
 	margin-left: 180px;
 	min-height: 100%;
 	height: auto;
-	background-color: var(--sub-color);
 	padding-bottom: 20rem;
 }
 
@@ -40,6 +39,7 @@ body {
 	font-size: 2rem;
 	border-width: 0 0 1px;
 	border-style: solid;
+	border-color: var(--light_gray);
 	padding: 1.75rem 20px;
 	text-align: center;
 	display: flex;
@@ -78,17 +78,18 @@ body {
 }
 
 .con .left .left-menu .open {
-	color: blue;
-	background-color: var(--main-color);
+	color: var(--black);
+	background-color: var(--light_gray);
 }
 
 .con .left .left-menu a:hover {
-	color: blue;
+	color: var(--black);
 }
 
 .con .left .left-menu li {
 	font-size: 1.5rem;
 	text-align: left;
+	color: gray;
 	width: 100%;
 	box-sizing: border-box;
 	display: flex;
@@ -102,7 +103,6 @@ body {
 	margin-left: 50px;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	padding-bottom: 20rem;
 }
 
@@ -111,21 +111,20 @@ body {
 	font-weight: bold;
 	text-align: center;
 	padding: 1rem 0;
-	margin-bottom: 1rem;
+	margin-bottom: 3rem;
 }
 
 .con .content .list {
 	display: flex;
 	flex-direction: column;
-	margin-top: 50px;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 }
 
 .con .content .list .item {
 	display: flex;
 	box-shadow: 1px 1px 5px;
-	margin-bottom: 1rem;
 	border-radius: 10px;
+	margin-bottom: 1rem;
 }
 
 .con .content .list .item .img {
