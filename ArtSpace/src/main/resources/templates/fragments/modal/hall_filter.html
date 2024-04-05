@@ -11,9 +11,9 @@
 				<h2 class="tap"	data-tab="tab-3">인원수</h2>		
 			</div>
 		</div>
-		<div class="middle" data-filter-id="region">
+		<div class="middle">
 			<div id="tab-1" class="tab-content current">
-				<div class="con">
+				<div class="con" data-filter-id="region">
 					<div class="left-menu">
 						<ul>
 						   <li data-filter="서울" class="filterbtn" >서울</li>
@@ -228,16 +228,16 @@
 			</div>
 			<div id="tab-2" class="tab-content">
 				<p>가격 범위</p>
-				<div class="con">
-
+				<div class="con" data-filter-id="price">
 					<label id="min-price">
 						<p>최소</p>
-						<input type="number" />
+						<input type="number" name="min-price" id="input-min-price" maxlength="4" value="0"/>
 						<p>만원</p>
 					</label>
+					<p>~</p>
 					<label id="max-price">
 						<p>최대</p>
-						<input type="number" />
+						<input type="number" name="max-price" id="input-max-price" maxlength="4" value="0"/>
 						<p>만원</p>
 					</label>
 				</div>
@@ -245,7 +245,13 @@
 			</div>
 			
 			<div id="tab-3" class="tab-content">
-
+				<p>총 수용 인원수</p>
+				<div class="con" data-filter-id="people">
+					<label id="max-people">
+						<input name="max-people" id="input-max-people" type="number" maxlength="4" value="0"/>
+						<p>명 이상</p>
+					</label>
+				</div>
 			</div>
 		</div>
 		
@@ -255,3 +261,4 @@
 		
 	</div>
 </div>
+

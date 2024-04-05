@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.SessionUtil;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.service.HallListService;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -69,17 +71,20 @@ public class HallListController {
 		model.addAllAttributes(regionMap);
 
 		return "html/hall/hall_list";
-	}
-
+	}	
+	
 	@RequestMapping(value = "/list/check", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<?> testCheck(@RequestParam(value = "filterValueArr[]") List<String> valueArr) {
-
-		List<HallDTO> hallList = hallListService.getFilterData(valueArr);
+	public ResponseEntity<?> testCheck(@RequestParam Map<String, Object> param) {	
+		System.out.println(param.toString());
+		Gson gson = new Gson();
+		@SuppressWarnings("serial")
+		List<String> local = gson.fromJson((String) param.get("value[local]"), new TypeToken<ArrayList<String>>(){}.getType());
+		
+		List<HallDTO> hallList = hallListService.getFilterData(local);
 
 		return new ResponseEntity<List<HallDTO>>(hallList, HttpStatus.OK);
 	}
-	
 	
 	// 지역 목록 CSV파일에서 불러오기
 	public Map<String, List<String>> readCsvRegion(){
