@@ -1,0 +1,29 @@
+<!--법인 유저 마이페이지 좌측 메뉴-->
+<div class="left" th:fragment="mypage_company_fragment">
+  <div class="left-main">
+    <h2 class="mypage">마이페이지</h2>
+    <div class="img">
+      <img src="/img/hongsnow5.jpg" class="profile" alt="">
+    </div>
+    <h2 class="username">000</h2>
+  </div>
+  <div class="left-menu">
+    <ul>
+      <a th:href="@{/company}" target="_self">
+        <li>내 정보</li>
+      </a>
+      <a href="#" target="_self">
+        <li class="open">사업자 정보</li>
+      </a>
+      <a th:href="@{/company/hall}" target="_self">
+        <li>내 공연장</li>
+      </a>
+      <a th:href="@{/company/reserve}" target="_self">
+        <li>예약 내역</li>
+      </a>
+      <a th:href="@{/company/review}" target="_self">
+        <li>리뷰 관리</li>
+      </a>
+    </ul>
+  </div>
+</div>
