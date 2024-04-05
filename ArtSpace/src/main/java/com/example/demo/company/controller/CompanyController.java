@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.SessionUtil;
@@ -36,6 +38,39 @@ public class CompanyController {
 		
 		return "html/company/company_page";
 	}
+	
+	// 닉네임 수정
+//		@PostMapping("/update/nickname")
+//		public String updateNickname(@ModelAttribute UserDTO dto) {
+//
+//			user_session.setSessionValue(session);
+//			
+//			dto.setUser_id(user_session.getUser_id());
+//			mypageService.updateNickname(dto);
+//			session.setAttribute("nickname", dto.getNickname());
+//			return "redirect:/mypage";
+//		}
+//
+//		// 패스워드 수정
+//		@PostMapping("/update/pw")
+//		public String updatePw(@ModelAttribute UserDTO dto) {
+//
+//			user_session.setSessionValue(session);
+//
+//			dto.setUser_id(user_session.getUser_id());
+//			mypageService.updatePw(dto);
+//			return "redirect:/mypage";
+//		}
+//
+//		// 핸드폰번호 수정
+//		@PostMapping("/update/phone")
+//		public String updatePhone(@ModelAttribute UserDTO dto) {
+//			
+//			user_session.setSessionValue(session);
+//			dto.setUser_id(user_session.getUser_id());
+//			mypageService.updatePhone(dto);
+//			return "redirect:/mypage";
+//		}
 	
 	
 	@GetMapping("/info")
