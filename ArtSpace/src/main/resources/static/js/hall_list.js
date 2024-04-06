@@ -101,19 +101,29 @@ function filterPush(){
 	$("input[name='regionItem']:checked").each(function(i){
 		console.log($(this).val());
         checkArr.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push    		
-	});				
+	});
 	
-	let min_price = document.getElementById('input-min-price').value;
-	let max_price = document.getElementById('input-max-price').value;
-	let max_people = document.getElementById('input-max-people').value;
+	var min_price = document.getElementById('input-min-price').value;
+	var max_price = document.getElementById('input-max-price').value;
+	var max_people = document.getElementById('input-max-people').value;
+	var sortStr = $("#sort-list option:selected").val();
 
-	console.log(max_people);
+	if(checkArr == ""){
+		checkArr = null;
+	}
+	
+	if(min_price > max_price){
+		alert('최소값이 최대값보다 클 수 없습니다.');
+		return;
+	}
+	
 	//JSON.stringify(checkArr),
 	var hallFilterDTO = {
 		localList: checkArr,
 	    minPrice: min_price,
 	    maxPrice: max_price,
-	    maxPeople: max_people
+	    maxPeople: max_people,
+	    sort:sortStr
 	}
 	
 	$.ajax({
@@ -124,10 +134,12 @@ function filterPush(){
 		success : function(data) {
 			$(".box-container").children().remove();
 			
-			checkArr.forEach(function(e){
-				let tagStr = '<div class="tag"><p>'+ e +'</p></div>';	
-				$("#location-tag").append(tagStr);				
-			});
+			if(checkArr != null){
+				checkArr.forEach(function(e){
+					let tagStr = '<div class="tag"><p>'+ e +'</p></div>';	
+					$("#location-tag").append(tagStr);				
+				});	
+			}
 			
 			if(max_price > 0){
 				let tagStr = '<div class="tag"><p>'+ min_price + '~' + max_price +' 만원</p></div>';	
@@ -150,7 +162,12 @@ function filterPush(){
 					str += '<img src="" alt="">';								
 					str += '<i id="like-btn" class="fa fa-star fa-4x" aria-hidden="true"></i>\n</div>';
 				  	str += '<div class="content">';
-					str += '<p class="address-text">'+ hall.address1.substring(0, 6) +'</p>';
+				  	str += '<div class="content-top">';
+					str += '<p class="address-text">'+ hall.address1.substring(0, 6) +'</p>\n<div>';
+				  	str += '<i class="fa fa-star fa-2x" aria-hidden="true"></i>'
+					str += '<p>('+ hall.rating +')</p>'
+					str += '<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>'
+					str += '<p>('+hall.likeNum+')</p>\n</div>\n</div>'	
 					str += '<p class="title-text">'+ hall.hall_name +'</p>';
 					str += '<p class="price-text"><span class="point">'+ hall.minPrice + '</span>원~</p>'
 					str += '<div class="time-text">';								
@@ -165,6 +182,7 @@ function filterPush(){
 					str += '</div>\n</div>\n</div>'
 								
 					$(".box-container").append(str);
+					
 				});
 			}
 		},
@@ -172,4 +190,10 @@ function filterPush(){
 		},
 	});
 	closeModal();	
+}
+
+
+// 리스트 정렬(최신순, 인기순...)
+function sortList(){
+	filterPush();
 }

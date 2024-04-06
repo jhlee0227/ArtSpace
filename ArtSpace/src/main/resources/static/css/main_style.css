@@ -185,7 +185,7 @@ section {
   position: relative;
 }
 
-.hall-list .con .box-container .box i{
+.hall-list .con .box-container .box #like-btn{
   position: absolute;
   top: 20px;
   right: 20px;
@@ -199,10 +199,30 @@ section {
   height: 100%;
 }
 
+/* 공연장 리스트 상자의 글부분 */
 .hall-list .con .box-container .content {
   padding: 2rem;
   text-align: left;
   line-height: 2.8rem;
+}
+
+.hall-list .con .box-container .content .content-top{
+	display: flex;
+	justify-content: space-between;
+}
+.hall-list .con .box-container .content .content-top div{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.hall-list .con .box-container .content .content-top div #like_icon{
+	margin-left: .5rem;
+}
+
+
+.hall-list .con .box-container .content .content-top .fa-star{
+	color: rgb(248, 186, 71);
 }
 
 .hall-list .con .box-container .content .address-text {
