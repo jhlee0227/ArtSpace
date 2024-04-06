@@ -1,20 +1,18 @@
 package com.example.demo.announcement.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class NoticeDto {
+public class AskDto {
 	
-	private Integer announ_id;	//
+	private Integer inquiry_id;	//
 	private String subject;
 	private String content;
 	private LocalDate create_date;
-	
-	public Integer getAnnoun_id() {
-		return announ_id;
+	public Integer getInquiry_id() {
+		return inquiry_id;
 	}
-	public void setAnnoun_id(Integer announ_id) {
-		this.announ_id = announ_id;
+	public void setInquiry_id(Integer inquiry_id) {
+		this.inquiry_id = inquiry_id;
 	}
 	public String getSubject() {
 		return subject;
@@ -34,6 +32,7 @@ public class NoticeDto {
 	public void setCreate_date(LocalDate create_date) {
 		this.create_date = create_date;
 	}
+	
 	
 
 }
