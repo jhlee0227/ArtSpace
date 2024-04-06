@@ -120,8 +120,8 @@ function filterPush(){
 	//JSON.stringify(checkArr),
 	var hallFilterDTO = {
 		localList: checkArr,
-	    minPrice: min_price,
-	    maxPrice: max_price,
+	    minPrice: min_price*10000,
+	    maxPrice: max_price*10000,
 	    maxPeople: max_people,
 	    sort:sortStr
 	}

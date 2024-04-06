@@ -30,7 +30,6 @@ public class CorporationController {
 	@PostMapping("corporation_code/insert")
 	public String checkCorCode(Model model, @RequestParam("company_number") String companyNumber) {
 		UserDTO user = new UserDTO();
-		user.setAuthority("SC");
 		corporationService.insertUser(user);
 		
 		CorporationDTO corpor = new CorporationDTO();
