@@ -8,6 +8,7 @@ public class HallFilterDTO {
 	private String minPrice;
 	private String maxPrice;
 	private String maxPeople;
+	private String sort;
 	
 	public List<String> getLocalList() {
 		return localList;
@@ -33,7 +34,12 @@ public class HallFilterDTO {
 	public void setMaxPeople(String maxPeople) {
 		this.maxPeople = maxPeople;
 	}
-	
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
 	
 
 }

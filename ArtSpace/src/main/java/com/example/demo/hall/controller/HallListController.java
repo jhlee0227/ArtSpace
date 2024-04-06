@@ -49,7 +49,7 @@ public class HallListController {
 
 	@GetMapping("/list")
 	public String showHallList(Model model) {
-		List<HallDTO> hallList = hallListService.getList("create_date");
+		List<HallDTO> hallList = hallListService.getList();
 		model.addAttribute("hallList", hallList);
 		
 		model.addAttribute("user_id", user_session.getUser_id());
@@ -62,32 +62,14 @@ public class HallListController {
 		return "html/hall/hall_list";	
 	}
 	
-	@PostMapping("/list")
-	public String FilterList(Model model) {		
-		model.addAttribute("user_id", user_session.getUser_id());
-		model.addAttribute("nickname", user_session.getNickname());
-
-		List<HallDTO> hallList = hallListService.getList("create_date");
-		model.addAttribute("hallList", hallList);
-
-		Map<String, List<String>> regionMap = readCsvRegion();
-		model.addAllAttributes(regionMap);
-
-		return "html/hall/hall_list";
-	}	
-	
 	@RequestMapping(value = "/list/check", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> testCheck(@RequestBody HallFilterDTO filter){	
-		System.out.println(filter.getLocalList().toString());
-		System.out.println(filter.getMaxPeople());
-		
-		List<HallDTO> hallList = hallListService.getFilterData(filter.getLocalList());
+		List<HallDTO> hallList = hallListService.getFilterData(filter);
 
 		return new ResponseEntity<List<HallDTO>>(hallList, HttpStatus.OK);
 	}
 
-	
 	
 	
 	// 지역 목록 CSV파일에서 불러오기
