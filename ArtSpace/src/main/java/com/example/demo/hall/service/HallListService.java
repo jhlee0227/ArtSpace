@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallFilterDTO;
 
 public interface HallListService {
 
-	List<HallDTO> getList(String sort);
+	List<HallDTO> getList();
 
-	List<HallDTO> getFilterData(List<String> valueArr);
+	List<HallDTO> getFilterData(HallFilterDTO filter);
 
 
 }

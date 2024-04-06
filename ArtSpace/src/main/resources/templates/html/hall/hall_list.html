@@ -37,10 +37,20 @@
 	    <!-- Hall List -->
 	    <section class="hall-list">
 	      <div class="con" id="main-con">  
+			<!--인기순등 정렬하는 버튼-->
 	        <div class="drop-menu">
-	          <p class="cur-item">인기순</p>
-	          <i class="fa-solid fa-chevron-down"></i>
+			  <select name="sort-list" id="sort-list" onchange="sortList()">
+				<option value="create_date">최신순</option>
+				<option value="views">조회순</option>
+				<option value="like_num">찜한순</option>
+				<option value="high_rating">평점 높은순</option>
+				<option value="min_price">낮은 가격순</option>
+				<option value="max_price">높은 가격순</option>
+			  </select>
+<!--	          <p class="cur-item">최신순</p>
+	          <i class="fa-solid fa-chevron-down"></i>	-->
 	        </div>
+						
 			<div th:if="${hallList.size() == 0}">
 				<h1>결과가 없습니다.</h1>
 			</div>
@@ -48,14 +58,22 @@
 	        <div class="box-container">
 	
 			  <!-- 상자 반복 일단 8개까지 보이기 -->
-  			  <th:block th:each="hall,index : ${hallList}" th:if="${index.index} < 8" >
-  				<div class="box" th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
+  			  <th:block th:each="hall,index : ${hallList}" >
+  				<div class="box" th:id="${hall.hall_id}" th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
   				  <div class="imgbox">            
   				    <img src="" alt="">
-  				    <i id="like-btn" class="fa fa-star fa-4x" aria-hidden="true"></i>
+					<i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>
   				  </div>
   				  <div class="content">
-  				    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
+					<div class="content-top">
+	  				    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
+						<div>
+							<i class="fa fa-star fa-2x" aria-hidden="true"></i>
+							<p th:text="|(${hall.rating})|"></p>
+							<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>
+							<p th:text="|(${hall.likeNum})|"></p>												
+						</div>
+					</div>
   				    <p class="title-text" th:text="${hall.hall_name}">난파 음악관 콘서트 홀</p>
   				    <p class="price-text"><span th:text="${hall.minPrice}" class="point">300,000</span>원~</p>
   					<div class="time-text">

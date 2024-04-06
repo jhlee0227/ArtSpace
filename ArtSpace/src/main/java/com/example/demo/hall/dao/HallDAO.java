@@ -25,8 +25,8 @@ public class HallDAO {
 	}
 
 	// 공연장 리스트 가져옴(정렬 기준)
-	public List<HallDTO> getHallList(String sort) {
-		return sqlSession.selectList("hall.getHallList", sort);
+	public List<HallDTO> getHallList() {
+		return sqlSession.selectList("hall.getHallList");
 	}
 
 	// 공연장 시간 정보 리스트를 가져옴
@@ -40,7 +40,7 @@ public class HallDAO {
 	}
 	
 	// 지역 필터 걸어서 공연장 리스트 가져옴
-	public List<HallDTO> getHallFilterList(String filter) {
+	public List<HallDTO> getHallFilterList(Map<String, Object> filter) {
 		return sqlSession.selectList("hall.getFilterList", filter);
 	}
 	

@@ -30,7 +30,6 @@ body {
 	border-right: 2px solid var(--light_gray);
 	margin-left: 180px;
 	height: 100vh;
-
 }
 
 .con .left .left-main {
@@ -45,19 +44,6 @@ body {
 	align-items: center;
 }
 
-.con .left .left-main .img {
-	width: 100px;
-	height: 100px;
-	border-radius: 70%;
-	overflow: hidden;
-}
-
-.con .left .left-main .img .profile {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
 .con .left .left-main .mypage {
 	font-size: 2.5rem;
 	padding-bottom: 1rem;
@@ -65,9 +51,9 @@ body {
 }
 
 .con .left .left-main .username {
-	font-size: 2.5rem;
-	padding-top: 1rem;
-	font-weight: bold
+	font-size: 2rem;
+	padding-top: 2rem;
+	font-weight: 500;
 }
 
 .con .left .left-menu ul {
@@ -109,51 +95,6 @@ body {
 	text-align: center;
 	padding: 1rem 0;
 	margin-bottom: 1rem;
-}
-
-.con .content .my {
-	display: flex;
-	border: 1px solid var(--light_gray);
-	border-radius: 10px;
-	padding: 1rem;
-}
-
-.con .content .my .img {
-	width: 150px;
-	height: 150px;
-	border-radius: 70%;
-	overflow: hidden;
-}
-
-.con .content .my .img .profile {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.con .content .my .nickname {
-	margin-left: 4rem;
-	margin-top: 3rem;
-	font-size: 2rem;
-	font-weight: bold;
-	text-align: center;
-}
-
-.con .content .my .nickname button {
-	background-color: var(--light_gray);
-	border-radius: 10px;
-	border: none;
-	width: 7rem;
-	height: 3.5rem;
-	font-weight: bold;
-	font-size: 1.5rem;
-	cursor: pointer;
-	margin-top: 2rem;
-}
-
-.con .content .my .nickname button:hover {
-	filter: brightness(0.9);
-	transition: 0.5s;
 }
 
 .con .content .list {
