@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="getAsk" resultType="com.example.demo.announcement.dto.AskDto">
-		select * from announcement
+		select * from inquiry
 	</select> 
 
 </mapper>

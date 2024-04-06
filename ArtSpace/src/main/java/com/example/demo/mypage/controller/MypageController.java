@@ -60,7 +60,7 @@ public class MypageController {
 		if (user_session.getUser_id() != null) {
 			if (authority.equals("SU")) {
 				return "html/mypage/mypage";
-			} else if (authority.equals("SC")) {
+			} else if (authority.equals("SCN") || authority.equals("SCY")) {
 				return "redirect:/company";
 			} else if (authority.equals("SA")) {
 				return "redirect:/admin";

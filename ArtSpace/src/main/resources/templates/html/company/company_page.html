@@ -16,6 +16,7 @@
 			<!-- 내용 -->
 			<div class="content">
 				<h2 class="content-main">내 정보</h2>
+				<form name="form1" method="post">
 				<div class="list">
 					<!-- 버튼마다 수정 기능 넣어야.. -->
 					<div>
@@ -38,7 +39,7 @@
 									oninput="pwCheck()" placeholder="비밀번호 확인"></div>
 						</div>
 						<span id="check"></span>
-						<button id="updatePwBtn" class="button" th:formaction="@{/mypage/update/pw}" disabled
+						<button id="updatePwBtn" class="button" th:formaction="@{/company/update/pw}" disabled
 							onclick="updatePw()">수정</button>
 					</div>
 
@@ -50,7 +51,7 @@
 								th:value="${my_info.nickname}" oninput="nicknameCheck()">
 						</div>
 						<span id="nicknameCheck"></span>
-						<button class="button" id="updateNicknameBtn" th:formaction="@{/mypage/update/nickname}"
+						<button class="button" id="updateNicknameBtn" th:formaction="@{/company/update/nickname}"
 							disabled onclick="updateNickname()">수정</button>
 
 					</div>
@@ -61,10 +62,11 @@
 						<div class="list-con"><input name="phone" id="phone" type="text" th:value="${my_info.phone}"
 								oninput="phoneCheck()"></div>
 						<span id="phoneCheck"></span>
-						<button class="button" id="updatePhoneBtn" th:formaction="@{/mypage/update/phone}" disabled
+						<button class="button" id="updatePhoneBtn" th:formaction="@{/company/update/phone}" disabled
 							onclick="updatePhone()">수정</button>
 					</div>
 				</div>
+				</form>
 				<form name="form2" method="post" th:action="@{/leave}">
 					<div class="button">
 						<span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요</span>

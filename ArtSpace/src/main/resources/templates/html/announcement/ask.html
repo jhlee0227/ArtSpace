@@ -1,85 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{/layout/default_layout}"  lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>공간</title>
-  <link rel="stylesheet" href="/static/css/ask.css">
+  <link rel="stylesheet" href="/css/board/ask.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
-  <div class="container">
- 
-
-  
-  </header>
-    <div class="notice">
-      <h1>Q & A</h1> <br> <hr> <br>
-      <ul>
-        <li>
-          <h3>
-            <a href="#" target="_blank" class="content-wrapper">Notice Title 1</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-          </h3>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo turpis nec sapien hendrerit, ac dapibus velit iaculis.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="#" target="_blank" class="content-wrapper">Notice Title 1</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-          </h3>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo turpis nec sapien hendrerit, ac dapibus velit iaculis.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="#" target="_blank" class="content-wrapper">Notice Title 1</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-          </h3>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo turpis nec sapien hendrerit, ac dapibus velit iaculis.</p>
-          </div>
-        </li>
-        
-
-      </ul>
-     
-    </div>
-
-
-  <script>
-    $(document).ready(function() {
-    var itemsToShow = 10;
-    var loadButton = $("#load");
-    var listItems = $(".notice ul li");
-
-    listItems.slice(itemsToShow).hide();
-
-    loadButton.click(function(e) {
-        e.preventDefault();
-        var hiddenItems = listItems.filter(":hidden");
-        var itemsToLoad = hiddenItems.slice(0, 5);
-        itemsToLoad.slideDown();
-        
-        // 숨겨진 아이템이 1개 이상일 때 알람 표시
-        if (hiddenItems.length === 0) {
-            alert("끝입니다.");
-        }
-    });
-})
-
-var isContentVisible = false; // 추가 변수
-
-function toggleContent(button) {
-  var content = $(button).parent().next(".content");
-  content.slideToggle();
-  isContentVisible = !isContentVisible; // 상태를 반전시킴
-  $(button).text(isContentVisible ? "[ ▼ ]" : "[ ▲ ]"); // 상태에 따라 버튼 텍스트 설정
-}
-  </script>
+	<div layout:fragment="content">
+		
+		  <div class="ask">
+			<div class="content-box" th:each="ask : ${askList}"></div>
+		    <h1>공지사항</h1> <br> <hr> <br>
+		    <ul>
+		      <li th:each="ask : ${askList}">
+		        <h3>
+		          <a href="#" target="_blank" class="content-wrapper"th:text="${ask.subject}"></a>
+				<span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
+				<div class= time><span th:text="${ask.create_date}"></span> </div>
+		        </h3>
+		        <div class="content">
+		          <p th:text="${ask.content}"></p>
+		        </div>
+		      </li>
+		      
+		      <div class="writeBtn">
+		        <a href="write.html">글쓰기</a>
+		      </div>
+		  </div>
+		  
+	  <script>
+	    $(document).ready(function() {
+		    var itemsToShow = 10;
+		    var loadButton = $("#load");
+		    var listItems = $(".ask ul li");
+		
+		    listItems.slice(itemsToShow).hide();
+		
+		    loadButton.click(function(e) {
+		        e.preventDefault();
+		        var hiddenItems = listItems.filter(":hidden");
+		        var itemsToLoad = hiddenItems.slice(0, 5);
+		        itemsToLoad.slideDown();
+		        
+		        // 숨겨진 아이템이 1개 이상일 때 알람 표시
+		        if (hiddenItems.length === 0) {
+		            alert("끝입니다.");
+		        }
+			});
+		})
+		
+		var isContentVisible = false; // 추가 변수
+		
+		function toggleContent(button) {
+		  var content = $(button).parent().next(".content");
+		  content.slideToggle();
+		  isContentVisible = !isContentVisible; // 상태를 반전시킴
+		  $(button).text(isContentVisible ? "[ - ]" : "[ + ]"); // 상태에 따라 버튼 텍스트 설정
+		}
+	
+	  </script>
+  </div>
 </body>
 </html>
