@@ -1,0 +1,80 @@
+
+      
+      h1{
+        text-align: center;
+      }
+      .notice {
+    
+        margin: 0 15rem;
+    
+    
+        
+        
+      }
+      .time {
+		float: inline-end;
+	  }
+  
+      .notice ul {
+        margin-top: 15rem;
+        padding: 0;
+      }
+  
+      .notice ul li {
+        margin-bottom: 20px;
+        
+        font-size: 2rem;
+      }
+  
+      .notice ul li a {
+        color: var(--black-color);
+        text-decoration: none;
+      }
+  
+      .notice ul li h3 {
+        margin-top: 5rem;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 1.3rem;
+      }
+  
+      .notice ul li p {
+        margin-bottom: 6px;
+        margin-top: 5rem;
+      }
+  
+      /* .notice ul li .date {
+        font-size: 0.8em;
+        color: var(--grey-color);
+      } */
+  
+
+  .notice .more:hover {
+    background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+  }
+  .notice .expand-btn{
+    float: right;
+    margin-left: 1.5rem;
+  }  
+  .content {
+    display: none; /* 기본적으로 본문 숨김 */
+  }
+  
+  .content.show {
+   display: block; /* 펼치기 버튼을 클릭하면 본문 보이기 */
+  }
+
+  .writeBtn {
+    /* position: absolute; 는 절대적인 값으로 상대적인 값이 필요하다. */
+    /* 상대적인 값은 전체 영역을 담당하는 class="card"에 position: relative; 을 추가한다. */
+    
+    padding: 10px;
+    margin-left: 58.9rem ;	
+    margin-top: 3rem;
+}
+.writeBtn a {
+    padding: 10px;
+    background-color:#FFCA63;
+    color: #fff;
+    border-radius: 10px;
+}
+
