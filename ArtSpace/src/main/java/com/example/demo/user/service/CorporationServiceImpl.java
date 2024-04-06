@@ -15,6 +15,7 @@ public class CorporationServiceImpl implements CorporationService{
 	
 	@Override
 	public void insertUser(UserDTO user) {
+		user.setAuthority("SCN");
 		corporationDAO.insertUser(user);
 	}
 	@Override
