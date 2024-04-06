@@ -18,7 +18,7 @@ public class AskDao {
 		sqlSession.insert("ask.insertask", askDTO);
 	}
 
-	public List<AskDao> getAsk() {
+	public List<AskDto> getAsk() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("ask.getAsk");
 	}

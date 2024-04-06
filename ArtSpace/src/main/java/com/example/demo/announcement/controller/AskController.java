@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.announcement.dto.AskDto;
-import com.example.demo.announcement.dto.NoticeDto;
+
 import com.example.demo.announcement.service.AskService;
-import com.example.demo.announcement.service.NoticeService;
+
 
 @Controller
 @RequestMapping("/ask")
