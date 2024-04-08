@@ -3,12 +3,13 @@ package com.example.demo.hall.dto;
 import java.util.List;
 
 public class HallFilterDTO {
+	// 리스트 필터용 DTO
 	
-	private List<String> localList;
-	private String minPrice;
-	private String maxPrice;
-	private String maxPeople;
-	private String sort;
+	private List<String> localList;	// 지역리스트 
+	private String minPrice;		// 최소가격
+	private String maxPrice;		// 최대가격
+	private String maxPeople;		// 인원수
+	private String sort;			// 정렬기준
 	
 	public List<String> getLocalList() {
 		return localList;

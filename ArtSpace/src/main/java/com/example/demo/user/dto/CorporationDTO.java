@@ -2,12 +2,12 @@ package com.example.demo.user.dto;
 
 public class CorporationDTO {
 	
-	private Integer company_id;	
-	private String company_number;
-	private String owner_name;
-	private String owner_email;
-	private String owner_phone;
-	private Integer user_id;
+	private Integer company_id;		// 법인ID(고유 Index) PK
+	private String company_number;	// 사업자등록번호
+	private String owner_name;		// 대표 이름
+	private String owner_email;		// 대표 이메일
+	private String owner_phone;		// 대표 번호
+	private Integer user_id;		// 유저ID FK
 	
 	
 	public Integer getCompany_id() {

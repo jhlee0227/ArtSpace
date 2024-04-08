@@ -12,7 +12,7 @@
     <section class="hall-form">
       <h1 class="header-text">내 공연장 등록</h1>
       
-      <form name="hall_info_form" th:action="${action}" method="post">
+      <form name="hall_info_form" th:action="${action}" method="post" enctype="multipart/form-data">
         <label for="hall_name">
           <p class="input-name">장소 이름 (제목)</p>
           <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">
@@ -38,13 +38,15 @@
         <label id='image_wrap' for="imgfile">
           <p class="input-name">사진</p>
           <a href="javascript:" onclick="fileUploadAction();" class="addr-btn">파일 업로드</a>
-          <input type="file" name="imgfile" id="imgfile" accept="image/gif, image/jpeg, image/png" multiple hidden/>
+          <input type="file" name="img_file" id="imgfile" accept="image/gif, image/jpeg, image/png" multiple hidden/>
         </label>
 
         <div class="img-input-wrap">
-          <img id="img"/>
+          
         </div>
 
+		
+		<p class="input-name">무대 기본 정보</p>
         <label class="hall-size">
           <p class="input-name">면적(㎡)</p>
           <input type="number" name="area" id="area" th:value="${hall_info.area}" ><span>㎡</span>
@@ -127,38 +129,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="/js/hall_form.js"></script>
 	
-	<script>	
-		$("#morning").click(function(){
-			if(this.checked){
-				$("#m_price").prop("disabled", false);
-			} else {
-				$("#m_price").prop("disabled", true);			
-			}
-		});
-		$("#after").click(function(){
-			if(this.checked){
-				$("#a_price").prop("disabled", false);
-			} else {
-				$("#a_price").prop("disabled", true);
-			}
-		});
-		$("#eve").click(function(){
-			if(this.checked){
-				$("#e_price").prop("disabled", false);
-			} else {
-				$("#e_price").prop("disabled", true);				
-			}
-		});
-		$("#full").click(function(){
-			if(this.checked){
-				$("#f_price").prop("disabled", false);
-			}else {
-				$("#f_price").prop("disabled", true);				
-			}
-		});				
-		
-		
-	</script>
 
 	</div>
   </body>

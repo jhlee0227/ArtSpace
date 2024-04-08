@@ -160,7 +160,7 @@ function filterPush(){
 					let str='<div class="box" onclick="location.href=\'/hall/detail/' + hall.hall_id + '\'">';
 					str += '<div class="imgbox">';
 					str += '<img src="" alt="">';								
-					str += '<i id="like-btn" class="fa fa-star fa-4x" aria-hidden="true"></i>\n</div>';
+					str += '<i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>\n</div>';
 				  	str += '<div class="content">';
 				  	str += '<div class="content-top">';
 					str += '<p class="address-text">'+ hall.address1.substring(0, 6) +'</p>\n<div>';

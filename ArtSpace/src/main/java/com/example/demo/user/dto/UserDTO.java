@@ -3,13 +3,13 @@ package com.example.demo.user.dto;
 public class UserDTO {
 
 	private Integer user_id;	// 유저 아이디 PK
-	private String name;
-	private String email;
-	private String password;
-	private String nickname;
-	private String phone;
-	private String authority;
-	private Character leave_status;
+	private String name;		// 실명
+	private String email;		// 이메일(로그인ID)
+	private String password;	// 비번
+	private String nickname;	// 닉네임
+	private String phone;		// 핸드폰
+	private String authority;	// 권한 
+	private Character leave_status;	// 탈퇴여부
 	
 	
 	public Integer getUser_id() {
