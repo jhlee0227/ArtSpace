@@ -65,10 +65,10 @@ public class MypageController {
 			} else if (authority.equals("SA")) {
 				return "redirect:/admin";
 			} else {
-				return "html/index";
+				return "redirect:/";
 			}
 		} else {
-			return "html/login/login";
+			return "redirect:/login";
 		}
 		
 		
@@ -118,7 +118,7 @@ public class MypageController {
 		if (user_session.getUser_id() != null) {
 			return "html/mypage/performer_info";
 		} else {
-			return "html/login/login"; 
+			return "redirect:/login"; 
 		}
 		
 	}
@@ -144,13 +144,13 @@ public class MypageController {
 		if (user_session.getUser_id() != null) {
 			return "html/mypage/my_favorites";			
 		} else {
-			return "html/login/login";
+			return "redirect:/login";
 		}
 	}
 
 	// 찜 삭제
 	@PostMapping("/favorite/delete")
-	public String likeDelete(Model model, @RequestParam("hall_id") Integer hall_id) {
+	public String likeDelete(@RequestParam("hall_id") Integer hall_id) {
 		user_session.setSessionValue(session);
 
 	    mypageService.likeDelete(user_session.getUser_id(), hall_id);
@@ -168,7 +168,7 @@ public class MypageController {
 		if (user_session.getUser_id() != null) {
 			return "html/mypage/reservation_list";			
 		} else {
-			return "html/login/login";
+			return "redirect:/login";
 		}
 	}
 	
@@ -217,7 +217,7 @@ public class MypageController {
 		if (user_session.getUser_id() != null) {
 			return "html/mypage/my_review";
 		} else {
-			return "html/login/login";
+			return "redirect:/login";
 		}
 	}
 

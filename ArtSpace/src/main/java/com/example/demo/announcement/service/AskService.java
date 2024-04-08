@@ -7,7 +7,7 @@ import com.example.demo.announcement.dto.AskDto;
 
 public interface AskService {
 
-	void insert1(AskDto askDTO);
+	void insert(AskDto askDTO);
 
 	List<AskDto> getAsk();
 

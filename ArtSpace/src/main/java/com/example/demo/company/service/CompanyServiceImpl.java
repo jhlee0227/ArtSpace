@@ -47,4 +47,9 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyDAO.findByID(user_id);
 	}
 
+	@Override
+	public void hallDelete(Integer hall_id) {
+		companyDAO.hallDelete(hall_id);
+	}
+
 }

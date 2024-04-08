@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.file.dao.FileDAO;
+import com.example.demo.file.dao.HallFileDAO;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.file.dto.GCSRequest;
+import com.example.demo.hall.dto.HallImageDTO;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -27,6 +31,9 @@ public class FileServiceImpl implements FileService {
 
 	@Autowired
 	private FileDAO fileDAO;
+	
+	@Autowired
+	private HallFileDAO hallFileDAO;
 
 //	public void uploadFile(MultipartFile file) {
 //	    try {
@@ -55,12 +62,14 @@ public class FileServiceImpl implements FileService {
 	}
 
 	// DB에 정보 저장
-	private void saveToDB(MultipartFile file, String storedFileName) {
+	private int saveToDB(MultipartFile file, String storedFileName) {
 		FileDTO fileDTO = new FileDTO();
 		fileDTO.setPath(getFileUrl(storedFileName)); // GCS의 파일 URL
 		fileDTO.setOrg_file_name(file.getOriginalFilename());
 		fileDTO.setStored_file_name(storedFileName);
 		fileDAO.insertFile(fileDTO);
+		// 저장한 파일ID 리턴
+		return fileDTO.getFile_id();
 	}
 
 	// 저장된 파일의 URL을 반환
@@ -74,6 +83,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	// GCS에 업로드, DB에 저장
+	@Override
 	public void uploadObject(GCSRequest gcsRequest) {
 		try {
 			MultipartFile file = gcsRequest.getFile();
@@ -84,4 +94,30 @@ public class FileServiceImpl implements FileService {
 			e.printStackTrace();
 		}
 	}
+
+	
+	
+	// Hall_공연장 이미지들 등록
+	@Override
+	public void uploadHallImage(MultipartFile[] files, Integer hall_id) {
+		try {
+			for (MultipartFile file : files) {
+				if(!file.isEmpty()) {
+					// 저장될 고유 이름 생성
+	     			String storedFileName = generateFileName(file);
+	     			uploadToGCS(file, storedFileName);
+	    			Integer file_id = saveToDB(file, storedFileName);
+	    			
+	    			HallImageDTO hallImage = new HallImageDTO();
+	    			hallImage.setFile_id(file_id);
+	    			hallImage.setHall_id(hall_id);	    			
+	    			hallFileDAO.insertHallImage(hallImage);
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

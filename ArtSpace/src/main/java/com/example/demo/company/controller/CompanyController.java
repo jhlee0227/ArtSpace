@@ -56,7 +56,12 @@ public class CompanyController {
 	public String company(Model model) {
 		myInfo(model);
 
-		return "html/company/company_page";
+		if (user_session.getAuthority() == "SCN" || user_session.getAuthority() == "SCY") {
+			return "html/company/company_page";
+		} else {
+			return "redirect:/";
+		}
+		
 	}
 
 	// 닉네임 수정
@@ -134,10 +139,13 @@ public class CompanyController {
 	}
 
 	// 공연장 정보 삭제
-//	@PostMapping("/hall/delete")
-//	public String hallDelete(Model model) {
-//		
-//	}
+	@PostMapping("/hall/delete")
+	public String hallDelete(@RequestParam("hall_id") Integer hall_id) {
+		
+		companyService.hallDelete(hall_id);
+		
+		return "redirect:/company/hall";
+	}
 	
 	// 해당 법인이 등록한 공연장에 대한 예약 정보
 	@GetMapping("/reserve")

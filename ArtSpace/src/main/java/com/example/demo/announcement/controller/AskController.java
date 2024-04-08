@@ -31,16 +31,16 @@ public class AskController {
 	}
 	
 	@GetMapping("/write")
-	public String showWrite1() {
+	public String showWrite() {
 		return "html/announcement/ask_notice";
 	}
 	
+	
 	@PostMapping("/insert")
-	public String insertUser1(@ModelAttribute AskDto askDTO) {
+	public String insertUser(@ModelAttribute AskDto askDTO) {
 		askDTO.setCreate_date(LocalDate.now());
-		askService.insert1(askDTO);
-		return "html/announcement/ask_notice";
-		
+		askService.insert(askDTO);
+		return "redirect:/ask";
 	}
 
 

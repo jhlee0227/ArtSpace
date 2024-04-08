@@ -41,6 +41,10 @@ public class CompanyDAO {
 		
 		return sqlSession.selectOne("company.info", user_id);
 	}
+
+	public void hallDelete(Integer hall_id) {
+		sqlSession.update("company.hallDelete", hall_id);
+	}
 	
 	
 }

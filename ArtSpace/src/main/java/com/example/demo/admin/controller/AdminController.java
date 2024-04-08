@@ -30,7 +30,7 @@ public class AdminController {
 
 	@Autowired
 	MypageService mypageService;
-	
+
 	@Autowired
 	HttpSession session;
 
@@ -54,17 +54,29 @@ public class AdminController {
 
 	// 회원관리 : 선택한 유저 탈퇴시키기
 	@PostMapping("/leave")
-	public String leave(@RequestParam("check1") List<Integer> selectUser) {
-		for (Integer user_id : selectUser) {
-			adminService.leave(user_id);
+	public String leave(@RequestParam(value = "check1", required = false) List<Integer> selectUser1,
+			@RequestParam(value = "check2", required = false) List<Integer> selectUser2) {
+
+		// 전체 회원 탭
+		if (selectUser1 != null) {
+			for (Integer user_id : selectUser1) {
+				adminService.leave(user_id);
+			}
 		}
+		// 가입 중 회원 탭
+		if (selectUser2 != null) {
+			for (Integer user_id : selectUser2) {
+				adminService.leave(user_id);
+			}
+		}
+
 		return "redirect:/admin";
 	}
 
 	// 회원관리 : 선택한 유저 탈퇴 해제
 	@PostMapping("/resign")
 	public String resign(@RequestParam(value = "check1", required = false) List<Integer> selectUser1,
-			@RequestParam(value = "check2", required = false) List<Integer> selectUser2) {
+			@RequestParam(value = "check3", required = false) List<Integer> selectUser3) {
 		// 전체 회원 탭
 		if (selectUser1 != null) {
 			for (Integer user_id : selectUser1) {
@@ -72,8 +84,8 @@ public class AdminController {
 			}
 		}
 		// 차단 회원 탭
-		if (selectUser2 != null) {
-			for (Integer user_id : selectUser2) {
+		if (selectUser3 != null) {
+			for (Integer user_id : selectUser3) {
 				adminService.resign(user_id);
 			}
 		}
@@ -102,12 +114,27 @@ public class AdminController {
 //		
 //		return "html/admin/admin :: #searchResults";
 //	}
+	
+	@PostMapping("/search")
+	public String searchUsers(@RequestParam("searchParam") String searchParam) {
+		String[] params = searchParam.split(",");
+		String type = params[0];
+		String keyword = params[1];
+		
+		if ("email".equals(type)) {
+			
+		} else if ("nickname".equals(type)) {
+			
+		}
+		
+		return "redirect:/admin";
+	}
 
 	// 공연장 정보 목록 조회
 	@GetMapping("/hallinfo")
 	public String hallinfo(Model model) {
 		myInfo(model);
-		
+
 		List<HallDTO> hallList = adminService.getAllHalls();
 		model.addAttribute("hall_list", hallList);
 		return "html/admin/hall_info";
