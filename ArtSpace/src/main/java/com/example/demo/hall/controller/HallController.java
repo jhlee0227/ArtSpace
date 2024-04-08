@@ -5,14 +5,19 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.SessionUtil;
@@ -20,6 +25,7 @@ import com.example.demo.file.dto.GCSRequest;
 import com.example.demo.file.service.FileService;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallFilterDTO;
 import com.example.demo.hall.service.HallService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -55,7 +61,6 @@ public class HallController {
 			//return "redirect:/";
 		} else {
 			// 승인된 법인이면
-			
 		}
 				
 		// 초기화
@@ -82,7 +87,8 @@ public class HallController {
 
 		HallDTO hallInfo = hallService.findById(id);
 		hallInfo.setHallTimeList(hallService.setHallTimeList(hallInfo));
-
+		hallInfo.setHall_id(id);
+		
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
 		model.addAttribute("hall_info", hallInfo);
@@ -94,55 +100,42 @@ public class HallController {
 	
 	// insert 처리
 	@PostMapping("/form/insert")
-	public String hallCreate(@ModelAttribute HallDTO hallDTO, @RequestParam("attach_file") MultipartFile[] files) {				
+	@ResponseBody
+	public String hallCreate(@ModelAttribute HallDTO hallDTO, @RequestParam("files") MultipartFile[] files) {				
 		user_session.setSessionValue(session);
-		
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
-		
-		System.out.println(files.toString());
-		
+
 		hallDTO.setCreate_date(LocalDate.now());
 		hallDTO.setUser_id(user_session.getUser_id());
 
 		hallService.insert(hallDTO);
-		return "redirect:/hall/form/equipment/" + hallDTO.getHall_id();
+		
+        if(files!=null) {
+        	fileService.uploadHallImage(files, hallDTO.getHall_id());
+        }		
+		
+		return "/hall/form/equipment/" + hallDTO.getHall_id();
 	}
 	
-	
-	
-
-	// update 처리
-	@PostMapping("/form/update/{id}")
-	public String hallUpdate(@ModelAttribute HallDTO hallDTO, @RequestParam("img_file") MultipartFile[] files, 
-								HttpServletRequest request, @PathVariable("id") Integer id) {	
+	@RequestMapping(value = "/form/update/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public String hall_Update(@ModelAttribute HallDTO hallDTO, @RequestParam("files") MultipartFile[] files, @PathVariable("id") Integer id) {	
 		user_session.setSessionValue(session);	
 		if(user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
-		
-		System.out.println(files[0].getOriginalFilename() + "이다다");
-		//System.out.println(files[1].getOriginalFilename());
-		
-		for (int i = 0; i < files.length; i++) {
-			MultipartFile file = files[i];
-			String fileName = "file" + (i + 1);
-			
-			GCSRequest gcsRequest = new GCSRequest();
-			gcsRequest.setName(fileName);
-			gcsRequest.setFile(file);
-			System.out.println(gcsRequest.getFile().getOriginalFilename());
-			//fileService.uploadObject(gcsRequest);
-		}
-		
-		
-		hallDTO.setCreate_date(LocalDate.now());
-		hallDTO.setHall_id(id);
+        if(files!=null) {
+        	fileService.uploadHallImage(files, id);
+        }
+        
+        hallDTO.setCreate_date(LocalDate.now());
+        hallDTO.setHall_id(id);
 		hallDTO.setUser_id(user_session.getUser_id());
 		hallService.update(hallDTO);
 
-		return "redirect:/hall/form/equipment/" + id;
+		return "/hall/form/equipment/"+id;
 	}
 	
 	
