@@ -13,7 +13,7 @@ public class HallDTO {
 
 	private Integer hall_id;		// 공연장ID PK
 	private String hall_name;		// 공연장명
-	private Integer zip_code;
+	private Integer zip_code;		// 우편번호
 	private String address1;		// 주소
 	private String address2;		// 상세주소
 	private String hall_description;	// 공연장설명
@@ -26,24 +26,22 @@ public class HallDTO {
 	private Integer views;		// 조회수
 	private LocalDate create_date;		// 등록 날짜
 	private Integer user_id;		// 유저ID FK
+	private String name;			// 유저이름
 	
-	private List<EquipmentDTO> equiList;
-	private List<HallTimeDTO> hallTimeList;
+	private List<EquipmentDTO> equiList;	// 장비DTO리스트
+	private List<HallTimeDTO> hallTimeList;	// 공연장시간DTO리스트
 
-	// 내가가진 시간별 가격대의 최솟값
-	private Integer minPrice;
-	// 해당 공연장을 찜한 수
-	private Integer likeNum;
-	// 해당 공연장 총 평균 평점
-	private Float rating;
+	private Integer minPrice; // 내가가진 시간별 가격대의 최솟값
+	private Integer likeNum;	// 해당 공연장을 찜한 수
+	private Float rating;		// 해당 공연장 총 평균 평점
 	
 	// 예약 날짜와 시간 시작, 종료
-	private String start_date;
-	private String end_date;
-	private String start_time;
-	private String end_time;
-	private Integer reserve_id;
-	
+	/* private String start_date;
+	 * private String end_date;
+	 * private String start_time;
+	 * private String end_time;
+	 * private Integer reserve_id;
+	 */	
 	
 	public Integer getHall_id() {
 		return hall_id;
@@ -153,36 +151,6 @@ public class HallDTO {
 	public void setMinPrice(Integer minPrice) {
 		this.minPrice = minPrice;
 	}
-	public String getStart_date() {
-		return start_date;
-	}
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
-	}
-	public String getEnd_date() {
-		return end_date;
-	}
-	public void setEnd_date(String end_date) {
-		this.end_date = end_date;
-	}
-	public String getStart_time() {
-		return start_time;
-	}
-	public void setStart_time(String start_time) {
-		this.start_time = start_time;
-	}
-	public String getEnd_time() {
-		return end_time;
-	}
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
-	}
-	public Integer getReserve_id() {
-		return reserve_id;
-	}
-	public void setReserve_id(Integer reserve_id) {
-		this.reserve_id = reserve_id;
-	}
 	public Integer getLikeNum() {
 		return likeNum;
 	}
@@ -194,6 +162,12 @@ public class HallDTO {
 	}
 	public void setRating(Float rating) {
 		this.rating = rating;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.company.dao.CompanyDAO;
+import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
@@ -35,9 +36,15 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public List<ReviewDTO> getReview() {
+	public void updateInfo(CompanyDTO dto) {
 		
-		return companyDAO.getReview();
+		companyDAO.updateInfo(dto);
+	}
+
+	@Override
+	public CompanyDTO findByID(Integer user_id) {
+		
+		return companyDAO.findByID(user_id);
 	}
 
 }

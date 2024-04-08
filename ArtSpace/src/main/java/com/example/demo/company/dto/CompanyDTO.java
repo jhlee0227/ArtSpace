@@ -1,14 +1,13 @@
-package com.example.demo.user.dto;
+package com.example.demo.company.dto;
 
-public class CorporationDTO {
+public class CompanyDTO {
 	
-	private Integer company_id;		// 법인ID(고유 Index) PK
-	private String company_number;	// 사업자등록번호
-	private String owner_name;		// 대표 이름
-	private String owner_email;		// 대표 이메일
-	private String owner_phone;		// 대표 번호
-	private Integer user_id;		// 유저ID FK
-	
+	private Integer company_id;		//법인ID PK
+	private String company_number;	//사업자등록번호
+	private String owner_name;		//대표자명
+	private String owner_email;		//대표이메일
+	private String owner_phone;		//대표번호
+	private Integer user_id;		//유저ID FK
 	
 	public Integer getCompany_id() {
 		return company_id;
@@ -46,7 +45,7 @@ public class CorporationDTO {
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
-
+	
 	
 
 }

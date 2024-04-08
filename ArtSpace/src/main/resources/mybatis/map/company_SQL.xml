@@ -22,13 +22,17 @@
 		set reserve_status = 'N'
 		where reserve_id = #{reserve_id}
 	</update>
-
-	<select id="getReview" resultType="com.example.demo.hall.dto.ReviewDTO">
-		select h.hall_id, h.hall_name, r.review_content, r.rating, u.nickname
-		from review r
-		join hall h on r.hall_id = h.hall_id
-		join user u on r.user_id = u.user_id
-		order by h.hall_id;
+	
+	<select id="info" resultType="com.example.demo.company.dto.CompanyDTO">
+		select owner_name, owner_email, owner_phone
+		from company
+		where user_id = #{user_id}
 	</select>
+	
+	<update id="updateInfo">
+		update company
+		set owner_name = #{owner_name}, owner_email = #{owner_email}, owner_phone = #{owner_phone}
+		where user_id = #{user_id}
+	</update>
 
 </mapper>
