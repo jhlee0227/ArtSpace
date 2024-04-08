@@ -14,8 +14,8 @@ public class AskServiceImpl implements AskService{
 	AskDao askDao;
 	
 	@Override
-	public void insert1(AskDto askDTO) {
-		// TODO Auto-generated method stub
+	public void insert(AskDto askDTO) {
+		askDao.insert(askDTO);
 		
 	}
 

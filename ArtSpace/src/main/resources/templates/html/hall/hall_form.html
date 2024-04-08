@@ -12,7 +12,8 @@
     <section class="hall-form">
       <h1 class="header-text">내 공연장 등록</h1>
       
-      <form name="hall_info_form" th:action="${action}" method="post" enctype="multipart/form-data">
+	  <form name="hall_info_form" th:action method="get" enctype="multipart/form-data">
+		<input type="text" name="hall_id" th:value="${hall_info.hall_id}" id="hall_id" hidden>
         <label for="hall_name">
           <p class="input-name">장소 이름 (제목)</p>
           <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">
@@ -38,12 +39,10 @@
         <label id='image_wrap' for="imgfile">
           <p class="input-name">사진</p>
           <a href="javascript:" onclick="fileUploadAction();" class="addr-btn">파일 업로드</a>
-          <input type="file" name="img_file" id="imgfile" accept="image/gif, image/jpeg, image/png" multiple hidden/>
+          <input type="file" name="files" id="imgfile" accept="image/gif, image/jpeg, image/png" multiple hidden/>
         </label>
-
-        <div class="img-input-wrap">
-          
-        </div>
+		<!--미리보기 이미지-->
+        <div class="img-input-wrap"></div>
 
 		
 		<p class="input-name">무대 기본 정보</p>

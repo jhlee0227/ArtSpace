@@ -5,6 +5,11 @@
 	<insert id="insert">
 		insert into file (path, org_file_name, stored_file_name) 
 		values (#{path}, #{org_file_name}, #{stored_file_name})
+		
+		<!-- 저장한 file_id 인덱스를 DTO에 반환 -->
+			<selectKey keyProperty="file_id" resultType="int" order="AFTER" >
+				select LAST_INSERT_ID()
+			</selectKey>
 	</insert>
 
 

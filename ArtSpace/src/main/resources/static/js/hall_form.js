@@ -24,6 +24,7 @@ function handleImgFileSelect(e) {
     
 	let files = e.target.files;
 	let filesArr = Array.prototype.slice.call(files);
+	console.log(filesArr);
 		
 	for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
 		let f = filesArr[i];
@@ -231,25 +232,55 @@ function checkValue(){
 	}
 	
 	// 이미지 전송 관련 폼 데이터
-    var form = document.querySelector("form");
+    var form = document.querySelector("form[name='hall_info_form']");
     var formData = new FormData(form);
     
     for (var i = 0; i < sel_files.length; i++) {
-        // 삭제되지 않은 파일만 폼데이터에 담기
-        if (!sel_files[i].is_delete) {
-            formData.append("img_file", sel_files[i]);
-        }
+        formData.append("files", sel_files[i]);
     }
     
-/*	const temp = JSON.stringify({
-      	name: selectedClassName,
-      	price: selectedPrice,
-      	sale: selectedDiscount / 100,
-  	});
-	let formData = new FormData();
-    formData.append('body', temp);*/
+	let hall_id = document.querySelector("input[name='hall_id']").value;
+	
+	if(hall_id == ""){
+	  	$.ajax({
+	  		url:'/hall/form/insert',
+	  		type:'post',
+	  		data: formData,
+	  		processData:false,
+	  		contentType: false,
+	  		// 다른 페이지를 처리 후에 결과가 성공일 때
+	  		success:function(data) {
+				document.hall_info_form.action=data;
+				document.hall_info_form.submit();
+	  		},
+	  		error:function(request, status, error)
+	  		{ // 오류가 발생했을 때 호출된다.
+	  			/*console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);*/
+	  		},
+  		
+  		});		
+	}else {
+	  	$.ajax({
+	  		url:'/hall/form/update/' + hall_id,
+	  		type:'post',
+	  		data: formData,
+	  		processData:false,
+	  		contentType: false,
+	  		// 다른 페이지를 처리 후에 결과가 성공일 때
+	  		success:function(data) {
+				document.hall_info_form.action="/hall/form/equipment/"+hall_id;
+				document.hall_info_form.submit();
+	  		},
+	  		error:function(request, status, error)
+	  		{ // 오류가 발생했을 때 호출된다.
+	  			/*console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);*/
+	  		},
+  		
+  		});
+	}
+	
+
 
 	
-	document.hall_info_form.submit();
-	}
+}
 

@@ -4,8 +4,8 @@ public class HallImageDTO {
 	// 공연장 사진 시간에 대한 table
 	
 	private Integer h_image_id;	// 공연장 이미지 ID
-	private String hall_id;		// 공연장 ID
-	private String file_id;		// 파일 ID
+	private Integer hall_id;		// 공연장 ID
+	private Integer file_id;		// 파일 ID
 	
 	public Integer getH_image_id() {
 		return h_image_id;
@@ -13,17 +13,17 @@ public class HallImageDTO {
 	public void setH_image_id(Integer h_image_id) {
 		this.h_image_id = h_image_id;
 	}
-	public String getHall_id() {
+	public Integer getHall_id() {
 		return hall_id;
 	}
-	public void setHall_id(String hall_id) {
+	public void setHall_id(Integer hall_id) {
 		this.hall_id = hall_id;
 	}
-	public String getFile_id() {
+	public Integer getFile_id() {
 		return file_id;
 	}
-	public void setFile_id(String file_id) {
-		this.file_id = file_id;
+	public void setFile_id(Integer file_id2) {
+		this.file_id = file_id2;
 	}
 	
 	

@@ -17,7 +17,7 @@
 		    <ul>
 		      <li th:each="ask : ${askList}">
 		        <h3>
-		          <a href="#" target="_blank" class="content-wrapper"th:text="${ask.subject}"></a>
+		          <span class="content-wrapper"th:text="${ask.subject}"></span>
 				<span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
 				<div class= time><span th:text="${ask.create_date}"></span> </div>
 		        </h3>
@@ -27,7 +27,7 @@
 		      </li>
 		      
 		      <div class="writeBtn">
-		        <a href="write.html">글쓰기</a>
+				<a th:href="@{/ask/write}">글쓰기</a>
 		      </div>
 		  </div>
 		  

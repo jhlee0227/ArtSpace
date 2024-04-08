@@ -1,12 +1,10 @@
 package com.example.demo.hall.dto;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-import java.util.Map;
 
-import jakarta.validation.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 
 
 public class HallDTO {
@@ -29,6 +27,7 @@ public class HallDTO {
 	private String name;			// 유저이름
 	private String visibility;		// 공연장 삭제상태
 	
+	private List<HallImageDTO> imageList;	
 	private List<EquipmentDTO> equiList;	// 장비DTO리스트
 	private List<HallTimeDTO> hallTimeList;	// 공연장시간DTO리스트
 
@@ -170,11 +169,21 @@ public class HallDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+  
 	public String getVisibility() {
 		return visibility;
 	}
+  
 	public void setVisibility(String visibility) {
 		this.visibility = visibility;
+  }
+  
+	public List<HallImageDTO> getImageList() {
+		return imageList;
+	}
+    
+	public void setImageList(List<HallImageDTO> imageList) {
+		this.imageList = imageList;
 	}
 
 	
