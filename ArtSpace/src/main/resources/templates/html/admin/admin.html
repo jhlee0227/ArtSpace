@@ -19,18 +19,20 @@
 				<div class="tabs">
 					<input id="all" type="radio" name="tab_item" checked>
 					<label class="tab_item" for="all">전체 회원</label>
+					<input id="notLeave" type="radio" name="tab_item">
+					<label class="tab_item" for="notLeave">가입 중인 회원</label>
 					<input id="leave" type="radio" name="tab_item">
 					<label class="tab_item" for="leave">탈퇴 회원</label>
+					<!-- 전체 회원 Tab -->
 					<div class="tab_content" id="all_content">
-						<!-- 전체 회원 Tab -->
 						<div class="search">
 							<form id="searchForm" name="search" th:action="@{/admin/search}" method="post">
-								<select class="select" name="type" id="">
+								<select class="select" name="type" id="searchType">
 									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
 								</select>
-								<input type="text">
-								<input type="button" value="검색">
+								<input type="text" id="searchInput">
+								<input type="button" value="검색" id="searchButton">
 							</form>
 						</div>
 						<div class="main">
@@ -47,7 +49,7 @@
 									</tr>
 								</thead>
 								<tbody id="searchResults">
-									<form name="leave" th:action="@{/admin/leave}" method="post">
+									<form name="manage" th:action="@{/admin/leave}" method="post">
 										<tr th:each="user : ${user_list}"><!-- th:each -->
 											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
 													name="check1" onclick="checkSelectAll1()"></td>
@@ -56,8 +58,10 @@
 											<td th:text="${user.nickname}"></td>
 											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
 											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
-											<td th:if="${#strings.equals(user.authority, 'SCN')}" th:text="'승인되지 않은 법인'"></td>
-											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCN')}"
+												th:text="'승인되지 않은 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'">
+											</td>
 											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
 											<td th:if="${#strings.equals(user.leave_status, 'N')}" th:text="탈퇴X"></td>
 										</tr>
@@ -71,10 +75,10 @@
 						</div>
 						</form>
 					</div>
-					<div class="tab_content" id="leave_content">
-						<!-- 탈퇴 상태 -->
+					<!-- 가입 중인 회원 Tab -->
+					<div class="tab_content" id="notLeave_content">
 						<div class="search">
-							<form id="searchForm" name="search" action="/admin/search" method="post">
+							<form id="" name="search" th:action="@{/admin/search}" method="post">
 								<select class="select" name="type" id="">
 									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
@@ -97,10 +101,9 @@
 									</tr>
 								</thead>
 								<tbody id="searchResults">
-									<form name="leave2" th:action="@{/admin/resign}" method="post">
-										<!-- th:each -->
+									<form name="leave" th:action="@{/admin/leave}" method="post">
 										<tr th:each="user : ${user_list}"
-											th:if="${#strings.equals(user.leave_status, 'Y')}">
+											th:if="${#strings.equals(user.leave_status, 'N')}"><!-- th:each -->
 											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
 													name="check2" onclick="checkSelectAll2()"></td>
 											<!-- th:text -->
@@ -108,8 +111,61 @@
 											<td th:text="${user.nickname}"></td>
 											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
 											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
-											<td th:if="${#strings.equals(user.authority, 'SCN')}" th:text="'승인되지 않은 법인'"></td>
-											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCN')}"
+												th:text="'승인되지 않은 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'">
+											</td>
+											<td th:if="${#strings.equals(user.leave_status, 'N')}" th:text="탈퇴X"></td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="button">
+							<input class="leave-btn" type="submit" value="탈퇴" onclick="return checkLeave()">
+						</div>
+						</form>
+					</div>
+					<!-- 탈퇴 회원 Tab -->
+					<div class="tab_content" id="leave_content">
+						<div class="search">
+							<form id="" name="search" action="/admin/search" method="post">
+								<select class="select" name="type" id="">
+									<option value="email">이메일</option>
+									<option value="nickname">닉네임</option>
+								</select>
+								<input type="text">
+								<input type="button" value="검색">
+							</form>
+						</div>
+						<div class="main">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><input type="checkbox" class="chkbox" name="selectAll3" value="selectAll"
+												onclick="selectAll3(this)">
+										</th>
+										<th>아이디</th>
+										<th>닉네임</th>
+										<th>유저타입</th>
+										<th class="leave">탈퇴상태</th>
+									</tr>
+								</thead>
+								<tbody id="searchResults">
+									<form name="resign" th:action="@{/admin/resign}" method="post">
+										<!-- th:each -->
+										<tr th:each="user : ${user_list}"
+											th:if="${#strings.equals(user.leave_status, 'Y')}">
+											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
+													name="check3" onclick="checkSelectAll3()"></td>
+											<!-- th:text -->
+											<td th:text="${user.email}"></td>
+											<td th:text="${user.nickname}"></td>
+											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
+											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCN')}"
+												th:text="'승인되지 않은 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'">
+											</td>
 											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
 										</tr>
 								</tbody>
@@ -126,13 +182,30 @@
 
 
 
-
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script src="/js/open_menu.js"></script>
 		<script src="/js/admin.js"></script>
 		<script>
-			
+			$(document).ready(function() {
+				$("#searchButton").click(function() {
+					var searchType = $("searchType").val();
+					var searchInput = $("searchInput").val();
+					var data = {type : searchType,
+								keyword : searchInput};
+								
+					$.ajax({
+						url:"admin/search",
+						type:"post",
+						contentType:"application/json",
+						data: json.stringify(data),
+						success: function(response) {
+							
+						}
+					})
+				})
+			})
 		</script>
-	
+
 	</div>
 </body>
 

@@ -23,7 +23,7 @@
 							<div class="list-name">대표이름</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_name" id="owner_name">
+								<input type="text" name="owner_name" id="owner_name" oninput="activate()">
 							</div>
 							<span class="owner_check" id="owner_check"></span>
 						</div>
@@ -31,7 +31,7 @@
 							<div class="list-name">대표이메일</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_email" id="owner_email">
+								<input type="text" name="owner_email" id="owner_email" oninput="activate()">
 							</div>
 							<span class="email_check" id="email_check"></span>
 						</div>
@@ -39,7 +39,7 @@
 							<div class="list-name">대표번호</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_phone" id="owner_phone">
+								<input type="text" name="owner_phone" id="owner_phone" oninput="activate()">
 							</div>
 							<span class="phone_check" id="phone_check"></span>
 						</div>
@@ -54,7 +54,7 @@
 							<div class="list-name">대표이름</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name">
+								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name" oninput="activate()">
 							</div>
 							<span class="owner_check" id="owner_check"></span>
 						</div>
@@ -63,7 +63,7 @@
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
 								<input type="text" name="owner_email" th:value="${com_info.owner_email}"
-									id="owner_email">
+									id="owner_email" oninput="activate()">
 							</div>
 							<span class="email_check" id="email_check"></span>
 						</div>
@@ -72,7 +72,7 @@
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
 								<input type="text" name="owner_phone" th:value="${com_info.owner_phone}"
-									id="owner_phone">
+									id="owner_phone" oninput="activate()">
 							</div>
 							<span class="phone_check" id="phone_check"></span>
 						</div>
@@ -146,10 +146,6 @@
 				}
 			}
 
-			document.getElementById('owner_name').addEventListener('input', nameCheck);
-			document.getElementById('owner_email').addEventListener('input', emailCheck);
-			document.getElementById('owner_phone').addEventListener('input', phoneCheck);
-
 			// 대표명 유효성 검사
 			// 영어나 한글로 이루어진 2~15자
 			function nameCheck() {
@@ -201,12 +197,6 @@
 					return true;
 				}
 			}
-
-			document.querySelectorAll('input[type=text]').forEach(function (input) {
-				input.addEventListener('input', function () {
-					activate();
-				});
-			});
 
 			function activate() {
 				let nameValid = nameCheck();
