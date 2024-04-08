@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.announcement.dto.AskDto;
 import com.example.demo.announcement.dto.NoticeDto;
-
+import com.example.demo.announcement.service.AskService;
 import com.example.demo.announcement.service.NoticeService;
 
 @Controller
@@ -21,6 +22,7 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+
 	
 	@GetMapping("")
 	public String showboardPage(Model model) {
@@ -34,10 +36,14 @@ public class NoticeController {
 		return "html/announcement/board_notice";
 	}
 	
+
+	
 	@PostMapping("/insert")
 	public String insertUser(@ModelAttribute NoticeDto noticeDTO) {
 		noticeDTO.setCreate_date(LocalDate.now());
 		noticeService.insert(noticeDTO);
-		return "html/announcement/board_notice";
+		return "redirect:/notice";
 	}
+	
+
 }

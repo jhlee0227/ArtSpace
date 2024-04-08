@@ -22,7 +22,7 @@
       <ul>
         <li th:each="notice : ${noticeList}">
           <h3>
-            <a href="#" target="_blank" class="content-wrapper"th:text="${notice.subject}"></a>
+            <span class="content-wrapper"th:text="${notice.subject}"></span>
 			<span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
 			<div class= time><span th:text="${notice.create_date}"></span> </div>
           </h3>
@@ -33,7 +33,7 @@
         
   
         <div class="writeBtn">
-          <a href="write.html">글쓰기</a>
+          <a th:href="@{/notice/write}">글쓰기</a>
       </div>
 
     </div>
