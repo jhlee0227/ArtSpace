@@ -26,7 +26,10 @@
 		          <div class="button">
 		            <button onclick="location.href=''">공연장 정보</button>
 					<button th:attr="data-hall-id=${hall.hall_id}" onclick="goHallForm(this)">정보 수정</button>
-		            <button onclick="location.href=''">공연장 삭제</button>
+					<form method="post" th:action="@{/company/hall/delete}">
+						<input type="hidden" name="hall_id" th:value="${hall.hall_id}">
+						<button type="submit" onclick="return confirmDelete()">공연장 삭제</button>
+					</form>
 		          </div>
 		        </div>
 		      </div>
@@ -40,6 +43,16 @@
 			function goHallForm(button) {
 		        var hallId = button.getAttribute("data-hall-id");
 		        window.location.href = "/hall/form/" + hallId;
+			}
+			
+			function confirmDelete() {
+				var result = confirm("공연장을 삭제하시겠습니까?")
+				if (result) {
+					alert("공연장이 삭제되었습니다.")
+					return true;
+				} else {
+					return false;
+				}
 			}
 		  </script>
 	</div>

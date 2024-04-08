@@ -70,6 +70,30 @@ function selectAll2(selectAll2) {
     })
 }
 
+/* 탭 3번 */
+function checkSelectAll3() {
+    // 전체 체크박스
+    const checkboxes3 = document.querySelectorAll('input[name="check3"]');
+    // 선택된 체크박스
+    const checked3 = document.querySelectorAll('input[name="check3"]:checked');
+    // select all 체크박스
+    const selectAll3 = document.querySelector('input[name="selectAll3"]');
+
+    if (checkboxes3.length === checked3.length) {
+        selectAll3.checked = true;
+    } else {
+        selectAll3.checked = false;
+    }
+}
+
+function selectAll3(selectAll3) {
+    const checkboxes3 = document.getElementsByName('check3');
+
+    checkboxes3.forEach((checkbox) => {
+        checkbox.checked = selectAll3.checked
+    })
+}
+
 // tab을 클릭했을 때 다른 tab의 체크박스 체크 해제
 function checkboxClear() {
 	// tab들의 ID값

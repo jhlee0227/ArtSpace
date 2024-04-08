@@ -111,7 +111,7 @@ body {
 }
 
 .con .content .tab_item {
-	width: calc(100%/2);
+	width: calc(100%/3);
 	height: 50px;
 	border-bottom: 3px solid var(--main-color);
 	background-color: #f8f8f8;
@@ -143,6 +143,7 @@ input[name="tab_item"] {
 }
 
 #all:checked~#all_content,
+#notLeave:checked~#notLeave_content,
 #leave:checked~#leave_content {
 	display: block;
 }

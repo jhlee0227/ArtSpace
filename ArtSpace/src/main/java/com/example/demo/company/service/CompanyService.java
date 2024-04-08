@@ -19,4 +19,6 @@ public interface CompanyService {
 
 	public CompanyDTO findByID(Integer user_id);
 
+	public void hallDelete(Integer hall_id);
+
 }
