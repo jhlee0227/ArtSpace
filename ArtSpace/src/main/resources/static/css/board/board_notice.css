@@ -122,17 +122,14 @@
     padding: 10px;
 }
 
+
 .btn-edit {
     position: absolute; /* 절대적인 값 */
     right: 0;
     bottom: 0;
     padding: 10px;
     margin: 10px 10px 20px 10px  ;
-}
-
-.btn-edit a {
-    padding: 10px;
-    background-color: #FFCA63;
-    color: #fff;
     border-radius: 10px;
 }
+
+
