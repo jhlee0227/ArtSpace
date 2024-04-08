@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
@@ -31,9 +32,14 @@ public class CompanyDAO {
 		sqlSession.update("company.reserveDelete", reserve_id);
 	}
 
-	public List<ReviewDTO> getReview() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("company.getReview");
+	public void updateInfo(CompanyDTO dto) {
+		
+		sqlSession.update("company.updateInfo", dto);
+	}
+
+	public CompanyDTO findByID(Integer user_id) {
+		
+		return sqlSession.selectOne("company.info", user_id);
 	}
 	
 	

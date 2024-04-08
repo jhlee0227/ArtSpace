@@ -32,6 +32,8 @@ body {
 	margin-left: 180px;
 	min-height: 100%;
 	height: auto;
+	padding-top: 4rem;
+	padding-bottom: 20rem;
 }
 
 .con .left .left-main {
@@ -84,10 +86,12 @@ body {
 
 .con .content {
 	width: 70vw;
+	margin-top: 5rem;
 	margin-right: 180px;
 	margin-left: 50px;
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 20rem;
 }
 
 .con .content .content-main {
@@ -95,7 +99,7 @@ body {
 	font-weight: bold;
 	text-align: center;
 	padding: 1rem 0;
-	margin-bottom: 1rem;
+	margin-bottom: 3rem;
 }
 
 .con .content .search {

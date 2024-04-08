@@ -56,7 +56,8 @@
 											<td th:text="${user.nickname}"></td>
 											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
 											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
-											<td th:if="${#strings.equals(user.authority, 'SC')}" th:text="법인"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCN')}" th:text="'승인되지 않은 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'"></td>
 											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
 											<td th:if="${#strings.equals(user.leave_status, 'N')}" th:text="탈퇴X"></td>
 										</tr>
@@ -107,7 +108,8 @@
 											<td th:text="${user.nickname}"></td>
 											<td th:if="${#strings.equals(user.authority, 'SU')}" th:text="일반"></td>
 											<td th:if="${#strings.equals(user.authority, 'SA')}" th:text="관리자"></td>
-											<td th:if="${#strings.equals(user.authority, 'SC')}" th:text="법인"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCN')}" th:text="'승인되지 않은 법인'"></td>
+											<td th:if="${#strings.equals(user.authority, 'SCY')}" th:text="'승인된 법인'"></td>
 											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
 										</tr>
 								</tbody>

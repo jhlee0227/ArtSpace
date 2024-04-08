@@ -32,6 +32,7 @@ body {
 	margin-left: 180px;
 	min-height: 100%;
 	height: auto;
+	padding-top: 4rem;
 	padding-bottom: 20rem;
 }
 
@@ -86,6 +87,7 @@ body {
 
 .con .content {
 	width: 70vw;
+	margin-top: 5rem;
 	margin-right: 180px;
 	margin-left: 50px;
 	display: flex;

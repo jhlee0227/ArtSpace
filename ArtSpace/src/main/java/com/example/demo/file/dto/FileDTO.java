@@ -1,4 +1,4 @@
-package com.example.demo.file;
+package com.example.demo.file.dto;
 
 public class FileDTO {
 	// 홈페이지 파일에 대한 table
