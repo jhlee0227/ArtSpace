@@ -50,10 +50,5 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getAllHalls();
 	}
 
-	@Override
-	public List<ReviewDTO> getAllReviews() {
-		
-		return adminDAO.getAllReviews();
-	}
 	
 }

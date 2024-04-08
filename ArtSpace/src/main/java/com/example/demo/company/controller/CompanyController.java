@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.SessionUtil;
+import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.company.service.CompanyService;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
@@ -91,11 +92,25 @@ public class CompanyController {
 		return "redirect:/mypage";
 	}
 
+	// 사업자정보
 	@GetMapping("/info")
 	public String companyInfo(Model model) {
 		myInfo(model);
 		
+		CompanyDTO comDTO = companyService.findByID(user_session.getUser_id());
+		model.addAttribute("com_info", comDTO);
+		
 		return "html/company/company_info";
+	}
+	
+	// 사업자정보 등록
+	@PostMapping("/info")
+	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto) {
+		user_session.setSessionValue(session);
+		
+		dto.setUser_id(user_session.getUser_id());
+		companyService.updateInfo(dto);
+		return "redirect:/company/info";
 	}
 
 	// 등록한 공연장 목록
@@ -140,16 +155,6 @@ public class CompanyController {
 		
 		companyService.reserveDelete(reserve_id);
 		return "redirect:/company/reserve";
-	}
-	
-	// 등록한 공연장에 대한 리뷰 조회
-	@GetMapping("review")
-	public String companyReview(Model model) {
-		myInfo(model);
-		
-		List<ReviewDTO> reviewList = companyService.getReview();
-		model.addAttribute("review_list", reviewList);
-		return "html/company/company_review";
 	}
 
 }

@@ -118,14 +118,4 @@ public class AdminController {
 		return "html/admin/admin_notice";
 	}
 
-	// 리뷰 전체 조회
-	@GetMapping("/review")
-	public String review(Model model) {
-		myInfo(model);
-		
-		List<ReviewDTO> reviewList = adminService.getAllReviews();
-		model.addAttribute("review_list", reviewList);
-		return "html/admin/admin_review";
-	}
-
 }

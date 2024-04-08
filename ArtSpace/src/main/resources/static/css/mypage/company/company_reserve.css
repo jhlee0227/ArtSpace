@@ -24,7 +24,6 @@ body {
 	height: auto;
 	padding-top: 90px;
 	display: flex;
-	padding-bottom: 250px;
 }
 
 .con .left {
@@ -33,6 +32,7 @@ body {
 	margin-left: 180px;
 	min-height: 100%;
 	height: auto;
+	padding-top: 4rem;
 	padding-bottom: 20rem;
 }
 
@@ -87,6 +87,7 @@ body {
 
 .con .content {
 	width: 70vw;
+	margin-top: 5rem;
 	margin-right: 180px;
 	margin-left: 50px;
 	display: flex;
@@ -99,7 +100,7 @@ body {
 	font-weight: bold;
 	text-align: center;
 	padding: 1rem 0;
-	margin-bottom: 1rem;
+	margin-bottom: 3rem;
 }
 
 .con .content .list .item {

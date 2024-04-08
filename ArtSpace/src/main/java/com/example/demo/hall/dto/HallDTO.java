@@ -26,6 +26,7 @@ public class HallDTO {
 	private Integer views;		// 조회수
 	private LocalDate create_date;		// 등록 날짜
 	private Integer user_id;		// 유저ID FK
+	private String name;			// 유저이름
 	
 	private List<EquipmentDTO> equiList;
 	private List<HallTimeDTO> hallTimeList;
@@ -194,6 +195,12 @@ public class HallDTO {
 	}
 	public void setRating(Float rating) {
 		this.rating = rating;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	

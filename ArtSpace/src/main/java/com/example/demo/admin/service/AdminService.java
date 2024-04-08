@@ -20,5 +20,4 @@ public interface AdminService {
 	
 	public List<HallDTO> getAllHalls();
 
-	public List<ReviewDTO> getAllReviews();
 }

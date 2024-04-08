@@ -38,10 +38,6 @@ public class AdminDAO {
 		return sqlSession.selectList("admin.getAllHalls");
 	}
 
-	public List<ReviewDTO> getAllReviews() {
-		
-		return sqlSession.selectList("admin.getAllReviews");
-	}
 
 //	public List<UserDTO> searchUsersByNickname(String keyword) {
 //		Map<String, String> param = new HashMap<>();
