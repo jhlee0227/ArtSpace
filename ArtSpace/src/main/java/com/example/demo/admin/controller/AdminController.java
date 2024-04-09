@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.admin.service.AdminService;
@@ -117,36 +118,28 @@ public class AdminController {
 //		
 //		return "html/admin/admin :: #searchResults";
 //	}
-	
+
 	@PostMapping("/search")
-	public String searchUsers(@RequestParam("searchParam") String searchParam) {
-		String[] params = searchParam.split(",");
-		String type = params[0];
-		String keyword = params[1];
-		
-		if ("email".equals(type)) {
-			
-		} else if ("nickname".equals(type)) {
-			
-		}
-		
-		return "redirect:/admin";
+	@ResponseBody
+	public List<UserDTO> searchUsers(@RequestParam String type, @RequestParam String keyword) {
+		List<UserDTO> userList = adminService.searchUsers(type, keyword);
+		return userList;
 	}
-	
+
 	// 법인 회원 승인 요청 조회
 	@GetMapping("/company")
 	public String approveCompany(Model model) {
 		myInfo(model);
-		
+
 		List<CompanyDTO> comList = adminService.getCompany();
 		model.addAttribute("com_list", comList);
-		
+
 //		for (CompanyDTO company : comList) {
 //		    int companyId = company.getCompany_id();
 //		    List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
 //		    model.addAttribute("com_file_list_" + companyId, comFileList);
 //		}
-		return "html/admin/admin_approve";
+		return "html/admin/admin_company";
 	}
 
 	// 공연장 정보 목록 조회
@@ -163,7 +156,7 @@ public class AdminController {
 	@GetMapping("/notice")
 	public String notice(Model model) {
 		myInfo(model);
-		
+
 		List<NoticeDto> noticeList = adminService.getAllNotice();
 		model.addAttribute("notice_list", noticeList);
 		return "html/admin/admin_notice";
