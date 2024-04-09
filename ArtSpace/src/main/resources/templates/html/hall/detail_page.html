@@ -465,8 +465,8 @@
                 </div>
 
                 <div class="edit">
-                  <form>
-                    <textarea></textarea>
+                  <form id="questionForm">
+                    <textarea id="questionTextarea" name="questionContent"></textarea>
                     <br>
                     <input type="submit" value="등록">
                   </form>
@@ -475,76 +475,13 @@
                 <br>
 
                 <div class="title">
-                  <h1>문의<span> 5</span></h1>
+                  <h1>문의<span id="questionCount"> </span></h1>
                 </div>
 
                 <br>
 
-                <div class="question-nickname">
-                  <span id="name">닉네임</span>
-                  <span id="date">2024-03-11</span>
-                </div>
-
-                <div class="question-content">문의합니다.
-                  사용일자에 대해서 어쩌고 저쩌고 하려고 하는데 괜찮을까요?
-                </div>
-
-                <div class="answer-nickname">
-                  <i class="fa-solid fa-reply"> Re) </i>
-                  <span id="name">공연장측 게시자 닉네임</span>
-                  <span id="date">2024-03-11</span>
-                </div>
-
-                <div class="answer-content">안녕하세요. OOO입니다.
-
-                  자세한 문의 사항은 상세 페이지의 전화번호로 문의 주시면 감사하겠습니다.
-                </div>
-
-                <br>
-                <br>
-
-                <div class="question-nickname">
-                  <span id="name">닉네임</span>
-                  <span id="date">2024-03-11</span>
-                </div>
-
-                <div class="question-content">문의합니다.
-                  사용일자에 대해서 어쩌고 저쩌고 하려고 하는데 괜찮을까요?
-                </div>
-
-                <div class="answer-nickname">
-                  <i class="fa-solid fa-reply"> Re) </i>
-                  <span id="name">공연장측 게시자 닉네임</span>
-                  <span id="date">2024-03-11</span>
-                </div>
-
-                <div class="answer-content">안녕하세요. OOO입니다.
-
-                  자세한 문의 사항은 상세 페이지의 전화번호로 문의 주시면 감사하겠습니다.
-                </div>
-
-                <br>
-                <br>
-
-                <div class="question-nickname">
-                  <span id="name">닉네임</span>
-                  <span id="date">2024-03-11</span>
-                </div>
-
-                <div class="question-content">문의합니다.
-                  사용일자에 대해서 어쩌고 저쩌고 하려고 하는데 괜찮을까요?
-                </div>
-
-                <div class="answer-nickname">
-                  <i class="fa-solid fa-reply"> Re) </i>
-                  <span id="name">공연장측 게시자 닉네임</span>
-                  <span id="date">2024-03-11</span>
-                </div>
-
-                <div class="answer-content">안녕하세요. OOO입니다.
-
-                  자세한 문의 사항은 상세 페이지의 전화번호로 문의 주시면 감사하겠습니다.
-                </div>
+                <div id="questionsContainer">
+        		</div>
 
                 <br>
 
@@ -579,149 +516,9 @@
 
       <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
       
-      <script>
-		  var onSdate = document.querySelector('select[name="sam-pm"] > option:checked').innerText;
-		  if(onSdate == "오전") {
-			  onSdate = "100000";
-			  Number(onSdate);
-		  } else if(onSdate == "오후") {
-			  onSdate = "150000";
-			  Number(onSdate);
-		  } else if(onSdate == "야간") {
-			  onSdate = "100000";
-			  Number(onSdate);
-		  } else {
-			  onSdate = "0";
-			  Number(onSdate);
-		  }
-		  
-		  console.log(onSdate);
-		  
-		  
-		  var onEdate = document.querySelector('select[name="eam-pm"] > option:checked').innerText;
-		  if(onEdate == "오전") {
-			  onEdate = "100000";
-			  Number(onEdate);
-		  } else if(onEdate == "오후") {
-			  onEdate = "150000";
-			  Number(onEdate);
-		  } else if(onEdate == "야간") {
-			  onEdate = "100000";
-			  Number(onEdate);
-		  } else {
-			  onEdate = "0";
-			  Number(onEdate);
-		  }
-		  
-		  console.log(onEdate);
-		  
-		  
-		  var onMic = document.querySelector('select[name="mic-count"] > option:checked').value;
-		  if(("#line").is(":checked") == true) {
-		  	if(onMic == 1) {
-			  	onMic = 7000;
-		  	} else if(onMic == 2) {
-			  	onMic = 14000;
-		  	} else {
-			  	onMic = 0;
-		  	}
-		  } else {
-			  onMic = 0;
-		  }
-		  
-		  console.log(onMic);
-		  
-		  
-		  var onNmic = document.querySelector('select[name="nmic-count"] > option:checked').value;
-		  if(("#noline").is(":checked") == true) {
-		  	if(onNmic == 1) {
-			  	onNmic = 10000;
-		  	} else if(onNmic == 2) {
-			  	onNmic = 20000;
-		  	} else {
-			  	onNmic = 0;
-		  	}
-		  } else {
-			  onNmic = 0;
-		  }
-		  
-		  console.log(onNmic);
-		  
-		  
-		  var onMsk = document.querySelector('select[name="mspeaker-use"] > option:checked').innerText;
-		  if(("#main").is(":checked") == true) {
-			  if(onMsk == "예") {
-				  onMsk = "150000";
-				  Number(onMsk);
-			  } else {
-				  onMsk = "0";
-				  Number(onMsk);
-			  }
-		  } else {
-			  onMsk = "0";
-			  Number(onMsk);
-		  }
-		  
-		  console.log(onMsk);
-		  
-		  
-		  var onSusk = document.querySelector('select[name="suspeaker-use"] > option:checked').innerText;
-		  if(("#sub").is(":checked") == true) {
-			  if(onSusk == "예") {
-				  onSusk = "100000";
-				  Number(onSusk);
-			  } else {
-				  onSusk = "0";
-				  Number(onSusk);
-			  }
-		  } else {
-			  onSusk = "0";
-			  Number(onSusk);
-		  }
-		  
-		  console.log(onSusk);
-		  
-		  
-		  var onWsk = document.querySelector('select[name="wspeaker-use"] > option:checked').innerText;
-		  if(("#woofer").is(":checked") == true) {
-			  if(onWsk == "예") {
-				  onWsk = "100000";
-				  Number(onWsk);
-			  } else {
-				  onWsk = "0";
-				  Number(onWsk);
-			  }
-		  } else {
-			  onWsk = "0";
-			  Number(onWsk);
-		  }
-		  
-		  console.log(onWsk);
-		  
-		  
-		  var onStsk = document.querySelector('select[name="stspeaker-use"] > option:checked').innerText;
-		  if(("#stage").is(":checked") == true) {
-			  if(onStsk == "예") {
-				  onStsk = "100000";
-				  Number(onStsk);
-			  } else {
-				  onStsk = "0";
-				  Number(onStsk);
-			  }
-		  } else {
-			  onStsk = "0";
-			  Number(onStsk);
-		  }
-		  
-		  console.log(onStsk);
-		  
-		  
-		  var onLight = document.querySelector('select[name="stspeaker-use"] > option:checked').innerText;
-		  var onMoving = $('select[name="moving-count"] > option:checked').val();
-		  
-		  
-		  
-	  </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      
+      <script src="/src/main/resources/static/js/detail_qna.js"></script>
       
       </div>
 

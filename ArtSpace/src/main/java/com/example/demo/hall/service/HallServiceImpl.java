@@ -1,14 +1,20 @@
 package com.example.demo.hall.service;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.file.dao.FileDAO;
+import com.example.demo.file.dao.HallFileDAO;
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dao.HallDAO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallImageDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
 
 
@@ -17,6 +23,12 @@ public class HallServiceImpl implements HallService{
 
 	@Autowired
 	HallDAO hallDAO;
+	
+	@Autowired
+	FileDAO fileDAO;
+	
+	@Autowired
+	HallFileDAO hallFileDAO;
 	
 
 	@Override
@@ -130,6 +142,31 @@ public class HallServiceImpl implements HallService{
 	@Override
 	public void deleteHallTime(Integer id) {
 		hallDAO.deleteAllTime(id);
+	}
+
+
+	// 파일리스트 리턴함
+	@Override
+	public List<FileDTO> getImageList(Integer hall_id) {
+		List<Integer> fileIDList = hallFileDAO.getImageList(hall_id);
+		if(fileIDList.size() > 0 ) {
+			List<FileDTO> files = fileDAO.getFileList(fileIDList);
+			return files;
+		}
+		return null;			
+	}
+
+
+	// 정보 업데이트 전에 기존 사진 모두 삭제
+	@Override
+	public void deleteImages(Integer hall_id) {
+		List<Integer> fileIDList = hallFileDAO.getImageList(hall_id);
+		if(fileIDList.size() > 0 ) {
+			hallFileDAO.deleteImages(hall_id);
+			fileDAO.deleteFiles(fileIDList);
+		}		
+		
+		
 	}
 
 

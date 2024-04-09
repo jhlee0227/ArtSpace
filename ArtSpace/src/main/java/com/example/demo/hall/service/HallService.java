@@ -1,7 +1,9 @@
 package com.example.demo.hall.service;
 
+import java.io.File;
 import java.util.List;
 
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
@@ -32,6 +34,10 @@ public interface HallService {
 	public void deleteEqui(Integer id);
 
 	public void deleteHallTime(Integer id);
+
+	public List<FileDTO> getImageList(Integer id);
+
+	public void deleteImages(Integer id);
 
 
 

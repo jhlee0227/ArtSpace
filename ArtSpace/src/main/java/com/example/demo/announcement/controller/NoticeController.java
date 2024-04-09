@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.SessionUtil;
 import com.example.demo.announcement.dto.AskDto;
 import com.example.demo.announcement.dto.NoticeDto;
 import com.example.demo.announcement.service.AskService;
 import com.example.demo.announcement.service.NoticeService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/notice")
@@ -22,12 +25,21 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	HttpSession session;
 
+	SessionUtil user_session = new SessionUtil();
 	
 	@GetMapping("")
 	public String showboardPage(Model model) {
 		List<NoticeDto> noticeList = noticeService.getNotice();
 		model.addAttribute("noticeList", noticeList);
+		
+		user_session.setSessionValue(session);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
+		model.addAttribute("authority", user_session.getAuthority());
 		return "html/announcement/notice";	
 	}
 	
