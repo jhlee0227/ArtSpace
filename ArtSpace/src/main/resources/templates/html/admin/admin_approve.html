@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layout/default_layout}" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/mypage/admin/admin_approve.css">
+</head>
+<body>
+  <div layout:fragment="content">
+    <section class="con">
+      <!-- 좌측메뉴 -->
+      <div th:replace="~{fragments/mypage_admin :: mypage_admin_fragment}"></div>
+      <!-- 내용 -->
+      <div class="content">
+        <h2 class="content-main">법인 회원 승인</h2>
+        <div class="main">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll"
+                  onclick="selectAll1(this)">
+                <th>이메일</th>
+                <th>사업자등록증</th>
+                <th>영업신고증</th>
+                <th>통장사본</th>
+                <th>법인등기부등본</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="com : ${com_list}">
+                <td><input type="checkbox" th:value="${com.user_id}" class="chkbox"
+                  name="check1" onclick="checkSelectAll1()"></td>
+                <td th:text="${com.email}"></td>
+                <td><a href="https://storage.googleapis.com/art_space/1b354629-1f66-407d-8e32-d657956ce419_%EC%98%81%EC%97%85%EC%8B%A0%EA%B3%A0%EC%A6%9D_%EC%83%98%ED%94%8C.pdf">오잉</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="button">
+            <a class="submit-btn" type="button">승인</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

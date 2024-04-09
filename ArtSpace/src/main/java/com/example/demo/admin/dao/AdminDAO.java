@@ -8,6 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.announcement.dto.NoticeDto;
+import com.example.demo.company.dto.CompanyDTO;
+import com.example.demo.company.dto.CompanyFileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -37,6 +40,21 @@ public class AdminDAO {
 		
 		return sqlSession.selectList("admin.getAllHalls");
 	}
+
+	public List<NoticeDto> getAllNotice() {
+		
+		return sqlSession.selectList("admin.getAllNotice");
+	}
+
+	public List<CompanyDTO> getCompany() {
+		
+		return sqlSession.selectList("admin.getCompany");
+	}
+
+//	public List<CompanyFileDTO> getCompanyFile(int companyId) {
+//		
+//		return sqlSession.selectList("admin.getCompanyFile", companyId);
+//	}
 
 
 //	public List<UserDTO> searchUsersByNickname(String keyword) {

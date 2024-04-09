@@ -95,6 +95,12 @@ body {
 	padding-bottom: 20rem;
 }
 
+.con .content .msg {
+	font-size: 3rem;
+	color: red;
+	text-align: center;
+}
+
 .con .content .content-main {
 	font-size: 3.5rem;
 	font-weight: bold;
@@ -253,6 +259,21 @@ body {
 .con .content .paper .button {
 	text-align: right;
 	margin-top: 1rem;
+}
+
+.con .content .paper button:disabled {
+	cursor: default;
+	padding: 0 1rem;
+	margin-left: auto;
+	display: inline-block;
+	background-color: var(--light_gray);
+	border: var(--border);
+	border-radius: 1rem;
+	color: var(--white);
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+	box-shadow: var(--box-shadow);
 }
 
 .con .content .paper button {

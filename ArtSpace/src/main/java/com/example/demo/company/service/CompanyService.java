@@ -8,7 +8,7 @@ import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 
 public interface CompanyService {
-
+	
 	public List<HallDTO> getHall(Integer user_id);
 
 	public List<ReservationDTO> getReserve(Integer user_id);
@@ -20,5 +20,7 @@ public interface CompanyService {
 	public CompanyDTO findByID(Integer user_id);
 
 	public void hallDelete(Integer hall_id);
+
+	public int fileCount(Integer company_id);
 
 }

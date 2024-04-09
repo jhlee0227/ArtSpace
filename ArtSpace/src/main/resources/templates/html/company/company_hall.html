@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layout/default_layout}" lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/mypage/company/company_hall.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/mypage/company/company_hall.css">
 </head>
+
 <body>
-	<div layout:fragment="content">	
+	<div layout:fragment="content">
 		<section class="con">
-		     <!-- 좌측 메뉴 -->
-			 <div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
-			 <!-- 내용 -->
-		     <div class="content">
-		      <h2 class="content-main">내 공연장</h2>
-		      <div class="list" th:each="hall : ${my_hall}">
-		        <div class="item">
-		          <div class="img">
-		            <img src="/img/hallex.jpg" class="profile" alt="">
-		          </div>
-		          <div class="hall-info">
-		            <div class="hall-name" th:text="${hall.hall_name}"></div>
-		            <div class="hall-region" th:text="${hall.address1 + ' ' + hall.address2}"></div>
-		          </div>
-		          <div class="button">
-		            <button onclick="location.href=''">공연장 정보</button>
-					<button th:attr="data-hall-id=${hall.hall_id}" onclick="goHallForm(this)">정보 수정</button>
-					<form method="post" th:action="@{/company/hall/delete}">
-						<input type="hidden" name="hall_id" th:value="${hall.hall_id}">
-						<button type="submit" onclick="return confirmDelete()">공연장 삭제</button>
-					</form>
-		          </div>
-		        </div>
-		      </div>
-			  <a th:href="@{/hall/form}"><div class="hall-insert">공연장 등록</div></a>
-		     </div>
-		  </section>
-		  
-		  
-		  <script src="/js/open_menu.js"></script>
-		  <script>
-			function goHallForm(button) {
-		        var hallId = button.getAttribute("data-hall-id");
-		        window.location.href = "/hall/form/" + hallId;
+			<!-- 좌측 메뉴 -->
+			<div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
+			<!-- 내용 -->
+			<div class="content">
+				<h2 class="content-main" th:if="${#strings.equals(my_info.authority, 'SCY')}">내 공연장</h2>
+				<div class="msg">
+					<p th:if="${#strings.equals(my_info.authority, 'SCN')}">관리자 승인 후 이용 가능합니다.</p>
+				</div>
+				<div class="list" th:each="hall : ${my_hall}" th:if="${#strings.equals(my_info.authority, 'SCY')}">
+					<div class="item">
+						<div class="img">
+							<img src="/img/hallex.jpg" class="profile" alt="">
+						</div>
+						<div class="hall-info">
+							<div class="hall-name" th:text="${hall.hall_name}"></div>
+							<div class="hall-region" th:text="${hall.address1 + ' ' + hall.address2}"></div>
+						</div>
+						<div class="button">
+							<button onclick="location.href=''">공연장 정보</button>
+							<button th:attr="data-hall-id=${hall.hall_id}" onclick="goHallForm(this)">정보 수정</button>
+							<form method="post" th:action="@{/company/hall/delete}">
+								<input type="hidden" name="hall_id" th:value="${hall.hall_id}">
+								<button type="submit" onclick="return confirmDelete()">공연장 삭제</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<span class="hall-insert" th:if="${#strings.equals(my_info.authority, 'SCY')}">
+					<a th:href="@{/hall/form}">공연장 등록</a>
+				</span>
+
+	</div>
+	</section>
+
+
+	<script src="/js/open_menu.js"></script>
+	<script>
+		function goHallForm(button) {
+			var hallId = button.getAttribute("data-hall-id");
+			window.location.href = "/hall/form/" + hallId;
+		}
+
+		function confirmDelete() {
+			var result = confirm("공연장을 삭제하시겠습니까?")
+			if (result) {
+				alert("공연장이 삭제되었습니다.")
+				return true;
+			} else {
+				return false;
 			}
-			
-			function confirmDelete() {
-				var result = confirm("공연장을 삭제하시겠습니까?")
-				if (result) {
-					alert("공연장이 삭제되었습니다.")
-					return true;
-				} else {
-					return false;
-				}
-			}
-		  </script>
+		}
+	</script>
 	</div>
 
- 
+
 </body>
+
 </html>

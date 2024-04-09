@@ -12,5 +12,9 @@
 			</selectKey>
 	</insert>
 
-
+	<insert id="insertCFile">
+		insert into company_file (file_name, file_id, company_id)
+		values (#{file_name}, #{file_id}, #{company_id})
+	</insert>
+	
 </mapper>
