@@ -70,6 +70,7 @@
   }  
   .content {
     display: none; /* 기본적으로 본문 숨김 */
+     margin-top: 1.5rem;
   }
   
   .content.show {
