@@ -28,6 +28,7 @@ $(document).ready(function(){
 });
 
 let imgList = document.querySelectorAll('.selProductFile');
+let deleteImg = [];
 
 /*imgList.forEach(function(img){
 	console.log(new Blob(img.src, { type: "image/png" }));
