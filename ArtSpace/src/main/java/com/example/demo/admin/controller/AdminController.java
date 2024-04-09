@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.admin.service.AdminService;
+import com.example.demo.announcement.dto.NoticeDto;
+import com.example.demo.company.dto.CompanyDTO;
+import com.example.demo.company.dto.CompanyFileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.service.MypageService;
@@ -129,6 +132,22 @@ public class AdminController {
 		
 		return "redirect:/admin";
 	}
+	
+	// 법인 회원 승인 요청 조회
+	@GetMapping("/company")
+	public String approveCompany(Model model) {
+		myInfo(model);
+		
+		List<CompanyDTO> comList = adminService.getCompany();
+		model.addAttribute("com_list", comList);
+		
+//		for (CompanyDTO company : comList) {
+//		    int companyId = company.getCompany_id();
+//		    List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
+//		    model.addAttribute("com_file_list_" + companyId, comFileList);
+//		}
+		return "html/admin/admin_approve";
+	}
 
 	// 공연장 정보 목록 조회
 	@GetMapping("/hallinfo")
@@ -140,8 +159,13 @@ public class AdminController {
 		return "html/admin/hall_info";
 	}
 
+	// 공지사항 목록 조회
 	@GetMapping("/notice")
-	public String notice() {
+	public String notice(Model model) {
+		myInfo(model);
+		
+		List<NoticeDto> noticeList = adminService.getAllNotice();
+		model.addAttribute("notice_list", noticeList);
 		return "html/admin/admin_notice";
 	}
 

@@ -21,22 +21,20 @@
 						<thead>
 							<tr>
 								<th>번호</th>
-								<th>분류</th>
 								<th>제목</th>
 								<th>작성날짜</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>[예시공지]</td>
-								<td>예를 들어 어쩌구 저쩌구</td>
-								<td>2024-03-15</td>
+							<tr th:each="notice, i : ${notice_list}">
+								<td th:text="${i.count}"></td>
+								<td th:text="${notice.subject}"></td>
+								<td th:text="${notice.create_date}"></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="button">
-						<input class="submit-btn" type="button" value="공지사항 등록">
+						<a class="submit-btn" type="button" th:href="@{/notice/write}">공지사항 등록</a>
 					</div>
 				</div>
 			</div>

@@ -22,11 +22,11 @@
 				<div class= time><span th:text="${ask.create_date}"></span> </div>
 		        </h3>
 		        <div class="content">
-		          <p th:text="${ask.content}"></p>
+		          <pre th:text="${ask.content}"></pre> 
 		        </div>
 		      </li>
 		      
-		      <div class="writeBtn">
+			  <div class="writeBtn" th:if="${#strings.equals(authority, 'SA')}">
 				<a th:href="@{/ask/write}">글쓰기</a>
 		      </div>
 		  </div>

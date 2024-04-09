@@ -27,13 +27,13 @@
 			<div class= time><span th:text="${notice.create_date}"></span> </div>
           </h3>
           <div class="content">
-            <p th:text="${notice.content}"></p>
+            <pre th:text="${notice.content}"></pre>
           </div>
         </li>
         
   
-        <div class="writeBtn">
-          <a th:href="@{/notice/write}">글쓰기</a>
+        <div class="writeBtn" th:if="${#strings.equals(authority, 'SA')}">
+          <a th:href="@{/notice/write}" >글쓰기</a>
       </div>
 
     </div>

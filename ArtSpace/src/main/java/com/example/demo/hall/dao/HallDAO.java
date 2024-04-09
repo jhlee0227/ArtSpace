@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallImageDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
 
 @Repository
@@ -101,6 +102,7 @@ public class HallDAO {
 		sqlSession.update("hall.update_hall_time",  hallTimes);
 	}
 	// UPDATE END //
+
 
 
 	

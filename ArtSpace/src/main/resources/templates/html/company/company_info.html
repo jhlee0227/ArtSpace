@@ -54,7 +54,8 @@
 							<div class="list-name">대표이름</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name" oninput="activate()">
+								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name"
+									oninput="activate()">
 							</div>
 							<span class="owner_check" id="owner_check"></span>
 						</div>
@@ -80,7 +81,13 @@
 					</div>
 				</form>
 				<div class="paper">
-					<form action="/api/gcs/upload" method="post" enctype="multipart/form-data">
+					<div class="msg">
+						<p th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount < 4}">관리자 승인 후 인증
+							완료됩니다.</p>
+					</div>
+					<form th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount >= 4}"
+						action="/api/gcs/upload" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="company_id" th:value="${com_info.company_id}" id="company_id">
 						<h2>증빙서류 제출</h2>
 						<div class="paper-list">
 							<div class="first">
@@ -89,7 +96,7 @@
 								<div class="list-con">※ 사업자 등록증을 입증할 수 있는 서류를 첨부해주세요<br>
 									※ pdf 파일만 등록할 수 있습니다.
 									<div class="file">
-										<input type="file" name="file" id="" accept=".pdf">
+										<input type="file" name="file" id="file1" accept=".pdf">
 									</div>
 								</div>
 							</div>
@@ -99,7 +106,7 @@
 								<div class="list-con">※ 영업 신고증을 입증할 수 있는 서류를 첨부해주세요<br>
 									※ pdf 파일만 등록할 수 있습니다.
 									<div class="file">
-										<input type="file" name="file" id="" accept=".pdf">
+										<input type="file" name="file" id="file2" accept=".pdf">
 									</div>
 								</div>
 							</div>
@@ -109,7 +116,7 @@
 								<div class="list-con">※ 통장 사본을 입증할 수 있는 서류를 첨부해주세요<br>
 									※ pdf 파일만 등록할 수 있습니다.
 									<div class="file">
-										<input type="file" name="file" id="" accept=".pdf">
+										<input type="file" name="file" id="file3" accept=".pdf">
 									</div>
 								</div>
 							</div>
@@ -119,13 +126,13 @@
 								<div class="list-con">※ 법인 등기부 등본을 입증할 수 있는 서류를 첨부해주세요<br>
 									※ pdf 파일만 등록할 수 있습니다.
 									<div class="file">
-										<input type="file" name="file" id="" accept=".pdf">
+										<input type="file" name="file" id="file4" accept=".pdf">
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="button">
-							<button>제출</button>
+							<button id="paperBtn" onclick="return submitCheck()" disabled>제출</button>
 						</div>
 					</form>
 				</div>
@@ -207,6 +214,40 @@
 					document.getElementById('btn').disabled = false;
 				} else {
 					document.getElementById('btn').disabled = true;
+				}
+			}
+
+			function checkFile() {
+				var fileInputs = document.querySelectorAll('input[type=file]');
+				var paperBtn = document.getElementById('paperBtn');
+				var allFile = true;
+
+				for (var i = 0; i < fileInputs.length; i++) {
+					if (fileInputs[i].value === '') {
+						allFile = false;
+						break;
+					}
+				}
+
+				paperBtn.disabled = !allFile;
+			}
+
+			document.addEventListener('DOMContentLoaded', function () {
+				var fileInputs = document.querySelectorAll('input[type=file]');
+				var paperBtn = document.getElementById('paperBtn');
+
+				fileInputs.forEach(function (fileInput) {
+					fileInput.addEventListener('change', checkFile);
+				});
+			})
+
+			function submitCheck() {
+				var result = confirm("서류를 제출 하시겠습니까?\n(*제출한 후에는 수정이 불가능합니다)");
+				if (result) {
+					alert("서류 제출이 완료되었습니다.\n(*관리자 승인 후 공연장 등록을 할 수 있습니다)");
+					return true;
+				} else {
+					return false;
 				}
 			}
 		</script>

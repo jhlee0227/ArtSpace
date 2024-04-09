@@ -52,4 +52,10 @@ public class CompanyServiceImpl implements CompanyService {
 		companyDAO.hallDelete(hall_id);
 	}
 
+	@Override
+	public int fileCount(Integer company_id) {
+		
+		return companyDAO.fileCount(company_id);
+	}
+
 }

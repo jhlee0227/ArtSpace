@@ -15,8 +15,11 @@
 			<div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
 			<!-- 내용 -->
 			<div class="content">
-				<h2 class="content-main">예약 내역</h2>
-				<div class="list" th:each="reserve : ${reserve_list}">
+				<h2 class="content-main" th:if="${#strings.equals(my_info.authority, 'SCY')}">예약 내역</h2>
+				<div class="msg">
+					<p th:if="${#strings.equals(my_info.authority, 'SCN')}">관리자 승인 후 이용 가능합니다.</p>
+				</div>
+				<div class="list" th:each="reserve : ${reserve_list}" th:if="${#strings.equals(my_info.authority, 'SCY')}">
 					<div class="item">
 						<div class="img">
 							<img src="/img/hallex.jpg" class="profile" alt="">

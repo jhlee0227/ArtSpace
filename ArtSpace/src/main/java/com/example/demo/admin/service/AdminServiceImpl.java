@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.admin.dao.AdminDAO;
+import com.example.demo.announcement.dto.NoticeDto;
+import com.example.demo.company.dto.CompanyDTO;
+import com.example.demo.company.dto.CompanyFileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -49,6 +52,23 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminDAO.getAllHalls();
 	}
+
+	@Override
+	public List<NoticeDto> getAllNotice() {
+		return adminDAO.getAllNotice();
+	}
+
+	@Override
+	public List<CompanyDTO> getCompany() {
+		
+		return adminDAO.getCompany();
+	}
+
+//	@Override
+//	public List<CompanyFileDTO> getCompanyFile(int companyId) {
+//		
+//		return adminDAO.getCompanyFile(companyId);
+//	}
 
 	
 }

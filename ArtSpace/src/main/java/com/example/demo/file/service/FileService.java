@@ -1,13 +1,18 @@
 package com.example.demo.file.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.file.dto.GCSRequest;
+import com.google.cloud.storage.Blob;
 
 public interface FileService {
 
-	void uploadObject(GCSRequest gcsRequest);
+	void uploadObject(MultipartFile[] files, Integer c_id);
 
-	void uploadHallImage(MultipartFile[] files, Integer id);
+	void insertHallImage(MultipartFile[] files, Integer id);
 
+	public List<Blob> downloadImage(List<FileDTO> files);
 }

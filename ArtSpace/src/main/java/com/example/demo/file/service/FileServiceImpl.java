@@ -1,27 +1,40 @@
 package com.example.demo.file.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.company.dto.CompanyFileDTO;
 import com.example.demo.file.dao.FileDAO;
 import com.example.demo.file.dao.HallFileDAO;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.file.dto.GCSRequest;
 import com.example.demo.hall.dto.HallImageDTO;
+import com.google.api.services.storage.model.StorageObject;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
+import com.google.common.io.Files;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -60,6 +73,23 @@ public class FileServiceImpl implements FileService {
 		byte[] bytes = file.getBytes();
 		storage.create(blobInfo, bytes);
 	}
+	
+	// GCS다운로드
+	private Blob downloadToGCS(String fileName) throws IOException {
+		String keyFileName = "quiet-chalice-419309-a18ccc6da276.json";
+		InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
+
+		Storage storage = StorageOptions.newBuilder()
+				.setCredentials(GoogleCredentials.fromStream(keyFile))
+				.build()
+				.getService();
+		
+		System.out.println(fileName);
+		Blob blob = storage.get(bucketName, fileName);
+		
+		return blob;
+	}
+
 
 	// DB에 정보 저장
 	private int saveToDB(MultipartFile file, String storedFileName) {
@@ -84,12 +114,22 @@ public class FileServiceImpl implements FileService {
 
 	// GCS에 업로드, DB에 저장
 	@Override
-	public void uploadObject(GCSRequest gcsRequest) {
+	public void uploadObject(MultipartFile[] files, Integer company_id) {
 		try {
-			MultipartFile file = gcsRequest.getFile();
-			String storedFileName = generateFileName(file);
-			uploadToGCS(file, storedFileName);
-			saveToDB(file, storedFileName);
+			for (MultipartFile file : files) {
+				String storedFileName = generateFileName(file);
+				uploadToGCS(file, storedFileName);
+				Integer file_id = saveToDB(file, storedFileName);
+				
+				// company_file 테이블에 정보 넣기
+				CompanyFileDTO cFile = new CompanyFileDTO();
+				cFile.setFile_id(file_id);
+				cFile.setCompany_id(company_id);
+				cFile.setFile_name(file.getOriginalFilename());
+				fileDAO.insertCFile(cFile);
+				
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +139,7 @@ public class FileServiceImpl implements FileService {
 	
 	// Hall_공연장 이미지들 등록
 	@Override
-	public void uploadHallImage(MultipartFile[] files, Integer hall_id) {
+	public void insertHallImage(MultipartFile[] files, Integer hall_id) {
 		try {
 			for (MultipartFile file : files) {
 				if(!file.isEmpty()) {
@@ -118,6 +158,21 @@ public class FileServiceImpl implements FileService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public List<Blob> downloadImage(List<FileDTO> files) {		
+		List<Blob> blobFiles = new ArrayList<Blob>();
+		try {
+			for (FileDTO file : files) {
+				Blob b = downloadToGCS(file.getOrg_file_name());
+				blobFiles.add(b);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return blobFiles;
 	}
 	
 }
