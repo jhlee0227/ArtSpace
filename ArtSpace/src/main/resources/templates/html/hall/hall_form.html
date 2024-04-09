@@ -42,7 +42,13 @@
           <input type="file" name="files" id="imgfile" accept="image/gif, image/jpeg, image/png" multiple hidden/>
         </label>
 		<!--미리보기 이미지-->
-        <div class="img-input-wrap"></div>
+        <div class="img-input-wrap" >
+			<th:block th:each="img, i : ${images}">
+				<a href="javascript:void(0);" th:onclick="|deleteImageAction(${i.count});|" class="imgbtn" th:id="|img_id_${i.count}|">
+					<img th:src="${img.path}" th:data-file="${img.org_file_name}" class="selProductFile" title="Click to remove">
+				</a>	
+			</th:block>
+		</div>
 
 		
 		<p class="input-name">무대 기본 정보</p>
@@ -122,12 +128,9 @@
       <!-- <a href="javascript:" class="btn" onclick="submitAction();">다음</a> -->
     </section>
 
-	
-	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="/js/hall_form.js"></script>
-	
 
 	</div>
   </body>
