@@ -12,5 +12,24 @@
 			</selectKey>
 	</insert>
 
+	<select id="getFileList" resultType="com.example.demo.file.dto.FileDTO">
+		select * from file
+		where file_id
+		   in
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+        		#{item}
+		    </foreach>
+			
+	</select>
+	
+	<delete id="deleteFiles">
+		delete from file
+		where file_id
+			in
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+        		#{item}
+		    </foreach>
+	</delete>
+
 
 </mapper>

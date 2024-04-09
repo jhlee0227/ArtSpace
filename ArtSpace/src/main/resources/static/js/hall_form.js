@@ -2,11 +2,42 @@
 
 // 이미지 정보 담을 배열
 var sel_files = new Array();
+let hall_id = document.querySelector("input[name='hall_id']").value;
 
 $(document).ready(function(){
-  $('#imgfile').on('change', handleImgFileSelect);
+    $('#imgfile').on('change', handleImgFileSelect);
+	
+  	$.ajax({
+  		url:'/hall/form/getFile/' + hall_id,
+  		type:'post',
+  		success:function(data) {				
+		  	console.log(data);				
+			data.forEach(function(img){	
+				// 파일을 읽기 위한 FileReader 객체 생성
+				sel_files.push(img);
+			});
+			console.log(sel_files);
+  		},
+  		error:function(request, status, error)
+  		{ // 오류가 발생했을 때 호출된다.
+  			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+  		},
+	
+	});
+	
 });
 
+let imgList = document.querySelectorAll('.selProductFile');
+
+/*imgList.forEach(function(img){
+	console.log(new Blob(img.src, { type: "image/png" }));
+	let f = new File(img.src, img.src);
+	console.log(f);
+});
+*/
+
+
+  
 function fileUploadAction() {
   $('#imgfile').trigger('click');
 }
@@ -41,6 +72,7 @@ function handleImgFileSelect(e) {
 	}
     // 초기화
     document.querySelector("input[type=file]").value = "";
+    console.log(sel_files);
 }
 
 
@@ -72,7 +104,6 @@ function deleteImageAction(index) {
   var img_id = "#img_id_"+index;
   $(img_id).remove();
 
-  console.log(sel_files);
 }   
 
 
@@ -239,7 +270,7 @@ function checkValue(){
         formData.append("files", sel_files[i]);
     }
     
-	let hall_id = document.querySelector("input[name='hall_id']").value;
+	
 	
 	if(hall_id == ""){
 	  	$.ajax({
@@ -267,9 +298,8 @@ function checkValue(){
 	  		processData:false,
 	  		contentType: false,
 	  		// 다른 페이지를 처리 후에 결과가 성공일 때
-	  		success:function(data) {
-				document.hall_info_form.action="/hall/form/equipment/"+hall_id;
-				document.hall_info_form.submit();
+	  		success:function(data) {				
+				window.location.href = 'http://localhost:1105/hall/form/equipment/'+hall_id;
 	  		},
 	  		error:function(request, status, error)
 	  		{ // 오류가 발생했을 때 호출된다.
