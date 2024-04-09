@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.SessionUtil;
 import com.example.demo.announcement.dto.AskDto;
 
 import com.example.demo.announcement.service.AskService;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -23,11 +26,23 @@ public class AskController {
 	@Autowired
 	private AskService askService;
 	
+	@Autowired
+	HttpSession session;
+	
+	SessionUtil user_session = new SessionUtil();
+	
 	@GetMapping("")
 	public String showboardPage1(Model model) {
 		List<AskDto> askList = askService.getAsk();
 		model.addAttribute("askList", askList);
-		return "html/announcement/ask";	
+		
+	
+	user_session.setSessionValue(session);
+	model.addAttribute("user_id", user_session.getUser_id());
+	model.addAttribute("nickname", user_session.getNickname());
+	model.addAttribute("authority", user_session.getAuthority());
+	return "html/announcement/ask";	
+
 	}
 	
 	@GetMapping("/write")
