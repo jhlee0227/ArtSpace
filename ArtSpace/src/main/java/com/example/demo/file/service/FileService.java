@@ -10,7 +10,7 @@ import com.google.cloud.storage.Blob;
 
 public interface FileService {
 
-	void uploadObject(GCSRequest gcsRequest);
+	void uploadObject(MultipartFile[] files, Integer c_id);
 
 	void insertHallImage(MultipartFile[] files, Integer id);
 

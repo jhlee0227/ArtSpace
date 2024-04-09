@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.company.dto.CompanyFileDTO;
 import com.example.demo.file.dao.FileDAO;
 import com.example.demo.file.dao.HallFileDAO;
 import com.example.demo.file.dto.FileDTO;
@@ -113,12 +114,22 @@ public class FileServiceImpl implements FileService {
 
 	// GCS에 업로드, DB에 저장
 	@Override
-	public void uploadObject(GCSRequest gcsRequest) {
+	public void uploadObject(MultipartFile[] files, Integer company_id) {
 		try {
-			MultipartFile file = gcsRequest.getFile();
-			String storedFileName = generateFileName(file);
-			uploadToGCS(file, storedFileName);
-			saveToDB(file, storedFileName);
+			for (MultipartFile file : files) {
+				String storedFileName = generateFileName(file);
+				uploadToGCS(file, storedFileName);
+				Integer file_id = saveToDB(file, storedFileName);
+				
+				// company_file 테이블에 정보 넣기
+				CompanyFileDTO cFile = new CompanyFileDTO();
+				cFile.setFile_id(file_id);
+				cFile.setCompany_id(company_id);
+				cFile.setFile_name(file.getOriginalFilename());
+				fileDAO.insertCFile(cFile);
+				
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

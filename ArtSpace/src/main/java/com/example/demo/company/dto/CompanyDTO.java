@@ -9,6 +9,8 @@ public class CompanyDTO {
 	private String owner_phone;		//대표번호
 	private Integer user_id;		//유저ID FK
 	
+	private String email;			//유저이메일(아이디)
+	
 	public Integer getCompany_id() {
 		return company_id;
 	}
@@ -44,6 +46,12 @@ public class CompanyDTO {
 	}
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

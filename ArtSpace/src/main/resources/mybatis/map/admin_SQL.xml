@@ -36,4 +36,20 @@
 		join user u on u.user_id = h.user_id; 
 	</select>
 	
+	<select id="getAllNotice" resultType="com.example.demo.announcement.dto.NoticeDto">
+		select announ_id, subject, content, create_date
+		from announcement
+	</select>
+	
+	<select id="getCompany" resultType="com.example.demo.company.dto.CompanyDTO">
+		select u.email, c.company_id, u.user_id
+		from company c
+		join user u on c.user_id = u.user_id
+	</select>
+	
+	<!-- <select id="getCompanyFile" resultType="com.example.demo.company.dto.CompanyFileDTO">
+		select *
+		from company_file
+		where company_id = #{companyId}
+	</select> -->
 </mapper>

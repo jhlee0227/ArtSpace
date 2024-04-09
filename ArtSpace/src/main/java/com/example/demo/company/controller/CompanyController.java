@@ -56,11 +56,13 @@ public class CompanyController {
 	public String company(Model model) {
 		myInfo(model);
 
-		if (user_session.getAuthority() == "SCN" || user_session.getAuthority() == "SCY") {
+		String authority = user_session.getAuthority();
+		if (authority.equals("SCN") || authority.equals("SCY")) {			
 			return "html/company/company_page";
 		} else {
-			return "redirect:/";
+			return "redircet:/";
 		}
+
 		
 	}
 
@@ -104,6 +106,11 @@ public class CompanyController {
 		
 		CompanyDTO comDTO = companyService.findByID(user_session.getUser_id());
 		model.addAttribute("com_info", comDTO);
+		int company_id = comDTO.getCompany_id();
+		// 파일 제출 여부를 알기 위한 제출 file count
+		int fileCount = companyService.fileCount(company_id);
+		model.addAttribute("fileCount", fileCount);
+		
 		
 		return "html/company/company_info";
 	}

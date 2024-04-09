@@ -45,6 +45,11 @@ public class CompanyDAO {
 	public void hallDelete(Integer hall_id) {
 		sqlSession.update("company.hallDelete", hall_id);
 	}
+
+	public int fileCount(Integer company_id) {
+		
+		return sqlSession.selectOne("company.fileCount", company_id);
+	}
 	
 	
 }

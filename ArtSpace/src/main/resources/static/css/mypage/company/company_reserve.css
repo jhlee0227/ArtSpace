@@ -103,6 +103,12 @@ body {
 	margin-bottom: 3rem;
 }
 
+.con .content .msg {
+	font-size: 3rem;
+	color: red;
+	text-align: center;
+}
+
 .con .content .list .item {
 	display: flex;
 	box-shadow: 1px 1px 5px;
