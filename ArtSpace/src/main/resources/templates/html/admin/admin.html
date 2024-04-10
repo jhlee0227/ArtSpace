@@ -187,23 +187,27 @@
 		<script src="/js/admin.js"></script>
 		<script>
 			$(document).ready(function() {
-				$("#searchButton").click(function() {
-					var searchType = $("searchType").val();
-					var searchInput = $("searchInput").val();
-					var data = {type : searchType,
-								keyword : searchInput};
-								
-					$.ajax({
-						url:"admin/search",
-						type:"post",
-						contentType:"application/json",
-						data: json.stringify(data),
-						success: function(response) {
-							
-						}
-					})
-				})
-			})
+			    $("#searchButton").click(function() {
+			        var searchType = $("#searchType").val(); // 수정된 부분
+			        var searchInput = $("#searchInput").val(); // 수정된 부분
+			        var data = {
+			            type: searchType,
+			            keyword: searchInput
+			        };
+			        
+			        $.ajax({
+			            url: "admin/search",
+			            type: "post",
+			            data: data, // 수정된 부분
+			            success: function(response) {
+			                $("#searchResults").html(response);
+			            },
+			            error: function(data, status, error) {
+			                console.log("에러:" + error);
+			            }
+			        });
+			    });
+			});
 		</script>
 
 	</div>

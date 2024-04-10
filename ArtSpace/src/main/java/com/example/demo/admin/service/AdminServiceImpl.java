@@ -64,6 +64,12 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getCompany();
 	}
 
+	@Override
+	public List<UserDTO> searchUsers(String type, String keyword) {
+		
+		return adminDAO.searchUsers(type, keyword);
+	}
+
 //	@Override
 //	public List<CompanyFileDTO> getCompanyFile(int companyId) {
 //		

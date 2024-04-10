@@ -2,54 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 
-	<select id="getAllUsers" resultType="com.example.demo.user.dto.UserDTO">
+	<select id="getAllUsers"
+		resultType="com.example.demo.user.dto.UserDTO">
 		select * from user
 	</select>
 
 	<update id="leave">
 		update user
-		   set leave_status = 'Y'
-		 where user_id = #{user_id}
+		set leave_status = 'Y'
+		where user_id = #{user_id}
 	</update>
 
 	<update id="resign">
 		update user
-		   set leave_status = 'N'
-		 where user_id = #{user_id}
+		set leave_status = 'N'
+		where user_id = #{user_id}
 	</update>
 
- 	<!-- <select id="searchUsersByEmail" resultType="com.example.demo.user.dto.UserDTO">
-		select * 
-		from user 
-		where email = #{keyword}
+	<select id="searchUsers"
+		resultType="com.example.demo.user.dto.UserDTO"
+		parameterType="java.util.Map">
+		SELECT * FROM users WHERE ${type} = #{keyword}
 	</select>
-	
-	<select id="searchUsersByNickname" resultType="com.example.demo.user.dto.UserDTO">
-		select * 
-		from user 
-		where nickname = #{keyword}
-	</select> -->
-	
-	<select id="getAllHalls" resultType="com.example.demo.hall.dto.HallDTO">
-		select h.hall_id, h.hall_name, h.address1, h.address2, u.name
+
+	<!-- <select id="searchUsersByEmail" resultType="com.example.demo.user.dto.UserDTO"> 
+		select * from user where email = #{keyword} </select> <select id="searchUsersByNickname" 
+		resultType="com.example.demo.user.dto.UserDTO"> select * from user where 
+		nickname = #{keyword} </select> -->
+
+	<select id="getAllHalls"
+		resultType="com.example.demo.hall.dto.HallDTO">
+		select h.hall_id, h.hall_name, h.address1, h.address2,
+		u.name
 		from hall h
-		join user u on u.user_id = h.user_id; 
+		join user u on u.user_id = h.user_id;
 	</select>
-	
-	<select id="getAllNotice" resultType="com.example.demo.announcement.dto.NoticeDto">
+
+	<select id="getAllNotice"
+		resultType="com.example.demo.announcement.dto.NoticeDto">
 		select announ_id, subject, content, create_date
-		from announcement
+		from
+		announcement
 	</select>
-	
-	<select id="getCompany" resultType="com.example.demo.company.dto.CompanyDTO">
+
+	<select id="getCompany"
+		resultType="com.example.demo.company.dto.CompanyDTO">
 		select u.email, c.company_id, u.user_id
 		from company c
-		join user u on c.user_id = u.user_id
+		join
+		user u on c.user_id = u.user_id
 	</select>
-	
-	<!-- <select id="getCompanyFile" resultType="com.example.demo.company.dto.CompanyFileDTO">
-		select *
-		from company_file
-		where company_id = #{companyId}
-	</select> -->
+
+	<!-- <select id="getCompanyFile" resultType="com.example.demo.company.dto.CompanyFileDTO"> 
+		select * from company_file where company_id = #{companyId} </select> -->
 </mapper>
