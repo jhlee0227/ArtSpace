@@ -3,6 +3,7 @@ package com.example.demo.file.service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import com.google.common.io.Files;
@@ -75,6 +77,7 @@ public class FileServiceImpl implements FileService {
 	}
 	
 	// GCS다운로드
+	// 내일 이어서
 	private Blob downloadToGCS(String fileName) throws IOException {
 		String keyFileName = "quiet-chalice-419309-a18ccc6da276.json";
 		InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
@@ -87,6 +90,7 @@ public class FileServiceImpl implements FileService {
 		System.out.println(fileName);
 		Blob blob = storage.get(bucketName, fileName);
 		
+		System.out.println(blob);
 		return blob;
 	}
 
@@ -108,8 +112,8 @@ public class FileServiceImpl implements FileService {
 	}
 
 	// 저장될 파일 이름을 생성
-	private String generateFileName(MultipartFile file) {
-		return UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+	private String generateFileName(String fileName) {
+		return UUID.randomUUID().toString() + "_" + fileName;
 	}
 
 	// GCS에 업로드, DB에 저장
@@ -117,7 +121,9 @@ public class FileServiceImpl implements FileService {
 	public void uploadObject(MultipartFile[] files, Integer company_id) {
 		try {
 			for (MultipartFile file : files) {
-				String storedFileName = generateFileName(file);
+				String fileName = new String(file.getOriginalFilename().getBytes(), "UTF-8"); 
+				String storedFileName = generateFileName(fileName);
+				
 				uploadToGCS(file, storedFileName);
 				Integer file_id = saveToDB(file, storedFileName);
 				
@@ -125,7 +131,7 @@ public class FileServiceImpl implements FileService {
 				CompanyFileDTO cFile = new CompanyFileDTO();
 				cFile.setFile_id(file_id);
 				cFile.setCompany_id(company_id);
-				cFile.setFile_name(file.getOriginalFilename());
+				cFile.setFile_name(fileName);
 				fileDAO.insertCFile(cFile);
 				
 			}
@@ -144,10 +150,12 @@ public class FileServiceImpl implements FileService {
 			for (MultipartFile file : files) {
 				if(!file.isEmpty()) {
 					// 저장될 고유 이름 생성
-	     			String storedFileName = generateFileName(file);
+					String fileName = new String(file.getOriginalFilename().getBytes(), "UTF-8"); 
+	     			String storedFileName = new String(generateFileName(fileName).getBytes(), "UTF-8");
+	     			
 	     			uploadToGCS(file, storedFileName);
-	    			Integer file_id = saveToDB(file, storedFileName);
-	    			
+	     			
+	    			Integer file_id = saveToDB(file, storedFileName);   			
 	    			HallImageDTO hallImage = new HallImageDTO();
 	    			hallImage.setFile_id(file_id);
 	    			hallImage.setHall_id(hall_id);	    			

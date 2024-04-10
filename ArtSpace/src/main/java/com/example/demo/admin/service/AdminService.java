@@ -27,6 +27,8 @@ public interface AdminService {
 
 	public List<CompanyDTO> getCompany();
 
+	public List<UserDTO> searchUsers(String type, String keyword);
+
 //	public List<CompanyFileDTO> getCompanyFile(int companyId);
 
 }

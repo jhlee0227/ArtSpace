@@ -51,6 +51,13 @@ public class AdminDAO {
 		return sqlSession.selectList("admin.getCompany");
 	}
 
+	public List<UserDTO> searchUsers(String type, String keyword) {
+		Map<String, Object> params = new HashMap<>();
+        params.put("type", type);
+        params.put("keyword", keyword);
+		return sqlSession.selectList("UserMapper.searchUsers", params);
+	}
+
 //	public List<CompanyFileDTO> getCompanyFile(int companyId) {
 //		
 //		return sqlSession.selectList("admin.getCompanyFile", companyId);
