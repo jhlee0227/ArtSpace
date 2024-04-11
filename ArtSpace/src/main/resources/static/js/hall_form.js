@@ -7,7 +7,7 @@ let hall_id = document.querySelector("input[name='hall_id']").value;
 $(document).ready(function(){
     $('#imgfile').on('change', handleImgFileSelect);
 	
-  	$.ajax({
+/*  	$.ajax({
   		url:'/hall/form/getFile/' + hall_id,
   		type:'post',
   		success:function(data) {				
@@ -23,22 +23,14 @@ $(document).ready(function(){
   			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
   		},
 	
-	});
+	});*/
 	
 });
 
 let imgList = document.querySelectorAll('.selProductFile');
-let deleteImg = [];
-
-/*imgList.forEach(function(img){
-	console.log(new Blob(img.src, { type: "image/png" }));
-	let f = new File(img.src, img.src);
-	console.log(f);
-});
-*/
+let deleteImgURL = [];
 
 
-  
 function fileUploadAction() {
   $('#imgfile').trigger('click');
 }
@@ -56,7 +48,6 @@ function handleImgFileSelect(e) {
     
 	let files = e.target.files;
 	let filesArr = Array.prototype.slice.call(files);
-	console.log(filesArr);
 		
 	for (var i = 0; i < Math.min(curFileCnt, remainFileCnt); i++) {
 		let f = filesArr[i];
@@ -64,18 +55,31 @@ function handleImgFileSelect(e) {
 			sel_files.push(f);
 	    	let reader = new FileReader();
 	    	reader.onload = function(e) {
-			var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+i+");\" class=\"imgbtn\" id=\"img_id_"+i+"\">";
-				html += "<img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+				var html = '<a href="javascript:void(0);" onclick="deleteImageAction(this);" class="imgbtn">';
+					html += '<img src="' + e.target.result + '" data-file=\''+ f.name +'\' class="selProductFile" title="Click to remove"></a>';
 	      		$('.img-input-wrap').append(html);
+			    imagesIndexSort();
 	    	}
 		    reader.readAsDataURL(f);
 		}
 	}
     // 초기화
     document.querySelector("input[type=file]").value = "";
+    
     console.log(sel_files);
 }
 
+
+function imagesIndexSort(){
+    // 객체들의 index 설정
+    let i = 0;
+    attFileCnt = document.querySelectorAll('.imgbtn');
+    attFileCnt.forEach(function(item){
+	    item.setAttribute("data-index", i);
+	    item.setAttribute("id", 'img_id_'+ i);			
+	    i++;
+	});	
+}
 
  // 첨부파일 검증 
 function validation(obj){
@@ -98,13 +102,18 @@ function validation(obj){
 }
 
 // 파일 삭제
-function deleteImageAction(index) {            
-  console.log("index : "+index);
+function deleteImageAction(e) {   
+  // 스토리지에서 가져온것만 삭제될 시 체크해서 담아둠(DB삭제용)
+  if(e.firstElementChild.src.indexOf('storage.googleapis.com/art_space') != -1){
+	deleteImgURL.push(decodeURI(e.firstElementChild.src));
+  }
+  let index = e.dataset.index;    
   sel_files.splice(index, 1);
+  
 
   var img_id = "#img_id_"+index;
   $(img_id).remove();
-
+  
 }   
 
 
@@ -157,12 +166,14 @@ $("#full").click(function(){
 		$("#f_price").prop("disabled", true);				
 	}
 });			
+
+
 /*======== 유형성 검사 ==========*/
 
-		// 넘어온 값이 빈값인지 체크합니다.
-		// !value 하면 생기는 논리적 오류를 제거하기 위해
-		// 명시적으로 value == 사용
-		// [], {} 도 빈값으로 처리
+// 넘어온 값이 빈값인지 체크합니다.
+// !value 하면 생기는 논리적 오류를 제거하기 위해
+// 명시적으로 value == 사용
+// [], {} 도 빈값으로 처리
 		
 function checkValue(){
 		
@@ -271,6 +282,17 @@ function checkValue(){
         formData.append("files", sel_files[i]);
     }
     
+    console.log(deleteImgURL);
+    
+    for (var i = 0; i < deleteImgURL.length; i++) {
+        formData.append("deleteImgList", deleteImgURL[i]);
+    }  
+    encodeURIComponent
+    console.log(deleteImgURL);
+/*    
+    for (let key of formData.keys()) {
+		console.log(key, ":", formData.get(key));
+	}*/
 	
 	
 	if(hall_id == ""){
@@ -285,6 +307,29 @@ function checkValue(){
 				document.hall_info_form.action=data;
 				document.hall_info_form.submit();
 	  		},
+  			beforeSend: function () {
+				var width = 0;
+				var height = 0;
+				var left = 0;
+				var top = 0;
+			    width = 50;
+				height = 50;
+			    top = ( $(window).height() - height ) / 2 + $(window).scrollTop();
+			    left = ( $(window).width() - width ) / 2 + $(window).scrollLeft();
+			 
+				if($("#div_ajax_load_image").length != 0) {
+					$("#div_ajax_load_image").css({
+						"top": top+"px",
+						"left": left+"px"
+					});                     
+					$("#div_ajax_load_image").show();
+				} else { 
+					$('body').append('<div id="div_ajax_load_image" style="position:absolute; top:' + top + 'px; left:' + left + 'px; width:' + width + 'px; height:' + height + 'px; z-index:9999; background:#f0f0f0; filter:alpha(opacity=50); opacity:alpha*0.5; margin:auto; padding:0; "><img src="/img/ajax_loader.gif" style="width:50px; height:50px;"></div>');
+				}
+		    }, 
+			complete: function () {
+				$("#div_ajax_load_image").hide();
+			},
 	  		error:function(request, status, error)
 	  		{ // 오류가 발생했을 때 호출된다.
 	  			/*console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);*/
@@ -299,11 +344,34 @@ function checkValue(){
 	  		processData:false,
 	  		contentType: false,
 	  		// 다른 페이지를 처리 후에 결과가 성공일 때
-	  		success:function(data) {				
-				window.location.href = 'http://localhost:1105/hall/form/equipment/'+hall_id;
+	  		success:function(data) {
+				document.hall_info_form.action=data;
+				document.hall_info_form.submit();
 	  		},
-	  		error:function(request, status, error)
-	  		{ // 오류가 발생했을 때 호출된다.
+	  		beforeSend: function () {
+				var width = 0;
+				var height = 0;
+				var left = 0;
+				var top = 0;
+                width = 50;
+				height = 50;
+                top = ( $(window).height() - height ) / 2 + $(window).scrollTop();
+                left = ( $(window).width() - width ) / 2 + $(window).scrollLeft();
+ 
+                if($("#div_ajax_load_image").length != 0) {
+					$("#div_ajax_load_image").css({
+						"top": top+"px",
+						"left": left+"px"
+					});                     
+					$("#div_ajax_load_image").show();
+				} else { 
+					$('body').append('<div id="div_ajax_load_image" style="position:absolute; top:' + top + 'px; left:' + left + 'px; width:' + width + 'px; height:' + height + 'px; z-index:9999; background:#f0f0f0; filter:alpha(opacity=50); opacity:alpha*0.5; margin:auto; padding:0; "><img src="/img/ajax_loader.gif" style="width:50px; height:50px;"></div>');
+				}
+       		}, 
+			complete: function () {
+				$("#div_ajax_load_image").hide();
+			},
+	  		error:function(request, status, error) { // 오류가 발생했을 때 호출된다.
 	  			/*console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);*/
 	  		},
   		

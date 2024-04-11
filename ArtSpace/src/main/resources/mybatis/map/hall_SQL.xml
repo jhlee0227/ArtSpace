@@ -58,7 +58,6 @@
 	          address2 = #{address2},
 	          hall_description = #{hall_description},
 	          warning = #{warning},
-	          create_date = #{create_date},
 	          area = #{area},
 	          width = #{width},
 	          length = #{length},

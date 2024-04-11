@@ -73,8 +73,10 @@
 		      <div class="box-container">
 				<th:block th:each="hall, index : ${hallList}" th:if="${index.index} < 8" >
 					<div class="box" th:id="${hall.hall_id}" th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
-					  <div class="imgbox">            
-					    <img src="" alt="">
+					  <div class="imgbox">    
+						<th:block th:if="${hall.mainImage} != null">
+						    <img th:src="${hall.mainImage.path}" th:data-file="${hall.mainImage.org_file_name}"alt="이미지">						
+						</th:block>     
 					<i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>
 					  </div>
 					  <div class="content">

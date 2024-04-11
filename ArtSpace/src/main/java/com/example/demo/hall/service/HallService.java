@@ -37,7 +37,7 @@ public interface HallService {
 
 	public List<FileDTO> getImageList(Integer id);
 
-	public void deleteImages(Integer id);
+	public void deleteImages(Integer id, String[] deleteURL);
 
 
 

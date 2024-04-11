@@ -2,8 +2,10 @@ package com.example.demo.hall.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -157,15 +159,22 @@ public class HallServiceImpl implements HallService{
 	}
 
 
-	// 정보 업데이트 전에 기존 사진 모두 삭제
+	// 정보 업데이트 전에 기존 사진 삭제
 	@Override
-	public void deleteImages(Integer hall_id) {
-		List<Integer> fileIDList = hallFileDAO.getImageList(hall_id);
-		if(fileIDList.size() > 0 ) {
-			hallFileDAO.deleteImages(hall_id);
-			fileDAO.deleteFiles(fileIDList);
-		}		
+	public void deleteImages(Integer hall_id, String[] deleteURL) {		
+		List<Integer> curFileList = hallFileDAO.getImageList(hall_id);
 		
+		if(curFileList.size() > 0 ) {
+			// 지울 URL로 파일DB에서 지울 파일 아이디 가져옴
+			List<Integer> fileIDList = fileDAO.getFileIDList(deleteURL);
+			
+			if(fileIDList.size() > 0) {
+				hallFileDAO.deleteImages(fileIDList);
+				fileDAO.deleteFiles(fileIDList);				
+			} else {
+				// 주소가 잘못되었을 확률 99%
+			}
+		}		
 		
 	}
 

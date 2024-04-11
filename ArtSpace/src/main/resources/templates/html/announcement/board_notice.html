@@ -14,11 +14,12 @@
 		    <div class="card-edit">
 				<form method="post" th:action="@{/notice/insert}">
 		            <div class="title">
-		                제목<input type="text" name="subject" placeholder="제목을 입력하세요." value="">
+						<input type="hidden" name="announ_id" th:value="${notice.announ_id}">
+		                제목<input type="text" name="subject" placeholder="제목을 입력하세요." th:value="${notice.subject}">
 		            </div>
 		            <div class="msg">
 		                <!-- textarea에서는 input의 value와는 다르게 textarea 안에 내용을 작성하며 tab을 없앤다. -->
-		                내용<textarea name="content" placeholder="내용을 입력하세요.">
+		                내용<textarea name="content" placeholder="내용을 입력하세요." th:text="${notice.content}">
 		
 		                </textarea>
 		                <input type="file">

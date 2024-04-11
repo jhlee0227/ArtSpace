@@ -153,26 +153,44 @@ input::-webkit-inner-spin-button {
 .img-input-wrap{
   display: grid;
   place-items: center;
-  grid-template-columns: repeat( 5, 1fr );
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: repeat( 5, .5fr );
   margin: 1rem;
+  padding: 1rem;
   margin-bottom: 6rem;
   background-color: #f3f3f3;
 }
 
-.img-input-wrap a {
-  width: 60%;
-  height: 60%;
+.img-input-wrap .imgbtn {
+  width: 65%;
+  height: 65%;
 }
 
-.img-input-wrap img{
+.img-input-wrap .imgbtn img{	
   height: 100%;
   width: 100%;
   object-fit: contain;
+  object-position: center;
+
 }
 
+.img-input-wrap .imgbtn .btns{
+	margin-top: .2rem;
+	display: flex;
+  justify-content: space-between;
+}
 
+.img-input-wrap .imgbtn .deleteBtn{
+	position: relative;
+	font-size: 1.5rem;
+	color: var(--red);
+	
+}
+
+.img-input-wrap .imgbtn .mainImg{
+	position: relative;
+	font-size: 1.5rem;
+	
+}
 
 
 /* ====== 장비 ======= */

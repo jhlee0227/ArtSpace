@@ -10,8 +10,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -149,18 +151,16 @@ public class HallController {
 //		return new ResponseEntity<List<File>>(fileList, HttpStatus.OK);
 //	}
 	
-	@RequestMapping(value = "/form/getFile/{id}")
-	@ResponseBody
-	public ResponseEntity<List<Blob>> getFiles(@PathVariable("id") Integer id) {
-	    List<FileDTO> imageList = hallService.getImageList(id);	    
-	    List<Blob> fileList = fileService.downloadImage(imageList);
-	    
-	    
-
-	    return new ResponseEntity<>(fileList, HttpStatus.OK);
-	}
-	
-   
+//	@RequestMapping(value = "/form/getFile/{id}")
+//	@ResponseBody
+//	public ResponseEntity<List<Blob>> getFiles(@PathVariable("id") Integer id) {
+//	    List<FileDTO> imageList = hallService.getImageList(id);	    
+//	    List<Blob> fileList = fileService.downloadImage(imageList);
+//	    
+//	    
+//
+//	    return new ResponseEntity<>(fileList, HttpStatus.OK);
+//	}
 	
 
 	// insert 처리
@@ -188,21 +188,24 @@ public class HallController {
 	
 
 	// 업데이트 처리
-	@RequestMapping(value = "/form/update/{id}", method = RequestMethod.POST)
+	@PostMapping("/form/update/{id}")
 	@ResponseBody
 	public String hall_Update(@ModelAttribute HallDTO hallDTO,
-			@RequestParam("files") MultipartFile[] files,
-			@PathVariable("id") Integer id) {
+								@RequestParam("files") MultipartFile[] files,
+								@PathVariable("id") Integer id) {		
+
+		
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
 		if (files != null) {
-			hallService.deleteImages(id);
+			if(hallDTO.getDeleteImgList() != null) {
+				hallService.deleteImages(id, hallDTO.getDeleteImgList());				
+			}
 			fileService.insertHallImage(files, id);
 		}
 
-		hallDTO.setCreate_date(LocalDate.now());
 		hallDTO.setHall_id(id);
 		hallDTO.setUser_id(user_session.getUser_id());
 		hallService.update(hallDTO);
@@ -212,8 +215,7 @@ public class HallController {
 
 	// 장비 화면 띄우기
 	@GetMapping("form/equipment/{id}")
-	public String showFormEquipment(@PathVariable("id") Integer id,
-			Model model) {
+	public String showFormEquipment(@PathVariable("id") Integer id, Model model) {
 		user_session.setSessionValue(session);
 
 		if (user_session.getUser_id() == null) {
@@ -232,8 +234,7 @@ public class HallController {
 
 	// 이전 누르면 장비 저장하고 이전 화면으로 연결
 	@PostMapping("form/equipment/insert/{id}")
-	public String insertEquipment(@Valid @ModelAttribute HallDTO hallDTO,
-			@PathVariable("id") Integer id) {
+	public String insertEquipment(@Valid @ModelAttribute HallDTO hallDTO, @PathVariable("id") Integer id) {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";
@@ -256,8 +257,7 @@ public class HallController {
 
 	// 등록 누르면 장비 저장하고 my페이지로 연결
 	@PostMapping("form/complete/{id}")
-	public String completeInsertHall(@Valid @ModelAttribute HallDTO hallDTO,
-			@PathVariable("id") Integer id) {
+	public String completeInsertHall(@Valid @ModelAttribute HallDTO hallDTO, @PathVariable("id") Integer id) {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";

@@ -32,6 +32,8 @@ public class HomeController{
 		user_session.setSessionValue(session);
 	
 		List<HallDTO> hallList = hallListService.getList();
+		
+		
 		model.addAttribute("hallList", hallList);
 		
 		model.addAttribute("user_id", user_session.getUser_id());

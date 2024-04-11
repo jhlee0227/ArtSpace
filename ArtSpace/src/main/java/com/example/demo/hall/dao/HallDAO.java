@@ -45,6 +45,12 @@ public class HallDAO {
 		return sqlSession.selectList("hall.getFilterList", filter);
 	}
 	
+	// 첫 사진(대표이미지) 가져오기
+	public Integer getFirstImgFile(Integer hall_id) {
+		return sqlSession.selectOne("hallFile.select_first_file", hall_id);
+	}
+
+	
 	//	SELECT END	//
 
 	
@@ -102,6 +108,7 @@ public class HallDAO {
 		sqlSession.update("hall.update_hall_time",  hallTimes);
 	}
 	// UPDATE END //
+
 
 
 

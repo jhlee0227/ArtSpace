@@ -14,6 +14,8 @@
       
 	  <form name="hall_info_form" th:action method="get" enctype="multipart/form-data">
 		<input type="text" name="hall_id" th:value="${hall_info.hall_id}" id="hall_id" hidden>
+				
+		
         <label for="hall_name">
           <p class="input-name">장소 이름 (제목)</p>
           <input type="text" name="hall_name" th:value="${hall_info.hall_name}" id="hall_name">
@@ -44,7 +46,7 @@
 		<!--미리보기 이미지-->
         <div class="img-input-wrap" >
 			<th:block th:each="img, i : ${images}">
-				<a href="javascript:void(0);" th:onclick="|deleteImageAction(${i.count});|" class="imgbtn" th:id="|img_id_${i.count}|">
+				<a href="javascript:void(0);" th:onclick="|deleteImageAction(this);|" class="imgbtn" th:data-index="|${i.index}|" th:id="|img_id_${i.index}|">
 					<img th:src="${img.path}" th:data-file="${img.org_file_name}" class="selProductFile" title="Click to remove">
 				</a>	
 			</th:block>
@@ -130,7 +132,7 @@
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="/js/hall_form.js"></script>
+    <script src="/js/hall_form.js" charset="UTF-8"></script>
 
 	</div>
   </body>

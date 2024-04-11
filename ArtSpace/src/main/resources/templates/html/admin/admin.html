@@ -27,32 +27,32 @@
 					<div class="tab_content" id="all_content">
 						<div class="search">
 							<form id="searchForm" name="search" th:action="@{/admin/search}" method="post">
-								<select class="select" name="type" id="searchType">
+								<select class="select" name="type" id="searchType1">
 									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
 								</select>
-								<input type="text" id="searchInput">
-								<input type="button" value="검색" id="searchButton">
+								<input type="text" id="searchInput1">
+								<input type="button" value="검색" id="searchButton1">
 							</form>
 						</div>
-						<div class="main">
-							<table class="table">
-								<thead>
-									<tr>
-										<th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll"
-												onclick="selectAll1(this)">
-										</th>
-										<th>아이디</th>
-										<th>닉네임</th>
-										<th>유저타입</th>
-										<th class="leave">탈퇴상태</th>
-									</tr>
-								</thead>
-								<tbody id="searchResults">
-									<form name="manage" th:action="@{/admin/leave}" method="post">
+						<form id="manageForm" name="manage" th:action="@{/admin/leave}" method="post">
+							<div class="main">
+								<table class="table" id="userTable">
+									<thead>
+										<tr>
+											<th><input type="checkbox" class="chkbox" name="selectAll1"
+													value="selectAll">
+											</th>
+											<th>아이디</th>
+											<th>닉네임</th>
+											<th>유저타입</th>
+											<th class="leave">탈퇴상태</th>
+										</tr>
+									</thead>
+									<tbody id="searchResults1">
 										<tr th:each="user : ${user_list}"><!-- th:each -->
 											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
-													name="check1" onclick="checkSelectAll1()"></td>
+													name="check1"></td>
 											<!-- th:text -->
 											<td th:text="${user.email}"></td>
 											<td th:text="${user.nickname}"></td>
@@ -65,47 +65,48 @@
 											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
 											<td th:if="${#strings.equals(user.leave_status, 'N')}" th:text="탈퇴X"></td>
 										</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="button">
-							<input class="leave-btn" type="submit" value="탈퇴" onclick="return checkLeave()">
-							<input class="resign-btn" type="submit" value="재가입" th:formaction="@{/admin/resign}"
-								onclick="return checkResign()">
-						</div>
+									</tbody>
+								</table>
+								<div class="button">
+									<input disabled class="leave-btn" type="submit" value="탈퇴"
+										onclick="return checkLeave()">
+									<input disabled class="resign-btn" type="submit" value="재가입"
+										th:formaction="@{/admin/resign}" onclick="return checkResign()">
+								</div>
+							</div>
 						</form>
 					</div>
 					<!-- 가입 중인 회원 Tab -->
 					<div class="tab_content" id="notLeave_content">
 						<div class="search">
 							<form id="" name="search" th:action="@{/admin/search}" method="post">
-								<select class="select" name="type" id="">
+								<select class="select" name="type" id="searchType2">
 									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
 								</select>
-								<input type="text">
-								<input type="button" value="검색">
+								<input type="text" id="searchInput2">
+								<input type="button" value="검색" id="searchButton2">
 							</form>
 						</div>
-						<div class="main">
-							<table class="table">
-								<thead>
-									<tr>
-										<th><input type="checkbox" class="chkbox" name="selectAll2" value="selectAll"
-												onclick="selectAll2(this)">
-										</th>
-										<th>아이디</th>
-										<th>닉네임</th>
-										<th>유저타입</th>
-										<th class="leave">탈퇴상태</th>
-									</tr>
-								</thead>
-								<tbody id="searchResults">
-									<form name="leave" th:action="@{/admin/leave}" method="post">
+						<form name="leave" th:action="@{/admin/leave}" method="post">
+							<div class="main">
+								<table class="table">
+									<thead>
+										<tr>
+											<th><input type="checkbox" class="chkbox" name="selectAll2"
+													value="selectAll">
+											</th>
+											<th>아이디</th>
+											<th>닉네임</th>
+											<th>유저타입</th>
+											<th class="leave">탈퇴상태</th>
+										</tr>
+									</thead>
+									<tbody id="searchResults2">
 										<tr th:each="user : ${user_list}"
 											th:if="${#strings.equals(user.leave_status, 'N')}"><!-- th:each -->
 											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
-													name="check2" onclick="checkSelectAll2()"></td>
+													name="check2"></td>
 											<!-- th:text -->
 											<td th:text="${user.email}"></td>
 											<td th:text="${user.nickname}"></td>
@@ -117,46 +118,47 @@
 											</td>
 											<td th:if="${#strings.equals(user.leave_status, 'N')}" th:text="탈퇴X"></td>
 										</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="button">
-							<input class="leave-btn" type="submit" value="탈퇴" onclick="return checkLeave()">
-						</div>
+									</tbody>
+								</table>
+								<div class="button">
+									<input disabled class="leave-btn" type="submit" value="탈퇴"
+										onclick="return checkLeave()">
+								</div>
+							</div>
 						</form>
 					</div>
 					<!-- 탈퇴 회원 Tab -->
 					<div class="tab_content" id="leave_content">
 						<div class="search">
 							<form id="" name="search" action="/admin/search" method="post">
-								<select class="select" name="type" id="">
+								<select class="select" name="type" id="searchType3">
 									<option value="email">이메일</option>
 									<option value="nickname">닉네임</option>
 								</select>
-								<input type="text">
-								<input type="button" value="검색">
+								<input type="text" id="searchInput3">
+								<input type="button" value="검색" id="searchButton3">
 							</form>
 						</div>
-						<div class="main">
-							<table class="table">
-								<thead>
-									<tr>
-										<th><input type="checkbox" class="chkbox" name="selectAll3" value="selectAll"
-												onclick="selectAll3(this)">
-										</th>
-										<th>아이디</th>
-										<th>닉네임</th>
-										<th>유저타입</th>
-										<th class="leave">탈퇴상태</th>
-									</tr>
-								</thead>
-								<tbody id="searchResults">
-									<form name="resign" th:action="@{/admin/resign}" method="post">
+						<form name="resign" th:action="@{/admin/resign}" method="post">
+							<div class="main">
+								<table class="table">
+									<thead>
+										<tr>
+											<th><input type="checkbox" class="chkbox" name="selectAll3"
+													value="selectAll">
+											</th>
+											<th>아이디</th>
+											<th>닉네임</th>
+											<th>유저타입</th>
+											<th class="leave">탈퇴상태</th>
+										</tr>
+									</thead>
+									<tbody id="searchResults3">
 										<!-- th:each -->
 										<tr th:each="user : ${user_list}"
 											th:if="${#strings.equals(user.leave_status, 'Y')}">
 											<td><input type="checkbox" th:value="${user.user_id}" class="chkbox"
-													name="check3" onclick="checkSelectAll3()"></td>
+													name="check3"></td>
 											<!-- th:text -->
 											<td th:text="${user.email}"></td>
 											<td th:text="${user.nickname}"></td>
@@ -168,12 +170,13 @@
 											</td>
 											<td th:if="${#strings.equals(user.leave_status, 'Y')}" th:text="탈퇴"></td>
 										</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="button">
-							<input class="resign-btn" type="submit" value="재가입" onclick="checkResign()">
-						</div>
+									</tbody>
+								</table>
+								<div class="button">
+									<input disabled class="resign-btn" type="submit" value="재가입"
+										onclick="return checkResign()">
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -185,31 +188,8 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script src="/js/open_menu.js"></script>
 		<script src="/js/admin.js"></script>
-		<script>
-			$(document).ready(function() {
-			    $("#searchButton").click(function() {
-			        var searchType = $("#searchType").val(); // 수정된 부분
-			        var searchInput = $("#searchInput").val(); // 수정된 부분
-			        var data = {
-			            type: searchType,
-			            keyword: searchInput
-			        };
-			        
-			        $.ajax({
-			            url: "admin/search",
-			            type: "post",
-			            data: data, // 수정된 부분
-			            success: function(response) {
-			                $("#searchResults").html(response);
-			            },
-			            error: function(data, status, error) {
-			                console.log("에러:" + error);
-			            }
-			        });
-			    });
-			});
-		</script>
-
+		<script src="/js/admin_user_search.js"></script>
+		<script src="/js/admin_tab_button.js"></script>
 	</div>
 </body>
 

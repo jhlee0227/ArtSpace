@@ -1,14 +1,21 @@
 package com.example.demo.file.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
@@ -33,7 +40,6 @@ import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
-import com.google.common.io.Files;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -78,21 +84,19 @@ public class FileServiceImpl implements FileService {
 	
 	// GCS다운로드
 	// 내일 이어서
-	private Blob downloadToGCS(String fileName) throws IOException {
-		String keyFileName = "quiet-chalice-419309-a18ccc6da276.json";
-		InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
-
-		Storage storage = StorageOptions.newBuilder()
-				.setCredentials(GoogleCredentials.fromStream(keyFile))
-				.build()
-				.getService();
-		
-		System.out.println(fileName);
-		Blob blob = storage.get(bucketName, fileName);
-		
-		System.out.println(blob);
-		return blob;
-	}
+//	private Blob downloadToGCS(String fileName) throws IOException {
+//		String keyFileName = "quiet-chalice-419309-a18ccc6da276.json";
+//		InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
+//
+//		Storage storage = StorageOptions.newBuilder().setProjectId("quiet-chalice-419309").build().getService();
+//		//Storage storage = StorageOptions.getDefaultInstance().getService();
+//		
+//		System.out.println(fileName);
+//		Blob blob = storage.get(bucketName, fileName);
+//		
+//		System.out.println(blob);
+//		return blob;
+//	}
 
 
 	// DB에 정보 저장
@@ -169,12 +173,20 @@ public class FileServiceImpl implements FileService {
 	}
 	
 	@Override
-	public List<Blob> downloadImage(List<FileDTO> files) {		
+	public List<Blob> downloadImage(List<FileDTO> files) {					
 		List<Blob> blobFiles = new ArrayList<Blob>();
 		try {
 			for (FileDTO file : files) {
-				Blob b = downloadToGCS(file.getOrg_file_name());
-				blobFiles.add(b);
+				
+				String FILE_URL = file.getPath();
+				
+				try(InputStream in = new URL(FILE_URL).openStream()){
+					File f = new File(file.getPath());
+					
+					//Blob b = downloadToGCS(file.getOrg_file_name());
+					//blobFiles.add(b);
+				}
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

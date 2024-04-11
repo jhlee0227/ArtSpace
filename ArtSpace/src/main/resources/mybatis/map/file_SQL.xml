@@ -18,6 +18,14 @@
 		values (#{file_name}, #{file_id}, #{company_id})
 	</insert>
 	
+	
+	<!-- 공연장 대표 이미지 하나 가져오기 -->
+	<select id="getHallMainFile" resultType="com.example.demo.file.dto.FileDTO">
+		select f.file_id, f.path, f.org_file_name, f.stored_file_name
+		  from file f, hall_image hi
+		 where f.file_id = hi.file_id
+		   and hi.hall_id = #{hall_id} limit 1
+	</select>
 
 	<select id="getFileList" resultType="com.example.demo.file.dto.FileDTO">
 		select * from file
@@ -26,13 +34,21 @@
 			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
         		#{item}
 		    </foreach>
-			
+		
+	</select>
+	
+	<!-- url주소로 file_id 가져오기 -->
+	<select id="getFile_ID" resultType="int" parameterType="String" >
+		select file_id from file
+		where path in
+			<foreach item="item" index="i" collection="array" open="(" separator="," close=")">
+        		#{item}
+		    </foreach>			
 	</select>
 	
 	<delete id="deleteFiles">
 		delete from file
-		where file_id
-			in
+		where file_id in
 			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
         		#{item}
 		    </foreach>
