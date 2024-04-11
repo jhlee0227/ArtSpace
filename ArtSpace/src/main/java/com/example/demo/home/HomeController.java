@@ -33,7 +33,6 @@ public class HomeController{
 	
 		List<HallDTO> hallList = hallListService.getList();
 		
-		
 		model.addAttribute("hallList", hallList);
 		
 		model.addAttribute("user_id", user_session.getUser_id());
