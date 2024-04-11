@@ -101,10 +101,9 @@
 	</select>
 	
 	<select id="reserveEquip" resultType="com.example.demo.hall.dto.ReservationDTO">
-		select e.equip_name, e.equip_price, re.equip_num
-		from equipment e
-		join reservation_equipment re on e.equip_id = re.equip_id
-		where re.reserve_id = #{reserve_id};
+		select equip_name, equip_price, equip_num
+		from reservation_equipment
+		where reserve_id = #{reserve_id};
 	</select>
 	
 	<select id="getNotReview" resultType="com.example.demo.hall.dto.ReservationDTO">
