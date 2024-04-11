@@ -1,6 +1,7 @@
 package com.example.demo.file.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class HallFileDAO {
 		return sqlSession.selectList("hallFile.getImageList", hall_id);
 	}
 
-	public void deleteImages(Integer hall_id) {
-		sqlSession.delete("hallFile.delete", hall_id);
+	public void deleteImages(List<Integer> fileIDList) {
+		sqlSession.delete("hallFile.delete", fileIDList);
 	}
 	
 	
