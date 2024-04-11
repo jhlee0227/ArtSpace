@@ -12,10 +12,18 @@
 		from hall_image
 		where hall_id = #{hall_id}
 	</select>
+	
+	<select id="select_first_file" resultType="int">
+		select file_id from hall_image
+		where hall_id = #{hall_id} limit 1
+	</select>
 
-	<delete id="delete">
+	<delete id="delete" parameterType="int">
 		delete from hall_image
-		where hall_id = #{hall_id}
+		 where file_id in 
+		   <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+        		#{item}
+		    </foreach>
 	</delete>
 
 

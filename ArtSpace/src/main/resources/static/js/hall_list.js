@@ -159,7 +159,9 @@ function filterPush(){
 				data.forEach(function(hall){
 					let str='<div class="box" onclick="location.href=\'/hall/detail/' + hall.hall_id + '\'">';
 					str += '<div class="imgbox">';
-					str += '<img src="" alt="">';								
+					if(hall.mainImage != null){
+						str += '<img src="'+ hall.mainImage.path +'" data-file="'+ hall.mainImage.org_file_name +'"alt="이미지">';
+					}				    						
 					str += '<i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>\n</div>';
 				  	str += '<div class="content">';
 				  	str += '<div class="content-top">';

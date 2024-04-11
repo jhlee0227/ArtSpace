@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.file.dto.FileDTO;
+
 
 
 public class HallDTO {
@@ -27,10 +29,16 @@ public class HallDTO {
 	private String name;			// 유저이름
 	private String visibility;		// 공연장 삭제상태
 	
-	private List<HallImageDTO> imageList;	
+	
+	private FileDTO mainImage;		// 대표 이미지 파일 정보
+	private List<FileDTO> hallImageList;	// 실제 내 공연장 이미지 파일 정보들(상세 페이지용)
+	
+	private List<HallImageDTO> imageList;	// 
 	private List<EquipmentDTO> equiList;	// 장비DTO리스트
 	private List<HallTimeDTO> hallTimeList;	// 공연장시간DTO리스트
-
+	private String[] deleteImgList; // 삭제할 이미지URL List
+	
+	
 	private Integer minPrice; // 내가가진 시간별 가격대의 최솟값
 	private Integer likeNum;	// 해당 공연장을 찜한 수
 	private Float rating;		// 해당 공연장 총 평균 평점
@@ -185,6 +193,25 @@ public class HallDTO {
 	public void setImageList(List<HallImageDTO> imageList) {
 		this.imageList = imageList;
 	}
+	public String[] getDeleteImgList() {
+		return deleteImgList;
+	}
+	public void setDeleteImgList(String[] deleteImgList) {
+		this.deleteImgList = deleteImgList;
+	}
+	public FileDTO getMainImage() {
+		return mainImage;
+	}
+	public void setMainImage(FileDTO mainImage) {
+		this.mainImage = mainImage;
+	}
+	public List<FileDTO> getHallImageList() {
+		return hallImageList;
+	}
+	public void setHallImageList(List<FileDTO> hallImageList) {
+		this.hallImageList = hallImageList;
+	}
+
 
 	
 	
