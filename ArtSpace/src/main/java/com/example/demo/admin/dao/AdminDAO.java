@@ -52,10 +52,30 @@ public class AdminDAO {
 	}
 
 	public List<UserDTO> searchUsers(String type, String keyword) {
-		Map<String, Object> params = new HashMap<>();
+		Map<String, String> params = new HashMap<>();
         params.put("type", type);
         params.put("keyword", keyword);
-		return sqlSession.selectList("UserMapper.searchUsers", params);
+		return sqlSession.selectList("admin.searchUsers", params);
+	}
+
+	public List<HallDTO> getHalls(String type, String keyword) {
+		Map<String, String> params = new HashMap<>();
+		params.put("type", type);
+		params.put("keyword", keyword);
+		return sqlSession.selectList("admin.getHalls", params);
+	}
+
+	public NoticeDto findNoticeById(Integer id) {
+		
+		return sqlSession.selectOne("admin.findNoticeById", id);
+	}
+
+	public void hallBlock(Integer hall_id) {
+		sqlSession.update("admin.hallBlock", hall_id);
+	}
+
+	public void hallUnblock(Integer hall_id) {
+		sqlSession.update("admin.hallUnblock", hall_id);
 	}
 
 //	public List<CompanyFileDTO> getCompanyFile(int companyId) {
@@ -64,15 +84,4 @@ public class AdminDAO {
 //	}
 
 
-//	public List<UserDTO> searchUsersByNickname(String keyword) {
-//		Map<String, String> param = new HashMap<>();
-//		param.put("keyword", keyword);
-//		return sqlSession.selectList("admin.searchUsersByNickname", param);
-//	}
-//	
-//	public List<UserDTO> searchUsersByEmail(String keyword) {
-//		Map<String, String> param = new HashMap<>();
-//		param.put("keyword", keyword);
-//		return sqlSession.selectList("admin.searchUsersByEmail", param);
-//	}
 }

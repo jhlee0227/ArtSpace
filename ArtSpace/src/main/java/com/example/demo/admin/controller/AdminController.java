@@ -1,13 +1,18 @@
 package com.example.demo.admin.controller;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,7 +58,12 @@ public class AdminController {
 		myInfo(model);
 		List<UserDTO> userList = adminService.getAllUsers();
 		model.addAttribute("user_list", userList);
-		return "html/admin/admin";
+		if (user_session.getUser_id() != null) {
+			return "html/admin/admin";
+		} else {
+			return "redirect:/login";
+		}
+
 	}
 
 	// 회원관리 : 선택한 유저 탈퇴시키기
@@ -97,31 +107,12 @@ public class AdminController {
 		return "redirect:/admin";
 	}
 
-//	 회원관리 : 검색으로 회원조회
-//	@PostMapping("/search")
-//	public String searchUsers(Model model, @RequestParam String type, @RequestParam String keyword) {
-//		List<UserDTO> userList = adminService.searchUsers(type, keyword);
-//		model.addAttribute("userList", userList);
-//		return "admin";
-//	}
-
-//	@PostMapping("/search")
-//	public String searchUsers(Model model, @RequestParam String type, @RequestParam String keyword) {
-//		List<UserDTO> userList;
-//		if ("email".equals(type)) {
-//			userList = adminService.searchUsersByEmail(keyword);
-//			model.addAttribute("user_list", userList);
-//		} else if ("nickname".equals(type)) {
-//			userList = adminService.searchUsersByNickname(keyword);
-//			model.addAttribute("user_list", userList);
-//		}
-//		
-//		return "html/admin/admin :: #searchResults";
-//	}
-
+	// 검색으로 회원조회
 	@PostMapping("/search")
 	@ResponseBody
-	public List<UserDTO> searchUsers(@RequestParam String type, @RequestParam String keyword) {
+	public List<UserDTO> searchUsers(@RequestBody Map<String, String> data) {
+		String type = data.get("type");
+		String keyword = data.get("keyword");
 		List<UserDTO> userList = adminService.searchUsers(type, keyword);
 		return userList;
 	}
@@ -139,7 +130,11 @@ public class AdminController {
 //		    List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
 //		    model.addAttribute("com_file_list_" + companyId, comFileList);
 //		}
-		return "html/admin/admin_company";
+		if (user_session.getUser_id() != null) {
+			return "html/admin/admin_company";
+		} else {
+			return "redirect:/login";
+		}
 	}
 
 	// 공연장 정보 목록 조회
@@ -149,7 +144,48 @@ public class AdminController {
 
 		List<HallDTO> hallList = adminService.getAllHalls();
 		model.addAttribute("hall_list", hallList);
-		return "html/admin/hall_info";
+
+		if (user_session.getUser_id() != null) {
+			return "html/admin/hall_info";
+		} else {
+			return "redirect:/login";
+		}
+	}
+
+	// 공연장 검색(미완성)
+	@PostMapping("/hall/search")
+	@ResponseBody
+	public List<HallDTO> searchHalls(@RequestBody Map<String, String> data) {
+		String type = data.get("type");
+		String keyword = data.get("keyword");
+		List<HallDTO> searchHallList = adminService.getHalls(type, keyword);
+		return searchHallList;
+	}
+
+	// 공연장 차단
+	@PostMapping("/hall/block")
+	public String hallBlock(@RequestParam("check") List<Integer> selectHall) {
+		
+		if (selectHall != null) {
+			for (Integer hall_id : selectHall) {
+				adminService.hallBlock(hall_id);
+			}
+		}
+		
+		return "redirect:/admin/hallinfo";
+	}
+
+	// 공연장 차단 해제
+	@PostMapping("/hall/unblock")
+	public String hallUnblock(@RequestParam("check") List<Integer> selectHall) {
+		
+		if (selectHall != null) {
+			for (Integer hall_id : selectHall) {
+				adminService.hallUnblock(hall_id);
+			}
+		}
+		
+		return "redirect:/admin/hallinfo";
 	}
 
 	// 공지사항 목록 조회
@@ -159,7 +195,22 @@ public class AdminController {
 
 		List<NoticeDto> noticeList = adminService.getAllNotice();
 		model.addAttribute("notice_list", noticeList);
-		return "html/admin/admin_notice";
+
+		if (user_session.getUser_id() != null) {
+			return "html/admin/admin_notice";
+		} else {
+			return "redirect:/login";
+		}
+	}
+
+	// 공지사항 상세 조회
+	@GetMapping("/notice/{id}")
+	public String noticeDetail(Model model, @PathVariable("id") Integer id) {
+
+		NoticeDto notice = adminService.findNoticeById(id);
+		notice.setCreate_date(LocalDate.now());
+		model.addAttribute("notice", notice);
+		return "html/announcement/board_notice";
 	}
 
 }

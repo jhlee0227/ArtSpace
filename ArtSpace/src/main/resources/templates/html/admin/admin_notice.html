@@ -20,6 +20,8 @@
 					<table class="table">
 						<thead>
 							<tr>
+								<th class="box"><input type="checkbox" class="chkbox" name="selectAll"
+									value="selectAll"></th>
 								<th>번호</th>
 								<th>제목</th>
 								<th>작성날짜</th>
@@ -27,14 +29,17 @@
 						</thead>
 						<tbody>
 							<tr th:each="notice, i : ${notice_list}">
+								<td class="box"><input type="checkbox" th:value="${notice.announ_id}" class="chkbox"
+									name="check" onclick="checkSelectAll()"></td>
 								<td th:text="${i.count}"></td>
-								<td th:text="${notice.subject}"></td>
+								<td><a th:href="@{/admin/notice/{id}(id=${notice.announ_id})}" th:text="${notice.subject}"></a></td>
 								<td th:text="${notice.create_date}"></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="button">
 						<a class="submit-btn" type="button" th:href="@{/notice/write}">공지사항 등록</a>
+						<button class="submit-btn">공지사항 삭제</button>
 					</div>
 				</div>
 			</div>

@@ -16,15 +16,21 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeDao noticeDao;
 	
 	@Override
-	public void insert(NoticeDto noticeDTO) {
+	public void insert(NoticeDto noticeDto) {
 		
-		noticeDao.insert(noticeDTO);
+		noticeDao.insert(noticeDto);
 	}
 
 	@Override
 	public List<NoticeDto> getNotice() {
 		// TODO Auto-generated method stub
 		return noticeDao.getNotice();
+	}
+
+	@Override
+	public void update(NoticeDto noticeDto) {
+		
+		noticeDao.update(noticeDto);
 	}
 
 }

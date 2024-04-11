@@ -7,6 +7,17 @@
 			values (#{subject}, #{content}, #{create_date});
 	</insert>
 	
+	<update id="updateboard">
+		update announcement
+		set subject = #{subject}, content = #{content}, create_date = #{create_date}
+	</update>
+	
+	<select id="getNoticeById" resultType="com.example.demo.announcement.dto.NoticeDto">
+		select *
+		from announcement
+		where announ_id = #{announ_id}
+	</select>
+	
 	<select id="getNotice" resultType="com.example.demo.announcement.dto.NoticeDto">
 		select * from announcement;
 	</select> 

@@ -29,6 +29,14 @@ public interface AdminService {
 
 	public List<UserDTO> searchUsers(String type, String keyword);
 
+	public List<HallDTO> getHalls(String type, String keyword);
+
+	public NoticeDto findNoticeById(Integer id);
+
+	public void hallBlock(Integer hall_id);
+
+	public void hallUnblock(Integer hall_id);
+
 //	public List<CompanyFileDTO> getCompanyFile(int companyId);
 
 }

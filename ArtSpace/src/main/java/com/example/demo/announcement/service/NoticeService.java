@@ -10,4 +10,6 @@ public interface NoticeService {
 
 	List<NoticeDto> getNotice();
 
+	void update(NoticeDto noticeDTO);
+
 }

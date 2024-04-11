@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.announcement.dto.AskDto;
@@ -44,16 +45,23 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/write")
-	public String showWrite() {
+	public String showWrite(Model model) {
+		NoticeDto notice = new NoticeDto();
+		model.addAttribute("notice", notice);
 		return "html/announcement/board_notice";
 	}
 	
 
-	
+	// 공지사항 등록과 수정
 	@PostMapping("/insert")
-	public String insertUser(@ModelAttribute NoticeDto noticeDTO) {
-		noticeDTO.setCreate_date(LocalDate.now());
-		noticeService.insert(noticeDTO);
+	public String insertUser(@ModelAttribute NoticeDto noticeDTO, @RequestParam("announ_id") Integer announ_id) {
+		 if (announ_id != null) {
+		        noticeDTO.setCreate_date(LocalDate.now());
+		        noticeService.update(noticeDTO);
+		    } else {
+		        noticeDTO.setCreate_date(LocalDate.now());
+		        noticeService.insert(noticeDTO);
+		    }
 		return "redirect:/notice";
 	}
 	

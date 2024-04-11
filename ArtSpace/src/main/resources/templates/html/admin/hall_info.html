@@ -18,51 +18,118 @@
 				<h2 class="content-main">공연장 정보</h2>
 				<div class="search">
 					<form name="search">
-						<select class="select" name="type" id="">
+						<select class="select" name="type" id="searchType">
 							<option value="hallname">공연장명</option>
 							<option value="name">등록자명</option>
 							<option value="region">지역</option>
+							<option value="block">차단</option>
 						</select>
-						<input type="text">
-						<input type="button" value="검색">
+						<input type="text" id="searchInput">
+						<input type="button" value="검색" id="searchButton">
 					</form>
 				</div>
-				<div class="main">
-					<table class="table">
-						<thead>
-							<tr>
-								<th class="box"><input type="checkbox" class="chkbox" name="selectAll" value="selectAll"
-										onclick="selectAll(this)"></th>
-								<th>공연장명</th>
-								<th>등록자명</th>
-								<th>지역</th>
-								<th>차단상태</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="halls : ${hall_list}">
-								<td class="box"><input type="checkbox" class="chkbox" name="check"
-										onclick="checkSelectAll()"></td>
-								<!-- 이름 누르면 상세페이지로.. -->
-								<td><a href="#" th:text="${halls.hall_name}"></a></td>
-								<td th:text="${halls.name}"></td>
-								<td th:text="${halls.address1 + ' ' + halls.address2}"></td>
-								<td>차단x</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="button">
-						<form name="block">
-							<input class="block-btn" type="button" value="차단">
-						</form>
+				<form name="block" action="/admin/hall/block" method="post">
+					<div class="main">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="box"><input type="checkbox" class="chkbox" name="selectAll"
+											value="selectAll"></th>
+									<th>공연장명</th>
+									<th>등록자명</th>
+									<th>지역</th>
+									<th>차단상태</th>
+								</tr>
+							</thead>
+							<tbody id="searchResult">
+								<tr th:each="halls : ${hall_list}">
+									<td class="box"><input type="checkbox" th:value="${halls.hall_id}" class="chkbox"
+											name="check" onclick="checkSelectAll()"></td>
+									<!-- 이름 누르면 상세페이지로.. -->
+									<td><a href="#" th:text="${halls.hall_name}"></a></td>
+									<td th:text="${halls.name}"></td>
+									<td th:text="${halls.address1 + ' ' + halls.address2}"></td>
+									<td th:if="${#strings.equals(halls.visibility, 'N')}" th:text="O"></td>
+									<td th:if="${#strings.equals(halls.visibility, 'Y')}" th:text="X"></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="button">
+							<input class="block-btn" type="submit" value="차단" onclick="return blockCheck()">
+							<input class="unblock-btn" type="submit" value="차단해제" onclick="return unblockCheck()"
+								th:formaction="@{/admin/hall/unblock}">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</section>
 
-
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script src="/js/open_menu.js"></script>
 		<script src="/js/admin.js"></script>
+		<script>
+			function blockCheck() {
+				var result = confirm("차단하시겠습니까?")
+
+				if (result) {
+					alert("선택한 공연장이 차단되었습니다.")
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			function unblockCheck() {
+				var result = confirm("차단을 해제하시겠습니까?")
+
+				if (result) {
+					alert("선택한 공연장의 차단이 해제되었습니다.")
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			$(document).ready(function () {
+				$("#searchButton").click(function () {
+					var searchType = $("#searchType").val();
+					var searchInput = $("#searchInput").val();
+					var data = {
+						type: searchType,
+						keyword: searchInput
+					};
+
+					$.ajax({
+						url: "/admin/hall/search",
+						type: "post",
+						contentType: "application/json",
+						data: JSON.stringify(data), // 서버에서 반환되는 데이터 타입을 JSON으로 지정
+						success: function (searchHallList) {
+							console.log(data);
+							console.log(searchHallList);
+							var html = ""; // HTML 코드
+							for (var i = 0; i < searchHallList.length; i++) {
+								html += "<tr>";
+								html += "<td class='box'>" + "<input type='checkbox' value='" + searchHallList[i].hall_id + "'class='chkbox' name='check' onclick='checkSelectAll()'>" + "</td>";
+								html += "<td><a href='#'>" + searchHallList[i].hall_name + "</a></td>";
+								html += "<td>" + searchHallList[i].name + "</td>";
+								html += "<td>" + searchHallList[i].address1 + ' ' + searchHallList[i].address2 + "</td>";
+								html += "<td>" + (searchHallList[i].visibility === 'Y' ? 'X' : 'O') + "</td>";
+								html += "</tr>"; // 행 종료
+							}
+							$("#searchResult").html(html); // 테이블의 tbody에 HTML 코드 추가
+							console.log(html);
+							console.log(searchHallList);
+							// 검색 후에는 전체선택 checkbox 체크 해제
+							$(".table thead input[name='selectAll']").prop('checked', false);
+						},
+						error: function (data, status, error) {
+							console.log("에러:" + error);
+						}
+					});
+				});
+			});
+		</script>
 	</div>
 </body>
 
