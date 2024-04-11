@@ -174,16 +174,12 @@ body {
 	width: 4%;
 }
 
-.con .content .button form {
-	display: inline-block;
-	margin-top: 1rem;
-}
-
 .con .content .button {
 	text-align: right;
+	margin-top: 2rem;
 }
 
-.con .content .button input[type=button] {
+.con .content .button input[type=submit] {
 	cursor: pointer;
 	padding: 0 1rem;
 	display: inline-block;
@@ -195,9 +191,4 @@ body {
 	font-weight: 600;
 	text-align: center;
 	box-shadow: var(--box-shadow);
-}
-
-.con .content .button input[type=button]:hover {
-	filter: brightness(0.9);
-	transition: 0.5s;
 }

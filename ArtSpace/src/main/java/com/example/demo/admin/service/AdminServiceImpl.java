@@ -37,16 +37,6 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
-//	@Override
-//	public List<UserDTO> searchUsersByEmail(String keyword) {
-//		return adminDAO.searchUsersByEmail(keyword);
-//	}
-//	
-//	@Override
-//	public List<UserDTO> searchUsersByNickname(String keyword) {
-//		return adminDAO.searchUsersByNickname(keyword);
-//	}
-
 	@Override
 	public List<HallDTO> getAllHalls() {
 		
@@ -66,8 +56,30 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<UserDTO> searchUsers(String type, String keyword) {
+        return adminDAO.searchUsers(type, keyword);
+    }
+
+	@Override
+	public List<HallDTO> getHalls(String type, String keyword) {
 		
-		return adminDAO.searchUsers(type, keyword);
+		return adminDAO.getHalls(type, keyword);
+	}
+
+	@Override
+	public NoticeDto findNoticeById(Integer id) {
+		
+		return adminDAO.findNoticeById(id);
+	}
+
+	@Override
+	public void hallBlock(Integer hall_id) {
+		
+		adminDAO.hallBlock(hall_id);
+	}
+
+	@Override
+	public void hallUnblock(Integer hall_id) {
+		adminDAO.hallUnblock(hall_id);
 	}
 
 //	@Override

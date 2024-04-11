@@ -24,6 +24,10 @@ public class NoticeDao {
 		return sqlSession.selectList("notice.getNotice");
 	}
 
+	public void update(NoticeDto noticeDto) {
+		sqlSession.update("notice.updateboard", noticeDto);
+	}
+
 	
 //	public BoardDto login(BoardDto boardDto) {
 //		return sqlSession.selectOne("user.login", boardDto);

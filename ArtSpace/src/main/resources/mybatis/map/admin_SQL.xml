@@ -10,33 +10,79 @@
 	<update id="leave">
 		update user
 		set leave_status = 'Y'
-		where user_id = #{user_id}
+		where user_id =
+		#{user_id}
 	</update>
 
 	<update id="resign">
 		update user
 		set leave_status = 'N'
-		where user_id = #{user_id}
+		where user_id =
+		#{user_id}
 	</update>
 
 	<select id="searchUsers"
-		resultType="com.example.demo.user.dto.UserDTO"
-		parameterType="java.util.Map">
-		SELECT * FROM users WHERE ${type} = #{keyword}
+		resultType="com.example.demo.user.dto.UserDTO">
+		SELECT * FROM user
+		<where>
+			<choose>
+				<when test='type == "nickname"'>
+					AND nickname LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+				<otherwise>
+					AND email LIKE CONCAT('%', #{keyword}, '%')
+				</otherwise>
+			</choose>
+		</where>
 	</select>
-
-	<!-- <select id="searchUsersByEmail" resultType="com.example.demo.user.dto.UserDTO"> 
-		select * from user where email = #{keyword} </select> <select id="searchUsersByNickname" 
-		resultType="com.example.demo.user.dto.UserDTO"> select * from user where 
-		nickname = #{keyword} </select> -->
 
 	<select id="getAllHalls"
 		resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_id, h.hall_name, h.address1, h.address2,
-		u.name
+		u.name, h.visibility
 		from hall h
 		join user u on u.user_id = h.user_id;
 	</select>
+
+
+	<select id="getHalls" resultType="com.example.demo.hall.dto.HallDTO"> 
+	    select *
+	    from hall h
+	    join user u on u.user_id = h.user_id
+	    <where> 
+	        <if test='type == "hallname"'> 
+	            and hall_name LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test='type == "name"'> 
+	            and name LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test='type == "region"'> 
+	            and CONCAT(h.address1, ' ', h.address2) LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test='type == "block"'> 
+			    <choose>
+			        <when test='keyword.toUpperCase() == "X"'>
+			            and visibility = 'Y'
+			        </when>
+			        <when test='keyword.toUpperCase() == "O"'>
+			            and visibility = 'N'
+			        </when>
+			    </choose>
+			</if>
+	    </where> 
+	</select>
+
+	<update id="hallBlock">
+		update hall
+		set visibility = 'N'
+		where hall_id = #{hall_id}
+	</update>
+
+	<update id="hallUnblock">
+		update hall
+		set visibility = 'Y'
+		where hall_id = #{hall_id}
+	</update>
 
 	<select id="getAllNotice"
 		resultType="com.example.demo.announcement.dto.NoticeDto">
@@ -47,10 +93,23 @@
 
 	<select id="getCompany"
 		resultType="com.example.demo.company.dto.CompanyDTO">
+		<!-- select u.email, c.company_id, u.user_id from company c join user u 
+			on c.user_id = u.user_id -->
 		select u.email, c.company_id, u.user_id
 		from company c
-		join
-		user u on c.user_id = u.user_id
+		join user u on c.user_id = u.user_id
+		where c.company_id in (
+		select company_id
+		from company_file
+		group by company_id
+		having count(*) >= 4
+		)
+	</select>
+
+	<select id="findNoticeById" resultType="com.example.demo.announcement.dto.NoticeDto">
+		select announ_id, subject, content
+		from announcement
+		where announ_id = #{id}
 	</select>
 
 	<!-- <select id="getCompanyFile" resultType="com.example.demo.company.dto.CompanyFileDTO"> 
