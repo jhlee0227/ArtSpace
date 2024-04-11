@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -172,8 +173,8 @@ public class HallController {
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
-
-		hallDTO.setCreate_date(LocalDate.now());
+		
+		hallDTO.setCreate_date(LocalDateTime.now());
 		hallDTO.setUser_id(user_session.getUser_id());
 
 		hallService.insert(hallDTO);

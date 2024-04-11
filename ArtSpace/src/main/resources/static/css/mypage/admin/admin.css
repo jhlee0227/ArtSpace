@@ -105,7 +105,7 @@ body {
 .con .content .tabs {
 	padding-bottom: 40px;
 	background-color: var(--white);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	
 	width: 100%;
 	margin: 0 auto;
 }
@@ -113,7 +113,7 @@ body {
 .con .content .tab_item {
 	width: calc(100%/3);
 	height: 50px;
-	border-bottom: 3px solid var(--main-color);
+	border-bottom: 3px solid #5B86EF;
 	background-color: #f8f8f8;
 	line-height: 50px;
 	font-size: 1.5rem;
@@ -149,8 +149,8 @@ input[name="tab_item"] {
 }
 
 .con .content .tabs input:checked+.tab_item {
-	background-color: var(--main-color);
-	color: var(--black);
+	background-color: #5B86EF;
+	color: #fff;
 }
 
 .con .content .tabs input:checked+.tab_item:hover {
@@ -183,13 +183,11 @@ input[name="tab_item"] {
 .con .content .main .table {
 	width: 100%;
 	margin: auto;
-	border: 1px #a39485 solid;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
-	width: 100%;
-	border-collapse: collapse;
-	border-radius: 5px;
+	border-radius: 1rem;
 	overflow: hidden;
+	border-collapse: collapse;
 }
+
 
 .con .content .main .table .chkbox {
 	display: inline-block;
@@ -197,19 +195,20 @@ input[name="tab_item"] {
 }
 
 .con .content .main .table th {
-	background-color: var(--main-color);
-	padding: 0.8rem;
+	background: #5B86EF;
+	color: #fff;
+	padding: 1.5rem 0.8rem;
 	font-size: 1.5rem;
 	font-weight: bold;
 }
 
 .con .content .main .table tbody tr:nth-child(even) {
-	background-color: var(--sub-color);
+	background-color: #EBF3F9;
 }
 
 .con .content .main .table td {
 	text-align: center;
-	padding: 0.8rem;
+	padding: 1rem 0.8rem;
 	font-size: 1.3rem;
 	font-weight: 600;
 }
