@@ -48,6 +48,7 @@ public class HallListController {
 
 	@GetMapping("/list")
 	public String showHallList(Model model) {
+		user_session.setSessionValue(session);
 		List<HallDTO> hallList = hallListService.getList();
 		model.addAttribute("hallList", hallList);
 		

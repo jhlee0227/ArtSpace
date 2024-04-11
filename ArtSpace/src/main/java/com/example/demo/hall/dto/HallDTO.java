@@ -1,6 +1,7 @@
 package com.example.demo.hall.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +25,7 @@ public class HallDTO {
 	private Integer height;		// 높이
 	private Integer maximum;	// 최대수용인원수
 	private Integer views;		// 조회수
-	private LocalDate create_date;		// 등록 날짜
+	private LocalDateTime create_date;		// 등록 날짜
 	private Integer user_id;		// 유저ID FK
 	private String name;			// 유저이름
 	private String visibility;		// 공연장 삭제상태
@@ -129,11 +130,11 @@ public class HallDTO {
 	public void setViews(Integer views) {
 		this.views = views;
 	}
-	public LocalDate getCreate_date() {
+	public LocalDateTime getCreate_date() {
 		return create_date;
 	}
-	public void setCreate_date(LocalDate create_date) {
-		this.create_date = create_date;
+	public void setCreate_date(LocalDateTime localDateTime) {
+		this.create_date = localDateTime;
 	}
 	public Integer getUser_id() {
 		return user_id;
