@@ -6,6 +6,7 @@ public class HallFilterDTO {
 	// 리스트 필터용 DTO
 	
 	private List<String> localList;	// 지역리스트 
+	private String content;			// 검색 단어
 	private String minPrice;		// 최소가격
 	private String maxPrice;		// 최대가격
 	private String maxPeople;		// 인원수
@@ -40,6 +41,12 @@ public class HallFilterDTO {
 	}
 	public void setSort(String sort) {
 		this.sort = sort;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 

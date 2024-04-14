@@ -100,13 +100,13 @@
 		        <h1>공연자</h1>
 		        <p>공연자이신가요?</p>
 		        <p>지금 <span>공연자 정보</span>를 입력하고<br/>공간의 유용한 기능을 체험해 보세요!</p>
-		        <div class="btn" id="su-move">내 정보</div>
+		        <div class="btn" id="su-move" th:onclick="|location.href='@{/mypage/performer}'|">내 정보</div>
 		      </div>
 		      <div class="con">
 		        <h1>공연장 관리</h1>
 		        <p>공연장을 등록 하고 싶으신가요?</p>
 		        <p><span>사업자 인증</span>을 마무리하고<br/>내 공연장을 등록, 관리 할 수 있습니다.</p>
-		        <div class="btn" id="sc-move"  th:onclick="|location.href='@{/hall/form}'|"  >공연장 등록</div>
+		        <div class="btn" id="sc-move"  th:onclick="|location.href='@{/company/hall}'|"  >공연장 등록</div>
 		      </div>
 		    </section>
 		  <!-- 공연장 공연자 바로가기 End -->

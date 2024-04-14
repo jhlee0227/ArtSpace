@@ -32,7 +32,9 @@ import com.example.demo.hall.dto.HallFilterDTO;
 import com.example.demo.hall.service.HallListService;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.mysql.cj.log.Log;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -46,30 +48,42 @@ public class HallListController {
 	@Autowired
 	HallListService hallListService;
 
+	// 리스트 화면으로 넘어왔을 때(+검색)
 	@GetMapping("/list")
-	public String showHallList(Model model) {
+	public String showHallList(Model model, HttpServletRequest request) {
 		user_session.setSessionValue(session);
-		List<HallDTO> hallList = hallListService.getList();
-		model.addAttribute("hallList", hallList);
-		
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
-		
+
+		List<HallDTO> hallList = null;			
+		// 검색어가 들어왔을 때 검색어 + 기본 최신순 정렬
+		if(request.getParameter("content") != null) {
+			HallFilterDTO filter = new HallFilterDTO();
+			filter.setContent(request.getParameter("content"));
+			filter.setSort("create_date");
+			hallList = hallListService.getFilterData(filter);
+
+			// 헤더 검색창에 검색어 남겨두기
+			model.addAttribute("content", request.getParameter("content"));
+		} else {
+			// 검색하지 않고 그냥 리스트 화면으로 넘어왔을 때 그냥 기본 리스트 불러옴
+			hallList = hallListService.getList();
+		}		
+		model.addAttribute("hallList", hallList);
 	
 		Map<String, List<String>> regionMap = readCsvRegion();
 		model.addAllAttributes(regionMap);
 		
 		return "html/hall/hall_list";	
 	}
-	
+
+	// 필터 & 정렬
 	@RequestMapping(value = "/list/check", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> testCheck(@RequestBody HallFilterDTO filter){	
 		List<HallDTO> hallList = hallListService.getFilterData(filter);
-
 		return new ResponseEntity<List<HallDTO>>(hallList, HttpStatus.OK);
-	}
-
+	}	
 	
 	
 	// 지역 목록 CSV파일에서 불러오기
@@ -102,7 +116,6 @@ public class HallListController {
 	    }
 
 	    return map;
-	    //return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
 	
