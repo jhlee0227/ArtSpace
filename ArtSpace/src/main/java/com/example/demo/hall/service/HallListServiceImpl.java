@@ -53,6 +53,7 @@ public class HallListServiceImpl implements HallListService{
 		
 		Map<String, Object> filterMap = new HashMap<>();
 		filterMap.put("local", local);
+		filterMap.put("content", filter.getContent());
 		filterMap.put("minPrice", filter.getMinPrice());
 		filterMap.put("maxPrice", filter.getMaxPrice());
 		filterMap.put("maxPeople", filter.getMaxPeople());		

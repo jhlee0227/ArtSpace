@@ -82,13 +82,12 @@ $("input[name='regionItem']:not('.allSelect')").on('click', function(){
 
 // xx 전체 체크 했을 때 해당걸 제외하고 모두 해제
 function allSelect(btn){
-	$("input[name='regionItem']:checked").each(function(e){
-		$(this).prop("checked", false);
+	let btns = document.querySelectorAll("input[name='regionItem']:checked");
+	btns.forEach(function(e){
+		if(e != btn){		
+			e.checked = false;
+		}
 	});	
-		
-	if(!btn.checked){
-		btn.checked = true;		
-	}
 }
 
 // 필터 적용시키기
@@ -117,9 +116,14 @@ function filterPush(){
 		return;
 	}
 	
+	const url = new URL(window.location.href);
+	const urlParams = url.searchParams.get('content');
+	
+	
 	//JSON.stringify(checkArr),
 	var hallFilterDTO = {
 		localList: checkArr,
+		content: urlParams,
 	    minPrice: min_price*10000,
 	    maxPrice: max_price*10000,
 	    maxPeople: max_people,

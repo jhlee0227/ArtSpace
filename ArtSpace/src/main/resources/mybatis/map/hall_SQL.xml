@@ -106,18 +106,7 @@
 		select * from hall
 		where hall_id = #{id}
 	</select>
-	
-	
-	<!-- 지역 필터 -->	
-	<!-- <select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
-		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
-		  from hall h join hall_time ht
-		    on h.hall_id = ht.hall_id 
-			 where h.address1 regexp #{filter}
-		group by hall_id
-		order by h.create_date desc
-	</select>  -->
-	
+		
 	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id,
 					min(ht.price) minPrice, count(distinct lh.like_id, lh.hall_id) likeNum,
@@ -144,46 +133,40 @@
 		 </if>
 		
 		group by hall_id
+		<if test="content != null and content != ''">
+	        ORDER BY CASE 
+                     WHEN h.hall_name REGEXP(#{content}) THEN 1
+                     ELSE 0
+                 END desc,
+		</if>
+		<if test="content == null or content == ''">
+			ORDER BY
+		</if>
         <choose>
             <when test="sort == 'create_date'"> 
-                order by h.create_date desc
+                h.create_date desc
             </when>
             <when test="sort == 'views'"> 
-                order by h.views desc
+                h.views desc
             </when>
             <when test="sort == 'min_price'"> 
-                order by minPrice
+                minPrice
             </when>
             <when test="sort == 'max_price'"> 
-                order by minPrice desc
+                minPrice desc
             </when>
             <when test="sort == 'like_num'"> 
-                order by likeNum desc;
+                likeNum desc
             </when>
             <when test="sort == 'high_rating'"> 
-                order by rating desc
+                rating desc
             </when>
             
             <otherwise> 
             </otherwise>
         </choose>
 	</select>
-	
-<!-- 	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
-	    select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice
-	    from hall h 
-	    join hall_time ht on h.hall_id = ht.hall_id 
-	    <where>
-	        <if test="local_list != null and local_list.size() != 0">
-	            and h.address1 regexp
-	            <foreach collection="local_list" item="item" index="index" open="(" separator="|" close=")">
-	                #{item}
-	            </foreach>
-	        </if>
-	    </where>
-	    group by h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id
-	    order by h.create_date desc;
-	</select> -->
+
 	
 
 <!-- SELECT End -->
