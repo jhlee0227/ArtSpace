@@ -93,8 +93,6 @@
 
 	<select id="getCompany"
 		resultType="com.example.demo.company.dto.CompanyDTO">
-		<!-- select u.email, c.company_id, u.user_id from company c join user u 
-			on c.user_id = u.user_id -->
 		select u.email, c.company_id, u.user_id
 		from company c
 		join user u on c.user_id = u.user_id
@@ -106,12 +104,38 @@
 		)
 	</select>
 
+	<update id="apporve">
+		update user
+		set authority = 'SCY'
+		where user_id = #{user_id}
+	</update>
+
+	<select id="findCompanyById" resultType="int">
+		select company_id
+		from company
+		where user_id = #{user_id}
+	</select>
+
+	<delete id="unapprove">
+		delete from company_file
+		where company_id = #{company_id}
+	</delete>
+
 	<select id="findNoticeById" resultType="com.example.demo.announcement.dto.NoticeDto">
 		select announ_id, subject, content
 		from announcement
 		where announ_id = #{id}
 	</select>
 
-	<!-- <select id="getCompanyFile" resultType="com.example.demo.company.dto.CompanyFileDTO"> 
-		select * from company_file where company_id = #{companyId} </select> -->
+	<delete id="noticeDelete">
+		delete from announcement
+		where announ_id = #{announ_id}
+	</delete>
+
+	<select id="getCompanyFile" resultType="com.example.demo.company.dto.CompanyFileDTO"> 
+		select f.path
+		from file f
+		join company_file cf on f.file_id = cf.file_id
+		where company_id = #{companyId} 
+	</select>
 </mapper>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.file.dao.FileDAO;
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
@@ -19,6 +21,8 @@ public class MypageServiceImpl implements MypageService{
 	@Autowired
 	MypageDAO mypageDAO;
 	
+	@Autowired
+	FileDAO fileDAO;
 
 	@Override
 	public UserDTO findByID(Integer id) {
@@ -61,7 +65,15 @@ public class MypageServiceImpl implements MypageService{
 
 	@Override
 	public List<HallDTO> getAllLike(Integer id) {
-		return mypageDAO.getAllLike(id);
+		List<HallDTO> likeList = mypageDAO.getAllLike(id);
+		
+		for (HallDTO hallDTO : likeList) {
+			FileDTO mainImage = fileDAO.getHallMainFile(hallDTO.getHall_id());
+			
+			hallDTO.setMainImage(mainImage);
+		}
+		
+		return likeList;
 	}
 
 	@Override
@@ -72,8 +84,14 @@ public class MypageServiceImpl implements MypageService{
 
 	@Override
 	public List<ReservationDTO> getAllReserve(Integer user_id) {
+		List<ReservationDTO> reserveList = mypageDAO.getAllReserve(user_id);
 		
-		return mypageDAO.getAllReserve(user_id);
+		for (ReservationDTO reservationDTO : reserveList) {
+			FileDTO mainImage = fileDAO.getHallMainFile(reservationDTO.getHall_id());
+			
+			reservationDTO.setMainImage(mainImage);
+		} 
+		return reserveList;
 	}
 
 //	@Override
@@ -106,9 +124,16 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public List<HallDTO> getNotReview(Integer user_id) {
+	public List<ReservationDTO> getNotReview(Integer user_id) {
+		List<ReservationDTO> notReviewList = mypageDAO.getNotReview(user_id);
 		
-		return mypageDAO.getNotReview(user_id);
+		for (ReservationDTO reservationDTO : notReviewList) {
+			FileDTO mainImage = fileDAO.getHallMainFile(reservationDTO.getHall_id());
+			
+			reservationDTO.setMainImage(mainImage);
+		}
+		
+		return notReviewList;
 	}
 
 	@Override

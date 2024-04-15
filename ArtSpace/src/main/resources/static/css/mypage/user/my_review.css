@@ -252,33 +252,13 @@ input[name="tab_item"] {
 	flex-direction: row;
 	align-items: center;
 	border-bottom: 2px solid var(--light_gray);
-	justify-content: space-between;
-}
-
-.con .content .tabs .written-list .written-rev .hall-thumb {
-	width: 30px;
-	height: 30px;
-	overflow: hidden;
-	margin: 1rem 4rem 1rem 1.5rem;
-}
-
-.con .content .tabs .written-list .written-rev .hall .hall-thumb img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 10px;
+	padding: 2rem 0;
+	justify-content: center;
 }
 
 .con .content .tabs .written-list .written-rev .hall .name {
 	font-size: 1.5rem;
 	font-weight: 600;
-}
-
-.con .content .tabs .written-list .written-rev .hall .modify-btn {
-	margin-right: 2rem;
-	margin-left: 4rem;
-	font-size: 1.5rem;
-	color: blue;
 }
 
 .con .content .tabs .written-list .written-rev .sub {

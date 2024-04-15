@@ -9,6 +9,7 @@ import com.example.demo.admin.dao.AdminDAO;
 import com.example.demo.announcement.dto.NoticeDto;
 import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.company.dto.CompanyFileDTO;
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -82,11 +83,33 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.hallUnblock(hall_id);
 	}
 
-//	@Override
-//	public List<CompanyFileDTO> getCompanyFile(int companyId) {
-//		
-//		return adminDAO.getCompanyFile(companyId);
-//	}
+	@Override
+	public void noticeDelete(Integer announ_id) {
+		adminDAO.noticeDelete(announ_id);
+		
+	}
+
+	@Override
+	public void approve(Integer user_id) {
+		adminDAO.approve(user_id);
+	}
+
+	@Override
+	public int findCompanyById(Integer user_id) {
+		
+		return adminDAO.findCompanyById(user_id);
+	}
+
+	@Override
+	public void unapprove(Integer company_id) {
+		adminDAO.unapprove(company_id);
+	}
+
+	@Override
+	public List<CompanyFileDTO> getCompanyFile(int companyId) {
+		
+		return adminDAO.getCompanyFile(companyId);
+	}
 
 	
 }

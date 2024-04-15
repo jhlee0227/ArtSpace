@@ -27,7 +27,8 @@
 						<div class="main-content">
 							<div class="review" th:each="list : ${notReview_list}">
 								<div class="hall-img">
-									<img src="/img/hallex.jpg">
+									<img th:if="${list.mainImage != null}" th:src="${list.mainImage.path}"
+										th:data-file="${list.mainImage.org_file_name}" class="hall-thumb" alt="">
 								</div>
 								<div class="info">
 									<div class="hall-name" th:text="${list.hall_name}"></div>
@@ -51,12 +52,8 @@
 						<div class="written-list">
 							<div class="written-rev" th:each="review : ${review_list}">
 								<div class="hall">
-									<div class="hall-thumb">
-										<img src="/img/hallex.jpg">
-									</div>
 									<!-- 상세페이지 링크 -->
 									<a href=""><span class="name" th:text="${review.hall_name}"></span></a>
-									<a href=""><span class="modify-btn">수정</span></a>
 								</div>
 								<div class="sub">
 									<div class="rating">
@@ -93,7 +90,8 @@
 					</div>
 					<input type="hidden" id="ratingInput">
 					<div class="middle2">
-						<textarea id="reviewContentInput" name="reviewContent" class="modal-review-content" rows="10" placeholder="리뷰 내용을 입력하세요"></textarea>
+						<textarea id="reviewContentInput" name="reviewContent" class="modal-review-content" rows="10"
+							placeholder="리뷰 내용을 입력하세요"></textarea>
 					</div>
 				</div>
 				<div class="bottom">
@@ -114,68 +112,68 @@
 				var modal = document.getElementById('myModal');
 				modal.style.display = 'none';
 			}
-			
+
 			// 별점
-			$('.star-rating i').click(function(){
-			    $(this).addClass('selected');
-			    $(this).prevAll().addClass('selected');
-			    $(this).nextAll().removeClass('selected');
-			    var rating = $(this).parent().find('.selected').length;
-			    $('#ratingInput').val(rating); // 별점 값을 hidden input에 설정
+			$('.star-rating i').click(function () {
+				$(this).addClass('selected');
+				$(this).prevAll().addClass('selected');
+				$(this).nextAll().removeClass('selected');
+				var rating = $(this).parent().find('.selected').length;
+				$('#ratingInput').val(rating); // 별점 값을 hidden input에 설정
 			});
 
 			// 리뷰 저장하기
-			$('#saveReview').click(function() {
+			$('#saveReview').click(function () {
 				var rating = parseInt($('#ratingInput').val(), 10);
-			    var reviewContent = $('#reviewContentInput').val();
+				var reviewContent = $('#reviewContentInput').val();
 				var hall_id = parseInt($('.first-btn').siblings('.hallId').val(), 10);
 				var reserve_id = parseInt($('.first-btn').siblings('.reserveId').val(), 10);
-			    
-			    var data = {
-			        rating: rating,
-			        review_content: reviewContent,
+
+				var data = {
+					rating: rating,
+					review_content: reviewContent,
 					hall_id: hall_id,
 					reserve_id: reserve_id
-			    };
-			
-			    $.ajax({
-			        type: 'POST',
-			        url: '/mypage/saveReview',
-			        data: JSON.stringify(data),
-			        contentType: 'application/json',
-			        success: function(response) {
-			            if (response) {
+				};
+
+				$.ajax({
+					type: 'POST',
+					url: '/mypage/saveReview',
+					data: JSON.stringify(data),
+					contentType: 'application/json',
+					success: function (response) {
+						if (response) {
 							updateReviewStatus(reserve_id);
 							closeModal();
-			                alert('리뷰가 저장되었습니다.');
-							
-			            } else {
-			                alert('리뷰 저장에 실패했습니다.');
-			            }
-			        },
-			        error: function(data, status, error) {
-			            alert('에러 발생');
-			        }
-			    });
+							alert('리뷰가 저장되었습니다.');
+
+						} else {
+							alert('리뷰 저장에 실패했습니다.');
+						}
+					},
+					error: function (data, status, error) {
+						alert('에러 발생');
+					}
+				});
 			});
-			
+
 			// 리뷰작성 상태 변경
 			function updateReviewStatus(reserve_id) {
 				var reserve_id = parseInt($('.first-btn').siblings('.reserveId').val(), 10);
-				
+
 				$.ajax({
-					type:'POST',
+					type: 'POST',
 					url: '/mypage/updateReviewStatus',
-					data: {reserve_id : reserve_id},
-					success: function(response) {
+					data: {reserve_id: reserve_id},
+					success: function (response) {
 						if (response) {
 							location.reload();
 						} else {
-							
+
 						}
 					},
-					error: function(data, status, error) {
-					          
+					error: function (data, status, error) {
+
 					}
 				})
 			}

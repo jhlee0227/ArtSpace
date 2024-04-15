@@ -97,7 +97,7 @@ public class MypageDAO {
 		
 	}
 
-	public List<HallDTO> getNotReview(Integer user_id) {
+	public List<ReservationDTO> getNotReview(Integer user_id) {
 
 		return sqlSession.selectList("mypage.getNotReview", user_id);
 	}
