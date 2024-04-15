@@ -21,6 +21,7 @@ import com.example.demo.admin.service.AdminService;
 import com.example.demo.announcement.dto.NoticeDto;
 import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.company.dto.CompanyFileDTO;
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.service.MypageService;
@@ -125,11 +126,11 @@ public class AdminController {
 		List<CompanyDTO> comList = adminService.getCompany();
 		model.addAttribute("com_list", comList);
 
-//		for (CompanyDTO company : comList) {
-//		    int companyId = company.getCompany_id();
-//		    List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
-//		    model.addAttribute("com_file_list_" + companyId, comFileList);
-//		}
+		for (CompanyDTO company : comList) {
+		    int companyId = company.getCompany_id();
+		    List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
+		    model.addAttribute("com_file_list_" + companyId, comFileList);
+		}
 		if (user_session.getUser_id() != null) {
 			return "html/admin/admin_company";
 		} else {
@@ -137,6 +138,33 @@ public class AdminController {
 		}
 	}
 
+	// 법인 회원 승인
+	@PostMapping("/company/approve")
+	public String approve(@RequestParam(value = "check1") List<Integer> selectCompany) {
+		
+		if (selectCompany != null) {
+			for (Integer user_id : selectCompany) {
+				adminService.approve(user_id);
+			}
+		}
+		
+		return "redirect:/admin/company";
+	}
+	
+	// 법인 회원 승인 거부
+	@PostMapping("/company/unapprove")
+	public String unapprove(@RequestParam(value = "check1") List<Integer> selectCompany) {
+		
+		if (selectCompany != null) {
+			for (Integer user_id : selectCompany) {
+				Integer company_id = adminService.findCompanyById(user_id);
+				adminService.unapprove(company_id);
+			}
+		}
+		
+		return "redirect:/admin/company";
+	}
+	
 	// 공연장 정보 목록 조회
 	@GetMapping("/hallinfo")
 	public String hallinfo(Model model) {
@@ -152,7 +180,7 @@ public class AdminController {
 		}
 	}
 
-	// 공연장 검색(미완성)
+	// 공연장 검색
 	@PostMapping("/hall/search")
 	@ResponseBody
 	public List<HallDTO> searchHalls(@RequestBody Map<String, String> data) {
@@ -213,4 +241,17 @@ public class AdminController {
 		return "html/announcement/board_notice";
 	}
 
+	// 공지사항 삭제
+	@PostMapping("/notice/delete")
+	public String noticeDelete(@RequestParam("check") List<Integer> selectNotice) {
+		
+		if (selectNotice != null) {
+			for (Integer announ_id : selectNotice) {
+				adminService.noticeDelete(announ_id);
+			}
+		}
+		
+		return "redirect:/admin/notice";
+	}
+	
 }

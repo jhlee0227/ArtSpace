@@ -1,5 +1,7 @@
 package com.example.demo.hall.dto;
 
+import com.example.demo.file.dto.FileDTO;
+
 public class ReviewDTO {
 	
 	private Integer review_id;			// 리뷰ID PK
@@ -12,6 +14,8 @@ public class ReviewDTO {
 	private String hall_name;			// 공연장명
 
 	private String nickname;			// 유저닉네임
+	
+	private FileDTO mainImage;
 	
 	public Integer getReview_id() {
 		return review_id;
@@ -77,4 +81,14 @@ public class ReviewDTO {
 		this.nickname = nickname;
 	}
 
+	public FileDTO getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(FileDTO mainImage) {
+		this.mainImage = mainImage;
+	}
+
+	
+	
 }

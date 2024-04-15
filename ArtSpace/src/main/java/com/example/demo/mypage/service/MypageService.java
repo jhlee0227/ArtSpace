@@ -37,7 +37,7 @@ public interface MypageService {
 
 	public void updatePhone(UserDTO dto);
 
-	public List<HallDTO> getNotReview(Integer user_id);
+	public List<ReservationDTO> getNotReview(Integer user_id);
 
 	public List<ReviewDTO> getReview(Integer user_id);
 	

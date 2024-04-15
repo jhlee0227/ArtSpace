@@ -22,7 +22,8 @@
 				<div class="list" th:each="hall : ${my_hall}" th:if="${#strings.equals(my_info.authority, 'SCY')}">
 					<div class="item">
 						<div class="img">
-							<img src="/img/hallex.jpg" class="profile" alt="">
+							<img th:if="${hall.mainImage != null}" th:src="${hall.mainImage.path}"
+								th:data-file="${hall.mainImage.org_file_name}" alt="">
 						</div>
 						<div class="hall-info">
 							<div class="hall-name" th:text="${hall.hall_name}"></div>
@@ -43,27 +44,27 @@
 					<a th:href="@{/hall/form}">공연장 등록</a>
 				</span>
 
-	</div>
-	</section>
+			</div>
+		</section>
 
 
-	<script src="/js/open_menu.js"></script>
-	<script>
-		function goHallForm(button) {
-			var hallId = button.getAttribute("data-hall-id");
-			window.location.href = "/hall/form/" + hallId;
-		}
-
-		function confirmDelete() {
-			var result = confirm("공연장을 삭제하시겠습니까?")
-			if (result) {
-				alert("공연장이 삭제되었습니다.")
-				return true;
-			} else {
-				return false;
+		<script src="/js/open_menu.js"></script>
+		<script>
+			function goHallForm(button) {
+				var hallId = button.getAttribute("data-hall-id");
+				window.location.href = "/hall/form/" + hallId;
 			}
-		}
-	</script>
+
+			function confirmDelete() {
+				var result = confirm("공연장을 삭제하시겠습니까?")
+				if (result) {
+					alert("공연장이 삭제되었습니다.")
+					return true;
+				} else {
+					return false;
+				}
+			}
+		</script>
 	</div>
 
 

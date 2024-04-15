@@ -46,7 +46,7 @@
 									<td class="box"><input type="checkbox" th:value="${halls.hall_id}" class="chkbox"
 											name="check" onclick="checkSelectAll()"></td>
 									<!-- 이름 누르면 상세페이지로.. -->
-									<td><a href="#" th:text="${halls.hall_name}"></a></td>
+									<td><a th:href="@{/hall/detail/{id}(id=${halls.hall_id})}" th:text="${halls.hall_name}"></a></td>
 									<td th:text="${halls.name}"></td>
 									<td th:text="${halls.address1 + ' ' + halls.address2}"></td>
 									<td th:if="${#strings.equals(halls.visibility, 'N')}" th:text="O"></td>

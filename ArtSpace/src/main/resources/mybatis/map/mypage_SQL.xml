@@ -108,7 +108,7 @@
 	
 	<select id="getNotReview" resultType="com.example.demo.hall.dto.ReservationDTO">
 	 <![CDATA[
-		select h.hall_name, 
+		select h.hall_name,
 				date_format(rd.start_date, '%Y-%m-%d') as start_date, 
 				date_format(rd.end_date, '%Y-%m-%d') as end_date, 
 				rd.start_time, rd.end_time, h.hall_id, r.reserve_id
@@ -121,7 +121,7 @@
 	</select>
 	
 	<select id="getReview" resultType="com.example.demo.hall.dto.ReviewDTO">
-		select r.review_content, r.rating, r.create_date, h.hall_name
+		select r.review_content, r.rating, r.create_date, h.hall_name, h.hall_id
 		from review r
 		join hall h on h.hall_id = r.hall_id
 		where r.user_id = #{user_id};

@@ -105,23 +105,22 @@ body {
 .con .content .main .table {
 	width: 100%;
 	margin: auto;
-	border: 1px #a39485 solid;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
 	width: 100%;
 	border-collapse: collapse;
-	border-radius: 5px;
+	border-radius: 1rem;
 	overflow: hidden;
 }
 
 .con .content .main .table th {
-	background-color: var(--main-color);
+	background-color: #5B86EF;
+	color: #fff;
 	padding: 0.7rem;
 	font-size: 1.5rem;
 	font-weight: bold;
 }
 
 .con .content .main .table tbody tr:nth-child(even) {
-	background-color: var(--sub-color);
+	background-color: #EBF3F9;
 }
 
 .con .content .main .table td {
@@ -147,5 +146,4 @@ body {
 	font-size: 1.5rem;
 	font-weight: 600;
 	text-align: center;
-	box-shadow: var(--box-shadow);
 }

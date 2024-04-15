@@ -1,5 +1,7 @@
 package com.example.demo.hall.dto;
 
+import com.example.demo.file.dto.FileDTO;
+
 public class ReservationDTO {
 
 	private Integer reserve_id; 		// 예약ID PK
@@ -29,6 +31,8 @@ public class ReservationDTO {
 	// 예약자이름, 핸드폰번호
 	private String name;
 	private String phone;
+	
+	private FileDTO mainImage;
 
 	public Integer getReserve_id() {
 		return reserve_id;
@@ -163,6 +167,14 @@ public class ReservationDTO {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public FileDTO getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(FileDTO mainImage) {
+		this.mainImage = mainImage;
 	}
 	
 	

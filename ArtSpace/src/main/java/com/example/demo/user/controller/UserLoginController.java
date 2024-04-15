@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.user.dto.UserDTO;
 import com.example.demo.user.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -28,8 +29,14 @@ public class UserLoginController {
 	
 	// 로그인 화면 띄움
 	@RequestMapping("login")
-	public String showLogin() {
+	public String showLogin(HttpServletRequest request) {
 		Integer user_id = (Integer) session.getAttribute("user_id");		
+		if(request.getHeader("referer") == null) {
+			session.setAttribute("prevURL", "");			
+		} else {			
+			session.setAttribute("prevURL", request.getHeader("referer").substring(22));			
+		}
+		
 		if(user_id != null)
 			return "redirect:/";
 		
@@ -56,8 +63,8 @@ public class UserLoginController {
 				session.setAttribute("user_id", userDTO.getUser_id());
 				session.setAttribute("nickname", userDTO.getNickname());
 				session.setAttribute("authority", userDTO.getAuthority());
-				
-				return "redirect:/";
+	
+				return "redirect:/" + session.getAttribute("prevURL");
 			}else {
 				model.addAttribute("errorMessage", "아이디 또는 비밀번호가 일치하지 않습니다.");
 //				redirectAttributes.addAttribute("status", "error");

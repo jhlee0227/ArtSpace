@@ -207,7 +207,7 @@ public class MypageController {
 		myInfo(model);
 		
 		// 리뷰 작성가능한(리뷰를 아직 작성하지 않은) 예약목록
-		List<HallDTO> notReviewList = mypageService.getNotReview(user_session.getUser_id());
+		List<ReservationDTO> notReviewList = mypageService.getNotReview(user_session.getUser_id());
 		model.addAttribute("notReview_list", notReviewList);
 		
 		// 작성한 리뷰 목록

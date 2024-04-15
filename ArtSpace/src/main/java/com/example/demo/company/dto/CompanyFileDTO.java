@@ -8,6 +8,7 @@ public class CompanyFileDTO {
 	private Integer company_id; // 법인ID FK
 
 	private Integer user_id; // 유저ID
+	private String path;
 
 	public Integer getC_file_id() {
 		return c_file_id;
@@ -47,6 +48,14 @@ public class CompanyFileDTO {
 
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }

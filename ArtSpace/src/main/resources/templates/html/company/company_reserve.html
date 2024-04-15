@@ -19,10 +19,12 @@
 				<div class="msg">
 					<p th:if="${#strings.equals(my_info.authority, 'SCN')}">관리자 승인 후 이용 가능합니다.</p>
 				</div>
-				<div class="list" th:each="reserve : ${reserve_list}" th:if="${#strings.equals(my_info.authority, 'SCY')}">
+				<div class="list" th:each="reserve : ${reserve_list}"
+					th:if="${#strings.equals(my_info.authority, 'SCY')}">
 					<div class="item">
 						<div class="img">
-							<img src="/img/hallex.jpg" class="profile" alt="">
+							<img th:if="${reserve.mainImage != null}" th:src="${reserve.mainImage.path}"
+								th:data-file="${reserve.mainImage.org_file_name}" alt="">
 						</div>
 						<div class="hall-info">
 							<div class="hall-name" th:text="${reserve.hall_name}"></div>
