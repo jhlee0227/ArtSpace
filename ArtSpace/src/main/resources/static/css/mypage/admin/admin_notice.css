@@ -130,6 +130,32 @@ body {
 	font-weight: 600;
 }
 
+.con .content .main .update-btn {
+	cursor: pointer;
+	padding: 0.35rem;
+	display: inline-block;
+	background-color: var(--main-color);
+	border: var(--border);
+	border-radius: 1rem;
+	color: var(--black);
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+.con .content .main .delete-btn {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 0.5rem;
+	background-color: var(--main-color);
+	border: var(--border);
+	border-radius: 1rem;
+	color: var(--black);
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+}
+
 .con .content .main .button {
 	text-align: right;
 	margin-top: 1rem;
@@ -137,7 +163,7 @@ body {
 
 .con .content .main .button .submit-btn {
 	cursor: pointer;
-	padding: 0.5rem 0.5rem;
+	padding: 0.5rem;
 	display: inline-block;
 	background-color: var(--main-color);
 	border: var(--border);
@@ -148,15 +174,3 @@ body {
 	text-align: center;
 }
 
-.con .content .main .button .delete-btn {
-	cursor: pointer;
-	padding: 0.15rem;
-	display: inline-block;
-	background-color: var(--main-color);
-	border: var(--border);
-	border-radius: 1rem;
-	color: var(--black);
-	font-size: 1.5rem;
-	font-weight: 600;
-	text-align: center;
-}

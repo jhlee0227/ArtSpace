@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.company.service.CompanyService;
+import com.example.demo.file.service.FileService;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
@@ -35,6 +37,9 @@ public class CompanyController {
 
 	@Autowired
 	CompanyService companyService;
+
+	@Autowired
+	FileService fileService;
 
 	@Autowired
 	HttpSession session;
@@ -121,6 +126,7 @@ public class CompanyController {
 			if (authority.equals("SCN") || authority.equals("SCY")) {
 
 				CompanyDTO comDTO = companyService.findByID(user_session.getUser_id());
+
 				model.addAttribute("com_info", comDTO);
 				int company_id = comDTO.getCompany_id();
 				// 파일 제출 여부를 알기 위한 제출 file count
@@ -134,12 +140,12 @@ public class CompanyController {
 		} else {
 			return "redirect:/login";
 		}
-
 	}
 
 	// 사업자정보 등록
 	@PostMapping("/info")
-	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto) {
+	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto, @RequestParam("file") MultipartFile[] files,
+			@RequestParam("company_id") Integer company_id) {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";
@@ -147,6 +153,9 @@ public class CompanyController {
 
 		dto.setUser_id(user_session.getUser_id());
 		companyService.updateInfo(dto);
+
+		fileService.uploadObject(files, company_id);
+
 		return "redirect:/company/info";
 	}
 

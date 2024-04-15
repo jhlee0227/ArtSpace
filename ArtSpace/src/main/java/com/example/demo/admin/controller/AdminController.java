@@ -62,9 +62,10 @@ public class AdminController {
 		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
 			if (authority.equals("SA")) {
-				
+				return "html/admin/admin";
+			} else {
+				return "redirect:/";
 			}
-			return "html/admin/admin";
 		} else {
 			return "redirect:/login";
 		}
@@ -76,6 +77,10 @@ public class AdminController {
 	public String leave(@RequestParam(value = "check1", required = false) List<Integer> selectUser1,
 			@RequestParam(value = "check2", required = false) List<Integer> selectUser2) {
 
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 		// 전체 회원 탭
 		if (selectUser1 != null) {
 			for (Integer user_id : selectUser1) {
@@ -96,6 +101,10 @@ public class AdminController {
 	@PostMapping("/resign")
 	public String resign(@RequestParam(value = "check1", required = false) List<Integer> selectUser1,
 			@RequestParam(value = "check3", required = false) List<Integer> selectUser3) {
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 		// 전체 회원 탭
 		if (selectUser1 != null) {
 			for (Integer user_id : selectUser1) {
@@ -127,58 +136,77 @@ public class AdminController {
 	public String approveCompany(Model model) {
 		myInfo(model);
 
-		List<CompanyDTO> comList = adminService.getCompany();
-		model.addAttribute("com_list", comList);
-
-		for (CompanyDTO company : comList) {
-		    int companyId = company.getCompany_id();
-		    List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
-		    model.addAttribute("com_file_list_" + companyId, comFileList);
-		}
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
-			return "html/admin/admin_company";
+			if (authority.equals("SA")) {
+				List<CompanyDTO> comList = adminService.getCompany();
+				model.addAttribute("com_list", comList);
+
+				for (CompanyDTO company : comList) {
+					int companyId = company.getCompany_id();
+					List<CompanyFileDTO> comFileList = adminService.getCompanyFile(companyId);
+					model.addAttribute("com_file_list_" + companyId, comFileList);
+				}
+				return "html/admin/admin_company";
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
 	}
 
+	
 	// 법인 회원 승인
 	@PostMapping("/company/approve")
 	public String approve(@RequestParam(value = "check1") List<Integer> selectCompany) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		if (selectCompany != null) {
 			for (Integer user_id : selectCompany) {
 				adminService.approve(user_id);
 			}
 		}
-		
+
 		return "redirect:/admin/company";
 	}
-	
+
 	// 법인 회원 승인 거부
 	@PostMapping("/company/unapprove")
 	public String unapprove(@RequestParam(value = "check1") List<Integer> selectCompany) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		if (selectCompany != null) {
 			for (Integer user_id : selectCompany) {
 				Integer company_id = adminService.findCompanyById(user_id);
 				adminService.unapprove(company_id);
 			}
 		}
-		
+
 		return "redirect:/admin/company";
 	}
-	
+
 	// 공연장 정보 목록 조회
 	@GetMapping("/hallinfo")
 	public String hallinfo(Model model) {
 		myInfo(model);
 
-		List<HallDTO> hallList = adminService.getAllHalls();
-		model.addAttribute("hall_list", hallList);
-
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
-			return "html/admin/hall_info";
+			if (authority.equals("SA")) {
+				List<HallDTO> hallList = adminService.getAllHalls();
+				model.addAttribute("hall_list", hallList);
+
+				return "html/admin/hall_info";
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
@@ -197,26 +225,34 @@ public class AdminController {
 	// 공연장 차단
 	@PostMapping("/hall/block")
 	public String hallBlock(@RequestParam("check") List<Integer> selectHall) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		if (selectHall != null) {
 			for (Integer hall_id : selectHall) {
 				adminService.hallBlock(hall_id);
 			}
 		}
-		
+
 		return "redirect:/admin/hallinfo";
 	}
 
 	// 공연장 차단 해제
 	@PostMapping("/hall/unblock")
 	public String hallUnblock(@RequestParam("check") List<Integer> selectHall) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		if (selectHall != null) {
 			for (Integer hall_id : selectHall) {
 				adminService.hallUnblock(hall_id);
 			}
 		}
-		
+
 		return "redirect:/admin/hallinfo";
 	}
 
@@ -225,11 +261,16 @@ public class AdminController {
 	public String notice(Model model) {
 		myInfo(model);
 
-		List<NoticeDto> noticeList = adminService.getAllNotice();
-		model.addAttribute("notice_list", noticeList);
-
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
-			return "html/admin/admin_notice";
+			if (authority.equals("SA")) {
+				List<NoticeDto> noticeList = adminService.getAllNotice();
+				model.addAttribute("notice_list", noticeList);
+
+				return "html/admin/admin_notice";
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
@@ -248,14 +289,19 @@ public class AdminController {
 	// 공지사항 삭제
 	@PostMapping("/notice/delete")
 	public String noticeDelete(@RequestParam("check") List<Integer> selectNotice) {
+
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 		
 		if (selectNotice != null) {
 			for (Integer announ_id : selectNotice) {
 				adminService.noticeDelete(announ_id);
 			}
 		}
-		
+
 		return "redirect:/admin/notice";
 	}
-	
+
 }
