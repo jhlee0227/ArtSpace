@@ -110,7 +110,14 @@
 		      </div>
 		    </section>
 		  <!-- 공연장 공연자 바로가기 End -->
-		     
+		  <script th:inline="javascript">
+		  	let authority = [[${authority}]];
+			console.log(authority);
+			if (authority !== "SU") {
+				alert("일반 회원만 이용 가능합니다.")
+				window.location.replace("/");
+			}     
+		  </script>
 	</div>
 
 
