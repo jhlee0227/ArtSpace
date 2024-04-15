@@ -34,6 +34,9 @@ public class UserLoginController {
 		if(request.getHeader("referer") == null) {
 			session.setAttribute("prevURL", "");			
 		} else {			
+			if(request.getHeader("referer").equals("user/welcome") || request.getHeader("referer").equals("cor/welcome")) {
+				session.setAttribute("prevURL", "");							
+			}
 			session.setAttribute("prevURL", request.getHeader("referer").substring(22));			
 		}
 		
