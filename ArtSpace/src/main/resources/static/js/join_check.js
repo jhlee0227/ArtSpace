@@ -233,6 +233,32 @@ function isSubmit(){
 
 }	
 	
+	$('.btn1').click(function() {
+    if(isSubmit()) {
+        sendEmail();
+    }
+});
+
+function sendEmail() {
+    let email = $('#email').val();
+    $.ajax({
+        url: '/send-mail/email',  // 변경된 엔드포인트
+        method: 'post',
+        data: {
+            "email": email
+        },
+        dataType: 'json',
+        success: function(response) {
+            alert('인증 코드를 메일로 전송하였습니다.');
+            // 서버에서 받은 인증 코드를 사용자에게 보여줄 수 있습니다.
+            $('#authCode').html('인증 코드: ' + response.code).css('color', 'green');
+        },
+        error: function(err) {
+            console.error('Error sending email:', err);
+            alert('메일 전송에 실패했습니다.');
+        }
+    });
+}
 	
 	
 	

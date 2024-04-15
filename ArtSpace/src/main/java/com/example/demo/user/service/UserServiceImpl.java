@@ -35,5 +35,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.phoneCheck(phone);
 	}
 
+	@Override
+	public void setTempPassword(String to, String authNum) {
+		
+	}
 
 }
