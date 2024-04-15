@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.announcement.dto.NoticeDto;
 import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.company.dto.CompanyFileDTO;
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.user.dto.UserDTO;
@@ -78,10 +79,27 @@ public class AdminDAO {
 		sqlSession.update("admin.hallUnblock", hall_id);
 	}
 
-//	public List<CompanyFileDTO> getCompanyFile(int companyId) {
-//		
-//		return sqlSession.selectList("admin.getCompanyFile", companyId);
-//	}
+	public void noticeDelete(Integer announ_id) {
+		sqlSession.delete("admin.noticeDelete", announ_id);
+	}
+
+	public void approve(Integer user_id) {
+		sqlSession.update("admin.approve", user_id);
+	}
+
+	public int findCompanyById(Integer user_id) {
+		
+		return sqlSession.selectOne("admin.findCompanyById", user_id);
+	}
+
+	public void unapprove(Integer company_id) {
+		sqlSession.update("admin.unapprove", company_id);
+	}
+
+	public List<CompanyFileDTO> getCompanyFile(int companyId) {
+		
+		return sqlSession.selectList("admin.getCompanyFile", companyId);
+	}
 
 
 }

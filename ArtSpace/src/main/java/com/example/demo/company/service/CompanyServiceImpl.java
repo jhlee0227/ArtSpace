@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.company.dao.CompanyDAO;
 import com.example.demo.company.dto.CompanyDTO;
+import com.example.demo.file.dao.FileDAO;
+import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
@@ -17,16 +19,31 @@ public class CompanyServiceImpl implements CompanyService {
 	@Autowired
 	CompanyDAO companyDAO;
 	
+	@Autowired
+	FileDAO fileDAO;
+	
 	@Override
 	public List<HallDTO> getHall(Integer user_id) {
+		List<HallDTO> myHall = companyDAO.getHall(user_id);
 		
-		return companyDAO.getHall(user_id);
+		for (HallDTO hallDTO : myHall) {
+			FileDTO mainImage = fileDAO.getHallMainFile(hallDTO.getHall_id());
+			
+			hallDTO.setMainImage(mainImage);
+		}
+		return myHall;
 	}
 
 	@Override
 	public List<ReservationDTO> getReserve(Integer user_id) {
+		List<ReservationDTO> reserveList = companyDAO.getReserve(user_id);
 		
-		return companyDAO.getReserve(user_id);
+		for (ReservationDTO reservationDTO : reserveList) {
+			FileDTO mainImage = fileDAO.getHallMainFile(reservationDTO.getHall_id());
+			
+			reservationDTO.setMainImage(mainImage);
+		}
+		return reserveList;
 	}
 
 	@Override

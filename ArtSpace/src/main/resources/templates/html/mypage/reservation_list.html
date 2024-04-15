@@ -21,7 +21,8 @@
 					<!-- 여기에 th:text -->
 					<div class="item">
 						<div class="hall-img">
-							<img src="/img/hallex.jpg" class="hall-thumb" alt="">
+							<img th:if="${reserve.mainImage != null}" th:src="${reserve.mainImage.path}"
+								th:data-file="${reserve.mainImage.org_file_name}" class="hall-thumb" alt="">
 						</div>
 						<div class="hall">
 							<div class="hall-name" th:text="${reserve.hall_name}"></div>
@@ -41,7 +42,7 @@
 							<!-- 버튼 누르면 공연장 상세 페이지로.. -->
 							<input type="hidden" th:value="${reserve.reserve_id}" id="reserveId" class="reserveId">
 							<button onclick="openModal(this)">예약 정보</button>
-							<button>공연장 정보</button>
+							<button th:onclick="|location.href='@{/hall/detail/}' + ${reserve.hall_id}|">공연장 정보</button>
 
 						</div>
 
@@ -168,7 +169,7 @@
 					return false;
 				}
 			}
-	    </script>
+		</script>
 	</div>
 	</div>
 

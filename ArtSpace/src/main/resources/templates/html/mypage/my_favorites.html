@@ -2,47 +2,48 @@
 <html layout:decorate="~{/layout/default_layout}" lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/mypage/user/my_favorites.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/mypage/user/my_favorites.css">
 </head>
 
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		    <!-- 좌측 메뉴 -->
+			<!-- 좌측 메뉴 -->
 			<div th:replace="~{fragments/mypage_user :: mypage_user_fragment}"></div>
-		    <!-- 내용 -->
-		    <div class="content">
-		      <h2 class="content-main">내 즐겨찾기</h2>
-		      <!-- 여기에 th:each -->
-			  
-		      <div class="list" th:each="like : ${like_list}">
-		        <!-- 여기에 th:text -->
-		        <div class="item">
-		          <div class="hall-img">
-		            <img src="/img/hallex.jpg" class="hall-thumb" alt="">
-		          </div>
-		          <div class="hall">	
-		            <div class="hall-name" th:text="${like.hall_name}"></div>
-		            <div class="hall-loca" th:text="${like.address1 + ' ' + like.address2}"></div>
-		          </div>
-		          <div class="button">
-					<form method="post" action="/mypage/favorite/delete">
-						<input type="hidden" name="hall_id" th:value="${like.hall_id}">
-		            	<button type="submit" onclick="return confirmDelete()">찜 취소</button>
-					</form>
-		            <button>공연장정보</button>
-					
-		          </div>
-		        </div>
-		      </div>
-			  
-		    </div>
-		  </section>
-		  <script src="/js/open_menu.js"></script>	
-		  <script>
+			<!-- 내용 -->
+			<div class="content">
+				<h2 class="content-main">내 즐겨찾기</h2>
+				<!-- 여기에 th:each -->
+
+				<div class="list" th:each="like : ${like_list}">
+					<!-- 여기에 th:text -->
+					<div class="item">
+						<div class="hall-img">
+							<img th:if="${like.mainImage != null}" th:src="${like.mainImage.path}"
+								th:data-file="${like.mainImage.org_file_name}" class="hall-thumb" alt="">
+						</div>
+						<div class="hall">
+							<div class="hall-name" th:text="${like.hall_name}"></div>
+							<div class="hall-loca" th:text="${like.address1 + ' ' + like.address2}"></div>
+						</div>
+						<div class="button">
+							<form method="post" action="/mypage/favorite/delete">
+								<input type="hidden" name="hall_id" th:value="${like.hall_id}">
+								<button type="submit" onclick="return confirmDelete()">찜 취소</button>
+							</form>
+							<button th:onclick="|location.href='@{/hall/detail/}' + ${like.hall_id}|">공연장정보</button>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<script src="/js/open_menu.js"></script>
+		<script>
 			function confirmDelete() {
 				var result = confirm("즐겨찾기 삭제를 하시겠습니까?");
 				if (result) {
@@ -52,7 +53,7 @@
 					return false;
 				}
 			}
-		  </script>
+		</script>
 	</div>
 
 </body>
