@@ -33,6 +33,7 @@ public class HallServiceImpl implements HallService{
 	HallFileDAO hallFileDAO;
 	
 
+	// 새로운 공연장 등록 폼
 	@Override
 	public HallDTO newHallform() {
 		HallDTO hall = new HallDTO();
@@ -52,6 +53,7 @@ public class HallServiceImpl implements HallService{
 	}
 
 
+	// 예약 가능 시간 세팅
 	@Override
 	public List<HallTimeDTO> setHallTimeList(HallDTO hallInfo) {
 		List<HallTimeDTO> timeList = new LinkedList<>();
@@ -105,12 +107,19 @@ public class HallServiceImpl implements HallService{
 		}
 		hallDAO.update(hallDTO);
 	}
+	
+	// 해당 공연장의 장비 정보 저장(insert)하기
+	@Override
+	public void insertEqui(EquipmentDTO equiDTO, Integer id) {		
+		equiDTO.setHall_id(id);
+		hallDAO.insertEquiList(equiDTO);
+	}
+
 
 	// id로 해당 공연장 찾기
 	@Override
 	public HallDTO findById(Integer id) {
 		HallDTO hallDTO = hallDAO.findById(id);
-				
 		return hallDTO;
 	}
 		
@@ -121,12 +130,6 @@ public class HallServiceImpl implements HallService{
 		return hallDAO.getEquiList(id);
 	}
 
-	// 해당 공연장의 장비 정보 저장(insert)하기
-	@Override
-	public void insertEqui(EquipmentDTO equiDTO, Integer id) {		
-		equiDTO.setHall_id(id);
-		hallDAO.insertEquiList(equiDTO);
-	}
 
 	// 공연장 등록 취소해서 내용 전부 삭제
 	@Override
@@ -135,12 +138,14 @@ public class HallServiceImpl implements HallService{
 		deleteHallTime(id);
 		hallDAO.deleteHall(id);
 	}
-
+	
+	// 모든 장비 삭제
 	@Override
 	public void deleteEqui(Integer id) {
 		hallDAO.deleteAllEquiList(id);
 	}
 
+	// 모든 예약 시간 세팅 삭제
 	@Override
 	public void deleteHallTime(Integer id) {
 		hallDAO.deleteAllTime(id);

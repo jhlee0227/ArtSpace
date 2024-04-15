@@ -97,7 +97,7 @@ public class HallController {
 	@GetMapping("form/{id}")
 	public String shwForm(Model model, @PathVariable("id") Integer id, HttpServletResponse response) {
 		user_session.setSessionValue(session);
-		HallDTO hallInfo = hallService.findById(id);
+		
 
 		// 권한 체크
 		if (user_session.getUser_id() == null) {
@@ -108,17 +108,16 @@ public class HallController {
 //		 } if(!user_session.getAuthority().equals("SCY")){
 //			 return "redirect:/"; 
 //		 }
-		 
 
+		// 공연장 기본 정보들 불러오기
+		HallDTO hallInfo = hallService.findById(id);
 		hallInfo.setHallTimeList(hallService.setHallTimeList(hallInfo));
-
-		// 내일 파일 가져오는거 하기
 		List<FileDTO> imageList = hallService.getImageList(id);
 		model.addAttribute("images", imageList);
+		model.addAttribute("hall_info", hallInfo);
 
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
-		model.addAttribute("hall_info", hallInfo);
 		model.addAttribute("action", "/hall/form/update/" + id);
 
 		return "html/hall/hall_form";
@@ -279,6 +278,7 @@ public class HallController {
 		return "redirect:/hall/detail/" + id;
 	}
 
+	// 등록 취소 버튼 누를 때
 	@PostMapping("form/cancel/{id}")
 	public String cancelHall(@PathVariable("id") Integer id) {
 		user_session.setSessionValue(session);
@@ -290,18 +290,6 @@ public class HallController {
 		return "redirect:/";
 	}
 
-	// 임시
-	@GetMapping("detail/{id}")
-	public String detailPage(Model model, HallDTO hallDTO,
-			EquipmentDTO equipDTO, @PathVariable("id") Integer id) {
-		user_session.setSessionValue(session);
 
-		if (user_session.getUser_id() != null) {
-			model.addAttribute("user_id", user_session.getUser_id());
-			model.addAttribute("nickname", user_session.getNickname());
-		}
-
-		return "html/hall/detail_page";
-	}
 
 }
