@@ -12,4 +12,6 @@ public interface UserService {
 
 	public int phoneCheck(String phone);
 
+	public void setTempPassword(String to, String authNum);
+
 }

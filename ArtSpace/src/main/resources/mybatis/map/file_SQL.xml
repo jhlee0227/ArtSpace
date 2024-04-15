@@ -45,6 +45,14 @@
         		#{item}
 		    </foreach>			
 	</select>
+
+	<!-- 홀 아이디로 file_id들 가져오기 -->
+	<select id="getHallImageFile_ID" resultType="int">
+		select f.file_id 
+		  from file f join hall_image fi
+			on f.file_id = fi.file_id
+		 where fi.hall_id = #{hall_id}		
+	</select>
 	
 	<delete id="deleteFiles">
 		delete from file

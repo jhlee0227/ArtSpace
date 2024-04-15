@@ -19,6 +19,11 @@ public interface HallService {
 
 	// UPDATE 관련
 	public void update(HallDTO hallDTO);
+
+	public void visibilityTrue(Integer hall_id);
+	
+	public void visibilityFalse(Integer hall_id);
+
 	
 	// SELECT 관련
 	public HallDTO findById(Integer id);
@@ -38,6 +43,8 @@ public interface HallService {
 	public List<FileDTO> getImageList(Integer id);
 
 	public void deleteImages(Integer id, String[] deleteURL);
+
+	public void deleteImages(Integer hall_id);
 
 
 

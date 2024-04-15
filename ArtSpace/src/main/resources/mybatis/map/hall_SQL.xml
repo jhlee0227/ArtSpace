@@ -66,6 +66,19 @@
 	       WHERE hall_id = #{hall_id}
 	</update>	
 	
+	<update id="post_visibility_true">
+		UPDATE hall
+		   SET visibility = 'Y'
+		   WHERE hall_id = #{hall_id}
+	</update>
+
+	<update id="post_visibility_false">
+		UPDATE hall
+		   SET visibility = 'N'
+		   WHERE hall_id = #{hall_id}
+	</update>
+
+	
 	<update id="update_hall_time">
 	   UPDATE hall_time
 	      SET type = #{type},
@@ -87,6 +100,7 @@
           		on h.hall_id = lh.hall_id
               left join review r
          		on h.hall_id = r.hall_id
+        where h.visibility = 'Y'
 		group by hall_id
 		order by h.create_date desc
 	</select>
@@ -132,8 +146,9 @@
           		on h.hall_id = lh.hall_id
               left join review r
          		on h.hall_id = r.hall_id
+                        where h.visibility = 'Y'
          <if test ="local != '' or maxPrice > 0 or maxPeople >0">
-          	where
+             and
          </if>
 		 <if test="local != ''">		 
 			 h.address1 regexp #{local}

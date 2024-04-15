@@ -1,6 +1,10 @@
 package com.example.demo.hall.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,12 +51,62 @@ public class DetailController {
 		HallDTO hall = hallService.findById(id);
 		hall.setHallTimeList(hallService.setHallTimeList(hall));
 		hall.setEquiList(hallService.getEquiList(id));
-		
 		List<FileDTO> images = hallService.getImageList(id);
+		List<EquipmentDTO> equipList = hall.getEquiList();		
+				
+		int ft = (int) (hall.getArea() / 3.306);
+		
+		model.addAttribute("ft", ft);
 		model.addAttribute("images", images);
+		model.addAttribute("equipMap", getEquipMap(equipList));
 		model.addAttribute("hall", hall);		
 
 		return "html/hall/detail_page";
+	}
+	
+	
+	// 장비 리스트 쪼개기
+	Map<String, List<EquipmentDTO>> getEquipMap(List<EquipmentDTO> equipList){
+		List<EquipmentDTO> micList = new ArrayList<EquipmentDTO>();
+		List<EquipmentDTO> speakerList = new ArrayList<EquipmentDTO>();
+		List<EquipmentDTO> lightingList = new ArrayList<EquipmentDTO>();
+		List<EquipmentDTO> stage_equipList = new ArrayList<EquipmentDTO>();
+		List<EquipmentDTO> videoList = new ArrayList<EquipmentDTO>();
+		List<EquipmentDTO> etcList = new ArrayList<EquipmentDTO>();
+		
+		for (EquipmentDTO equip : equipList) {
+			switch (equip.getEquip_type()) {
+				case "mic" : 
+					micList.add(equip);
+					break;
+				case "speaker":
+					speakerList.add(equip);
+					break;
+				case "lighting":
+					lightingList.add(equip);
+					break;
+				case "stage_equip":
+					stage_equipList.add(equip);
+					break;
+				case "video":
+					videoList.add(equip);
+					break;
+				case "etc":
+					etcList.add(equip);
+					break;
+			}
+		}
+		
+		Map<String, List<EquipmentDTO>> equipMap = new LinkedHashMap<String, List<EquipmentDTO>>();
+		
+		equipMap.put("마이크", micList);
+		equipMap.put("스피커", speakerList);
+		equipMap.put("조명", lightingList);
+		equipMap.put("무대장치", stage_equipList);
+		equipMap.put("영상", videoList);
+		equipMap.put("기타", etcList);
+		
+		return equipMap;
 	}
 	
 

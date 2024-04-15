@@ -93,7 +93,7 @@
 
 	<select id="getCompany"
 		resultType="com.example.demo.company.dto.CompanyDTO">
-		select u.email, c.company_id, u.user_id
+		select u.email, c.company_id, u.user_id, c.owner_name, c.owner_email, c.owner_phone
 		from company c
 		join user u on c.user_id = u.user_id
 		where c.company_id in (

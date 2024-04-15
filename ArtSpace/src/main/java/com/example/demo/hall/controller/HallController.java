@@ -123,44 +123,6 @@ public class HallController {
 		return "html/hall/hall_form";
 	}
 	
-//	@RequestMapping(value="/form/getFile/{id}")
-//	@ResponseBody
-//	public ResponseEntity<List<File>> getFiles(@PathVariable("id") Integer id) {
-//		List<FileDTO> imageList = hallService.getImageList(id);
-//		
-//		FileInputStream is = null;
-//		List<File> fileList = new ArrayList<File>();
-//		try {
-//			for (FileDTO fileDTO : imageList) {
-//				// 파일 경로로 가져옴
-//				File file = new File(fileDTO.getPath());
-//				System.out.println(file.getPath());
-//
-//				FileInputStream inputStream = new FileInputStream(file);
-//		    	//FileUtils.copyInputStreamToFile(is, file);				
-//		    	fileList.add(file);
-//			
-//			} 			
-//			is.close();
-//
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		return new ResponseEntity<List<File>>(fileList, HttpStatus.OK);
-//	}
-	
-//	@RequestMapping(value = "/form/getFile/{id}")
-//	@ResponseBody
-//	public ResponseEntity<List<Blob>> getFiles(@PathVariable("id") Integer id) {
-//	    List<FileDTO> imageList = hallService.getImageList(id);	    
-//	    List<Blob> fileList = fileService.downloadImage(imageList);
-//	    
-//	    
-//
-//	    return new ResponseEntity<>(fileList, HttpStatus.OK);
-//	}
 	
 
 	// insert 처리
@@ -275,6 +237,8 @@ public class HallController {
 				hallService.insertEqui(equiList.get(i), id);
 			}
 		}
+		
+		hallService.visibilityTrue(id);
 		return "redirect:/hall/detail/" + id;
 	}
 

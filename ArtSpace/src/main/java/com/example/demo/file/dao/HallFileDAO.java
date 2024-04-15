@@ -27,6 +27,10 @@ public class HallFileDAO {
 	public void deleteImages(List<Integer> fileIDList) {
 		sqlSession.delete("hallFile.delete", fileIDList);
 	}
+
+	public void deleteAllImages(Integer hall_id) {
+		sqlSession.delete("hallFile.deleteAllImages", hall_id);	
+	}
 	
 	
 	

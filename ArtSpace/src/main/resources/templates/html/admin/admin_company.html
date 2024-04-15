@@ -22,11 +22,14 @@
 							<thead>
 								<tr>
 									<th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll">
-									<th>이메일</th>
-									<th>사업자등록증</th>
-									<th>영업신고증</th>
-									<th>통장사본</th>
-									<th>법인등기부등본</th>
+									<th>아이디</th>
+									<th>대표이름</th>
+									<th>대표이메일</th>
+									<th>대표번호</th>
+									<th class="paper">사업자등록증</th>
+									<th class="paper">영업신고증</th>
+									<th class="paper">통장사본</th>
+									<th class="paper">등기부등본</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -34,6 +37,9 @@
 									<td><input type="checkbox" th:value="${com.user_id}" class="chkbox" name="check1"
 											onclick="checkSelectAll1()"></td>
 									<td th:text="${com.email}"></td>
+									<td th:text="${com.owner_name}"></td>
+									<td th:text="${com.owner_email}"></td>
+									<td th:text="${com.owner_phone}"></td>
 									<td th:each="file : ${__${'com_file_list_' + com.company_id}__}">
 										<a th:href="${file.path}" target="_blank"><i class="fa-solid fa-file-pdf fa-2x"></i></a>
 									</td>

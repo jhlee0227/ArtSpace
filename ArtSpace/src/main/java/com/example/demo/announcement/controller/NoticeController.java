@@ -54,7 +54,7 @@ public class NoticeController {
 
 	// 공지사항 등록과 수정
 	@PostMapping("/insert")
-	public String insertUser(@ModelAttribute NoticeDto noticeDTO, @RequestParam("announ_id") Integer announ_id) {
+	public String insertUser(@ModelAttribute NoticeDto noticeDTO, @RequestParam(value = "announ_id", required = false) Integer announ_id) {
 		 if (announ_id != null) {
 		        noticeDTO.setCreate_date(LocalDate.now());
 		        noticeService.update(noticeDTO);

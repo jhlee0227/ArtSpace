@@ -15,47 +15,21 @@
 			<div th:replace="~{fragments/mypage_company :: mypage_company_fragment}"></div>
 			<!-- 우측 메인 컨텐츠 -->
 			<div class="content">
-				<h2 class="content-main">사업자 정보</h2>
-				<form th:action="@{/company/info}" method="post">
-					<div class="list" th:if="${com_info == null}">
+				<div class="msg">
+					<p th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount < 4}">관리자 승인
+						후 인증
+						완료됩니다.</p>
+				</div>
+				<form th:action="@{/company/info}" method="post" th:if="${#strings.equals(my_info.authority, 'SCN')}"
+					th:unless="${fileCount >= 4}" enctype="multipart/form-data">
+					<h2 class="content-main">사업자 정보</h2>
+					<div class="list">
 						<h2>대표 정보</h2>
 						<div class="first">
 							<div class="list-name">대표이름</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_name" id="owner_name" oninput="activate()">
-							</div>
-							<span class="owner_check" id="owner_check"></span>
-						</div>
-						<div>
-							<div class="list-name">대표이메일</div>
-							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con">
-								<input type="text" name="owner_email" id="owner_email" oninput="activate()">
-							</div>
-							<span class="email_check" id="email_check"></span>
-						</div>
-						<div class="last">
-							<div class="list-name">대표번호</div>
-							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con">
-								<input type="text" name="owner_phone" id="owner_phone" oninput="activate()">
-							</div>
-							<span class="phone_check" id="phone_check"></span>
-						</div>
-						<button id="btn" class="button" onclick="return check()" disabled>저장</button>
-					</div>
-
-				</form>
-				<form th:action="@{/company/info}" method="post">
-					<div class="list" th:if="${com_info != null}">
-						<h2>대표 정보</h2>
-						<div class="first">
-							<div class="list-name">대표이름</div>
-							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-							<div class="list-con">
-								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name"
-									oninput="activate()">
+								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name">
 							</div>
 							<span class="owner_check" id="owner_check"></span>
 						</div>
@@ -64,7 +38,7 @@
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
 								<input type="text" name="owner_email" th:value="${com_info.owner_email}"
-									id="owner_email" oninput="activate()">
+									id="owner_email">
 							</div>
 							<span class="email_check" id="email_check"></span>
 						</div>
@@ -73,20 +47,16 @@
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
 								<input type="text" name="owner_phone" th:value="${com_info.owner_phone}"
-									id="owner_phone" oninput="activate()">
+									id="owner_phone">
 							</div>
 							<span class="phone_check" id="phone_check"></span>
 						</div>
-						<button id="btn" class="button" onclick="return check()" disabled>저장</button>
+						<!--<button id="btn" class="button" onclick="return check()" disabled>저장</button>-->
 					</div>
-				</form>
-				<div class="paper">
-					<div class="msg">
-						<p th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount < 4}">관리자 승인 후 인증
-							완료됩니다.</p>
-					</div>
-					<form th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount >= 4}"
-						action="/api/gcs/upload" method="post" enctype="multipart/form-data">
+					<!--</form>-->
+					<div class="paper">
+						<!--<form th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount >= 4}"
+						action="/api/gcs/upload" method="post" enctype="multipart/form-data">-->
 						<input type="hidden" name="company_id" th:value="${com_info.company_id}" id="company_id">
 						<h2>증빙서류 제출</h2>
 						<div class="paper-list">
@@ -134,10 +104,9 @@
 						<div class="button">
 							<button id="paperBtn" onclick="return submitCheck()" disabled>제출</button>
 						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
-
 		</section>
 
 		<script src="/js/open_menu.js"></script>
@@ -205,41 +174,42 @@
 				}
 			}
 
-			function activate() {
+			// 7개의 input 다 입력되면 버튼 활성화
+			function checkAllInputs() {
 				let nameValid = nameCheck();
 				let emailValid = emailCheck();
 				let phoneValid = phoneCheck();
 
-				if (nameValid && emailValid && phoneValid) {
-					document.getElementById('btn').disabled = false;
-				} else {
-					document.getElementById('btn').disabled = true;
-				}
-			}
+				let fileInputs = document.querySelectorAll('input[type=file]');
+				let allFile = true;
 
-			function checkFile() {
-				var fileInputs = document.querySelectorAll('input[type=file]');
-				var paperBtn = document.getElementById('paperBtn');
-				var allFile = true;
-
-				for (var i = 0; i < fileInputs.length; i++) {
+				for (let i = 0; i < fileInputs.length; i++) {
 					if (fileInputs[i].value === '') {
 						allFile = false;
 						break;
 					}
 				}
 
-				paperBtn.disabled = !allFile;
+				return nameValid && emailValid && phoneValid && allFile;
+			}
+
+			function activateBtn() {
+				let paperBtn = document.getElementById('paperBtn');
+				paperBtn.disabled = !checkAllInputs();
 			}
 
 			document.addEventListener('DOMContentLoaded', function () {
-				var fileInputs = document.querySelectorAll('input[type=file]');
-				var paperBtn = document.getElementById('paperBtn');
+				let fileInputs = document.querySelectorAll('input[type=file]');
+				let paperBtn = document.getElementById('paperBtn');
 
 				fileInputs.forEach(function (fileInput) {
-					fileInput.addEventListener('change', checkFile);
+					fileInput.addEventListener('change', activateBtn);
 				});
-			})
+
+				document.getElementById('owner_name').addEventListener('input', activateBtn);
+				document.getElementById('owner_email').addEventListener('input', activateBtn);
+				document.getElementById('owner_phone').addEventListener('input', activateBtn);
+			});
 
 			function submitCheck() {
 				var result = confirm("서류를 제출 하시겠습니까?\n(*제출한 후에는 수정이 불가능합니다)");
@@ -252,6 +222,10 @@
 			}
 		</script>
 	</div>
+
+
+
+
 
 </body>
 

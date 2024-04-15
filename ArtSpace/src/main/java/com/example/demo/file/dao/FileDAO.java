@@ -40,8 +40,18 @@ public class FileDAO {
 		sqlSession.delete("file.deleteFiles", fileIDList);
 	}
 
+	// 지울 url로 지워야할 파일 아이디 추출
 	public List<Integer> getFileIDList(String[] deleteURL) {
 		return sqlSession.selectList("file.getFile_ID", deleteURL);
 	}
+	
+	// 지울 공연장 아이디로 지워야할 파일 아이디 추출
+		public List<Integer> getHallImageFileIDList(Integer hall_id) {
+			return sqlSession.selectList("file.getHallImageFile_ID", hall_id);
+	}
+		
+		
+
+
 
 }
