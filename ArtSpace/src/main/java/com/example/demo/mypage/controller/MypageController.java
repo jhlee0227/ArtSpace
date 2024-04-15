@@ -79,6 +79,9 @@ public class MypageController {
 	public String updateNickname(@ModelAttribute UserDTO dto) {
 
 		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 		
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updateNickname(dto);
@@ -91,7 +94,10 @@ public class MypageController {
 	public String updatePw(@ModelAttribute UserDTO dto) {
 
 		user_session.setSessionValue(session);
-
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+		
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updatePw(dto);
 		return "redirect:/mypage";
@@ -102,6 +108,10 @@ public class MypageController {
 	public String updatePhone(@ModelAttribute UserDTO dto) {
 		
 		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+		
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updatePhone(dto);
 		return "redirect:/mypage";
@@ -116,7 +126,11 @@ public class MypageController {
 		model.addAttribute("perfo_info", perfoInfo);
 		
 		if (user_session.getUser_id() != null) {
-			return "html/mypage/performer_info";
+			if (user_session.getAuthority().equals("SU")) {
+				return "html/mypage/performer_info";
+			} else {
+				return "html/index";
+			}
 		} else {
 			return "redirect:/login"; 
 		}

@@ -60,7 +60,7 @@ public class CompanyController {
 		if (authority.equals("SCN") || authority.equals("SCY")) {			
 			return "html/company/company_page";
 		} else {
-			return "redircet:/";
+			return "redirect:/";
 		}
 
 		
@@ -111,8 +111,13 @@ public class CompanyController {
 		int fileCount = companyService.fileCount(company_id);
 		model.addAttribute("fileCount", fileCount);
 		
+		if (user_session.getUser_id() != null) {
+			return "html/company/company_info";
+		} else {
+			return "redirect:/login";
+		}
 		
-		return "html/company/company_info";
+		
 	}
 	
 	// 사업자정보 등록
@@ -132,7 +137,12 @@ public class CompanyController {
 
 		List<HallDTO> myHall = companyService.getHall(user_session.getUser_id());
 		model.addAttribute("my_hall", myHall);
-		return "html/company/company_hall";
+		
+		if (user_session.getUser_id() != null) {
+			return "html/company/company_hall";
+		} else {
+			return "redirect:/login";
+		}
 	}
 	
 	// 공연장 정보 수정
@@ -161,7 +171,12 @@ public class CompanyController {
 		
 		List<ReservationDTO> reserveList = companyService.getReserve(user_session.getUser_id());
 		model.addAttribute("reserve_list", reserveList);
-		return "html/company/company_reserve";
+		
+		if (user_session.getUser_id() != null) {
+			return "html/company/company_reserve";			
+		} else {
+			return "redirect:/login";
+		}
 	}
 
 	// 해당 공연장에 대한 예약 삭제
