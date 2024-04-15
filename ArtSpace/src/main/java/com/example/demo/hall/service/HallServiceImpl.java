@@ -108,6 +108,21 @@ public class HallServiceImpl implements HallService{
 		hallDAO.update(hallDTO);
 	}
 	
+
+	// 포스트 게시 On
+	@Override
+	public void visibilityTrue(Integer hall_id) {
+		hallDAO.visibilityTrue(hall_id);
+	}
+	
+	// 포스트 게시 Off
+	@Override
+	public void visibilityFalse(Integer hall_id) {
+		hallDAO.visibilityFalse(hall_id);
+	}
+
+	
+	
 	// 해당 공연장의 장비 정보 저장(insert)하기
 	@Override
 	public void insertEqui(EquipmentDTO equiDTO, Integer id) {		
@@ -136,6 +151,7 @@ public class HallServiceImpl implements HallService{
 	public void cancelHall(Integer id) {
 		deleteEqui(id);
 		deleteHallTime(id);
+		deleteImages(id);
 		hallDAO.deleteHall(id);
 	}
 	
@@ -179,9 +195,22 @@ public class HallServiceImpl implements HallService{
 			} else {
 				// 주소가 잘못되었을 확률 99%
 			}
-		}		
-		
+		}
 	}
+	
+	// 캔슬시 삭제하는 메소드
+	@Override
+	public void deleteImages(Integer hall_id) {		
+		hallFileDAO.deleteAllImages(hall_id);					
+		
+		List<Integer> fileIDList = fileDAO.getHallImageFileIDList(hall_id);
+		if(fileIDList.size() > 0) {
+			hallFileDAO.deleteImages(fileIDList);
+			fileDAO.deleteFiles(fileIDList);				
+		}
+	}
+
+
 
 
 }

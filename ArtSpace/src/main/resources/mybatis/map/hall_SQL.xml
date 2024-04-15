@@ -66,6 +66,19 @@
 	       WHERE hall_id = #{hall_id}
 	</update>	
 	
+	<update id="post_visibility_true">
+		UPDATE hall
+		   SET visibility = 'Y'
+		   WHERE hall_id = #{hall_id}
+	</update>
+
+	<update id="post_visibility_false">
+		UPDATE hall
+		   SET visibility = 'N'
+		   WHERE hall_id = #{hall_id}
+	</update>
+
+	
 	<update id="update_hall_time">
 	   UPDATE hall_time
 	      SET type = #{type},

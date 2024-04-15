@@ -135,7 +135,6 @@ hr {
 }
 
 .hall-detail .main {
-  margin: 0 auto;
   min-width: 100%;
   max-width: 100%;
 }
@@ -183,16 +182,19 @@ hr {
 }
 
 .hall-detail .content > div{
-   padding: 60px 0px 60px 100px;
+   padding: 4rem 10rem;
    line-height: 1.5;
-   font-size: 17px;
+   font-size: 1.5rem;
 }
-
 
 /* ==================================================상세 정보 목록================================================== */
 
 .hall-detail .content .content-dis .box{
 	margin: 5rem 0;
+}
+
+.hall-detail .content .content-dis .box pre{
+	white-space: pre-wrap;
 }
 
 .hall-detail .content h1 {
@@ -205,31 +207,27 @@ hr {
 
 .hall-detail .content table {
     font-weight: bold;
-    white-space: pre;
+	width: 100%;
 }
 
 .hall-detail .content tr {
-    border-top: 2px solid rgb(200, 200, 200);
-    border-right: 1px solid rgb(200, 200, 200);
-    border-left: 1px solid rgb(200, 200, 200);
-    border-bottom: 2px solid rgb(200, 200, 200);
+    border: 2px solid rgb(200, 200, 200);
 }
 
 .hall-detail .content .color {
     background-color: rgb(235, 235, 235);
     width: 135px;
-    height: 30px;
     text-align: center;
 }
 
 .hall-detail .content td {
-    width: 88.2%;
+	padding: 1rem 1rem;
 }
 
 .hall-detail .content hr {
     float: left;
-    width: 81%;
-    margin-top: 30px;
+    width: 100%;
+    margin: 5rem 0;
 }
 
 .hall-detail .content .fa-location-dot {

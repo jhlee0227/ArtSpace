@@ -31,13 +31,16 @@ public class UserLoginController {
 	@RequestMapping("login")
 	public String showLogin(HttpServletRequest request) {
 		Integer user_id = (Integer) session.getAttribute("user_id");		
-		if(request.getHeader("referer") == null) {
+		
+		String prevURL = request.getHeader("referer").substring(22);
+		if(prevURL == null) {
 			session.setAttribute("prevURL", "");			
 		} else {			
-			if(request.getHeader("referer").equals("user/welcome") || request.getHeader("referer").equals("cor/welcome")) {
+			if(prevURL.equals("user/welcome") || prevURL.equals("cor/welcome")) {
 				session.setAttribute("prevURL", "");							
+			} else {
+				session.setAttribute("prevURL", request.getHeader("referer").substring(22));							
 			}
-			session.setAttribute("prevURL", request.getHeader("referer").substring(22));			
 		}
 		
 		if(user_id != null)
