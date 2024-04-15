@@ -1,0 +1,297 @@
+@import "../../reset.css";
+
+/* ==================================================기본 전체 적용================================================== */
+
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+.hall-detail {
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+/* ==================================================공연장 사진 및 이름================================================== */
+
+.hall-detail .imgbox {
+    width: 100%;
+    height: 500px;
+    background: #fff5e2;
+}
+
+.hall-detail .hall-content {
+	margin: 5rem 0 0 0;
+	line-height: 4rem;
+}
+
+.hall-detail .hall-content .address-text {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--gray);
+}
+
+.hall-detail .hall-content .title-text {
+    text-align: center;
+    font-size: 3.1rem;
+    font-weight: 600;
+}
+
+/* ==================================================즐겨찾기 및 공유 및 별점================================================== */
+
+.hall-detail .favorite .fa-regular {
+    top: 20px;
+    right: 20px;
+    margin-left: 15px;
+    margin-right: 7px;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.hall-detail .favorite .fa-sharp {
+    margin-right: 18px;
+}
+
+.hall-detail .favorite .mini {
+    color: gold;
+}
+
+hr {
+    margin-top: 15px;
+    border: 1px solid rgb(220, 220, 220);
+}
+
+
+/* ==================================================중요 안내 사항================================================== */
+
+.hall-detail .container {
+    width: 85%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(235, 235, 235);
+    border-radius: 20px;
+}
+
+.hall-detail .container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.hall-detail .container p {
+    font-size: 1.5rem;
+    margin-top: 2%;
+    margin-left: 8%;
+    margin-right: 8%;
+    line-height: normal;
+}
+
+.text-red {
+    color: red;
+}
+
+/* ==================================================목록 변환================================================== */
+
+.hall-detail .tab {
+    position: sticky;
+    width: 100%;
+    top: 90.7px;
+    z-index: 1000;
+}
+
+.hall-detail .main input[type=radio] {
+	display: none;
+}
+
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2),
+#tab-3:checked ~ .tab label:nth-child(3),
+#tab-4:checked ~ .tab label:nth-child(4) {
+    background-color: white;
+    color: black;
+    box-shadow: none;
+}
+
+.hall-detail .content > div {
+	display: none;
+}
+
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2),
+#tab-3:checked ~ .content div:nth-child(3),
+#tab-4:checked ~ .content div:nth-child(4)  {
+	display: block;
+}
+
+.hall-detail .main {
+  margin: 0 auto;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.hall-detail .tab {
+    background-color: rgb(235, 235, 235);
+    color: gray;
+    padding: 0% 0% 0.2% 0%;
+    overflow: hidden;
+}
+
+.hall-detail .tab #t1 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t2 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t3 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab #t4 {
+    outline: solid 1px rgb(220, 220, 220);
+}
+
+.hall-detail .tab label {
+    font-size: 1.8rem;
+    cursor: pointer;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 1.5% 0%;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.hall-detail .content {
+  background-color: white;
+  min-height: 250px;
+}
+
+.hall-detail .content > div{
+   padding: 60px 0px 60px 100px;
+   line-height: 1.5;
+   font-size: 17px;
+}
+
+
+/* ==================================================상세 정보 목록================================================== */
+
+.hall-detail .content .content-dis .box{
+	margin: 5rem 0;
+}
+
+.hall-detail .content h1 {
+    font-size: 2.5rem;
+}
+
+.hall-detail .content p {
+    font-size: 1.5rem;
+}
+
+.hall-detail .content table {
+    font-weight: bold;
+    white-space: pre;
+}
+
+.hall-detail .content tr {
+    border-top: 2px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+    border-left: 1px solid rgb(200, 200, 200);
+    border-bottom: 2px solid rgb(200, 200, 200);
+}
+
+.hall-detail .content .color {
+    background-color: rgb(235, 235, 235);
+    width: 135px;
+    height: 30px;
+    text-align: center;
+}
+
+.hall-detail .content td {
+    width: 88.2%;
+}
+
+.hall-detail .content hr {
+    float: left;
+    width: 81%;
+    margin-top: 30px;
+}
+
+.hall-detail .content .fa-location-dot {
+    margin-left: 10px;
+}
+
+
+
+/* ==================================================최종 금액 및 예약하기================================================== */
+
+.hall-expectation {
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.hall-expectation .expectation {
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    text-align: center;
+    padding: 2rem 0;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background-color: #605353;
+    display: flex;
+    justify-content: center;
+}
+
+.hall-expectation .expectation .amount {
+    color: gold;
+    width: 200px;
+    text-align: right;
+    margin-right: 0.5%;
+}
+
+.hall-expectation .expectation .reservation {
+    margin-left: 5%;
+    cursor: pointer;
+    color: white;
+}
+
+
+/* ==================================================후터================================================== */
+
+
+.btn {
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 1.5rem 3rem;
+  
+    display: inline-block;
+    background-color: var(--main-color);
+    border: var(--border);
+    border-radius: 1rem;
+  
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+
