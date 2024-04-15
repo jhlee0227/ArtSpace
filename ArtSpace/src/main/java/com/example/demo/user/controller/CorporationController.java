@@ -23,7 +23,7 @@ public class CorporationController {
 	// 법인 회원가입인증 화면 띄움
 	@GetMapping("corporation")
 	public String showCorporationCode() {
-		return "html/login/login_corporation";
+		return "html/login/join_corporation";
 	} 
 
 	// 법인 데이터 체크하고 정보 입력창으로
@@ -40,7 +40,7 @@ public class CorporationController {
 		
 		model.addAttribute("user_id", user.getUser_id());
 		
-		return "html/login/login_joincorporation";
+		return "html/login/join_corporation_info";
 	}
 		
 	@PostMapping("insert")
@@ -53,7 +53,7 @@ public class CorporationController {
 	// 법인 회원가입인증코드 화면 띄움
 	@GetMapping("join_code")
 	public String codeCor() {
-		return "html/login/login_code_corporation";
+		return "html/login/join_corporation_code";
 	} 
 	
 	@PostMapping("joincode_check")
@@ -64,7 +64,7 @@ public class CorporationController {
 	// 법인 회원가입 완료 화면 띄움
 	@GetMapping("welcome")
 	public String welcomeCor() {
-		return "html/login/login_welcome_corporation";
+		return "html/login/join_corporation_welcome";
 	} 
 	
 }

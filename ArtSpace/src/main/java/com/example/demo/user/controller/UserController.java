@@ -20,14 +20,14 @@ public class UserController {
 	// 일반 회원가입 화면 띄움
 	@GetMapping("join")
 	public String showJoin() {
-		return "html/login/loginjoin";
+		return "html/login/join_user_info";
 	}
 
 	// 유저 데이터 insert 처리 후 메일 인증 코드 부분으로 보냄
 	@PostMapping("insert")
 	public String insertUser(@ModelAttribute UserDTO userDTO) {
 		userService.insert(userDTO);
-		return "html/login/logincode";
+		return "html/login/join_user_code";
 	}
 	
 	
@@ -35,7 +35,7 @@ public class UserController {
 	@PostMapping("welcome")
 	public String welcome() {
 		
-		return "html/login/loginwelcome";
+		return "html/login/join_user_welcome";
 	}
 
 	
