@@ -38,32 +38,35 @@ public class CompanyController {
 
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	HallService hallService;
 
 	// 공통부분 정리
-	private void myInfo (Model model) {
-	    user_session.setSessionValue(session);
-	    UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
-	    model.addAttribute("my_info", myInfo);
-	    model.addAttribute("user_id", user_session.getUser_id());
-	    model.addAttribute("nickname", user_session.getNickname());
+	private void myInfo(Model model) {
+		user_session.setSessionValue(session);
+		UserDTO myInfo = mypageService.findByID(user_session.getUser_id());
+		model.addAttribute("my_info", myInfo);
+		model.addAttribute("user_id", user_session.getUser_id());
+		model.addAttribute("nickname", user_session.getNickname());
 	}
-	
+
 	// 법인 마이페이지 기본
 	@GetMapping("")
 	public String company(Model model) {
 		myInfo(model);
 
 		String authority = user_session.getAuthority();
-		if (authority.equals("SCN") || authority.equals("SCY")) {			
-			return "html/company/company_page";
+		if (user_session.getUser_id() != null) {
+			if (authority.equals("SCN") || authority.equals("SCY")) {
+				return "html/company/company_page";
+			} else {
+				return "redirect:/";
+			}
 		} else {
-			return "redirect:/";
+			return "redirect:/login";
 		}
 
-		
 	}
 
 	// 닉네임 수정
@@ -71,6 +74,9 @@ public class CompanyController {
 	public String updateNickname(@ModelAttribute UserDTO dto) {
 
 		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updateNickname(dto);
@@ -83,6 +89,9 @@ public class CompanyController {
 	public String updatePw(@ModelAttribute UserDTO dto) {
 
 		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updatePw(dto);
@@ -94,6 +103,10 @@ public class CompanyController {
 	public String updatePhone(@ModelAttribute UserDTO dto) {
 
 		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.updatePhone(dto);
 		return "redirect:/mypage";
@@ -103,28 +116,35 @@ public class CompanyController {
 	@GetMapping("/info")
 	public String companyInfo(Model model) {
 		myInfo(model);
-		
-		CompanyDTO comDTO = companyService.findByID(user_session.getUser_id());
-		model.addAttribute("com_info", comDTO);
-		int company_id = comDTO.getCompany_id();
-		// 파일 제출 여부를 알기 위한 제출 file count
-		int fileCount = companyService.fileCount(company_id);
-		model.addAttribute("fileCount", fileCount);
-		
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
-			return "html/company/company_info";
+			if (authority.equals("SCN") || authority.equals("SCY")) {
+
+				CompanyDTO comDTO = companyService.findByID(user_session.getUser_id());
+				model.addAttribute("com_info", comDTO);
+				int company_id = comDTO.getCompany_id();
+				// 파일 제출 여부를 알기 위한 제출 file count
+				int fileCount = companyService.fileCount(company_id);
+				model.addAttribute("fileCount", fileCount);
+
+				return "html/company/company_info";
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
-		
-		
+
 	}
-	
+
 	// 사업자정보 등록
 	@PostMapping("/info")
 	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto) {
 		user_session.setSessionValue(session);
-		
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		dto.setUser_id(user_session.getUser_id());
 		companyService.updateInfo(dto);
 		return "redirect:/company/info";
@@ -135,45 +155,62 @@ public class CompanyController {
 	public String companyHall(Model model) {
 		myInfo(model);
 
-		List<HallDTO> myHall = companyService.getHall(user_session.getUser_id());
-		model.addAttribute("my_hall", myHall);
-		
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
-			return "html/company/company_hall";
+			if (authority.equals("SCN") || authority.equals("SCY")) {
+				List<HallDTO> myHall = companyService.getHall(user_session.getUser_id());
+				model.addAttribute("my_hall", myHall);
+
+				return "html/company/company_hall";
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
 	}
-	
+
 	// 공연장 정보 수정
 	@PostMapping("form/{id}")
 	public String hallUpdate(Model model, @PathVariable("id") Integer id) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		HallDTO hallInfo = hallService.findById(id);
 		model.addAttribute("hall_info", hallInfo);
-		
+
 		return "redirect:/hall/form" + id;
 	}
 
 	// 공연장 정보 삭제
 	@PostMapping("/hall/delete")
 	public String hallDelete(@RequestParam("hall_id") Integer hall_id) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		companyService.hallDelete(hall_id);
-		
+
 		return "redirect:/company/hall";
 	}
-	
+
 	// 해당 법인이 등록한 공연장에 대한 예약 정보
 	@GetMapping("/reserve")
 	public String companyReserve(Model model) {
 		myInfo(model);
-		
-		List<ReservationDTO> reserveList = companyService.getReserve(user_session.getUser_id());
-		model.addAttribute("reserve_list", reserveList);
-		
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
-			return "html/company/company_reserve";			
+			if (authority.equals("SCN") || authority.equals("SCY")) {
+
+				List<ReservationDTO> reserveList = companyService.getReserve(user_session.getUser_id());
+				model.addAttribute("reserve_list", reserveList);
+				return "html/company/company_reserve";
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
@@ -182,7 +219,11 @@ public class CompanyController {
 	// 해당 공연장에 대한 예약 삭제
 	@PostMapping("/reserve/delete")
 	public String reserveDelete(Model model, @RequestParam("reserve_id") Integer reserve_id) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+
 		companyService.reserveDelete(reserve_id);
 		return "redirect:/company/reserve";
 	}

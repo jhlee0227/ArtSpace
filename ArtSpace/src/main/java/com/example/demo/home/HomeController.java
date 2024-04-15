@@ -38,6 +38,7 @@ public class HomeController{
 		
 		model.addAttribute("user_id", user_session.getUser_id());
 		model.addAttribute("nickname", user_session.getNickname());
+		model.addAttribute("authority", user_session.getAuthority());
 		
 		return "html/index";
 	}
