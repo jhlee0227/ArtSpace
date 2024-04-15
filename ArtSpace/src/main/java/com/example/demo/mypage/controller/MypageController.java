@@ -126,10 +126,10 @@ public class MypageController {
 		model.addAttribute("perfo_info", perfoInfo);
 		
 		if (user_session.getUser_id() != null) {
-			if (user_session.getAuthority().equals("SU")) {
+			if (user_session.getAuthority().equals("SU")) {				
 				return "html/mypage/performer_info";
 			} else {
-				return "html/index";
+				return "redirect:/";
 			}
 		} else {
 			return "redirect:/login"; 
@@ -141,6 +141,9 @@ public class MypageController {
 	@PostMapping("/performer")
 	public String insertPerformer(@ModelAttribute PerformerDTO dto) {
 		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 		
 		dto.setUser_id(user_session.getUser_id());
 		mypageService.insert(dto);
@@ -156,7 +159,11 @@ public class MypageController {
 		model.addAttribute("like_list", likeList);
 		
 		if (user_session.getUser_id() != null) {
-			return "html/mypage/my_favorites";			
+			if (user_session.getAuthority().equals("SU")) {
+				return "html/mypage/my_favorites";							
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
@@ -166,7 +173,9 @@ public class MypageController {
 	@PostMapping("/favorite/delete")
 	public String likeDelete(@RequestParam("hall_id") Integer hall_id) {
 		user_session.setSessionValue(session);
-
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 	    mypageService.likeDelete(user_session.getUser_id(), hall_id);
 	    return "redirect:/mypage/favorite";
 	}
@@ -180,7 +189,11 @@ public class MypageController {
 		model.addAttribute("reserve_list", reserveList);
 		
 		if (user_session.getUser_id() != null) {
-			return "html/mypage/reservation_list";			
+			if (user_session.getAuthority().equals("SU")) {
+				return "html/mypage/reservation_list";							
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}
@@ -209,7 +222,10 @@ public class MypageController {
 	// 예약 취소	
 	@PostMapping("/reserve/delete")
 	public String reserveDelete(Model model, @RequestParam("reserve_id") Integer reserve_id) {
-		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
 		mypageService.reserveDelete(reserve_id);
 		return "redirect:/mypage/reserve";
 	}
@@ -229,7 +245,11 @@ public class MypageController {
 		model.addAttribute("review_list", reviewList);
 		
 		if (user_session.getUser_id() != null) {
-			return "html/mypage/my_review";
+			if (user_session.getAuthority().equals("SU")) {
+				return "html/mypage/my_review";				
+			} else {
+				return "redirect:/";
+			}
 		} else {
 			return "redirect:/login";
 		}

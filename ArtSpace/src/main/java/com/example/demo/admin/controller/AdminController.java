@@ -59,7 +59,11 @@ public class AdminController {
 		myInfo(model);
 		List<UserDTO> userList = adminService.getAllUsers();
 		model.addAttribute("user_list", userList);
+		String authority = user_session.getAuthority();
 		if (user_session.getUser_id() != null) {
+			if (authority.equals("SA")) {
+				
+			}
 			return "html/admin/admin";
 		} else {
 			return "redirect:/login";

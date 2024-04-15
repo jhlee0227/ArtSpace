@@ -1,7 +1,7 @@
 
-	$(document).ready(function() {
+$(document).ready(function() {
     // Load questions on page load
-    loadQuestions();
+    //loadQuestions();
 
     // Submit question form
     $('#questionForm').submit(function(event) {
