@@ -41,7 +41,7 @@
         <!-- ==================================================즐겨찾기 공유 별점 끝================================================== -->
 
 
-        <div class="container">
+        <div id="top" class="container">
           <h1>※ 중요 안내 사항</h1> <br>
           <p>사이트의 고정 안내 사항이나 해당 공연장에 중요 안내사항을 이 공간에 표시합니다. <br>
           크기는 컨텐츠 내용에 따라 높이가 달라질 것으로 예상됩니다. <br>
@@ -52,15 +52,14 @@
 
         <!-- ==================================================중요 안내 사항 끝================================================== -->
 
-
         <div class="main">
-          <input type="radio" id="tab-1" name="show" checked/>
+		  <input type="radio" id="tab-1" name="show" checked/>
           <input type="radio" id="tab-2" name="show" />
           <input type="radio" id="tab-3" name="show" />
           <input type="radio" id="tab-4" name="show" />
           
           <div class="tab">
-            <label for="tab-1" id="t1">상세 정보</label>
+			<label for="tab-1" id="t1">상세 정보</label>
             <label for="tab-2" id="t2">견적 내기</label>
             <label for="tab-3" id="t3">리뷰</label>
             <label for="tab-4" id="t4">문의 사항</label>
@@ -68,7 +67,6 @@
 
 
         <!-- ==================================================목록 변환 끝================================================== -->
-
 
           <div class="content">
             <div class="content-dis">
@@ -82,63 +80,49 @@
 	            <table>
 	              <tr>
 	              	<td class="color">면적</td>
-	                <td>   942 ㎡   284.95 평</td>
+	                <td><span th:text="${hall.area}"></span>㎡  <span th:text="${ft}"></span>평</td>
 	              </tr>
 	              <tr>
 	                <td class="color">가로</td>
-	                <td>   35.12 m</td>
+	                <td><span th:text="${hall.width}"></span> m</td>
 	              </tr>
 	              <tr>
 	                <td class="color">세로</td>
-	                <td>   26.83 m</td>
+	                <td><span th:text="${hall.length}"></span> m</td>
 	              </tr>
 	              <tr>
 	                <td class="color">천정높이</td>
-	                <td>   7.26 m</td>
+	                <td><span th:text="${hall.height}"></span> m</td>
 	              </tr>
 	              <tr>
 	                <td class="color">최대 수용 인원</td>
-	                <td>   866 명</td>
+	                <td><span th:text="${hall.maximum}"></span> 명</td>
 	              </tr>
 	            </table>
 			  </div>
 
               <hr>
+			  <div class="box">
+				<div class="map">
+				  <h1>지도</h1>
+				  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.
+				  7500924868004!2d126.92247877632376!3d37.
+				  58450202309692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c985b23292a2d%3A0x459427c4b994b6b7!
+				  2z7ISc7Jq47Yq567OE7IucIOyEnOuMgOusuOq1rCDqsIDsoozroZwgMTM0!5e0!3m2!1sko!2skr!4v1710923727190!5m2!1sko!2skr" 
+				  width="81%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+				  referrerpolicy="no-referrer-when-downgrade"></iframe>
+				  <i class="fa-solid fa-location-dot" th:text="| ${hall.address1} ${hall.address2}|"></i>
 				
-              <div class="map">
+				</div>
+			  </div>
 
-                <h1>지도</h1>
-
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.
-                7500924868004!2d126.92247877632376!3d37.
-                58450202309692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c985b23292a2d%3A0x459427c4b994b6b7!
-                2z7ISc7Jq47Yq567OE7IucIOyEnOuMgOusuOq1rCDqsIDsoozroZwgMTM0!5e0!3m2!1sko!2skr!4v1710923727190!5m2!1sko!2skr" 
-                width="81%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <br>
-
-                <i class="fa-solid fa-location-dot"> 서울 서대문구 가좌로 134</i>
-
-              </div>
 
               <hr>
-              <br>
-              <br>
 
-              <h1>주의 사항</h1> <br>
-              <p>*예약 전 아래 설명들을 필독 해주시기 바랍니다.* (고객 미숙지로 인한 불이익 시 쉐어잇이 책임지지 않습니다.) <br>
-              <br>
-              0. 공통 ★학교 사정으로 인해 예약이 취소될 수 있습니다. <br>
-              1. 실시간 '생활체육' 예약 안내 <br>
-              ★공지 예약 과정에서 '호스트 전달 내용'에 이용하려는 스포츠 종목을 꼭 적어주세요. <br>
-              ★가능 종목 : 농구(5:5), 배구(6인제), 배드민턴(4코트) *이외 스포츠는 협의 필요 <br>
-              ★예약 가능 일자 : 매월 20일(20일이 휴일인 경우 이후 가장 빠른 평일) <br>
-              18시 익월 한 달 예약 오픈 (학교 일정에 따라 매월 예약 가능한 일시가 달라지기 때문에 한 달 단위 예약만 가능, 장기대관 불가)</p>
-
-              <br>
-              <hr>
-              <br>
-              <br>
+			  <div class="box">
+	              <h1>주의 사항</h1>
+				  <pre th:text="${hall.warning}"></pre>	
+			  </div>
 
               <h1>환불 규정</h1>
               <p>실시간 상품 <br>
@@ -151,23 +135,24 @@
               <br>
               - 공간 이용일 기준 3일 ~ 당일 취소 시 : 환불 불가 <br>
               <br>
-              회사 및 호스트</p>
 
               <hr>
               <br>
               <br>
 
             </div>
-
+			
 
         <!-- ==================================================상세 정보 목록 끝================================================== -->
 
 
             <div class="content-dis">
+				
               <section class="quote">
                 <h2>대여 일시</h2>
                 <div class="rental-date">
-                  <div class="start">
+					
+                  <div class="date-box">
                     <span class="start-date">시작일</span>
                     <input type="date" placeholder="날짜 선택">
                     <span class="start-time">시작 시간 선택</span>
@@ -178,8 +163,8 @@
                       <option value="nm">야간</option>
                     </select>
                   </div>
-
-                  <div class="end">
+				  <div class="date-box"></div>
+                  <div class="date-box">
                     <span class="end-date">종료일</span>
                     <input type="date" placeholder="날짜 선택">
                     <span class="end-time">종료 시간 선택</span>
@@ -190,117 +175,42 @@
                       <option value="nm">야간</option>
                     </select>
                   </div>
+				
                   <p>※오전 : 09:00 ~ 13:00 | 오후 : 13:00 ~ 18:00 | 야간 : 18:00 ~ 22:00</p>
                   <p><span class="text-red">해당 되는 시간대</span>로 선택해 주십시오.</p>
+				</div>
               </section>
-
                 <br>
                 <br>
 
               <section class="equipment">
-                    <h2>선택 장비<span>사용 체크 및 개수에 따라 견적 비용에 추가 됩니다.</span></h2>
-                    <div class="equipment-list">
-                      <span>마이크</span> <br>
-                      <div class="mic-line">
-                        <input type="checkbox" name="mics" value="line" id="line"> 유선 마이크
-                        <span class="count">개수</span>
-                        <select name="mic-count" id="mic-count">
-                          <option value="sel">선택</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                        </select>
-                        <span class="price" value="7000">7,000원</span>
-                      </div>
+              	<h2>선택 장비<span>사용 체크 및 개수에 따라 견적 비용에 추가 됩니다.</span></h2>
+                <div class="equipment-list">	
+				<th:block th:each="equiList : ${equipMap}">
+<!--					<th:block th:each="equip, i : ${equiList.value}">
+		                 <h2 th:text="${equip.equip_type]}"></h2>
+						
+					</th:block>-->
+					
+				</th:block>
+  				  	<div></div>  
+				  	<div class="item-line">
+					<label>
+                        <input type="checkbox" name="mics" value="line" id="line">
+						<span>유선 마이크</span>	
+					</label>
+	                <p class="price">개당 <span>10000</span> 원</p>
+		            <span>개수</span>
+	                <select name="count" id="count">
+	                  <option value="sel">선택</option>
+	                  <option value="1">1</option>
+	                  <option value="2">2</option>
+	                </select>					
+                  </div>
+				
+				  
 
-                      <div class="mic-noline">
-                        <input type="checkbox" name="mics" value="noline" id="noline"> 무선 마이크
-                        <span class="count">개수</span>
-                        <select name="nmic-count" id="mic-count">
-                          <option value="sel">선택</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                        </select>
-                        <span class="price" value="10000">10,000원</span>
-                      </div>
-
-                      <br>
-
-                      <span>스피커</span> <br>
-                      <div class="main-speaker">
-                        <input type="checkbox" name="speakers" value="main" id="main"> 메인 스피커
-                        <span class="use">사용 여부</span>
-                        <select name="mspeaker-use" id="speaker-use">
-                          <option value="sel">선택</option>
-                          <option value="yes">예</option>
-                          <option value="no">아니오</option>
-                        </select>
-                        <span class="price" value="150000">150,000원</span>
-                      </div>
-
-                      <div class="sub-speaker">
-                        <input type="checkbox" name="speakers" value="sub" id="sub"> 서브 스피커
-                        <span class="use">사용 여부</span>
-                        <select name="suspeaker-use" id="speaker-use">
-                          <option value="sel">선택</option>
-                          <option value="yes">예</option>
-                          <option value="no">아니오</option>
-                        </select>
-                        <span class="price" value="100000">100,000원</span>
-                      </div>
-
-                      <div class="woofer-speaker">
-                        <input type="checkbox" name="speakers" value="woofer" id="woofer"> 우퍼 스피커
-                        <span class="use">사용 여부</span>
-                        <select name="wspeaker-use" id="speaker-use">
-                          <option value="sel">선택</option>
-                          <option value="yes">예</option>
-                          <option value="no">아니오</option>
-                        </select>
-                        <span class="price" value="100000">100,000원</span>
-                      </div>
-
-                      <div class="stage-speaker">
-                        <input type="checkbox" name="speakers" value="stage" id="stage"> 스테이지 스피커
-                        <span class="use">사용 여부</span>
-                        <select name="stspeaker-use" id="speaker-use">
-                          <option value="sel">선택</option>
-                          <option value="yes">예</option>
-                          <option value="no">아니오</option>
-                        </select>
-                        <span class="price" value="50000">50,000원</span>
-                      </div>
-
-                      <br>
-
-                      <span>조명</span> <br>
-                      <div class="non-moving">
-                        <input type="checkbox" name="light" value="non" id="non"> 조명기
-                        <span class="use">사용 여부</span>
-                        <select name="light-use" id="light-use">
-                          <option value="sel">선택</option>
-                          <option value="yes">예</option>
-                          <option value="no">아니오</option>
-                        </select>
-                        <span class="price" value="100000">100,000원</span>
-                      </div>
-
-                      <div class="moving">
-                        <input type="checkbox" name="moving-light" value="on" id="on"> 무빙 조명기
-                        <span class="count">개수</span>
-                        <select name="moving-count" id="moving-count">
-                          <option value="sel">선택</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                        </select>
-                        <span class="price" value="20000">20,000원</span>
-                      </div>
-                    </div>
+                </div>
               </section>
 
               <br>

@@ -107,7 +107,19 @@ public class HallDAO {
 	public void updateHallTime(HallTimeDTO hallTimes) {
 		sqlSession.update("hall.update_hall_time",  hallTimes);
 	}
+	
+	public void visibilityTrue(Integer hall_id) {
+		sqlSession.update("hall.post_visibility_true",  hall_id);			
+	}
+
+	public void visibilityFalse(Integer hall_id) {
+		sqlSession.update("hall.post_visibility_false",  hall_id);			
+	}
+	
+	
 	// UPDATE END //
+
+
 
 
 

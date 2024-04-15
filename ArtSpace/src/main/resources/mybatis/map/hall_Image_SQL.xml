@@ -26,5 +26,12 @@
 		    </foreach>
 	</delete>
 
+	<delete id="deleteAllImages" parameterType="int">
+		delete from hall_image
+		 where hall_id = #{hall_id}
+	</delete>
+
+
+
 
 </mapper>
