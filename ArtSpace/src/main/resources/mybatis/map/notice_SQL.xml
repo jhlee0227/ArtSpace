@@ -10,6 +10,7 @@
 	<update id="updateboard">
 		update announcement
 		set subject = #{subject}, content = #{content}, create_date = #{create_date}
+		where announ_id = #{announ_id}
 	</update>
 	
 	<select id="getNoticeById" resultType="com.example.demo.announcement.dto.NoticeDto">
