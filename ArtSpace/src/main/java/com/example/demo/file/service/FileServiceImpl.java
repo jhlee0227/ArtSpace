@@ -67,14 +67,17 @@ public class FileServiceImpl implements FileService {
 
 	// GCS에 파일 저장
 	private void uploadToGCS(MultipartFile file, String storedFileName) throws IOException {
+		// GCS에 엑세스하기 위한 JSON 키 파일
 		String keyFileName = "quiet-chalice-419309-a18ccc6da276.json";
 		InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
 
+		// GCS에 연결하기 위한 storage
 		Storage storage = StorageOptions.newBuilder()
 				.setCredentials(GoogleCredentials.fromStream(keyFile))
 				.build()
 				.getService();
 		
+		// 업로드할 파일의 정보
 		BlobId blobId = BlobId.of(bucketName, storedFileName);
 		BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType(file.getContentType()).build();
 		
