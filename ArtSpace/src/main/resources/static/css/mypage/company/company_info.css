@@ -122,6 +122,13 @@ body {
 	font-weight: 600;
 }
 
+.con .content .list .scy-content-main {
+	font-size: 3.5rem;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 0;
+}
+
 .con .content .list>div {
 	padding: 2rem 3.5rem 2rem;
 	font-weight: bold;

@@ -144,7 +144,7 @@ public class CompanyController {
 
 	// 사업자정보 등록
 	@PostMapping("/info")
-	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto, @RequestParam("file") MultipartFile[] files,
+	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto, @RequestParam(value = "file", required = false) MultipartFile[] files,
 			@RequestParam("company_id") Integer company_id) {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
@@ -154,7 +154,9 @@ public class CompanyController {
 		dto.setUser_id(user_session.getUser_id());
 		companyService.updateInfo(dto);
 
-		fileService.uploadObject(files, company_id);
+		if (files != null) {
+			fileService.uploadObject(files, company_id);			
+		}
 
 		return "redirect:/company/info";
 	}
