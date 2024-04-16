@@ -24,8 +24,7 @@ public class EmailUtil {
 	
 	
 	
-	public String sendMail(EmailMessage emailMessage, String type) {
-        String authNum = createCode();
+	public String sendMail(EmailMessage emailMessage, String type, String authNum) {
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 
@@ -78,7 +77,7 @@ public class EmailUtil {
         String code = createCode(); // 인증 코드 생성
         emailMessage.setMessage(code); // 메시지에 인증 코드 설정
         emailMessage.setSubject("[ArtSpace] 회원가입 인증을 위한 인증 코드 발송");
-        sendMail(emailMessage, "html/email"); // Thymeleaf 템플릿 이름 전달
+        sendMail(emailMessage, "html/email", code); // Thymeleaf 템플릿 이름 전달
         return code;
     }
 }

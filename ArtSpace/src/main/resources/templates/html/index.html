@@ -101,7 +101,7 @@
 			        <h1>공연자</h1>
 			        <p>공연자이신가요?</p>
 			        <p>지금 <span>공연자 정보</span>를 입력하고<br/>공간의 유용한 기능을 체험해 보세요!</p>
-			        <div class="btn" id="su-move">내 정보</div>
+			        <div class="btn" id="su-move" th:onclick="|location.href='@{/mypage/performer}'|">내 정보</div>
 			      </div>				
 		  	      <div class="con">
 					<img src="/img/homehall_02.jpg" alt="">
@@ -123,23 +123,6 @@
 		  <!-- 공연장 공연자 바로가기 End -->
 		  
 		  
-		  <script>
-		      let alertMsg = "일반 회원만 이용 가능합니다.";
-			  let authority = document.getElementById('authority').value;
-		  
-			  if (authority !== "SU") {
-			      document.getElementById("su-move").addEventListener("click", function() {
-			          alert(alertMsg);
-			          location.href = "/";
-			      });
-			  } else {
-				document.getElementById("su-move").addEventListener("click", function() {
-						          
-		          	location.href = "/mypage/performer";
-		     	 });
-			  }
-		      
-		  </script>
 	</div>
 
 
