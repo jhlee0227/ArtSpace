@@ -1,0 +1,15 @@
+<!--hall_list의 가격 필터 모달-->
+<div id="filterModal" class="modal" th:fragment="imgModal">
+	<div class="modal-content">
+		<span class="close" onclick="closeModal()">&times;</span>
+        <!-- 모달 내용 -->
+	
+		<div class="middle">
+			<th:block th:each="img : ${images}">
+				<img th:src="${img.path}">				
+			</th:block>
+		</div>
+			
+	</div>
+</div>
+

@@ -16,6 +16,7 @@ public class DetailServiceImpl implements DetailService {
 	public HallDTO findById(Integer id) {
 		
 		return detailDAO.findById(id);
+		
 	}
 
 }

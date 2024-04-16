@@ -53,8 +53,9 @@ public class DetailController {
 		hall.setEquiList(hallService.getEquiList(id));
 		List<FileDTO> images = hallService.getImageList(id);
 		List<EquipmentDTO> equipList = hall.getEquiList();		
-				
+
 		int ft = (int) (hall.getArea() / 3.306);
+		
 		
 		model.addAttribute("ft", ft);
 		model.addAttribute("images", images);
@@ -76,13 +77,14 @@ public class DetailController {
 		
 		for (EquipmentDTO equip : equipList) {
 			switch (equip.getEquip_type()) {
+				
 				case "mic" : 
 					micList.add(equip);
 					break;
 				case "speaker":
 					speakerList.add(equip);
 					break;
-				case "lighting":
+				case "Lighting":
 					lightingList.add(equip);
 					break;
 				case "stage_equip":
@@ -98,13 +100,25 @@ public class DetailController {
 		}
 		
 		Map<String, List<EquipmentDTO>> equipMap = new LinkedHashMap<String, List<EquipmentDTO>>();
-		
-		equipMap.put("마이크", micList);
-		equipMap.put("스피커", speakerList);
-		equipMap.put("조명", lightingList);
-		equipMap.put("무대장치", stage_equipList);
-		equipMap.put("영상", videoList);
-		equipMap.put("기타", etcList);
+
+		if(micList.size() > 0) {
+			equipMap.put("마이크", micList);			
+		}
+		if(speakerList.size() > 0) {
+			equipMap.put("스피커", speakerList);						
+		}
+		if(lightingList.size() > 0) {
+			equipMap.put("조명", lightingList);
+		}
+		if(stage_equipList.size() > 0) {
+			equipMap.put("무대장치", stage_equipList);
+		}
+		if(videoList.size() > 0) {
+			equipMap.put("영상", videoList);
+		}
+		if(etcList.size() > 0) {
+			equipMap.put("기타", etcList);
+		}
 		
 		return equipMap;
 	}
