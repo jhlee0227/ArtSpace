@@ -1,5 +1,7 @@
 package com.example.demo.hall.dto;
 
+import java.util.List;
+
 import com.example.demo.file.dto.FileDTO;
 
 public class ReservationDTO {
@@ -22,11 +24,8 @@ public class ReservationDTO {
 	// 예약한 장비 정보
 	private Integer equip_num; 			// 사용할 장비 갯수
 
-	// 예약 날짜와 시간 시작, 종료
-	private String start_date;	
-	private String end_date;
-	private String start_time;
-	private String end_time;
+	// 사용자가 예약한 날짜와 시간
+	private List<ReserveDateDTO> ReserveDateList;
 	
 	// 예약자이름, 핸드폰번호
 	private String name;
@@ -121,37 +120,7 @@ public class ReservationDTO {
 	public void setEquip_num(Integer equip_num) {
 		this.equip_num = equip_num;
 	}
-	public String getStart_date() {
-		return start_date;
-	}
 
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
-	}
-
-	public String getEnd_date() {
-		return end_date;
-	}
-
-	public void setEnd_date(String end_date) {
-		this.end_date = end_date;
-	}
-
-	public String getStart_time() {
-		return start_time;
-	}
-
-	public void setStart_time(String start_time) {
-		this.start_time = start_time;
-	}
-
-	public String getEnd_time() {
-		return end_time;
-	}
-
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
-	}
 
 	public String getName() {
 		return name;
@@ -175,6 +144,15 @@ public class ReservationDTO {
 
 	public void setMainImage(FileDTO mainImage) {
 		this.mainImage = mainImage;
+	}
+
+
+	public List<ReserveDateDTO> getReserveDateList() {
+		return ReserveDateList;
+	}
+
+	public void setReserveDateList(List<ReserveDateDTO> reserveDateList) {
+		ReserveDateList = reserveDateList;
 	}
 	
 	
