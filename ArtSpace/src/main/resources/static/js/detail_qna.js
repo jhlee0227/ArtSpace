@@ -1,5 +1,33 @@
+// 모달 열기
+function openModal(){
+	let modal = document.getElementById('filterModal');
+	modal.style.display = 'block';
+}
 
-$(document).ready(function() {
+// 모달 닫기
+function closeModal() {
+	let modal = document.getElementById('filterModal');
+	modal.style.display = 'none';
+}
+
+// 모달 닫기
+window.onclick = function(event) {
+	let modal = document.getElementById('filterModal');
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+}
+
+let date = new Date();
+let sel_day = 7; //일자 조절
+date.setDate(date.getDate() + sel_day );		
+
+document.getElementById('start_date').min = date.toISOString().substring(0,10);
+    
+
+
+
+/*$(document).ready(function() {
     // Load questions on page load
     //loadQuestions();
 
@@ -40,4 +68,4 @@ function saveQuestion(content) {
             console.error(error);
         }
     });
-}
+}*/

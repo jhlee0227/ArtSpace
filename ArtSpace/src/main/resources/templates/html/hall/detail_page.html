@@ -13,17 +13,23 @@
 	
 	<div layout:fragment="content">
 	
-      <section class="hall-detail">
-		
-        <div class="imgbox">            
-          <img src="" alt="">
+      <section class="hall-detail">		
+		<div class="imgboxList" th:style="|background-image:url('');|">
+			<div class="imgbox">
+				<img th:src="${hall.mainImage.path}">				
+			</div>
+	
+		  	<button onclick="openModal();" class="imgListBtn" id="imgListBtn">
+				+<span th:text="${images.size-1}"></span> 
+				<i class="fa-regular fa-images"></i>
+		  	</button>
         </div>
 
         <div class="hall-content">
           <p class="title-text" th:text="${hall.hall_name}"></p>
           <p class="address-text" th:text="${hall.address1}"></p>
         </div>
-
+	
 
         <!-- ==================================================공연장 이미지 끝================================================== -->
 
@@ -154,9 +160,9 @@
 					
                   <div class="date-box">
                     <span class="start-date">시작일</span>
-                    <input type="date" placeholder="날짜 선택">
+                    <input type="date" id="start_date" name="start_date" placeholder="날짜 선택">
                     <span class="start-time">시작 시간 선택</span>
-                    <select name="sam-pm" id="am-pm">
+                    <select name="start_time" id="am-pm">
                       <option value="sel">선택</option>
                       <option value="am">오전</option>
                       <option value="pm">오후</option>
@@ -166,9 +172,9 @@
 				  <div class="date-box"></div>
                   <div class="date-box">
                     <span class="end-date">종료일</span>
-                    <input type="date" placeholder="날짜 선택">
+                    <input 	id="end_date" name="end_date" type="date" placeholder="날짜 선택">
                     <span class="end-time">종료 시간 선택</span>
-                    <select name="eam-pm" id="am-pm">
+                    <select name="end_time" id="am-pm">
                       <option value="sel">선택</option>
                       <option value="am">오전</option>
                       <option value="pm">오후</option>
@@ -185,30 +191,98 @@
 
               <section class="equipment">
               	<h2>선택 장비<span>사용 체크 및 개수에 따라 견적 비용에 추가 됩니다.</span></h2>
-                <div class="equipment-list">	
-				<th:block th:each="equiList : ${equipMap}">
-<!--					<th:block th:each="equip, i : ${equiList.value}">
-		                 <h2 th:text="${equip.equip_type]}"></h2>
-						
-					</th:block>-->
-					
-				</th:block>
-  				  	<div></div>  
-				  	<div class="item-line">
-					<label>
-                        <input type="checkbox" name="mics" value="line" id="line">
-						<span>유선 마이크</span>	
-					</label>
-	                <p class="price">개당 <span>10000</span> 원</p>
-		            <span>개수</span>
-	                <select name="count" id="count">
-	                  <option value="sel">선택</option>
-	                  <option value="1">1</option>
-	                  <option value="2">2</option>
-	                </select>					
-                  </div>
+                <div class="equipment-list">						
 				
-				  
+				<th:block th:if="${equipMap.containsKey('마이크')}">
+	                <h2>마이크</h2>
+					 	<div></div>  
+					<th:block th:each="equip : ${equipMap['마이크']}">
+						<div class="item-line">
+						<label>
+						     <input type="checkbox" name="mics" value="line" id="line">
+							<span th:text="${equip.equip_name}"></span>	
+						</label>
+						 <p class="price">개당 <span th:text="${equip.equip_price}"></span> 원</p>
+						 <span>개수</span>
+						 <select name="count" id="count">
+						   <option value="sel">선택</option>
+						   <option th:each="num : ${#numbers.sequence(1, equip.equip_num)}" th:value="${num}" th:text="${num}"></option>
+						 </select>					
+						</div>
+					</th:block>
+				</th:block>
+				
+				<th:block th:if="${equipMap.containsKey('스피커')}">
+	                <h2>스피커</h2>
+					 	<div></div>  
+					<th:block th:each="equip : ${equipMap['스피커']}">
+						<div class="item-line">
+						<label>
+						     <input type="checkbox" name="mics" value="line" id="line">
+							<span th:text="${equip.equip_name}"></span>	
+						</label>
+						 <p class="price">사용 <span th:text="${equip.equip_price}"></span> 원</p>
+						 <span>총 개수</span>
+						 <select name="count" id="count" >
+						   <option th:value="${equip.equip_num}" th:text="${equip.equip_num}"></option>
+						 </select>					
+						</div>
+					</th:block>
+				</th:block>
+
+				<th:block th:if="${equipMap.containsKey('조명')}">
+				    <h2>조명</h2>
+					 	<div></div>  
+					<th:block th:each="equip : ${equipMap['조명']}">
+						<div class="item-line">
+						<label>
+						     <input type="checkbox" name="mics" value="line" id="line">
+							<span th:text="${equip.equip_name}"></span>	
+						</label>
+						 <p class="price">사용 <span th:text="${equip.equip_price}"></span> 원</p>
+						 <span>총 개수</span>
+						 <select name="count" id="count" >
+						   <option th:value="${equip.equip_num}" th:text="${equip.equip_num}"></option>
+						 </select>					
+						</div>
+					</th:block>
+				</th:block>
+				
+				<th:block th:if="${equipMap.containsKey('무대장치')}">
+				    <h2>무대 장치</h2>
+					 	<div></div>  
+					<th:block th:each="equip : ${equipMap['무대장치']}">
+						<div class="item-line">
+						<label>
+						     <input type="checkbox" name="mics" value="line" id="line">
+							<span th:text="${equip.equip_name}"></span>	
+						</label>
+						 <p class="price">사용 <span th:text="${equip.equip_price}"></span> 원</p>
+						 <span>총 개수</span>
+						 <select name="count" id="count" >
+						   <option th:value="${equip.equip_num}" th:text="${equip.equip_num}"></option>
+						 </select>					
+						</div>
+					</th:block>
+				</th:block>				
+
+				<th:block th:if="${equipMap.containsKey('영상')}">
+				    <h2>영상기기</h2>
+					 	<div></div>  
+					<th:block th:each="equip : ${equipMap['영상']}">
+						<div class="item-line">
+						<label>
+						     <input type="checkbox" name="mics" value="line" id="line">
+							<span th:text="${equip.equip_name}"></span>	
+						</label>
+						 <p class="price">사용 <span th:text="${equip.equip_price}"></span> 원</p>
+						 <span>총 개수</span>
+						 <select name="count" id="count" >
+						   <option th:value="${equip.equip_num}" th:text="${equip.equip_num}"></option>
+						 </select>					
+						</div>
+					</th:block>
+				</th:block>						  
 
                 </div>
               </section>
@@ -219,21 +293,40 @@
               <section class="etc">
                 <h2>기타</h2>
                 <div class="etc-list">
-                  <h3>취식 여부<span>취식은 개별 준비 사항입니다. 행사 진행 시 취식이 진행된다면 선택해 주세요.</span></h3> <br>
+                  <h3>취식 여부<span>취식은 개별 준비 사항입니다. 행사 진행 시 취식이 진행된다면 선택해 주세요.</span></h3>
                   <div class="eat">
-                    <input type="checkbox" name="babcar" value="babcar" class="eat-list"> 밥차 <br>
-                    <input type="checkbox" name="dosirak" value="dosirak" class="eat-list"> 도시락 <br>
-                    <input type="checkbox" name="outeat" value="outeat" class="eat-list"> 외부 가게 <br>
-                    <input type="checkbox" name="ineat" value="ineat" class="eat-list"> 교내식당
+					<label>
+	                    <input type="checkbox" name="babcar" value="babcar" class="eat-list">
+						<span>밥차</span><br>				
+					</label>
+					<label>
+	                   <input type="checkbox" name="dosirak" value="dosirak" class="eat-list">
+					   <span>도시락</span><br>	
+					</label>
+					<label>
+						<input type="checkbox" name="outeat" value="outeat" class="eat-list">
+					    <span>외부 가게</span><br>						
+					</label>
+					<label>
+	                    <input type="checkbox" name="ineat" value="ineat" class="eat-list">					
+					    <span>교내 식당</span>					
+					</label>
                   </div>
-                  
-                  <br>
 
                   <h3>냉난방</h3>
                   <div class="heat-cool">
-                    <input type="checkbox" name="use" value="use" class="use"> 사용 <br>
-                    <input type="checkbox" name="no-use" value="no-use" class="use"> 미사용 <br>
-                    <input type="checkbox" name="later" value="later" class="use"> 추후 협의
+					<label>
+	                    <input type="checkbox" name="use" value="use" class="use"> 
+						<span>사용</span> <br>
+					</label>
+					<label>
+	                    <input type="checkbox" name="no-use" value="no-use" class="use">
+						<span>미사용</span><br>					
+					</label>
+					<label> 
+	                    <input type="checkbox" name="later" value="later" class="use"> 					
+						<span>추후 협의</span>
+					</label>
                   </div>
 
 
@@ -393,11 +486,19 @@
       </div>
       </section>
 
-
-        <!-- ==================================================최종 금액 예약하기 끝================================================== -->
-
-      
+        <!-- =================최종 금액 예약하기 끝================== -->
+		<!-- 사진 모달 -->
+		<div th:replace="~{fragments/modal/hall_images :: imgModal}"></div>
+  
+		
+		
+		
 	  <script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+	  
+	  <script>
+
+	  </script>
+	  
       <script src="/js/detail_qna.js"></script>
 	  
       </div>
