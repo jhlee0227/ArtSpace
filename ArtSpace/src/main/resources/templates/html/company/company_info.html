@@ -20,6 +20,39 @@
 						후 인증
 						완료됩니다.</p>
 				</div>
+				<form th:action="@{/company/info}" method="post">
+					<div class="list" th:if="${#strings.equals(my_info.authority, 'SCY')}">
+						<input type="hidden" name="company_id" th:value="${com_info.company_id}" id="company_id">
+						<h2>대표 정보</h2>
+						<div class="first">
+							<div class="list-name">대표이름</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name" oninput="activate()">
+							</div>
+							<span class="owner_check" id="owner_check"></span>
+						</div>
+						<div>
+							<div class="list-name">대표이메일</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="owner_email" th:value="${com_info.owner_email}"
+									id="owner_email" oninput="activate()">
+							</div>
+							<span class="email_check" id="email_check"></span>
+						</div>
+						<div class="last">
+							<div class="list-name">대표번호</div>
+							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+							<div class="list-con">
+								<input type="text" name="owner_phone" th:value="${com_info.owner_phone}"
+									id="owner_phone" oninput="activate()">
+							</div>
+							<span class="phone_check" id="phone_check"></span>
+						</div>
+						<button id="btn" class="button" onclick="return check()" disabled>저장</button>
+					</div>
+				</form>
 				<form th:action="@{/company/info}" method="post" th:if="${#strings.equals(my_info.authority, 'SCN')}"
 					th:unless="${fileCount >= 4}" enctype="multipart/form-data">
 					<h2 class="content-main">사업자 정보</h2>
@@ -51,7 +84,7 @@
 							</div>
 							<span class="phone_check" id="phone_check"></span>
 						</div>
-						<!--<button id="btn" class="button" onclick="return check()" disabled>저장</button>-->
+						<button id="btn" class="button" onclick="return check()" disabled>저장</button>
 					</div>
 					<!--</form>-->
 					<div class="paper">
@@ -174,7 +207,18 @@
 				}
 			}
 
-			// 7개의 input 다 입력되면 버튼 활성화
+			function activate() {
+				let nameValid = nameCheck();
+				let emailValid = emailCheck();
+				let phoneValid = phoneCheck();
+
+				if (nameValid && emailValid && phoneValid) {
+					document.getElementById('btn').disabled = false;
+				} else {
+					document.getElementById('btn').disabled = true;
+				}
+			}
+
 			function checkAllInputs() {
 				let nameValid = nameCheck();
 				let emailValid = emailCheck();

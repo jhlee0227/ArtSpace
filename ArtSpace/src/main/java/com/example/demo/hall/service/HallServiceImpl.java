@@ -135,6 +135,9 @@ public class HallServiceImpl implements HallService{
 	@Override
 	public HallDTO findById(Integer id) {
 		HallDTO hallDTO = hallDAO.findById(id);
+		FileDTO mainImage = fileDAO.getHallMainFile(hallDTO.getHall_id());
+		hallDTO.setMainImage(mainImage);
+		
 		return hallDTO;
 	}
 		
