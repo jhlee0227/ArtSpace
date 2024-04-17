@@ -1,6 +1,7 @@
 package com.example.demo.company.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,14 +59,14 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public Map<Integer, LocalDate> getEarliestReserveDates(List<ReservationDTO> reservationList) {
-	    Map<Integer, LocalDate> earliestDates = new HashMap<>();
+	public Map<Integer, LocalDateTime> getEarliestReserveDates(List<ReservationDTO> reservationList) {
+	    Map<Integer, LocalDateTime> earliestDates = new HashMap<>();
 	    for (ReservationDTO reservation : reservationList) {
 	        List<ReserveDateDTO> reserveDateList = reservation.getReserveDateList();
 	        if (reserveDateList != null && !reserveDateList.isEmpty()) {
-	            LocalDate earliestDate = null;
+	            LocalDateTime earliestDate = null;
 	            for (ReserveDateDTO reserveDate : reserveDateList) {
-	                LocalDate date = LocalDate.parse(reserveDate.getReserve_date());
+	                LocalDateTime date = LocalDateTime.parse(reserveDate.getReserve_date());
 	                if (earliestDate == null || date.isBefore(earliestDate)) {
 	                    earliestDate = date;
 	                }
