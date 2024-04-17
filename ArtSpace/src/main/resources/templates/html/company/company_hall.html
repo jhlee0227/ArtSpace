@@ -30,7 +30,7 @@
 							<div class="hall-region" th:text="${hall.address1 + ' ' + hall.address2}"></div>
 						</div>
 						<div class="button">
-							<button onclick="location.href=''">공연장 정보</button>
+							<button th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">공연장 정보</button>
 							<button th:attr="data-hall-id=${hall.hall_id}" onclick="goHallForm(this)">정보 수정</button>
 							<form method="post" th:action="@{/company/hall/delete}">
 								<input type="hidden" name="hall_id" th:value="${hall.hall_id}">
