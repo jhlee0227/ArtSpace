@@ -1,4 +1,4 @@
-package com.example.demo.hall.dto;
+package com.example.demo.reservation.dto;
 
 import java.util.List;
 

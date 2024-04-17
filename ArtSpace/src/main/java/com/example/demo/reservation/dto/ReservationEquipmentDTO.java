@@ -1,8 +1,8 @@
-package com.example.demo.hall.dto;
+package com.example.demo.reservation.dto;
 
 public class ReservationEquipmentDTO {
 	
-	private Integer re_id;		// 예약장비 인덱스 PK
+	private Integer re_equipment_id;		// 예약장비 인덱스 PK
 	private String equip_type;		// 장비 타입
 	private String equip_name; 		// 장비 이름
 	private Integer equip_num; 			// 사용할 장비 갯수
@@ -11,10 +11,10 @@ public class ReservationEquipmentDTO {
 	
 	
 	public Integer getRe_id() {
-		return re_id;
+		return re_equipment_id;
 	}
-	public void setRe_id(Integer re_id) {
-		this.re_id = re_id;
+	public void setRe_id(Integer re_equipment_id) {
+		this.re_equipment_id = re_equipment_id;
 	}
 	public String getEquip_type() {
 		return equip_type;

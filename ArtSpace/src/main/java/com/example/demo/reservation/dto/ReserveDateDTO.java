@@ -1,4 +1,4 @@
-package com.example.demo.hall.dto;
+package com.example.demo.reservation.dto;
 
 public class ReserveDateDTO {
 	private String reserve_date;	// 예약한 날짜
