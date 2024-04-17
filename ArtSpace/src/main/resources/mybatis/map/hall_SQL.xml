@@ -222,8 +222,9 @@
 	
 	<!-- 공연장 리뷰들 가져오기 -->
 	<select id="getReviewList" resultType="com.example.demo.hall.dto.ReviewDTO">
-		select * from review
-		where hall_id = #{hall_id}
+		select r.*, u.nickname from review r join user u
+		on r.user_id = u.user_id
+		where r.hall_id = #{hall_id}
 	</select>
 	
 	
