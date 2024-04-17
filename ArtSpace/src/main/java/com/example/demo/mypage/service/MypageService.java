@@ -7,6 +7,8 @@ import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.reservation.dto.ReservationDTO;
+import com.example.demo.reservation.dto.ReservationEquipmentDTO;
+import com.example.demo.reservation.dto.ReserveDateDTO;
 import com.example.demo.user.dto.UserDTO;
 
 public interface MypageService {
@@ -33,8 +35,6 @@ public interface MypageService {
 
 	public ReservationDTO reserveDetail(Integer reserve_id);
 
-	public List<ReservationDTO> reserveEquip(Integer reserve_id);
-
 	public void updatePhone(UserDTO dto);
 
 	public List<ReservationDTO> getNotReview(Integer user_id);
@@ -44,6 +44,10 @@ public interface MypageService {
 	public void saveReview(ReviewDTO review);
 
 	public void updateReviewStatus(Integer reserve_id);
+
+	public List<ReservationEquipmentDTO> getAllReservationEquip(Integer reserve_id);
+
+	public List<ReserveDateDTO> reserveDate(Integer reserve_id);
 
 
 
