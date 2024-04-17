@@ -14,6 +14,7 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	ReservationDAO reservationDAO;
 	
+	// 예약 값 넣기
 	@Override
 	public void insert(ReservationDTO reservation) {
 		reservationDAO.insert(reservation);
@@ -30,10 +31,16 @@ public class ReservationServiceImpl implements ReservationService {
 		
 	}
 
+	// 동시간대 중복 체크
 	@Override
-	public int duplicationCheck(ReservationDTO reservation) {
-		return reservationDAO.duplicationCheck(reservation);
-		
+	public int duplicationCheck(ReserveDateDTO date) {
+		return reservationDAO.duplicationCheck(date);
+	}
+
+	// 하루일 경우 그날 중복되는 시간 체크
+	@Override
+	public int dayDuplicationCheck(ReserveDateDTO date) {
+		return reservationDAO.dayDuplicationCheck(date);
 	}
 	
 
