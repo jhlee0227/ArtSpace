@@ -30,13 +30,13 @@ public class ReservationDAO {
 	}
 
 	// 동시간대 예약 유무 확인
-	public int duplicationCheck(ReservationDTO reservation) {
-		return sqlSession.selectOne("reservation.duplicationCheck", reservation);
+	public int duplicationCheck(ReserveDateDTO date) {
+		return sqlSession.selectOne("reservation.duplicationCheck", date);
 	}
 
 	// 하루를 예약하는데 그날 다른 시간대 예약한게 있는지 체크
-	public int dayDuplicationCheck(ReservationDTO reservation) {
-		return sqlSession.selectOne("reservation.dayDuplicationCheck", reservation);
+	public int dayDuplicationCheck(ReserveDateDTO date) {
+		return sqlSession.selectOne("reservation.dayDuplicationCheck", date);
 	}
 	
 	

@@ -47,6 +47,11 @@ public class ReservationController {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "login";
+		} else {
+			// 로그인 되어있는데 일반 유저가 아니면 리턴
+			if(!user_session.getAuthority().equals("SU")) {
+				return "일반 회원만 예약할 수 있습니다.";				
+			}
 		}
 		
 		// 1. Data 확인 및 Validation 체크
@@ -70,12 +75,22 @@ public class ReservationController {
 			e.printStackTrace();
 		}
 		
-		// 중복이면 돌려보내기
-		if(reservationService.duplicationCheck(reservation) > 0) {
-			return "duplication";
-		}	
+		
+		// 시간 중복 체크
+		for (ReserveDateDTO date : dateList) {
+			// 중복이면 돌려보내기
+			if(reservationService.duplicationCheck(date) > 0) {
+				return "이미 예약된 시간입니다. " + date.getReserve_date() + " : " + date.getReserve_time();
+			}
+			if(date.getReserve_time().equals("하루")) {
+				if(reservationService.dayDuplicationCheck(date) > 0) {
+					return "예약된 시간대가 중복되어 사용할 수 없습니다." + date.getReserve_date() + " : " + date.getReserve_time();
+				}				
+			}
+		}
 		
 		
+		// 나머지 필요 정보 넣고 insert
 		reservation.setReserveDateList(dateList);
 		reservation.setReservationEquipmentList(equipList);
 		reservation.setUser_id(user_session.getUser_id());
