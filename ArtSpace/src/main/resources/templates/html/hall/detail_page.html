@@ -39,7 +39,7 @@
 		  <img th:onclick="|likeHall(${hall.hall_id});|" th:data-like="${hall.likeStatus}" src="/img/heart_black.png" th:class="${hall.likeStatus}">
           <i class="fa-sharp fa-solid fa-arrow-up-from-bracket fa-4x"></i>
           <i class="mini fa-solid fa-star fa-3x"></i>
-          <i class="text fa-solid fa-3x"><span th:text="${hall.rating}"></span> (10)</i>
+          <i class="text fa-solid fa-3x"><span th:text="|${hall.rating} (${hall.reviewList.size})|"></span></i>
         </div>
 
         <hr>
@@ -57,9 +57,9 @@
         <!-- ==================================================중요 안내 사항 끝================================================== -->
 
         <div class="main">
-		  <input type="radio" class="tabBtn" id="tab-1" name="show" />
+		  <input type="radio" class="tabBtn" id="tab-1" name="show"	checked />
           <input type="radio" class="tabBtn" id="tab-2" name="show" />
-          <input type="radio" class="tabBtn" id="tab-3" name="show" checked/>
+          <input type="radio" class="tabBtn" id="tab-3" name="show" />
           <input type="radio" class="tabBtn" id="tab-4" name="show" />
           
           <div class="tab">
@@ -350,29 +350,37 @@
             <div class="content-dis">
               <section class="review">
                 <div class="title">
-                  <h1>리뷰<span> 22(4.8)</span></h1>
+					<i class="fa-solid fa-star fa-2x"><span th:text="|(${hall.rating})|"></span></i>
+                  <h1>리뷰<span th:text="| ${hall.reviewList.size}|"></span></h1>
                 </div>
-				
-				<div class="review-box">
+				<div th:if="${hall.reviewList.size} < 1" class="review-box">
 					<h2>작성된 리뷰가 없습니다.</h2>
 				</div>
 				
-				<div class="review-box">
-				  <div class="review-top">
-					<div class="left">
-					  <span class="nickname">닉네임</span>
-					  <i class="fa-solid fa-star fa"></i>
-					  <i class="fa-solid fa-star fa"></i>
-					  <i class="fa-solid fa-star fa"></i>
-					  <i class="fa-solid fa-star fa"></i>
-					  <i class="fa-solid fa-star fa"></i>
-					  <span class="grade">(5.0)</span>							
-					</div>
-				    <span class="date">2024-03-11</span>
-				  </div>
-					
-				  <div class="review-content">리뷰공간</div>			
-				</div>
+				<th:block th:each="review : ${hall.reviewList}">
+					<div class="review-box">
+					  <div class="review-top">
+						<div class="left">
+						  <span class="nickname" th:text="|${review.nickname}|">닉네임</span>
+						  <th:block th:each="num : ${#numbers.sequence(0, review.rating-1)}">						  
+			  			  	<i class="fa-solid fa-star fa"></i>
+			  			  </th:block>
+						  
+						  <th:block th:if="${review.rating} < 5" th:each="num : ${#numbers.sequence(review.rating+1, 5)}">						  
+							<i class="fa-solid fa-star fa gray"></i>
+			  			  </th:block>
+						  						  
+						  <span class="grade" th:text="|(${review.rating})|">(5.0)</span>							
+						</div>
+					    <span class="date" th:text="${#temporals.format(review.create_date, 'yyyy-MM-dd HH:mm:ss')}">2024-03-11</span>
+					  </div>
+						
+					  <div class="review-content" th:text="${review.review_content}">리뷰공간</div>			
+					</div>	
+				</th:block>
+
+				
+
 
 
               </section>

@@ -145,6 +145,8 @@ public class HallServiceImpl implements HallService{
 		like.setUser_id(user_id);			
 		String status = hallDAO.getHallLikeStatus(like);
 
+		hallDTO.setReviewList(hallDAO.getReviewList(hall_id));
+		
 		if(status == null || status == "") {
 			status = "N";
 		}

@@ -11,6 +11,7 @@ import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallImageDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
+import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 
 @Repository
@@ -60,9 +61,9 @@ public class HallDAO {
 		return sqlSession.selectOne("hall.getLikeStatus", like);
 	}
 	
-	// 좋아요 상태 가져옴
-	public String getReviewList(Integer hall_id) {
-		return sqlSession.selectOne("hall.getReviewList", hall_id);
+	// 리뷰 리스트 가져옴
+	public List<ReviewDTO> getReviewList(Integer hall_id) {
+		return sqlSession.selectList("hall.getReviewList", hall_id);
 	}
 		
 	
