@@ -1,6 +1,8 @@
 package com.example.demo.mypage.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -105,14 +107,16 @@ public class MypageServiceImpl implements MypageService{
 	}
 	
 	@Override
-	public Map<Integer, LocalDate> getEarliestReserveDates(List<ReservationDTO> reservationList) {
-	    Map<Integer, LocalDate> earliestDates = new HashMap<>();
+	public Map<Integer, LocalDateTime> getEarliestReserveDates(List<ReservationDTO> reservationList) {
+	    Map<Integer, LocalDateTime> earliestDates = new HashMap<>();
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	    for (ReservationDTO reservation : reservationList) {
 	        List<ReserveDateDTO> reserveDateList = reservation.getReserveDateList();
 	        if (reserveDateList != null && !reserveDateList.isEmpty()) {
-	            LocalDate earliestDate = null;
+	            LocalDateTime earliestDate = null;
 	            for (ReserveDateDTO reserveDate : reserveDateList) {
-	                LocalDate date = LocalDate.parse(reserveDate.getReserve_date());
+	                String dateString = reserveDate.getReserve_date().trim();
+	                LocalDateTime date = LocalDateTime.parse(dateString, formatter);
 	                if (earliestDate == null || date.isBefore(earliestDate)) {
 	                    earliestDate = date;
 	                }

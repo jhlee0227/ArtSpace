@@ -194,7 +194,7 @@ public class MypageController {
 				List<ReservationDTO> reserveList = mypageService.getAllReserve(user_session.getUser_id());
 				model.addAttribute("reserve_list", reserveList);
 
-				Map<Integer, LocalDate> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
+				Map<Integer, LocalDateTime> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
 				model.addAttribute("earliest_reserve_date", earliestReserveDates);
 
 				model.addAttribute("current_date", LocalDate.now()); // 현재 날짜 추가
@@ -247,7 +247,8 @@ public class MypageController {
 		List<ReservationDTO> notReviewList = mypageService.getNotReview(user_session.getUser_id());
 
 		// 현재 날짜 가져오기
-		LocalDate currentDate = LocalDate.now();
+		LocalDateTime currentDate = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 		// 가장 최근 예약 날짜와 현재 날짜를 비교하여 리뷰 가능한 예약만 필터링
 		List<ReservationDTO> reviewableReservations = notReviewList.stream().filter(reservation -> {
@@ -256,9 +257,10 @@ public class MypageController {
 				return false; // 예약 날짜가 없는 경우 필터링
 			}
 			// reserveDateList 가져오기
-			LocalDate maxReserveDate = reservation.getReserveDateList().stream()
+			LocalDateTime maxReserveDate = reservation.getReserveDateList().stream()
 					// 예약날짜 추출
-					.map(ReserveDateDTO::getReserve_date).map(LocalDate::parse)
+					.map(ReserveDateDTO::getReserve_date)
+					.map(dateTimeString -> LocalDateTime.parse(dateTimeString, formatter))
 					// 가장 큰 값 (최근 날짜)
 					.max(Comparator.naturalOrder()).orElse(null);
 			return maxReserveDate != null && maxReserveDate.isBefore(currentDate);

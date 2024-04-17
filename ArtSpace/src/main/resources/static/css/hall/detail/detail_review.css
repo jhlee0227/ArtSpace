@@ -2,6 +2,14 @@
 
 /* ==================================================리뷰 목록================================================== */
 
+.fa-star{
+	color: gold;
+}
+
+.gray{
+	color: gray;	
+}
+
 .hall-detail .content .content-dis .review {
 	width: 100%;
     display: flex;
@@ -16,7 +24,6 @@
 
 .review .title span {
     font-size: 25px;
-    color: gold;
 }
 
 .review .review-box{
@@ -47,9 +54,6 @@
     font-weight: 600;
 }
 
-.review .review-box .review-top .left i {
-    color: gold;
-}
 
 
 
