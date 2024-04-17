@@ -26,7 +26,7 @@ public interface HallService {
 
 	
 	// SELECT 관련
-	public HallDTO findById(Integer id);
+	public HallDTO findById(Integer hall_id, Integer user_id);
 
 	public List<HallTimeDTO> setHallTimeList(HallDTO hallInfo);
 

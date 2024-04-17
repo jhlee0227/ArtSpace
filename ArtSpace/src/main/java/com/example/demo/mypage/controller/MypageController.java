@@ -1,6 +1,7 @@
 package com.example.demo.mypage.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -286,7 +287,7 @@ public class MypageController {
 		try {
 			user_session.setSessionValue(session);
 			review.setUser_id(user_session.getUser_id());
-			review.setCreate_date(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			review.setCreate_date(LocalDateTime.now());
 			mypageService.saveReview(review);
 			return true;
 		} catch (Exception e) {
