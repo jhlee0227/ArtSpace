@@ -128,18 +128,27 @@ body {
 	height: 100%;
 	object-fit: cover;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .con .content .list .item .hall-info {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .con .content .list .item .hall-name {
 	font-size: 2rem;
 	font-weight: 600;
-	margin-top: 1.5rem;
+}
+
+.con .content .list .item .hall-name span {
+	cursor: pointer;
+}
+
+.con .content .list .item .reserve-date {
+	font-size: 1.3rem;
+	color: gray;
 }
 
 .con .content .list .item .user-name {
@@ -155,7 +164,12 @@ body {
 
 .con .content .list .item .button {
 	display: flex;
-	margin: 1.5rem 1.5rem 1.5rem auto;
+	width: 10%;
+	flex-direction: column;
+	text-align: right;
+	margin-left: auto;
+	margin-right: 30px;
+	justify-content: space-around;
 }
 
 .con .content .list .item .button button {
@@ -172,6 +186,16 @@ body {
 	text-align: center;
 	box-shadow: var(--box-shadow);
 	width: 100px;
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+}
+
+.modal .modal-content .middle>div {
+	display: flex;
+	border-bottom: 2px solid var(--light_gray);
+	padding: 2rem 3.5rem 2rem;
+	align-items: center;
+}
+
+.modal .modal-content .middle>div .modal-list {
+	width: 20%;
+	font-weight: bold;
 }

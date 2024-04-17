@@ -183,6 +183,7 @@ input[name="tab_item"] {
 	height: 100%;
 	object-fit: cover;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .con .content .tabs .tab_content .info {
@@ -196,6 +197,10 @@ input[name="tab_item"] {
 	font-size: 2rem;
 	font-weight: bold;
 	margin-bottom: 4rem;
+}
+
+.con .content .tabs .tab_content .hall-name span {
+	cursor: pointer;
 }
 
 .con .content .tabs .tab_content .reserve-date {

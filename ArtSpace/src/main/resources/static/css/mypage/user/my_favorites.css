@@ -129,6 +129,7 @@ body {
 	height: 100%;
 	object-fit: cover;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .con .content .list .item .hall {
@@ -141,6 +142,10 @@ body {
 .con .content .list .item .hall-name {
 	font-size: 2rem;
 	font-weight: bold;
+}
+
+.con .content .list .item .hall-name span {
+	cursor: pointer;
 }
 
 .con .content .list .item .hall-loca {

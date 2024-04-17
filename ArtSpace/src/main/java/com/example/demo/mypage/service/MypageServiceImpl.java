@@ -2,7 +2,9 @@ package com.example.demo.mypage.service;
 
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +102,25 @@ public class MypageServiceImpl implements MypageService{
 			reservationDTO.setReserveDateList(mypageDAO.getAllReserveDate(reserve_id));
 		} 
 		return reserveList;
+	}
+	
+	@Override
+	public Map<Integer, LocalDate> getEarliestReserveDates(List<ReservationDTO> reservationList) {
+	    Map<Integer, LocalDate> earliestDates = new HashMap<>();
+	    for (ReservationDTO reservation : reservationList) {
+	        List<ReserveDateDTO> reserveDateList = reservation.getReserveDateList();
+	        if (reserveDateList != null && !reserveDateList.isEmpty()) {
+	            LocalDate earliestDate = null;
+	            for (ReserveDateDTO reserveDate : reserveDateList) {
+	                LocalDate date = LocalDate.parse(reserveDate.getReserve_date());
+	                if (earliestDate == null || date.isBefore(earliestDate)) {
+	                    earliestDate = date;
+	                }
+	            }
+	            earliestDates.put(reservation.getReserve_id(), earliestDate);
+	        }
+	    }
+	    return earliestDates;
 	}
 	
 	@Override

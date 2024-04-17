@@ -1,6 +1,9 @@
 package com.example.demo.company.service;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +14,18 @@ import com.example.demo.file.dao.FileDAO;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
+import com.example.demo.mypage.dao.MypageDAO;
 import com.example.demo.reservation.dto.ReservationDTO;
+import com.example.demo.reservation.dto.ReserveDateDTO;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	CompanyDAO companyDAO;
+	
+	@Autowired
+	MypageDAO mypageDAO;
 	
 	@Autowired
 	FileDAO fileDAO;
@@ -40,12 +48,34 @@ public class CompanyServiceImpl implements CompanyService {
 		
 		for (ReservationDTO reservationDTO : reserveList) {
 			FileDTO mainImage = fileDAO.getHallMainFile(reservationDTO.getHall_id());
-			
 			reservationDTO.setMainImage(mainImage);
-		}
+			
+			int reserve_id = reservationDTO.getReserve_id();
+			reservationDTO.setReservationEquipmentList(mypageDAO.getAllReservationEquip(reserve_id));
+			reservationDTO.setReserveDateList(mypageDAO.getAllReserveDate(reserve_id));
+		} 
 		return reserveList;
 	}
 
+	@Override
+	public Map<Integer, LocalDate> getEarliestReserveDates(List<ReservationDTO> reservationList) {
+	    Map<Integer, LocalDate> earliestDates = new HashMap<>();
+	    for (ReservationDTO reservation : reservationList) {
+	        List<ReserveDateDTO> reserveDateList = reservation.getReserveDateList();
+	        if (reserveDateList != null && !reserveDateList.isEmpty()) {
+	            LocalDate earliestDate = null;
+	            for (ReserveDateDTO reserveDate : reserveDateList) {
+	                LocalDate date = LocalDate.parse(reserveDate.getReserve_date());
+	                if (earliestDate == null || date.isBefore(earliestDate)) {
+	                    earliestDate = date;
+	                }
+	            }
+	            earliestDates.put(reservation.getReserve_id(), earliestDate);
+	        }
+	    }
+	    return earliestDates;
+	}
+	
 	@Override
 	public void reserveDelete(Integer reserve_id) {
 		

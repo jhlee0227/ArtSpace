@@ -17,18 +17,21 @@
 			<div class="content">
 				<h2 class="content-main">예약 내역</h2>
 				<!-- 여기에 th:each -->
-				<div class="list" th:each="reserve : ${reserve_list}">
+				<div class="list" th:each="reserve : ${reserve_list}" th:attr="data-reserve-id=${reserve.reserve_id}">
 					<!-- 여기에 th:text -->
 					<div class="item">
 						<div class="hall-img">
 							<img th:if="${reserve.mainImage != null}" th:src="${reserve.mainImage.path}"
-								th:data-file="${reserve.mainImage.org_file_name}" class="hall-thumb" alt="">
+								th:data-file="${reserve.mainImage.org_file_name}" class="hall-thumb" alt="" th:onclick="|location.href='@{/hall/detail/}' + ${reserve.hall_id}|">
 						</div>
 						<div class="hall">
-							<p class="status cancel" th:if="${#strings.equals(reserve.reserve_status, 'N')}">취소 완료 | 예약 번호 : <span th:text="${reserve.reserve_id}"></span></p>
-							<p class="status reserve" th:if="${#strings.equals(reserve.reserve_status, 'Y')}">예약 완료 | 예약 번호 : <span th:text="${reserve.reserve_id}"></span></p>
-							<div class="hall-name" th:text="${reserve.hall_name}"></div>
-							<p class="reserve-date">접수일 : <span th:text="${#strings.substring(reserve.create_date, 0, 10)}"></span></p>
+							<p class="status cancel" th:if="${#strings.equals(reserve.reserve_status, 'N')}">취소 완료 | 예약
+								번호 : <span th:text="${reserve.reserve_id}"></span></p>
+							<p class="status reserve" th:if="${#strings.equals(reserve.reserve_status, 'Y')}">예약 완료 | 예약
+								번호 : <span th:text="${reserve.reserve_id}"></span></p>
+							<div class="hall-name"><span th:text="${reserve.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${reserve.hall_id}|"></span></div>
+							<p class="reserve-date">접수일 : <span
+									th:text="${#strings.substring(reserve.create_date, 0, 10)}"></span></p>
 						</div>
 
 						<div class="button">
@@ -134,7 +137,7 @@
 
 							// 예약 날짜, 시간
 							var datesHtml = '';
-							reserveDate.forEach (function (date, index) {
+							reserveDate.forEach(function (date, index) {
 								datesHtml += date.reserve_date + ' ' + date.reserve_time;
 								if (index !== reserveDate.length - 1) {
 									datesHtml += '<br>' + '<br>';
@@ -144,14 +147,14 @@
 							// 장비 이름 + 장비 개수
 							var equipmentsHtml = '';
 							if (reservationEquipments.length > 0) {
-							    reservationEquipments.forEach(function (equip, index) {
-							        equipmentsHtml += equip.equip_name + ' : ' + equip.equip_num + '개';
-							        if (index !== reservationEquipments.length - 1) {
-							            equipmentsHtml += '<br>' + '<br>';
-							        }
-							    });
+								reservationEquipments.forEach(function (equip, index) {
+									equipmentsHtml += equip.equip_name + ' : ' + equip.equip_num + '개';
+									if (index !== reservationEquipments.length - 1) {
+										equipmentsHtml += '<br>' + '<br>';
+									}
+								});
 							} else {
-							    equipmentsHtml = '없음';
+								equipmentsHtml = '없음';
 							}
 							$('.modal-con.equipments').html(equipmentsHtml);
 
@@ -196,6 +199,24 @@
 				}
 			}
 		</script>
+		<script th:inline="javascript">
+		    var earliestReserveDates = /*[[${earliest_reserve_date}]]*/ {};
+		    var currentDate = /*[[${current_date}]]*/;
+		    $(document).ready(function () {
+		        // 각 예약 요소에 대한 가장 빠른 예약 날짜를 비교하여 예약 취소 버튼을 숨기기
+		        $('.list').each(function () {
+					var reserveId = $(this).data('reserve-id');
+		            var earliestReserveDate = earliestReserveDates[reserveId];
+		            
+		            if (earliestReserveDate && new Date(earliestReserveDate) < new Date(currentDate)) {
+		                $(this).find('.button form').hide();
+		            }
+					console.log(reserveId);
+					console.log(earliestReserveDate);
+		        });
+		    });
+		</script>
+
 	</div>
 	</div>
 
