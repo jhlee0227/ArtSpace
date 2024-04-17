@@ -76,10 +76,10 @@ function date_setting(){
 		let ok = 0;
 		// 이미 설정된 값 제외
 		rental_timeList.forEach(function(e){
-			if(e.rental_date == day && e.time == time){
+			if(e.reserve_date == day && e.reserve_time == time){
 				$('#datechk').html("이미 추가된 날짜와 시간 입니다.").css('color', 'red');
 				ok = 1;
-			} else if(time == "하루" && e.rental_date == day){
+			} else if(time == "하루" && e.reserve_date == day){
 				$('#datechk').html("중복 된 날짜는 추가 할 수 없습니다.").css('color', 'red');
 				ok = 1;
 			} else {
@@ -108,7 +108,7 @@ function showdate(){
 	$(".contained-date").children().remove();
 	rental_timeList.forEach(function(e){
 		// 화면에 표시해주기
-		let str="<li>- " + (i+1) + " 공연 : " + e.rental_date + " " + e.time + " " + e.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원 ";
+		let str="<li>- " + (i+1) + " 공연 : " + e.reserve_date + " " + e.reserve_time + " " + e.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원 ";
 		str += "<span class='deleteBtn' onclick='deleteDate("+i+")'>취소</span></li>"	
 		$(".contained-date").append(str);
 		i++;
@@ -211,13 +211,21 @@ function reservation_submit(){
         method: 'post',
         data:jsonList,
 		success : function(data) {
-			console.log('성공!');
+			if(data == "login"){
+				alert("로그인이 필요 합니다.");
+				location.href="http://localhost:1105/login";
+			} else if(data == "duplication"){
+				alert("이미 예약된 시간입니다.");
+			} else if("success") {
+				alert("예약이 완료되었습니다.");
+			}
+			
+			
 		},
   		error:function(request, status, error) { // 오류가 발생했을 때 호출된다.
   			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
   		},
 	});
-	
 }
 
 /* === 견적 내기 부분 END ===*/

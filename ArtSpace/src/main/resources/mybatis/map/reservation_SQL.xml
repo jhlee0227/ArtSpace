@@ -20,6 +20,18 @@
 						 values(#{equip_type}, #{equip_name}, #{equip_num}, #{equip_price}, #{reserve_id})
 	</insert>
 	
+	<select id="duplicationCheck" resultType="int">
+		select count(*) from reserve_date
+		where reserve_date = #{reserve_date} and reserve_time = #{reserve_time}
+	</select>
+	
+	<!-- 하루 빌릴려는데 다른 시간대가 있는지 체크 -->
+	<select id="dayDuplicationCheck" resultType="int">
+		select count(*) from reserve_date
+		where reserve_date = #{reserve_date}
+	</select>
+
+
 
 	
 

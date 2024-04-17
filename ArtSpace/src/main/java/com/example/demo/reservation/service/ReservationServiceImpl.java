@@ -29,6 +29,12 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		
 	}
+
+	@Override
+	public int duplicationCheck(ReservationDTO reservation) {
+		return reservationDAO.duplicationCheck(reservation);
+		
+	}
 	
 
 }
