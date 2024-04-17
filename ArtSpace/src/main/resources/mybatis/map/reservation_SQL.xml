@@ -2,13 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reservation">
 
-	<insert id="insert">
-		insert into reservation(reserve_status, estimate, user_id, hall_id)
-						 values('Y', #{estimate}, #{user_id}, #{hall_id})
- 			<selectKey keyProperty="reserve_id" resultType="int" order="AFTER" >
-				select LAST_INSERT_ID()
-			</selectKey>	
-	</insert>
+
+   <insert id="insert">
+      insert into reservation(reserve_status, estimate, user_id, hall_id, create_date)
+                   values('Y', #{estimate}, #{user_id}, #{hall_id}, #{create_date})
+          <selectKey keyProperty="reserve_id" resultType="int" order="AFTER" >
+            select LAST_INSERT_ID()
+         </selectKey>   
+   </insert>
+
 	
 	<insert id="insertTime">
 		insert into reserve_date(reserve_date, reserve_time, reserve_id)

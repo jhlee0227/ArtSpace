@@ -214,10 +214,10 @@ function reservation_submit(){
 			if(data == "login"){
 				alert("로그인이 필요 합니다.");
 				location.href="http://localhost:1105/login";
-			} else if(data == "duplication"){
-				alert("이미 예약된 시간입니다.");
-			} else if("success") {
+			} else if(data == "success") {
 				alert("예약이 완료되었습니다.");
+			} else {
+				alert(data);
 			}
 			
 			
