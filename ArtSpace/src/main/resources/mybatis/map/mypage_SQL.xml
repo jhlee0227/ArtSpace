@@ -72,9 +72,8 @@
 	
 	<select id="getReserve" resultType="com.example.demo.hall.dto.ReservationDTO">
 		select h.hall_name, h.address1, h.address2, h.hall_id,
-				date_format(rd.start_date, '%Y-%m-%d') as start_date, 
-				date_format(rd.end_date, '%Y-%m-%d') as end_date, 
-				rd.start_time, rd.end_time, r.reserve_id
+				date_format(rd.reserve_date, '%Y-%m-%d') as reserve_date,
+				rd.reserve_time, r.reserve_id
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
 		join reserve_date rd on r.reserve_id = rd.reserve_id
@@ -90,9 +89,8 @@
 	
 	<select id="reserveDetail" resultType="com.example.demo.hall.dto.ReservationDTO">
 		select h.hall_name, h.address1, h.address2, h.hall_id,
-				date_format(rd.start_date, '%Y-%m-%d') as start_date, 
-				date_format(rd.end_date, '%Y-%m-%d') as end_date, 
-				rd.start_time, rd.end_time, r.estimate, u.name, u.phone
+				date_format(rd.reserve_date, '%Y-%m-%d') as reserve_date,
+				rd.reserve_time, r.estimate, u.name, u.phone
 		from hall h
 		join reservation r on r.hall_id = h.hall_id
 		join reserve_date rd on r.reserve_id = rd.reserve_id
