@@ -166,7 +166,10 @@ function filterPush(){
 					if(hall.mainImage != null){
 						str += '<img src="'+ hall.mainImage.path +'" data-file="'+ hall.mainImage.org_file_name +'"alt="이미지">';
 					}				    						
-					str += '<i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>\n</div>';
+					str += '</div>';
+					
+					str += '<div class="likeBtn" id="likeBtn" onclick="likeHall('+ hall.hall_id +');">';
+					str += '<img data-like="'+ hall.likeStatus +'"src="img/heart_black.png" class="'+ hall.likeStatus +'"></div>'
 				  	str += '<div class="content">';
 				  	str += '<div class="content-top">';
 					str += '<p class="address-text">'+ hall.address1.substring(0, 6) +'</p>\n<div>';

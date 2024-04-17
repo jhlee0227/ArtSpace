@@ -61,13 +61,13 @@ public class HallListController {
 			HallFilterDTO filter = new HallFilterDTO();
 			filter.setContent(request.getParameter("content"));
 			filter.setSort("create_date");
-			hallList = hallListService.getFilterData(filter);
+			hallList = hallListService.getFilterData(filter, user_session.getUser_id());
 
 			// 헤더 검색창에 검색어 남겨두기
 			model.addAttribute("content", request.getParameter("content"));
 		} else {
 			// 검색하지 않고 그냥 리스트 화면으로 넘어왔을 때 그냥 기본 리스트 불러옴
-			hallList = hallListService.getList();
+			hallList = hallListService.getList(user_session.getUser_id());
 		}		
 		model.addAttribute("hallList", hallList);
 	
@@ -81,7 +81,7 @@ public class HallListController {
 	@RequestMapping(value = "/list/check", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> testCheck(@RequestBody HallFilterDTO filter){	
-		List<HallDTO> hallList = hallListService.getFilterData(filter);
+		List<HallDTO> hallList = hallListService.getFilterData(filter, user_session.getUser_id());
 		return new ResponseEntity<List<HallDTO>>(hallList, HttpStatus.OK);
 	}	
 	
