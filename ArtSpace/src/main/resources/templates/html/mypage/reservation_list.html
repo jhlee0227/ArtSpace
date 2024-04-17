@@ -19,6 +19,10 @@
 				<!-- 여기에 th:each -->
 				<div class="list" th:each="reserve : ${reserve_list}">
 					<!-- 여기에 th:text -->
+					<div class="status">
+						<p class="cancel" th:if="${#strings.equals(reserve.reserve_status), 'N'}">취소 완료</p>
+						<p class="reserve" th:if="${#strings.equals(reserve.reserve_status), 'Y'}">예약 완료</p>
+					</div>
 					<div class="item">
 						<div class="hall-img">
 							<img th:if="${reserve.mainImage != null}" th:src="${reserve.mainImage.path}"
@@ -32,7 +36,7 @@
 						</div>
 
 						<div class="button">
-							<form method="post" action="/mypage/reserve/delete">
+							<form method="post" action="/mypage/reserve/delete" th:if="${#strings.equals(reserve.reserve_status), 'Y')}">
 								<!-- 약관에 따라 예약 취소 비활성화 필요 -->
 								<input type="hidden" name="reserve_id" th:value="${reserve.reserve_id}">
 								<button type="submit" onclick="return confirmDelete()">예약 취소</button>
