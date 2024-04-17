@@ -68,8 +68,8 @@ function date_setting(){
 		let price = document.getElementById('rental_time').value;
 		
 		let temp = {
-			"rental_date":day,
-			"time":time,
+			"reserve_date":day,
+			"reserve_time":time,
 			"price":price
 		};
 		
@@ -191,29 +191,25 @@ function reservation_submit(){
 	// 기타 목록 가져오기
 	let food = $('input[name=food]:checked').val();
 	let ac = $('input[name=ac]:checked').val();
+	let hall_id =  $('input[name=hall_id]').val();
 
 	var reservationDTO = {
+		hall_id: hall_id,
 		estimate: estimate,
 		food: food,
 	    ac: ac
 	}
-/*	
-	let contentArr = [];
-	contentArr.push(reservationDTO);
-	contentArr.push(rental_timeList);
-	contentArr.push(equipList);
-	
-	console.log(contentArr);*/
+
+	var jsonList = {
+   		"reservation":JSON.stringify(reservationDTO),
+   		"timeList":JSON.stringify(rental_timeList),
+   		"equipList":JSON.stringify(equipList)
+	}
 	
 	$.ajax({
         url: '/reservation/insert',
         method: 'post',
-		contentType: "application/json",
-        data: {
-			reservation:JSON.stringify(reservationDTO),
-			timeList:JSON.stringify(rental_timeList),
-			equipList:JSON.stringify(equipList)
-		},    
+        data:jsonList,
 		success : function(data) {
 			console.log('성공!');
 		},

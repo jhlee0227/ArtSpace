@@ -18,10 +18,10 @@ import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.company.service.CompanyService;
 import com.example.demo.file.service.FileService;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.hall.service.HallService;
 import com.example.demo.mypage.service.MypageService;
+import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.user.dto.UserDTO;
 
 import jakarta.servlet.http.HttpSession;

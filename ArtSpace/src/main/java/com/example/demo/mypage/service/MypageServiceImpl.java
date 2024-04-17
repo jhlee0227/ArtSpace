@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import com.example.demo.file.dao.FileDAO;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dao.MypageDAO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
+import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.user.dto.UserDTO;
 
 @Service

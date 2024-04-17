@@ -10,8 +10,8 @@ import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.file.dao.FileDAO;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
+import com.example.demo.reservation.dto.ReservationDTO;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
