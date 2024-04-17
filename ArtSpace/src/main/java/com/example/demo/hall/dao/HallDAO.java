@@ -11,6 +11,7 @@ import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallImageDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
+import com.example.demo.mypage.dto.LikeDTO;
 
 @Repository
 public class HallDAO {
@@ -50,6 +51,13 @@ public class HallDAO {
 		return sqlSession.selectOne("hallFile.select_first_file", hall_id);
 	}
 
+	public int likeCheck(LikeDTO like) {
+		return sqlSession.selectOne("hall.likeCheck", like);
+	}
+	
+	public String getHallLikeStatus(LikeDTO like) {
+		return sqlSession.selectOne("hall.getLikeStatus", like);
+	}
 	
 	//	SELECT END	//
 
@@ -68,6 +76,11 @@ public class HallDAO {
 	// 공연장 장비 정보 insert
 	public void insertEquiList(EquipmentDTO equiDTO) {
 		sqlSession.insert("hall.equi_insert", equiDTO);
+	}
+	
+	// 공연장 찜 정보 insert
+	public void likeHall(LikeDTO like) {
+		sqlSession.insert("hall.like_insert", like);		
 	}
 	// INSERT END //
 
@@ -115,6 +128,12 @@ public class HallDAO {
 	public void visibilityFalse(Integer hall_id) {
 		sqlSession.update("hall.post_visibility_false",  hall_id);			
 	}
+
+	public void updateLikeHall(LikeDTO like) {
+		sqlSession.update("hall.update_like",  like);			
+	}
+
+
 	
 	
 	// UPDATE END //

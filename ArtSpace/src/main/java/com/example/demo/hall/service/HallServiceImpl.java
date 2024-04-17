@@ -18,6 +18,7 @@ import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallImageDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
+import com.example.demo.mypage.dto.LikeDTO;
 
 
 @Service
@@ -211,6 +212,24 @@ public class HallServiceImpl implements HallService{
 			hallFileDAO.deleteImages(fileIDList);
 			fileDAO.deleteFiles(fileIDList);				
 		}
+	}
+
+
+	// 좋아요
+	@Override
+	public void likeHall(Integer hall_id, Integer user_id, String status) {
+		LikeDTO like = new LikeDTO();
+		like.setHall_id(hall_id);
+		like.setUser_id(user_id);
+		like.setStatus(status);
+		
+		
+		if(hallDAO.likeCheck(like) > 0) {
+			hallDAO.updateLikeHall(like);
+		} else {
+			hallDAO.likeHall(like);			
+		}
+		
 	}
 
 

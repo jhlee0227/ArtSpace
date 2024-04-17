@@ -13,6 +13,7 @@ import com.example.demo.hall.dao.HallDAO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallFilterDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
+import com.example.demo.mypage.dto.LikeDTO;
 
 @Service
 public class HallListServiceImpl implements HallListService{
@@ -23,13 +24,23 @@ public class HallListServiceImpl implements HallListService{
 	FileDAO fileDAO;
 	
 	@Override
-	public List<HallDTO> getList() {
+	public List<HallDTO> getList(Integer user_id) {
 		List<HallDTO> hallList = hallDAO.getHallList();
 		
 		for (HallDTO hallDTO : hallList) {
 			List<HallTimeDTO> time = hallDAO.getHallTimeList(hallDTO.getHall_id());
 			FileDTO mainImage = fileDAO.getHallMainFile(hallDTO.getHall_id());
+			
+			// 좋아요
+			LikeDTO like = new LikeDTO();
+			like.setHall_id(hallDTO.getHall_id());
+			like.setUser_id(user_id);			
+			String status = hallDAO.getHallLikeStatus(like);
 
+			if(status == null || status == "") {
+				status = "N";
+			}
+			hallDTO.setLikeStatus(status);					
 			hallDTO.setHallTimeList(time);
 			hallDTO.setMainImage(mainImage);
 		}
@@ -37,7 +48,7 @@ public class HallListServiceImpl implements HallListService{
 	}
 
 	@Override
-	public List<HallDTO> getFilterData(HallFilterDTO filter) {
+	public List<HallDTO> getFilterData(HallFilterDTO filter, Integer user_id) {
 		
 		String local = "";
 		if(filter.getLocalList() != null) {
@@ -64,6 +75,17 @@ public class HallListServiceImpl implements HallListService{
 		for (HallDTO hallDTO : hallList) {
 			List<HallTimeDTO> time = hallDAO.getHallTimeList(hallDTO.getHall_id());
 			FileDTO mainImage = fileDAO.getHallMainFile(hallDTO.getHall_id());
+			
+			// 좋아요
+			LikeDTO like = new LikeDTO();
+			like.setHall_id(hallDTO.getHall_id());
+			like.setUser_id(user_id);			
+			String status = hallDAO.getHallLikeStatus(like);
+
+			if(status == null || status == "") {
+				status = "N";
+			}
+			hallDTO.setLikeStatus(status);		
 			
 			hallDTO.setHallTimeList(time);
 			hallDTO.setMainImage(mainImage);

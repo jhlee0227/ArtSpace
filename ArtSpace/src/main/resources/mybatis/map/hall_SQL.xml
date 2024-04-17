@@ -24,6 +24,11 @@
 		insert into equipment(hall_id, equip_type, equip_name, equip_num, equip_price)
 		values(#{hall_id}, #{equip_type}, #{equip_name}, #{equip_num}, #{equip_price})
 	</insert>
+	
+	<insert id="like_insert">
+		insert into like_hall(status, user_id, hall_id)
+		values(#{status}, #{user_id}, #{hall_id})
+	</insert>
 
 <!-- INSERT End -->
 
@@ -86,13 +91,19 @@
 		      ischeck = #{ischeck}
 	       WHERE hall_id = #{hall_id}
 	</update>
+	
+	<update id="update_like">
+	   UPDATE like_hall
+	      SET status = #{status}
+	    WHERE hall_id = #{hall_id} and user_id = #{user_id}
+	</update>
 
 <!-- Update End -->
 
 <!-- SELECT  -->
 	<select id="getHallList" resultType="com.example.demo.hall.dto.HallDTO">		
 		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id, min(ht.price) minPrice,
-					count(distinct lh.like_id, lh.hall_id) likeNum,
+					count(distinct case when status='Y' then 1 end, lh.like_id, lh.hall_id) likeNum,
 					ifnull(ROUND(AVG(r.rating),1), 0) rating
 	  	  from hall h join hall_time ht
          		on h.hall_id = ht.hall_id
@@ -121,7 +132,7 @@
 	<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_id, h.hall_name, h.zip_code, h.address1, h.address2, h.hall_description, h.warning, h.create_date,
 					h.views, h.area, h.width, h.length, h.height, h.maximum, h.visibility, h.user_id,
-					min(ht.price) minPrice, count(distinct lh.like_id, lh.hall_id) likeNum,
+					min(ht.price) minPrice, count(distinct case when status='Y' then 1 end, lh.like_id, lh.hall_id) likeNum,
 					ifnull(ROUND(AVG(r.rating),1), 0) rating
 		  from hall h 
 		  			  join hall_time ht
@@ -138,7 +149,7 @@
 		
 	<select id="getFilterList" resultType="com.example.demo.hall.dto.HallDTO">
 		select h.hall_id, h.hall_name, h.address1, h.create_date, h.views, h.user_id,
-					min(ht.price) minPrice, count(distinct lh.like_id, lh.hall_id) likeNum,
+					min(ht.price) minPrice, count(distinct case when status='Y' then 1 end, lh.like_id, lh.hall_id) likeNum,
 					ifnull(ROUND(AVG(r.rating),1), 0) rating
 	  	  from hall h join hall_time ht
          		on h.hall_id = ht.hall_id
@@ -197,6 +208,20 @@
         </choose>
 	</select>
 
+	<select id="likeCheck" resultType="int">
+		select count(*)
+		from like_hall
+		where hall_id = #{hall_id} and user_id = #{user_id}
+	</select>
+	
+	<select id="getLikeStatus" resultType="string">
+		select status
+		from like_hall
+		where hall_id = #{hall_id} and user_id = #{user_id}
+	</select>
+	
+	
+	
 	
 
 <!-- SELECT End -->

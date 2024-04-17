@@ -46,6 +46,8 @@ public interface HallService {
 
 	public void deleteImages(Integer hall_id);
 
+	public void likeHall(Integer hall_id, Integer user_id, String status);
+
 
 
 
