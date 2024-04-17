@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.mypage.service.MypageService;
+import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.user.dto.UserDTO;
 
 import jakarta.servlet.http.HttpServletRequest;

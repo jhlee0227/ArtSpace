@@ -14,6 +14,7 @@
 	<div layout:fragment="content">
 	
       <section class="hall-detail">		
+		<input type="text" name="hall_id" th:value="${hall.hall_id}" hidden>
 		<div class="imgboxList" th:style="|background-image:url('');|">
 			<div class="imgbox">
 				<img th:src="${hall.mainImage.path}">				

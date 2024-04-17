@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.company.dto.CompanyDTO;
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
+import com.example.demo.reservation.dto.ReservationDTO;
 
 @Repository
 public class CompanyDAO {

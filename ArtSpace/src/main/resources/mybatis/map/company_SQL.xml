@@ -14,7 +14,7 @@
 		where user_id = #{user_id} and visibility = 'Y'
 	</select>
 
-	<select id="getReserve" resultType="com.example.demo.hall.dto.ReservationDTO">
+	<select id="getReserve" resultType="com.example.demo.reservation.dto.ReservationDTO">
 		select h.hall_id, h.hall_name, h.address1, h.address2, rd.start_date, rd.end_date, rd.start_time, rd.end_time, u.name, r.reserve_id
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
