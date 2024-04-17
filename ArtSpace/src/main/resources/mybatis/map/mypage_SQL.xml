@@ -71,7 +71,7 @@
 	</update> 
 	
 	<select id="getReserve" resultType="com.example.demo.reservation.dto.ReservationDTO">
-		select h.hall_name, h.address1, h.address2, h.hall_id, r.reserve_id, r.reserve_status
+		select h.hall_name, h.address1, h.address2, h.hall_id, r.reserve_id, r.reserve_status, r.create_date
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
 		where r.user_id = #{user_id}
@@ -97,37 +97,20 @@
 	
 	
 	<select id="reserveDetail" resultType="com.example.demo.reservation.dto.ReservationDTO">
-		select h.hall_name, h.address1, h.address2, h.hall_id,
-				date_format(rd.reserve_date, '%Y-%m-%d') as reserve_date,
-				rd.reserve_time, r.estimate, r.food, r.ac, u.name, u.phone
+		select h.hall_name, h.address1, h.address2, h.hall_id, r.estimate, r.food, r.ac, u.name, u.phone
 		from hall h
 		join reservation r on r.hall_id = h.hall_id
-		join reserve_date rd on r.reserve_id = rd.reserve_id
 		join user u on u.user_id = r.user_id
 		where r.reserve_id = #{reserve_id};
 	</select>
 	
-	<select id="reserveEquip" resultType="com.example.demo.reservation.dto.ReservationDTO">
-		select equip_name, equip_price, equip_num
-		from reservation_equipment
-		where reserve_id = #{reserve_id};
-	</select>
-	
 	<select id="getNotReview" resultType="com.example.demo.reservation.dto.ReservationDTO">
 	 <![CDATA[
-		select h.hall_name,
-				date_format(rd.reserve_date, '%Y-%m-%d') as reserve_date,
-				rd.reserve_time, h.hall_id, r.reserve_id
+		select h.hall_name, h.hall_id, r.reserve_id
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
-		join reserve_date rd on r.reserve_id = rd.reserve_id
 		where r.user_id = #{user_id} and r.reserve_status = 'Y' 
-		and not exists (
-	      select 1
-	      from reserve_date rd2
-	      where rd2.reserve_id = rd.reserve_id
-	        and rd2.reserve_date < CURDATE()
-	  ) and r.write_review = 'N';
+		and r.write_review = 'N';
 		]]>
 	</select>
 	

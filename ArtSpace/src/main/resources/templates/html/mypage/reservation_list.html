@@ -19,24 +19,21 @@
 				<!-- 여기에 th:each -->
 				<div class="list" th:each="reserve : ${reserve_list}">
 					<!-- 여기에 th:text -->
-					<div class="status">
-						<p class="cancel" th:if="${#strings.equals(reserve.reserve_status), 'N'}">취소 완료</p>
-						<p class="reserve" th:if="${#strings.equals(reserve.reserve_status), 'Y'}">예약 완료</p>
-					</div>
 					<div class="item">
 						<div class="hall-img">
 							<img th:if="${reserve.mainImage != null}" th:src="${reserve.mainImage.path}"
 								th:data-file="${reserve.mainImage.org_file_name}" class="hall-thumb" alt="">
 						</div>
 						<div class="hall">
+							<p class="status cancel" th:if="${#strings.equals(reserve.reserve_status, 'N')}">취소 완료 | 예약 번호 : <span th:text="${reserve.reserve_id}"></span></p>
+							<p class="status reserve" th:if="${#strings.equals(reserve.reserve_status, 'Y')}">예약 완료 | 예약 번호 : <span th:text="${reserve.reserve_id}"></span></p>
 							<div class="hall-name" th:text="${reserve.hall_name}"></div>
-							<div class="hall-loca" th:text="${reserve.address1 + ' ' + reserve.address2}"></div>
-							<div class="reserve-date" th:each="reserveDate : ${reserve.reserveDateList}" th:text="${reserveDate.reserve_date + ' ' + reserveDate.reserve_time}">
-							            </div>
+							<p class="reserve-date">접수일 : <span th:text="${#strings.substring(reserve.create_date, 0, 10)}"></span></p>
 						</div>
 
 						<div class="button">
-							<form method="post" action="/mypage/reserve/delete" th:if="${#strings.equals(reserve.reserve_status), 'Y')}">
+							<form method="post" action="/mypage/reserve/delete"
+								th:if="${#strings.equals(reserve.reserve_status, 'Y')}">
 								<!-- 약관에 따라 예약 취소 비활성화 필요 -->
 								<input type="hidden" name="reserve_id" th:value="${reserve.reserve_id}">
 								<button type="submit" onclick="return confirmDelete()">예약 취소</button>
@@ -129,19 +126,34 @@
 						if (response.success) {
 							var reservationDetail = response.reservationDetail;
 							var reservationEquipments = response.reservationEquipments;
+							var reserveDate = response.reserveDate;
 							// 모달에 정보를 채워넣는 코드 작성
 							$('.modal-con.hall-name').text(reservationDetail.hall_name);
-							$('.modal-con.reservation-time').text(reservationDetail.start_date + ' ' + reservationDetail.start_time + ' ~ ' + reservationDetail.end_date + ' ' + reservationDetail.end_time);
 							$('.modal-con.hall-address').text(reservationDetail.address1 + ' ' + reservationDetail.address2);
 							$('.modal-con.estimate').text(Number(reservationDetail.estimate).toLocaleString() + '원');
 
+							// 예약 날짜, 시간
+							var datesHtml = '';
+							reserveDate.forEach (function (date, index) {
+								datesHtml += date.reserve_date + ' ' + date.reserve_time;
+								if (index !== reserveDate.length - 1) {
+									datesHtml += '<br>' + '<br>';
+								}
+							})
+							$('.modal-con.reservation-time').html(datesHtml)
 							// 장비 이름 + 장비 개수
 							var equipmentsHtml = '';
-							reservationEquipments.forEach(function (equip) {
-								equipmentsHtml += equip.equip_name + ' : ' + equip.equip_num + '개, ';
-							});
-							equipmentsHtml = equipmentsHtml.slice(0, -2);
-							$('.modal-con.equipments').text(equipmentsHtml);
+							if (reservationEquipments.length > 0) {
+							    reservationEquipments.forEach(function (equip, index) {
+							        equipmentsHtml += equip.equip_name + ' : ' + equip.equip_num + '개';
+							        if (index !== reservationEquipments.length - 1) {
+							            equipmentsHtml += '<br>' + '<br>';
+							        }
+							    });
+							} else {
+							    equipmentsHtml = '없음';
+							}
+							$('.modal-con.equipments').html(equipmentsHtml);
 
 							$('.modal-con.username').text(reservationDetail.name);
 							$('.modal-con.phone').text(reservationDetail.phone);
@@ -152,6 +164,7 @@
 						}
 					},
 					error: function (data, status, error) {
+						console.log(response.message);
 						alert('예약 정보를 불러오는 데 실패했습니다.');
 					}
 				});

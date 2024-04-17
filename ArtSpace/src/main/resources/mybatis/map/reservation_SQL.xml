@@ -3,9 +3,9 @@
 <mapper namespace="reservation">
 
 
-   <insert id="insert">
-      insert into reservation(reserve_status, estimate, user_id, hall_id, create_date)
-                   values('Y', #{estimate}, #{user_id}, #{hall_id}, #{create_date})
+      <insert id="insert">
+      insert into reservation(reserve_status, estimate, food, ac, user_id, hall_id, create_date)
+                   values('Y', #{estimate}, #{food}, #{ac}, #{user_id}, #{hall_id}, #{create_date})
           <selectKey keyProperty="reserve_id" resultType="int" order="AFTER" >
             select LAST_INSERT_ID()
          </selectKey>   
