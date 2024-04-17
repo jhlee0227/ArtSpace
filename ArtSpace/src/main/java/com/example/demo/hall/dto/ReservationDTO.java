@@ -9,6 +9,9 @@ public class ReservationDTO {
 	private Integer reserve_id; 		// 예약ID PK
 	private String reserve_status; 		// 예약상태 (Y/N)
 	private Integer estimate;			// 견적가
+	private String food;				// 식사 여부
+	private String ac;					// 냉난방 여부
+	private String write_review;		// 리뷰 작성 여부
 	private Integer user_id; 			// 유저ID FK
 	private Integer hall_id; 			// 공연장ID FK
 
@@ -17,15 +20,13 @@ public class ReservationDTO {
 	private String address1; 			// 기본주소
 	private String address2; 			// 상세주소
 
-	// 장비 정보
-	private String equip_name; 			// 장비 이름
-	private String equip_price; 		// 장비 가격
-	
 	// 예약한 장비 정보
-	private Integer equip_num; 			// 사용할 장비 갯수
+	private List<ReservationEquipmentDTO> reservationEquipmentList;
 
 	// 사용자가 예약한 날짜와 시간
 	private List<ReserveDateDTO> ReserveDateList;
+	
+
 	
 	// 예약자이름, 핸드폰번호
 	private String name;
@@ -55,6 +56,30 @@ public class ReservationDTO {
 
 	public void setEstimate(Integer estimate) {
 		this.estimate = estimate;
+	}
+
+	public String getFood() {
+		return food;
+	}
+
+	public void setFood(String food) {
+		this.food = food;
+	}
+
+	public String getAc() {
+		return ac;
+	}
+
+	public void setAc(String ac) {
+		this.ac = ac;
+	}
+
+	public String getWrite_review() {
+		return write_review;
+	}
+
+	public void setWrite_review(String write_review) {
+		this.write_review = write_review;
 	}
 
 	public Integer getUser_id() {
@@ -97,30 +122,22 @@ public class ReservationDTO {
 		this.address2 = address2;
 	}
 
-	public String getEquip_name() {
-		return equip_name;
+	public List<ReservationEquipmentDTO> getReservationEquipmentList() {
+		return reservationEquipmentList;
 	}
 
-	public void setEquip_name(String equip_name) {
-		this.equip_name = equip_name;
+	public void setReservationEquipmentList(
+			List<ReservationEquipmentDTO> reservationEquipmentList) {
+		this.reservationEquipmentList = reservationEquipmentList;
 	}
 
-	public String getEquip_price() {
-		return equip_price;
+	public List<ReserveDateDTO> getReserveDateList() {
+		return ReserveDateList;
 	}
 
-	public void setEquip_price(String equip_price) {
-		this.equip_price = equip_price;
+	public void setReserveDateList(List<ReserveDateDTO> reserveDateList) {
+		ReserveDateList = reserveDateList;
 	}
-
-	public Integer getEquip_num() {
-		return equip_num;
-	}
-
-	public void setEquip_num(Integer equip_num) {
-		this.equip_num = equip_num;
-	}
-
 
 	public String getName() {
 		return name;
@@ -145,15 +162,10 @@ public class ReservationDTO {
 	public void setMainImage(FileDTO mainImage) {
 		this.mainImage = mainImage;
 	}
-
-
-	public List<ReserveDateDTO> getReserveDateList() {
-		return ReserveDateList;
-	}
-
-	public void setReserveDateList(List<ReserveDateDTO> reserveDateList) {
-		ReserveDateList = reserveDateList;
-	}
+	
+	
+	
+	
 	
 	
 }

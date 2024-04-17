@@ -18,20 +18,21 @@ window.onclick = function(event) {
 	}
 }
 
-
+/* =================================== */
 
 
 /* === 견적 내기 부분 === */
+    
+let estimate = 0;		// 최종 견적가
+let rental_timeList = [];	// 대여할 날짜 리스트
+var equipList = [];			// 대여할 장비 리스트
+
+
 // 예약 가능일자 (오늘 기준 일주일 후 부터 가능)
 let date = new Date();
 let sel_day = 7; //일자 조절
 date.setDate(date.getDate() + sel_day );		
 document.getElementById('rental_date').min = date.toISOString().substring(0,10);
-
-/*document.getElementById('start_date').onchange = function(){
-	document.getElementById('end_date').min = this.value;
-    
-}*/
 
 // 날짜, 시간 선택 > 가격 표시
 document.getElementById('rental_date').onchange = function(){
@@ -49,11 +50,9 @@ document.getElementById('rental_time').onchange = function(){
 		$('#day_price').text(price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	}
 }
- //
- 
+/* ========== 날짜 끝 =========== */ 
     
-
-let rental_timeList = [];
+    
 
 // 날짜 시간 담기 버튼 누르면
 function date_setting(){
@@ -78,10 +77,14 @@ function date_setting(){
 		// 이미 설정된 값 제외
 		rental_timeList.forEach(function(e){
 			if(e.rental_date == day && e.time == time){
-				alert('이미 추가된 날짜와 시간 입니다.');
+				$('#datechk').html("이미 추가된 날짜와 시간 입니다.").css('color', 'red');
 				ok = 1;
-				return;
-			}
+			} else if(time == "하루" && e.rental_date == day){
+				$('#datechk').html("중복 된 날짜는 추가 할 수 없습니다.").css('color', 'red');
+				ok = 1;
+			} else {
+				$('#datechk').html("");				
+			}	
 		});
 		
 		if(ok == 0){
@@ -116,20 +119,110 @@ function showdate(){
 
 // == 장비 == //
 
+// 장비 체크 상태 변화 있을 때 재계산
+$("input[name='equip']").change(function(){
+	equipList = [];     // 배열 초기화
+		
+	// 체크 된 input 장비만
+	$("input[name='equip']:checked").each(function(i){
+		let strArr = $(this).val().split("+");		
+		strArr.push($("select[name='equip_num_" + strArr[0] +"']").val());
+		
+		let equip = {
+			"equip_type":strArr[1],
+			"equip_name":strArr[2],
+			"equip_price":strArr[3],
+			"equip_num":strArr[4]
+		};			
+		equipList.push(equip);     // 체크된 것만 값을 뽑아서 배열에 push  
+	});
+	
+	// 견적가 계산하기
+	total();
+});
 
+
+// 마이크 개수 선택 달라져도 재계산
+$(".equip_num").change(function(){
+	equipList = [];     // 배열 초기화
+		
+	// 체크 된 input 장비만
+	$("input[name='equip']:checked").each(function(i){
+		let strArr = $(this).val().split("+");		
+		strArr.push($("select[name='equip_num_" + strArr[0] +"']").val());
+		
+		let equip = {
+			"equip_type":strArr[1],
+			"equip_name":strArr[2],
+			"equip_price":strArr[3],
+			"equip_num":strArr[4]
+		};			
+		equipList.push(equip);     // 체크된 것만 값을 뽑아서 배열에 push  
+	});
+	
+	// 견적가 계산하기
+	total();
+});
 
 
 // 총 견적가 계산
 function total(){
-	let total_price = 0;
+	estimate = 0;
 	
+	// 날짜값 계산
 	rental_timeList.forEach(function(e){
-		total_price += JSON.parse(e.price);
+		estimate += JSON.parse(e.price);
+	});
+	
+	// 장비값 계산
+	equipList.forEach(function(e){
+		if(e.equip_type == 'mic'){
+			estimate += (JSON.parse(e.equip_price) * JSON.parse(e.equip_num) * rental_timeList.length);		
+		} else {
+			estimate += (JSON.parse(e.equip_price) * rental_timeList.length);					
+		}
 	});
 
-	$('#amount').text(total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+	$('#amount').text(estimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 }
 
+// 예약확인 버튼 눌러서 제출!
+function reservation_submit(){
+	// 기타 목록 가져오기
+	let food = $('input[name=food]:checked').val();
+	let ac = $('input[name=ac]:checked').val();
+
+	var reservationDTO = {
+		estimate: estimate,
+		food: food,
+	    ac: ac
+	}
+/*	
+	let contentArr = [];
+	contentArr.push(reservationDTO);
+	contentArr.push(rental_timeList);
+	contentArr.push(equipList);
+	
+	console.log(contentArr);*/
+	
+	$.ajax({
+        url: '/reservation/insert',
+        method: 'post',
+		contentType: "application/json",
+        data: {
+			reservation:JSON.stringify(reservationDTO),
+			timeList:JSON.stringify(rental_timeList),
+			equipList:JSON.stringify(equipList)
+		},    
+		success : function(data) {
+			console.log('성공!');
+		},
+  		error:function(request, status, error) { // 오류가 발생했을 때 호출된다.
+  			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+  		},
+	});
+	
+}
 
 /* === 견적 내기 부분 END ===*/
 

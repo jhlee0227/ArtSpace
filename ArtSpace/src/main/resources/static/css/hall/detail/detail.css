@@ -150,7 +150,7 @@ hr {
     z-index: 1000;
 }
 
-.hall-detail .main input[type=radio] {
+.hall-detail .main .tabBtn {
 	display: none;
 }
 

@@ -1,36 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/login/company/login_code_corporation.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/login/company/login_code_corporation.css">
 </head>
+
 <body>
 	<div class="ttt">
-	    <h1>공연의 <span	th:onclick="|location.href='@{/}'|" class="point">공간</span></h1> <br>
-	    <h2>빠른 예약과</h2> 
-	    <h2>확실한 정보로</h2> 
-	    <h2>꿈이 이루어지는 공간 입니다.</h2>
+		<h1>공연의 <span th:onclick="|location.href='@{/}'|" class="point">공간</span></h1> <br>
+		<h2>빠른 예약과</h2>
+		<h2>확실한 정보로</h2>
+		<h2>꿈이 이루어지는 공간 입니다.</h2>
 	</div>
 
-    <section class="container">
-        <div class="login-box">
+	<section class="container">
+		<div class="login-box">
 
-            <div class="login-wrapper">
-                <h1>확인코드</h1>
-                <h2>이메일로 전송된 인정 코드를 입력해주세요.</h2>
-                <form method="post"th:action="@{/cor/joincode_check}" id="login-form">
-                    <input type="text" name="code" placeholder="인증코드">
-                    
-                    <label for="remember-check">
-                        <div> <a href="#">인증 코드 재발송</a> </div>
-                    </label>
-                    <input type="submit" value="확인">
-                </form>
-            </div>
+			<div class="login-wrapper">
+				<h1>확인코드</h1>
+				<h2>이메일로 전송된 인정 코드를 입력해주세요.</h2>
+				<form method="post" th:action="@{/cor/welcome}" id="login-form">
+					<input type="text" id="code" name="code" placeholder="인증코드">
+
+					<label for="remember-check">
+						<div> <a href="#" id="resend">인증 코드 재발송</a> </div>
+					</label>
+					<input id="submitBtn" type="submit" value="확인">
+				</form>
+			</div>
 		</div>
 	</section>
-	
+
+	<script th:inline="javascript">
+
+		var emailCode = /*[[${emailCode}]]*/ '';
+		var code = document.getElementById('code');
+		var form = document.getElementById('login-form');
+
+		document.getElementById('submitBtn').addEventListener('click', function (event) {
+			event.preventDefault();
+
+			var input = code.value;
+
+			if (emailCode === input) {
+				form.submit();
+			} else {
+				console.log(emailCode);
+				console.log(input);
+				alert('인증 코드가 일치하지 않습니다. 다시 입력해주세요.')
+			}
+		})
+
+	</script>
+	<script th:inline="javascript">
+		document.getElementById('resend').addEventListener('click', function (event) {
+			event.preventDefault();
+			var email = /*[[${email}]]*/;
+			// 재발송 요청을 서버로 보냄
+			fetch('/user/resend', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({email: email})
+			}).then(function (response) {
+				if (response.ok) {
+					return response.text();
+				} else {
+					alert('인증 코드 재발송에 실패했습니다.');
+				}
+			}).then(function (newEmailCode) {
+				emailCode = newEmailCode;
+				alert('인증 코드가 재발송되었습니다.');
+			})
+				.catch(function (error) {
+					console.error('Error:', error);
+				});
+		});
+	</script>
+
+
 </body>
+
 </html>
