@@ -88,7 +88,9 @@ public class MypageServiceImpl implements MypageService{
 		
 		for (ReservationDTO reservationDTO : reserveList) {
 			FileDTO mainImage = fileDAO.getHallMainFile(reservationDTO.getHall_id());
-			
+			int reserve_id = reservationDTO.getReserve_id();
+			reservationDTO.setReservationEquipmentList(mypageDAO.getAllReservationEquip(reserve_id));
+			reservationDTO.setReserveDateList(mypageDAO.getAllReserveDate(reserve_id));
 			reservationDTO.setMainImage(mainImage);
 		} 
 		return reserveList;
