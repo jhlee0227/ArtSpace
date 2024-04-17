@@ -27,8 +27,8 @@
 						<div class="hall">
 							<div class="hall-name" th:text="${reserve.hall_name}"></div>
 							<div class="hall-loca" th:text="${reserve.address1 + ' ' + reserve.address2}"></div>
-							<div class="reserve-date" th:text="${reserve.reserve_date + ' ' + reserve.reserve_time}">
-							</div>
+							<div class="reserve-date" th:each="reserveDate : ${reserve.reserveDateList}" th:text="${reserveDate.reserve_date + ' ' + reserveDate.reserve_time}">
+							            </div>
 						</div>
 
 						<div class="button">

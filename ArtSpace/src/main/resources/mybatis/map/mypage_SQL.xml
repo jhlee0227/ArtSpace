@@ -71,15 +71,24 @@
 	</update> 
 	
 	<select id="getReserve" resultType="com.example.demo.reservation.dto.ReservationDTO">
-		select h.hall_name, h.address1, h.address2, h.hall_id,
-				date_format(rd.reserve_date, '%Y-%m-%d') as reserve_date,
-				rd.reserve_time, r.reserve_id
+		select h.hall_name, h.address1, h.address2, h.hall_id, r.reserve_id
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
-		join reserve_date rd on r.reserve_id = rd.reserve_id
 		where r.reserve_status = 'Y' and r.user_id = #{user_id}
 	</select>
 	  
+	<select id="getAllReservationEquip" resultType="com.example.demo.reservation.dto.ReservationEquipmentDTO">
+		select equip_name, equip_num, equip_price
+		from reservation_equipment
+		where reserve_id = #{reserve_id}
+	</select> 
+	
+	<select id="getAllReserveDate" resultType="com.example.demo.reservation.dto.ReserveDateDTO">
+		select reserve_date, reserve_time
+		from reserve_date
+		where reserve_id = #{reserve_id}
+	</select>
+	
 	<update id="reserveDelete">
 		update reservation
 		set reserve_status = 'N'
@@ -117,7 +126,7 @@
 	      select 1
 	      from reserve_date rd2
 	      where rd2.reserve_id = rd.reserve_id
-	        and rd2.reserve_date > CURDATE()
+	        and rd2.reserve_date < CURDATE()
 	  ) and r.write_review = 'N';
 		]]>
 	</select>

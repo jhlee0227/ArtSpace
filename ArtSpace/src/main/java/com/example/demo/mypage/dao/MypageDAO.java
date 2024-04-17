@@ -13,6 +13,8 @@ import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
 import com.example.demo.reservation.dto.ReservationDTO;
+import com.example.demo.reservation.dto.ReservationEquipmentDTO;
+import com.example.demo.reservation.dto.ReserveDateDTO;
 import com.example.demo.user.dto.UserDTO;
 
 @Repository
@@ -115,6 +117,16 @@ public class MypageDAO {
 	public void updateReviewStatus(Integer reserve_id) {
 		sqlSession.update("mypage.updateReviewStatus", reserve_id);
 		
+	}
+
+	public List<ReservationEquipmentDTO> getAllReservationEquip(int reserve_id) {
+		
+		return sqlSession.selectList("mypage.getAllReservationEquip", reserve_id);
+	}
+
+	public List<ReserveDateDTO> getAllReserveDate(int reserve_id) {
+		
+		return sqlSession.selectList("mypage.getAllReserveDate", reserve_id);
 	}
 
 }
