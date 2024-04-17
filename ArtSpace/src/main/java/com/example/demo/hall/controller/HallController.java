@@ -43,6 +43,7 @@ import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallFilterDTO;
 import com.example.demo.hall.dto.HallImageDTO;
 import com.example.demo.hall.service.HallService;
+import com.example.demo.mypage.dto.LikeDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.services.storage.model.StorageObject;
 import com.google.cloud.storage.Blob;
@@ -254,6 +255,24 @@ public class HallController {
 		return "redirect:/";
 	}
 
+	
+	
+	
+	
+	// 좋아요, 찜, 즐겨찾기
+	@GetMapping("like/{id}")
+	@ResponseBody
+	public String showForm(@PathVariable("id") Integer hall_id, @RequestParam("status") String status) {
+		user_session.setSessionValue(session);
+
+		// 로그인 권한 체크
+		if (user_session.getUser_id() == null) {
+			return "login";
+		}
+		hallService.likeHall(hall_id, user_session.getUser_id(), status);
+		
+		return "success";
+	}
 
 
 }

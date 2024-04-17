@@ -49,19 +49,21 @@
 					  <div class="imgbox">    
 						<th:block th:if="${hall.mainImage} != null">
 						    <img th:src="${hall.mainImage.path}" th:data-file="${hall.mainImage.org_file_name}"alt="이미지">						
-						</th:block>     
-					<i id="like-btn" class="fa-regular fa-heart fa-4x" aria-hidden="true"></i>
+						</th:block> 						 
 					  </div>
-					  <div class="content">
-					<div class="content-top">
-						    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
-						<div>
-							<i class="fa fa-star fa-2x" aria-hidden="true"></i>
-							<p th:text="|(${hall.rating})|"></p>
-							<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>
-							<p th:text="|(${hall.likeNum})|"></p>												
+  					  <div class="likeBtn" id="likeBtn" th:onclick="|likeHall(${hall.hall_id});|">
+						<img th:data-like="${hall.likeStatus}" src="img/heart_black.png" th:class="${hall.likeStatus}">
+  					  </div>   
+					  <div class="content" >
+						<div class="content-top">
+							    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
+							<div>
+								<i class="fa fa-star fa-2x" aria-hidden="true"></i>
+								<p th:text="|(${hall.rating})|"></p>
+								<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>
+								<p th:text="|(${hall.likeNum})|"></p>												
+							</div>
 						</div>
-					</div>
 					    <p class="title-text" th:text="${hall.hall_name}">난파 음악관 콘서트 홀</p>
 					    <p class="price-text"><span th:text="${hall.minPrice}" class="point">300,000</span>원~</p>
 						<div class="time-text">
@@ -123,6 +125,37 @@
 		  <!-- 공연장 공연자 바로가기 End -->
 		  
 		  
+		  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		  
+		  <script>
+		  	function likeHall(hall_id){
+				const like = event.target;
+				let status = like.dataset.like;												
+				event.stopPropagation();
+				
+				// 반대로 바꿔주고 저장
+				if(status == "N"){
+					status = "Y";
+				} else if(status == "Y"){
+					status = "N";					
+				}
+				
+			  	$.ajax({
+			  		url:'/hall/like/' + hall_id,
+			  		type:'get',
+					data:{ "status":status },
+			  		// 다른 페이지를 처리 후에 결과가 성공일 때
+			  		success:function(data) {
+						if(data == "login"){
+							alert("로그인이 필요 합니다.");
+						} else {
+							like.dataset.like = status;
+							like.className = status;					
+						}
+			  		},
+		 		});
+		  	}
+		  </script>
 	</div>
 
 
