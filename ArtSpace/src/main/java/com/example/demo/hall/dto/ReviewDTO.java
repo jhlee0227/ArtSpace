@@ -1,5 +1,7 @@
 package com.example.demo.hall.dto;
 
+import java.time.LocalDateTime;
+
 import com.example.demo.file.dto.FileDTO;
 
 public class ReviewDTO {
@@ -9,7 +11,7 @@ public class ReviewDTO {
 	private Integer user_id;			// 유저ID FK
 	private Integer hall_id;			// 공연장ID FK
 	private Integer rating;				// 별점
-	private String create_date;			// 리뷰작성일
+	private LocalDateTime create_date;			// 리뷰작성일
 	
 	private String hall_name;			// 공연장명
 
@@ -57,11 +59,11 @@ public class ReviewDTO {
 		this.rating = rating;
 	}
 
-	public String getCreate_date() {
+	public LocalDateTime getCreate_date() {
 		return create_date;
 	}
 
-	public void setCreate_date(String create_date) {
+	public void setCreate_date(LocalDateTime create_date) {
 		this.create_date = create_date;
 	}
 

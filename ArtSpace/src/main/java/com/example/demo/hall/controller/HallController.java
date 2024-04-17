@@ -111,7 +111,7 @@ public class HallController {
 //		 }
 
 		// 공연장 기본 정보들 불러오기
-		HallDTO hallInfo = hallService.findById(id);
+		HallDTO hallInfo = hallService.findById(id, user_session.getUser_id());
 		hallInfo.setHallTimeList(hallService.setHallTimeList(hallInfo));
 		List<FileDTO> imageList = hallService.getImageList(id);
 		model.addAttribute("images", imageList);

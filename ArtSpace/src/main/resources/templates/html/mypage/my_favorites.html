@@ -23,10 +23,10 @@
 					<div class="item">
 						<div class="hall-img">
 							<img th:if="${like.mainImage != null}" th:src="${like.mainImage.path}"
-								th:data-file="${like.mainImage.org_file_name}" class="hall-thumb" alt="">
+								th:data-file="${like.mainImage.org_file_name}" class="hall-thumb" alt="" th:onclick="|location.href='@{/hall/detail/}' + ${like.hall_id}|">
 						</div>
 						<div class="hall">
-							<div class="hall-name" th:text="${like.hall_name}"></div>
+							<div class="hall-name"><span th:text="${like.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${like.hall_id}|"></span></div>
 							<div class="hall-loca" th:text="${like.address1 + ' ' + like.address2}"></div>
 						</div>
 						<div class="button">

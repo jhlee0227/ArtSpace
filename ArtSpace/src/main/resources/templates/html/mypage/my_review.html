@@ -28,10 +28,12 @@
 							<div class="review" th:each="list : ${notReview_list}">
 								<div class="hall-img">
 									<img th:if="${list.mainImage != null}" th:src="${list.mainImage.path}"
-										th:data-file="${list.mainImage.org_file_name}" class="hall-thumb" alt="">
+										th:data-file="${list.mainImage.org_file_name}" class="hall-thumb" alt="" th:onclick="|location.href='@{/hall/detail/}' + ${list.hall_id}|">
 								</div>
 								<div class="info">
-									<div class="hall-name" th:text="${list.hall_name}"></div>
+									<div class="hall-name">
+										<span th:text="${list.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${list.hall_id}|"></span>
+									</div>
 									<div class="reserve-date" th:each="reserveDate : ${list.reserveDateList}"
 										th:text="${reserveDate.reserve_date + ' ' + reserveDate.reserve_time}">
 									</div>
@@ -54,7 +56,7 @@
 							<div class="written-rev" th:each="review : ${review_list}">
 								<div class="hall">
 									<!-- 상세페이지 링크 -->
-									<a href=""><span class="name" th:text="${review.hall_name}"></span></a>
+									<a href=""><span class="name" th:text="${review.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${review.hall_id}|"></span></a>
 								</div>
 								<div class="sub">
 									<div class="rating">

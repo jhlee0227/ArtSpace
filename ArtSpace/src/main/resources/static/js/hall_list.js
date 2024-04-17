@@ -111,10 +111,10 @@ function filterPush(){
 		checkArr = null;
 	}
 	
-	if(min_price > max_price){
+/*	if(min_price > max_price){
 		alert('최소값이 최대값보다 클 수 없습니다.');
 		return;
-	}
+	}*/
 	
 	const url = new URL(window.location.href);
 	const urlParams = url.searchParams.get('content');
@@ -178,7 +178,7 @@ function filterPush(){
 					str += '<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>'
 					str += '<p>('+hall.likeNum+')</p>\n</div>\n</div>'	
 					str += '<p class="title-text">'+ hall.hall_name +'</p>';
-					str += '<p class="price-text"><span class="point">'+ hall.minPrice + '</span>원~</p>'
+					str += '<p class="price-text"><span class="point">'+ hall.minPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</span>원~</p>'
 					str += '<div class="time-text">';								
 					let index = 0;
 					hall.hallTimeList.forEach(function(time){

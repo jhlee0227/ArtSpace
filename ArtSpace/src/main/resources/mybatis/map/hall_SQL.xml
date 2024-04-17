@@ -220,7 +220,11 @@
 		where hall_id = #{hall_id} and user_id = #{user_id}
 	</select>
 	
-	
+	<!-- 공연장 리뷰들 가져오기 -->
+	<select id="getReviewList" resultType="com.example.demo.hall.dto.ReviewDTO">
+		select * from review
+		where hall_id = #{hall_id}
+	</select>
 	
 	
 

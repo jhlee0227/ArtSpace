@@ -23,10 +23,12 @@
 					<div class="item">
 						<div class="img">
 							<img th:if="${hall.mainImage != null}" th:src="${hall.mainImage.path}"
-								th:data-file="${hall.mainImage.org_file_name}" alt="">
+								th:data-file="${hall.mainImage.org_file_name}" alt=""
+								th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
 						</div>
 						<div class="hall-info">
-							<div class="hall-name" th:text="${hall.hall_name}"></div>
+							<div class="hall-name"><span th:text="${hall.hall_name}"
+									th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|"></span></div>
 							<div class="hall-region" th:text="${hall.address1 + ' ' + hall.address2}"></div>
 						</div>
 						<div class="button">

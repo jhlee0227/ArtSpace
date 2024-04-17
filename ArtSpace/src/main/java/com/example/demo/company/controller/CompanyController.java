@@ -1,6 +1,9 @@
 package com.example.demo.company.controller;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.SessionUtil;
@@ -22,6 +26,8 @@ import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.hall.service.HallService;
 import com.example.demo.mypage.service.MypageService;
 import com.example.demo.reservation.dto.ReservationDTO;
+import com.example.demo.reservation.dto.ReservationEquipmentDTO;
+import com.example.demo.reservation.dto.ReserveDateDTO;
 import com.example.demo.user.dto.UserDTO;
 
 import jakarta.servlet.http.HttpSession;
@@ -144,7 +150,8 @@ public class CompanyController {
 
 	// 사업자정보 등록
 	@PostMapping("/info")
-	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto, @RequestParam(value = "file", required = false) MultipartFile[] files,
+	public String companyInfoUpdate(@ModelAttribute CompanyDTO dto,
+			@RequestParam(value = "file", required = false) MultipartFile[] files,
 			@RequestParam("company_id") Integer company_id) {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
@@ -155,7 +162,7 @@ public class CompanyController {
 		companyService.updateInfo(dto);
 
 		if (files != null) {
-			fileService.uploadObject(files, company_id);			
+			fileService.uploadObject(files, company_id);
 		}
 
 		return "redirect:/company/info";
@@ -218,6 +225,12 @@ public class CompanyController {
 
 				List<ReservationDTO> reserveList = companyService.getReserve(user_session.getUser_id());
 				model.addAttribute("reserve_list", reserveList);
+				
+				Map<Integer, LocalDate> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
+				model.addAttribute("earliest_reserve_date", earliestReserveDates);
+
+				model.addAttribute("current_date", LocalDate.now()); // 현재 날짜 추가
+				
 				return "html/company/company_reserve";
 			} else {
 				return "redirect:/";
@@ -225,6 +238,27 @@ public class CompanyController {
 		} else {
 			return "redirect:/login";
 		}
+	}
+
+	// 공연장 예약 상세 정보
+	// 예약 상세
+	@PostMapping("/reserve")
+	@ResponseBody
+	public Map<String, Object> reserveDetail(@RequestParam("reserve_id") Integer reserve_id) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			ReservationDTO reservationDetail = mypageService.reserveDetail(reserve_id);
+			List<ReserveDateDTO> reserveDate = mypageService.reserveDate(reserve_id);
+			List<ReservationEquipmentDTO> reservationEquipments = mypageService.getAllReservationEquip(reserve_id);
+			response.put("reservationDetail", reservationDetail);
+			response.put("reserveDate", reserveDate);
+			response.put("reservationEquipments", reservationEquipments);
+			response.put("success", true);
+		} catch (Exception e) {
+			response.put("success", false);
+			response.put("message", e.getMessage());
+		}
+		return response;
 	}
 
 	// 해당 공연장에 대한 예약 삭제

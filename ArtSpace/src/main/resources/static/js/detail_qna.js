@@ -32,7 +32,7 @@ var equipList = [];			// 대여할 장비 리스트
 let date = new Date();
 let sel_day = 7; //일자 조절
 date.setDate(date.getDate() + sel_day );		
-document.getElementById('rental_date').min = date.toISOString().substring(0,10);
+//document.getElementById('rental_date').min = date.toISOString().substring(0,10);
 
 // 날짜, 시간 선택 > 가격 표시
 document.getElementById('rental_date').onchange = function(){
@@ -188,6 +188,12 @@ function total(){
 
 // 예약확인 버튼 눌러서 제출!
 function reservation_submit(){
+	
+	if(rental_timeList.length < 1){
+		alert("예약 날짜를 1개 이상 선택해야 합니다.");
+		return;
+	}
+	
 	// 기타 목록 가져오기
 	let food = $('input[name=food]:checked').val();
 	let ac = $('input[name=ac]:checked').val();

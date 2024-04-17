@@ -1,6 +1,8 @@
 package com.example.demo.mypage.service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.ReviewDTO;
@@ -30,6 +32,8 @@ public interface MypageService {
 	public void likeDelete(Integer user_id, Integer hall_id);
 
 	public List<ReservationDTO> getAllReserve(Integer user_id);
+	
+	public Map<Integer, LocalDate> getEarliestReserveDates(List<ReservationDTO> reservationList);
 	
 	public void reserveDelete(Integer reserve_id);
 
