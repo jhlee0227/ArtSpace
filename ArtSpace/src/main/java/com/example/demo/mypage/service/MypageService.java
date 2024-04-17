@@ -3,10 +3,10 @@ package com.example.demo.mypage.service;
 import java.util.List;
 
 import com.example.demo.hall.dto.HallDTO;
-import com.example.demo.hall.dto.ReservationDTO;
 import com.example.demo.hall.dto.ReviewDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 import com.example.demo.mypage.dto.PerformerDTO;
+import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.user.dto.UserDTO;
 
 public interface MypageService {
