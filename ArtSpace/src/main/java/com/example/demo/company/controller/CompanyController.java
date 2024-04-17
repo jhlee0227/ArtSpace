@@ -1,6 +1,7 @@
 package com.example.demo.company.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -226,10 +227,10 @@ public class CompanyController {
 				List<ReservationDTO> reserveList = companyService.getReserve(user_session.getUser_id());
 				model.addAttribute("reserve_list", reserveList);
 				
-				Map<Integer, LocalDate> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
+				Map<Integer, LocalDateTime> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
 				model.addAttribute("earliest_reserve_date", earliestReserveDates);
 
-				model.addAttribute("current_date", LocalDate.now()); // 현재 날짜 추가
+				model.addAttribute("current_date", LocalDateTime.now()); // 현재 날짜 추가
 				
 				return "html/company/company_reserve";
 			} else {
