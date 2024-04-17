@@ -8,9 +8,9 @@ import com.example.demo.hall.dto.HallFilterDTO;
 
 public interface HallListService {
 
-	List<HallDTO> getList();
+	List<HallDTO> getList(Integer integer);
 
-	List<HallDTO> getFilterData(HallFilterDTO filter);
+	List<HallDTO> getFilterData(HallFilterDTO filter, Integer user_id);
 
 
 }

@@ -16,6 +16,7 @@ public class ReservationDTO {
 	private Integer user_id; 			// 유저ID FK
 	private Integer hall_id; 			// 공연장ID FK
 	private LocalDateTime create_date;		// 등록 날짜
+
 	// 홀 정보
 	private String hall_name; 			// 공연장 이름
 	private String address1; 			// 기본주소

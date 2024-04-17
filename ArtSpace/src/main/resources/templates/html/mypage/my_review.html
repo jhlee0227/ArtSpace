@@ -32,8 +32,8 @@
 								</div>
 								<div class="info">
 									<div class="hall-name" th:text="${list.hall_name}"></div>
-									<div class="date"
-										th:text="${list.reserve_date + ' ' + list.reserve_time}">
+									<div class="reserve-date" th:each="reserveDate : ${list.reserveDateList}"
+										th:text="${reserveDate.reserve_date + ' ' + reserveDate.reserve_time}">
 									</div>
 								</div>
 								<div class="button">
@@ -42,7 +42,8 @@
 									<button class="first-btn" onclick="openModal()">리뷰 작성</button>
 									<input type="hidden" th:value="${list.reserve_id}" id="reserveId" class="reserveId">
 									<!-- 공연장 상세 페이지로.. -->
-									<button onclick="location.href=''">공연장정보</button>
+									<button
+										th:onclick="|location.href='@{/hall/detail/}' + ${list.hall_id}|">공연장정보</button>
 								</div>
 							</div>
 						</div>

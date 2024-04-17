@@ -53,7 +53,7 @@ a{
 /* ===== 기본 설정 ===== */
 
 :root {
-  --main-color: rgb(248, 186, 71);
+  --main-color: #f8ba47;
   --sub-color: #f5f5dc;
   --black: #3B3831;
   --brown: #605353;

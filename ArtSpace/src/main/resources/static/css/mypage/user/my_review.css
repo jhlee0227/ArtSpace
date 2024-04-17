@@ -198,9 +198,9 @@ input[name="tab_item"] {
 	margin-bottom: 4rem;
 }
 
-.con .content .tabs .tab_content .date {
+.con .content .tabs .tab_content .reserve-date {
 	font-size: 1.5rem;
-	font-weight: bold;
+	margin-top: .2rem;
 }
 
 .con .content .tabs .tab_content .button {

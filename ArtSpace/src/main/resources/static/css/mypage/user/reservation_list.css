@@ -139,19 +139,18 @@ body {
 	justify-content: space-around;
 }
 
+.con .content .list .item .hall .status {
+	font-size: 1.5rem;
+}
+
 .con .content .list .item .hall-name {
 	font-size: 2rem;
 	font-weight: bold;
 }
 
-.con .content .list .item .hall-loca {
-	font-size: 1.5rem;
-	font-weight: bold;
-}
-
 .con .content .list .item .reserve-date {
 	font-size: 1.3rem;
-	font-weight: bold;
+	color: gray;
 }
 
 .con .content .list .item .button {

@@ -89,11 +89,6 @@ public class MypageDAO {
 		return sqlSession.selectOne("mypage.reserveDetail", reserve_id);
 	}
 
-	public List<ReservationDTO> reserveEquip(Integer reserve_id) {
-		
-		return sqlSession.selectList("mypage.reserveEquip", reserve_id);
-	}
-
 	public void updatePhone(UserDTO dto) {
 		sqlSession.update("mypage.updatePhone", dto);
 		

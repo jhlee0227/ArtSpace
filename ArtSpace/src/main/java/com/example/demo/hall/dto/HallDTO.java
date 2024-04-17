@@ -44,6 +44,8 @@ public class HallDTO {
 	private Integer likeNum;	// 해당 공연장을 찜한 수
 	private Float rating;		// 해당 공연장 총 평균 평점
 	
+	private String likeStatus;	// 유저가 해당 공연장 찜했는지 상태(Y/N)
+	
 	// 예약 날짜와 시간 시작, 종료
 	/* private String start_date;
 	 * private String end_date;
@@ -211,6 +213,12 @@ public class HallDTO {
 	}
 	public void setHallImageList(List<FileDTO> hallImageList) {
 		this.hallImageList = hallImageList;
+	}
+	public String getLikeStatus() {
+		return likeStatus;
+	}
+	public void setLikeStatus(String likeStatus) {
+		this.likeStatus = likeStatus;
 	}
 
 
