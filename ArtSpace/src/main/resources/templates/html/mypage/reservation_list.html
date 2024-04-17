@@ -27,15 +27,13 @@
 						<div class="hall">
 							<div class="hall-name" th:text="${reserve.hall_name}"></div>
 							<div class="hall-loca" th:text="${reserve.address1 + ' ' + reserve.address2}"></div>
-							<div class="reserve-date"
-								th:text="${reserve.reserve_date + ' ' + reserve.reserve_time}">
+							<div class="reserve-date" th:text="${reserve.reserve_date + ' ' + reserve.reserve_time}">
 							</div>
 						</div>
 
 						<div class="button">
 							<form method="post" action="/mypage/reserve/delete">
 								<!-- 약관에 따라 예약 취소 비활성화 필요 -->
-								<!-- 확인창..? -->
 								<input type="hidden" name="reserve_id" th:value="${reserve.reserve_id}">
 								<button type="submit" onclick="return confirmDelete()">예약 취소</button>
 							</form>
@@ -50,7 +48,7 @@
 				</div>
 			</div>
 		</section>
-		<!-- 모달 진행중-->
+		<!-- 모달 -->
 		<div id="myModal" class="modal">
 			<div class="modal-content">
 				<span class="close" onclick="closeModal()">&times;</span>
@@ -94,6 +92,16 @@
 						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 						<div class="modal-con phone"></div>
 					</div>
+					<div>
+						<div class="modal-list">냉난방 :</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="modal-con ac"></div>
+					</div>
+					<div>
+						<div class="modal-list">취식 여부 :</div>
+						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+						<div class="modal-con food"></div>
+					</div>
 				</div>
 				<div class="bottom">
 					<div class="btn" onclick="closeModal()">확인</div>
@@ -133,7 +141,8 @@
 
 							$('.modal-con.username').text(reservationDetail.name);
 							$('.modal-con.phone').text(reservationDetail.phone);
-
+							$('.modal-con.ac').text(reservationDetail.ac);
+							$('.modal-con.food').text(reservationDetail.food);
 						} else {
 							alert('예약 정보를 불러오는 데 실패했습니다.');
 						}
