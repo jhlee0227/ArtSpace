@@ -61,18 +61,6 @@ public class UserController {
 	}
 
 	// 인증 메일 재발송
-//	@RequestMapping(value = "/resend", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String resend(HttpSession session, @RequestBody Map<String, String> requestBody) {
-//		String email = requestBody.get("email");
-//		EmailMessage emailMessage = new EmailMessage();
-//		emailMessage.setTo(email);
-//	    String newEmailCode = emailUtil.sendJoinMail(emailMessage);
-//	    
-//	    session.setAttribute("emailCode", newEmailCode);
-//	    
-//		return "redirect:/user/insert";
-//	}
-	
 	@PostMapping("/resend")
 	public ResponseEntity<String> resend(@RequestBody Map<String, String> requestBody, HttpSession session, Model model) {
 	    String email = requestBody.get("email");
