@@ -48,14 +48,13 @@ public class DetailController {
 		}
 		
 		// 공연장 기본 정보들 불러오기
-		HallDTO hall = hallService.findById(id);
+		HallDTO hall = hallService.findById(id, user_session.getUser_id());
 		hall.setHallTimeList(hallService.setHallTimeList(hall));
 		hall.setEquiList(hallService.getEquiList(id));
 		List<FileDTO> images = hallService.getImageList(id);
 		List<EquipmentDTO> equipList = hall.getEquiList();		
 
 		int ft = (int) (hall.getArea() / 3.306);
-		
 		
 		model.addAttribute("ft", ft);
 		model.addAttribute("images", images);

@@ -86,11 +86,28 @@ body {
 .hall-detail .favorite .fa-regular {
     top: 20px;
     right: 20px;
-    margin-left: 15px;
     margin-right: 7px;
     color: var(--black);
     cursor: pointer;
 }
+
+.hall-detail .favorite img{
+	cursor: pointer;
+	margin: 0 5rem;
+	margin-right: 2rem;
+	width: 3rem;
+	height: 3rem;
+}
+
+/* 찜버튼.. */
+.Y {
+ 	filter: invert(78%) sepia(27%) saturate(1070%) hue-rotate(345deg) brightness(100%) contrast(95%);
+}
+
+.N {
+	filter: drop-shadow(0px 0px 2px rgb(192, 192, 192));
+}
+
 
 .hall-detail .favorite .fa-sharp {
     margin-right: 18px;
@@ -279,6 +296,7 @@ hr {
 /* ==================================================최종 금액 및 예약하기================================================== */
 
 .hall-expectation {
+	cursor: pointer;
     position: sticky;
     width: 100%;
     bottom: 0;

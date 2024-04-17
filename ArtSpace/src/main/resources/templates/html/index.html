@@ -65,7 +65,9 @@
 							</div>
 						</div>
 					    <p class="title-text" th:text="${hall.hall_name}">난파 음악관 콘서트 홀</p>
-					    <p class="price-text"><span th:text="${hall.minPrice}" class="point">300,000</span>원~</p>
+					    <p class="price-text"><span th:text="${#numbers.formatInteger(hall.minPrice, 3, 'COMMA')}" class="point">300,000</span>원~</p>
+						
+						
 						<div class="time-text">
 						  <th:block th:each="time, index : ${hall.hallTimeList}">
 							<p th:text="|${time.type}|"></p>
@@ -126,36 +128,7 @@
 		  
 		  
 		  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-		  
-		  <script>
-		  	function likeHall(hall_id){
-				const like = event.target;
-				let status = like.dataset.like;												
-				event.stopPropagation();
-				
-				// 반대로 바꿔주고 저장
-				if(status == "N"){
-					status = "Y";
-				} else if(status == "Y"){
-					status = "N";					
-				}
-				
-			  	$.ajax({
-			  		url:'/hall/like/' + hall_id,
-			  		type:'get',
-					data:{ "status":status },
-			  		// 다른 페이지를 처리 후에 결과가 성공일 때
-			  		success:function(data) {
-						if(data == "login"){
-							alert("로그인이 필요 합니다.");
-						} else {
-							like.dataset.like = status;
-							like.className = status;					
-						}
-			  		},
-		 		});
-		  	}
-		  </script>
+		  <script src="/js/hall_like.js"></script>
 	</div>
 
 

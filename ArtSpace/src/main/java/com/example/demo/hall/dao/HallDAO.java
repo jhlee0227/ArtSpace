@@ -55,9 +55,16 @@ public class HallDAO {
 		return sqlSession.selectOne("hall.likeCheck", like);
 	}
 	
+	// 좋아요 상태 가져옴
 	public String getHallLikeStatus(LikeDTO like) {
 		return sqlSession.selectOne("hall.getLikeStatus", like);
 	}
+	
+	// 좋아요 상태 가져옴
+	public String getReviewList(Integer hall_id) {
+		return sqlSession.selectOne("hall.getReviewList", hall_id);
+	}
+		
 	
 	//	SELECT END	//
 

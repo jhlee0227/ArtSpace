@@ -37,6 +37,7 @@ public class HallDTO {
 	private List<HallImageDTO> imageList;	// 
 	private List<EquipmentDTO> equiList;	// 장비DTO리스트
 	private List<HallTimeDTO> hallTimeList;	// 공연장시간DTO리스트
+	private List<ReviewDTO> reviewList;		// 리뷰 리스트
 	private String[] deleteImgList; // 삭제할 이미지URL List
 	
 	
@@ -46,13 +47,7 @@ public class HallDTO {
 	
 	private String likeStatus;	// 유저가 해당 공연장 찜했는지 상태(Y/N)
 	
-	// 예약 날짜와 시간 시작, 종료
-	/* private String start_date;
-	 * private String end_date;
-	 * private String start_time;
-	 * private String end_time;
-	 * private Integer reserve_id;
-	 */	
+
 	
 	public Integer getHall_id() {
 		return hall_id;
@@ -219,6 +214,12 @@ public class HallDTO {
 	}
 	public void setLikeStatus(String likeStatus) {
 		this.likeStatus = likeStatus;
+	}
+	public List<ReviewDTO> getReviewList() {
+		return reviewList;
+	}
+	public void setReviewList(List<ReviewDTO> reviewList) {
+		this.reviewList = reviewList;
 	}
 
 

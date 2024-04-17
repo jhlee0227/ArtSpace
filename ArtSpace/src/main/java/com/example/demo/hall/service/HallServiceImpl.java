@@ -134,10 +134,21 @@ public class HallServiceImpl implements HallService{
 
 	// id로 해당 공연장 찾기
 	@Override
-	public HallDTO findById(Integer id) {
-		HallDTO hallDTO = hallDAO.findById(id);
+	public HallDTO findById(Integer hall_id, Integer user_id) {
+		HallDTO hallDTO = hallDAO.findById(hall_id);
 		FileDTO mainImage = fileDAO.getHallMainFile(hallDTO.getHall_id());
 		hallDTO.setMainImage(mainImage);
+		
+		// 좋아요
+		LikeDTO like = new LikeDTO();
+		like.setHall_id(hallDTO.getHall_id());
+		like.setUser_id(user_id);			
+		String status = hallDAO.getHallLikeStatus(like);
+
+		if(status == null || status == "") {
+			status = "N";
+		}
+		hallDTO.setLikeStatus(status);	
 		
 		return hallDTO;
 	}
