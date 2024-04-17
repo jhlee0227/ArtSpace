@@ -1,5 +1,6 @@
 package com.example.demo.reservation.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.example.demo.file.dto.FileDTO;
@@ -14,7 +15,7 @@ public class ReservationDTO {
 	private String write_review;		// 리뷰 작성 여부
 	private Integer user_id; 			// 유저ID FK
 	private Integer hall_id; 			// 공연장ID FK
-
+	private LocalDateTime create_date;		// 등록 날짜
 	// 홀 정보
 	private String hall_name; 			// 공연장 이름
 	private String address1; 			// 기본주소
@@ -161,6 +162,14 @@ public class ReservationDTO {
 
 	public void setMainImage(FileDTO mainImage) {
 		this.mainImage = mainImage;
+	}
+
+	public LocalDateTime getCreate_date() {
+		return create_date;
+	}
+
+	public void setCreate_date(LocalDateTime create_date) {
+		this.create_date = create_date;
 	}
 	
 	

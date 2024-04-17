@@ -6,4 +6,6 @@ public interface ReservationService {
 
 	void insert(ReservationDTO reservation);
 
+	int duplicationCheck(ReservationDTO reservation);
+
 }

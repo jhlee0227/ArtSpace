@@ -1,5 +1,6 @@
 package com.example.demo.reservation.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +43,7 @@ public class ReservationController {
 		String timeListVal = parameters.get("timeList").toString();
 		String equipListVal = parameters.get("equipList").toString();
 		
+		// 로그인 안되어있으면 돌려보내기
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "login";
@@ -68,14 +70,19 @@ public class ReservationController {
 			e.printStackTrace();
 		}
 		
+		// 중복이면 돌려보내기
+		if(reservationService.duplicationCheck(reservation) > 0) {
+			return "duplication";
+		}	
+		
+		
 		reservation.setReserveDateList(dateList);
 		reservation.setReservationEquipmentList(equipList);
 		reservation.setUser_id(user_session.getUser_id());
+		reservation.setCreate_date(LocalDateTime.now());
 		
 		reservationService.insert(reservation);
 		
-
-
-		return "sucsses";
+		return "success";
 	}
 }
