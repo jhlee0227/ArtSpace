@@ -16,11 +16,9 @@
 
 
 	<select id="getReserve" resultType="com.example.demo.reservation.dto.ReservationDTO">
-		select h.hall_id, h.hall_name, h.address1, h.address2, rd.reserve_date, rd.reserve_time, u.name, r.reserve_id
-
+		select h.hall_id, h.hall_name, h.address1, h.address2, u.name, r.reserve_id, r.create_date
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
-		join reserve_date rd on r.reserve_id = rd.reserve_id
 		join user u on r.user_id = u.user_id
 		where r.reserve_status = 'Y' and h.user_id = #{user_id};
 	</select>

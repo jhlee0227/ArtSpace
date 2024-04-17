@@ -134,6 +134,7 @@ body {
 	height: 100%;
 	object-fit: cover;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .con .content .list .item .hall-info {
@@ -146,6 +147,10 @@ body {
 	font-size: 2rem;
 	font-weight: 600;
 	margin-top: 1.5rem;
+}
+
+.con .content .list .item .hall-name span {
+	cursor: pointer;
 }
 
 .con .content .list .item .hall-region {
