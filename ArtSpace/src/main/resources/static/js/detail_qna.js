@@ -128,6 +128,10 @@ $("input[name='equip']").change(function(){
 		let strArr = $(this).val().split("+");		
 		strArr.push($("select[name='equip_num_" + strArr[0] +"']").val());
 		
+		if(strArr[4] < 1){
+			return;
+		}
+		
 		let equip = {
 			"equip_type":strArr[1],
 			"equip_name":strArr[2],
@@ -150,6 +154,10 @@ $(".equip_num").change(function(){
 	$("input[name='equip']:checked").each(function(i){
 		let strArr = $(this).val().split("+");		
 		strArr.push($("select[name='equip_num_" + strArr[0] +"']").val());
+		
+		if(strArr[4] < 1){
+			return;
+		}
 		
 		let equip = {
 			"equip_type":strArr[1],
@@ -222,6 +230,7 @@ function reservation_submit(){
 				location.href="http://localhost:1105/login";
 			} else if(data == "success") {
 				alert("예약이 완료되었습니다.");
+				location.href="http://localhost:1105/mypage/reserve";
 			} else {
 				alert(data);
 			}

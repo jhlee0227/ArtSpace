@@ -87,6 +87,7 @@
 		select reserve_date, reserve_time
 		from reserve_date
 		where reserve_id = #{reserve_id}
+		order by reserve_date
 	</select>
 	
 	<update id="reserveDelete">
@@ -110,7 +111,7 @@
 		from hall h
 		join reservation r on h.hall_id = r.hall_id
 		where r.user_id = #{user_id} and r.reserve_status = 'Y' 
-		and r.write_review = 'N';
+		and r.write_review = 'N'	
 		]]>
 	</select>
 	

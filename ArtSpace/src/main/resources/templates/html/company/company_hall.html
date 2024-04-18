@@ -18,6 +18,11 @@
 				<div class="msg">
 					<p th:if="${#strings.equals(my_info.authority, 'SCN')}">관리자 승인 후 이용 가능합니다.</p>
 				</div>
+				
+				<span class="hall-insert" th:if="${#strings.equals(my_info.authority, 'SCY')}">
+					<a th:href="@{/hall/form}">공연장 등록</a>
+				</span>
+				
 				<div class="list" th:each="hall : ${my_hall}" th:if="${#strings.equals(my_info.authority, 'SCY')}">
 					<div class="item">
 						<div class="img">
@@ -26,8 +31,10 @@
 								th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|">
 						</div>
 						<div class="hall-info">
-							<div class="hall-name"><span th:text="${hall.hall_name}"
-									th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|"></span></div>
+							<div class="hall-name">
+								<span th:text="${hall.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${hall.hall_id}|"></span>
+							</div>
+							<div class="hall-region" th:text="|작성일자 : ${#temporals.format(hall.create_date, 'yyyy-MM-dd')}" ></div>
 							<div class="hall-region" th:text="${hall.address1 + ' ' + hall.address2}"></div>
 						</div>
 						<div class="button">
@@ -41,9 +48,7 @@
 					</div>
 				</div>
 
-				<span class="hall-insert" th:if="${#strings.equals(my_info.authority, 'SCY')}">
-					<a th:href="@{/hall/form}">공연장 등록</a>
-				</span>
+
 
 			</div>
 		</section>
