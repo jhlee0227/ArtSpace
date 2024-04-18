@@ -14,13 +14,11 @@
 
     <div class="notice">
 		<div class="content-box" th:each="notice : ${noticeList}">
-		              
-		             
-		          </div>		<br>
-      <h1>공지사항</h1> <br> <hr> 
+		</div>		<br>
+      <h1 class="title-text" >공지사항</h1> <br> <hr> 
       <ul>
 		<th:block>
-	       <li th:each="notice, i : ${noticeList}" 	th:onclick="|toggleContent(${i.index})|">
+	       <li class="list-bnt" th:each="notice, i : ${noticeList}" 	th:onclick="|toggleContent(${i.index})|">
 	         <h3>
 	           <span class="content-wrapper"th:text="${notice.subject}"></span>
 				<span th:id="|askbtn_${i.index}|" class="expand-btn" >[ + ]</span>
