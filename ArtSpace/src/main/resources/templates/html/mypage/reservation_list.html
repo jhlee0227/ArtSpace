@@ -43,6 +43,7 @@
 							</form>
 							<!-- 버튼 누르면 공연장 상세 페이지로.. -->
 							<input type="hidden" th:value="${reserve.reserve_id}" id="reserveId" class="reserveId">
+							<button class="pay" th:onclick="|location.href='@{/mypage/pay(reserve_id=${reserve.reserve_id})}'|" th:if="${#strings.equals(reserve.reserve_status, 'Y')}">결제</button>
 							<button onclick="openModal(this)">예약 정보</button>
 							<button th:onclick="|location.href='@{/hall/detail/}' + ${reserve.hall_id}|">공연장 정보</button>
 
@@ -53,140 +54,10 @@
 			</div>
 		</section>
 		<!-- 모달 -->
-		<div id="myModal" class="modal">
-			<div class="modal-content">
-				<span class="close" onclick="closeModal()">&times;</span>
-				<!-- 모달 내용 -->
-				<div class="top">
-					<h2>예약 정보</h2>
-				</div>
-				<div class="middle">
-					<div>
-						<div class="modal-list">공연장 이름 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con hall-name"></div>
-					</div>
-					<div>
-						<div class="modal-list">예약 시간 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con reservation-time"></div>
-					</div>
-					<div>
-						<div class="modal-list">공연장 주소 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con hall-address"></div>
-					</div>
-					<div>
-						<div class="modal-list">견적가 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con estimate"></div>
-					</div>
-					<div>
-						<div class="modal-list">신청 장비 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con equipments"></div>
-					</div>
-					<div>
-						<div class="modal-list">예약자명 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con username"></div>
-					</div>
-					<div>
-						<div class="modal-list">전화번호 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con phone"></div>
-					</div>
-					<div>
-						<div class="modal-list">냉난방 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con ac"></div>
-					</div>
-					<div>
-						<div class="modal-list">취식 여부 :</div>
-						<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
-						<div class="modal-con food"></div>
-					</div>
-				</div>
-				<div class="bottom">
-					<div class="btn" onclick="closeModal()">확인</div>
-				</div>
-			</div>
-		</div>
+		<div th:replace="~{fragments/modal/reservation_detail :: reserveModal}"></div>
+		
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-		<script>
-			// 모달 열기 + reserve_id전송 후 data 받아오기
-			function openModal(button) {
-				// button 근처 input이 갖고 있는 reserve_id값 받아옴
-				var reserve_id = $(button).siblings('.reserveId').val();
-				var modal = document.getElementById('myModal');
-				modal.style.display = 'block';
-				console.log(reserve_id);
-				$.ajax({
-					type: 'POST',
-					url: '/mypage/reserve',
-					data: {reserve_id: reserve_id},
-					success: function (response) {
-						if (response.success) {
-							var reservationDetail = response.reservationDetail;
-							var reservationEquipments = response.reservationEquipments;
-							var reserveDate = response.reserveDate;
-							// 모달에 정보를 채워넣는 코드 작성
-							$('.modal-con.hall-name').text(reservationDetail.hall_name);
-							$('.modal-con.hall-address').text(reservationDetail.address1 + ' ' + reservationDetail.address2);
-							$('.modal-con.estimate').text(Number(reservationDetail.estimate).toLocaleString() + '원');
-
-							// 예약 날짜, 시간
-							var datesHtml = '';
-							reserveDate.forEach(function (date, index) {
-								datesHtml += date.reserve_date + ' ' + date.reserve_time;
-								if (index !== reserveDate.length - 1) {
-									datesHtml += '<br>' + '<br>';
-								}
-							})
-							$('.modal-con.reservation-time').html(datesHtml)
-							// 장비 이름 + 장비 개수
-							var equipmentsHtml = '';
-							if (reservationEquipments.length > 0) {
-								reservationEquipments.forEach(function (equip, index) {
-									equipmentsHtml += equip.equip_name + ' : ' + equip.equip_num + '개';
-									if (index !== reservationEquipments.length - 1) {
-										equipmentsHtml += '<br>' + '<br>';
-									}
-								});
-							} else {
-								equipmentsHtml = '없음';
-							}
-							$('.modal-con.equipments').html(equipmentsHtml);
-
-							$('.modal-con.username').text(reservationDetail.name);
-							$('.modal-con.phone').text(reservationDetail.phone);
-							$('.modal-con.ac').text(reservationDetail.ac);
-							$('.modal-con.food').text(reservationDetail.food);
-						} else {
-							alert('예약 정보를 불러오는 데 실패했습니다.');
-						}
-					},
-					error: function (data, status, error) {
-						console.log(response.message);
-						alert('예약 정보를 불러오는 데 실패했습니다.');
-					}
-				});
-			}
-
-			// 모달 닫기
-			function closeModal() {
-				var modal = document.getElementById('myModal');
-				modal.style.display = 'none';
-			}
-
-			window.onclick = function (event) {
-				var modal = document.getElementById('myModal');
-				if (event.target == modal) {
-					modal.style.display = "none";
-				}
-			}
-
-		</script>
+		<script src="/js/reserve_modal.js"></script>
 		<script src="/js/open_menu.js"></script>
 		<script>
 			function confirmDelete() {
@@ -210,6 +81,7 @@
 		            
 		            if (earliestReserveDate && new Date(earliestReserveDate) < new Date(currentDate)) {
 		                $(this).find('.button form').hide();
+						$(this).find('.button .pay').hide();
 		            }
 					console.log(reserveId);
 					console.log(earliestReserveDate);

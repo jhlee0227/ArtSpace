@@ -24,12 +24,12 @@
 									<th><input type="checkbox" class="chkbox" name="selectAll1" value="selectAll">
 									<th>아이디</th>
 									<th>대표이름</th>
-									<th>대표이메일</th>
 									<th>대표번호</th>
 									<th class="paper">사업자등록증</th>
 									<th class="paper">영업신고증</th>
 									<th class="paper">통장사본</th>
 									<th class="paper">등기부등본</th>
+									<th>승인여부</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -38,11 +38,12 @@
 											onclick="checkSelectAll1()"></td>
 									<td th:text="${com.email}"></td>
 									<td th:text="${com.owner_name}"></td>
-									<td th:text="${com.owner_email}"></td>
 									<td th:text="${com.owner_phone}"></td>
 									<td th:each="file : ${__${'com_file_list_' + com.company_id}__}">
 										<a th:href="${file.path}" target="_blank"><i class="fa-solid fa-file-pdf fa-2x"></i></a>
 									</td>
+									<td th:if="${#strings.equals(com.authority, 'SCN')}">X</td>
+									<td	th:if="${#strings.equals(com.authority, 'SCY')}">O</td>
 								</tr>
 							</tbody>
 						</table>

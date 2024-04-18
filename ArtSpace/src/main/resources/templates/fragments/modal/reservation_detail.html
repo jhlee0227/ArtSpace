@@ -1,0 +1,59 @@
+<div id="myModal" class="modal" th:fragment="reserveModal">
+	<div class="modal-content">
+		<span class="close" onclick="closeModal()">&times;</span>
+		<!-- 모달 내용 -->
+		<div class="top">
+			<h2>예약 정보</h2>
+		</div>
+		<div class="middle">
+			<div>
+				<div class="modal-list">공연장 이름 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con hall-name"></div>
+			</div>
+			<div>
+				<div class="modal-list">예약 시간 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con reservation-time"></div>
+			</div>
+			<div>
+				<div class="modal-list">공연장 주소 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con hall-address"></div>
+			</div>
+			<div>
+				<div class="modal-list">견적가 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con estimate"></div>
+			</div>
+			<div>
+				<div class="modal-list">신청 장비 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con equipments"></div>
+			</div>
+			<div>
+				<div class="modal-list">예약자명 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con username"></div>
+			</div>
+			<div>
+				<div class="modal-list">전화번호 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con phone"></div>
+			</div>
+			<div>
+				<div class="modal-list">냉난방 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con ac"></div>
+			</div>
+			<div>
+				<div class="modal-list">취식 여부 :</div>
+				<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
+				<div class="modal-con food"></div>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="btn" onclick="closeModal()">확인</div>
+		</div>
+	</div>
+</div>

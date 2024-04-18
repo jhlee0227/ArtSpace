@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -111,7 +112,6 @@ public class ReservationController {
 	}
 	
 	
-	
 	// 법인 유저 이메일로 예약완료 메일 보내기
 	public void sendreservationEmail(UserDTO user, Integer reserve_id) {
 		ReservationDTO reservation = reservationService.getReservation(reserve_id);
@@ -122,10 +122,5 @@ public class ReservationController {
 		emailUtil.sendReservationSCEmail(emailMessage, reservation);
 		
 	}
-	
-	
-	
-	
-	
 	
 }
