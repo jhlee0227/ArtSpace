@@ -53,13 +53,13 @@
   					  <div class="likeBtn" id="likeBtn" th:onclick="|likeHall(${hall.hall_id});|">
 						<img th:data-like="${hall.likeStatus}" src="img/heart_black.png" th:class="${hall.likeStatus}">
   					  </div>   
-					  <div class="content" >
+					  <div class="content">
 						<div class="content-top">
-							    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
-							<div>
-								<i class="fa fa-star fa-2x" aria-hidden="true"></i>
+						    <p class="address-text" th:text="|${hall.address1.substring(0, 6)}|"></p>
+							<div class="rating-list">
+								<i class="fa fa-star" aria-hidden="true"></i>
 								<p th:text="|(${hall.rating})|"></p>
-								<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>
+								<i id="like_icon" class="fa-regular fa-heart" aria-hidden="true"></i>
 								<p th:text="|(${hall.likeNum})|"></p>												
 							</div>
 						</div>
