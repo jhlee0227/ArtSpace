@@ -1,6 +1,6 @@
 
       
-      h1{
+      .title-text{
         text-align: center;
       }
       .notice {
@@ -91,4 +91,6 @@
     color: #fff;
     border-radius: 10px;
 }
-
+.list-bnt{
+	cursor: pointer;
+}
