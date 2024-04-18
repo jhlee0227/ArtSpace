@@ -11,16 +11,13 @@ $(document).ready(function(){
   		url:'/hall/form/getFile/' + hall_id,
   		type:'post',
   		success:function(data) {				
-		  	console.log(data);				
 			data.forEach(function(img){	
 				// 파일을 읽기 위한 FileReader 객체 생성
 				sel_files.push(img);
 			});
-			console.log(sel_files);
   		},
   		error:function(request, status, error)
   		{ // 오류가 발생했을 때 호출된다.
-  			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
   		},
 	
 	});*/
@@ -66,7 +63,6 @@ function handleImgFileSelect(e) {
     // 초기화
     document.querySelector("input[type=file]").value = "";
     
-    console.log(sel_files);
 }
 
 
@@ -282,16 +278,13 @@ function checkValue(){
         formData.append("files", sel_files[i]);
     }
     
-    console.log(deleteImgURL);
     
     for (var i = 0; i < deleteImgURL.length; i++) {
         formData.append("deleteImgList", deleteImgURL[i]);
     }  
     encodeURIComponent
-    console.log(deleteImgURL);
 /*    
     for (let key of formData.keys()) {
-		console.log(key, ":", formData.get(key));
 	}*/
 	
 	
@@ -333,7 +326,6 @@ function checkValue(){
 			},
 	  		error:function(request, status, error)
 	  		{ // 오류가 발생했을 때 호출된다.
-	  			/*console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);*/
 	  		},
   		
   		});		
@@ -373,7 +365,6 @@ function checkValue(){
 				$("#div_ajax_load_image").hide();
 			},
 	  		error:function(request, status, error) { // 오류가 발생했을 때 호출된다.
-	  			/*console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);*/
 	  		},
   		
   		});

@@ -103,7 +103,6 @@ function deleteDate(index){
 
 // 담겨진 날짜를 유저 화면에 보여줌
 function showdate(){
-	console.log(rental_timeList);
 	let i = 0;
 	$(".contained-date").children().remove();
 	rental_timeList.forEach(function(e){
@@ -259,7 +258,6 @@ function reservation_submit(){
 			$("#div_ajax_load_image").hide();
 		},
   		error:function(request, status, error) { // 오류가 발생했을 때 호출된다.
-  			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
   		},
 	});
 }
