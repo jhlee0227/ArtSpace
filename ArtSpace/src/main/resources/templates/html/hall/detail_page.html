@@ -389,8 +389,7 @@
                 <div class="edit">
                   <form id="questionForm">
                     <textarea id="questionTextarea" name="questionContent"></textarea>
-                    <br>
-                    <input type="submit" value="등록">
+                    <div id="submitBtn" type="button" onclick="submitQuestions();">등록</div>
                   </form>
                 </div>
                 
@@ -400,13 +399,30 @@
                   <h1>문의<span id="questionCount"> </span></h1>
                 </div>
 
-                <br>
-
-                <div id="questionsContainer">
+                <div class="questionsContainer">
+					<th:block th:each="question : ${hall.questionList}">
+						<div class="question-box">
+						  <div class="question-top">
+							<div class="left">
+							  <span class="nickname" th:text="${question.nickname}">닉네임</span>
+							  <span class="grade" th:text="|(${question.email})|" >(5.0)</span>							
+							</div>
+						    <span class="date" th:text="${#temporals.format(question.create_date, 'yyyy-MM-dd HH:mm:ss')}">2024-03-11</span>
+						  </div>
+						  <div class="review-content">
+							<span th:text="${question.content}"></span>
+							<div class="btns">
+								<div th:onclick="|deleteQuestion(${question.question_id});|" th:if="${user_id} == ${question.user_id}" class="answer-btn">삭제</div>
+								<div th:onclick="|modifyQuestion(${question.question_id});|" th:if="${user_id} == ${question.user_id}" th:id="|modifybtn_${question.question_id}|" class="answer-btn">수정</div>
+								<div th:if="${user_id} == 'SA' or ${user_id} == '${hall.user_id}'" class="answer-btn">답변</div>								
+							</div>
+							<textarea class="hidden" th:id="|questionTextarea_${question.question_id}|" name="questionContent"></textarea>
+						  </div>		
+						</div>	
+					</th:block>
         		</div>
-
                 <br>
-
+				
                 <div class="pagination">
                   <a href="#" class="one">1</a>
                   <a href="#" class="two">2</a>

@@ -14,9 +14,5 @@ public interface HallListService {
 
 	List<HallDTO> getFilterData(HallFilterDTO filter, Integer user_id);
 
-	Page<HallDTO> getFilterData(HallFilterDTO filter, Integer user_id, int page, String kw);
-
-	Page<HallDTO> getList(Integer user_id, int page, String kw);
-
 
 }

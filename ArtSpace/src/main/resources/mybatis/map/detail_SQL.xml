@@ -2,9 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="detailPage">
 
-<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
+	<select id="findById" resultType="com.example.demo.hall.dto.HallDTO">
 		select * from hall
 		where hall_id = #{id}
 	</select>
+	
+	<insert id="insertQuestion">
+		insert into hall_question(question_id, user_id, hall_id, content, create_date)
+				values(#{question_id}, #{user_id}, #{hall_id}, #{content}, #{create_date})
+					
+		<selectKey keyProperty="question_id" resultType="int" order="AFTER" >
+			select LAST_INSERT_ID()
+		</selectKey>	
+	</insert>
+	
+	<select id="getQuestionList" resultType="com.example.demo.hall.dto.HallQuestionDTO">
+		select h.*, u.nickname, u.email
+		  from hall_question h join user u
+		    on h.user_id = u.user_id
+		 where h.hall_id = #{hall_id};
+	</select>
+	
+	<delete id="deleteQuestion">
+		delete from hall_question
+		where question_id = #{question_id}
+	</delete>
+	
+	<update id="modifyQuestion">
+		update hall_question
+			set content = #{content}
+			WHERE question_id = #{question_id}
+	</update>
+	
+	
 
 </mapper>

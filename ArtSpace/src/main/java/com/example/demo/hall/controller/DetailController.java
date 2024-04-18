@@ -1,5 +1,6 @@
 package com.example.demo.hall.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -11,12 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.SessionUtil;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallQuestionDTO;
 import com.example.demo.hall.service.DetailService;
 import com.example.demo.hall.service.HallService;
 
@@ -51,8 +57,11 @@ public class DetailController {
 		HallDTO hall = hallService.findById(id, user_session.getUser_id());
 		hall.setHallTimeList(hallService.setHallTimeList(hall));
 		hall.setEquiList(hallService.getEquiList(id));
+		hall.setQuestionList(hallService.getQuestionList(id));
+		
 		List<FileDTO> images = hallService.getImageList(id);
 		List<EquipmentDTO> equipList = hall.getEquiList();		
+		
 
 		int ft = (int) (hall.getArea() / 3.306);
 		
@@ -121,6 +130,44 @@ public class DetailController {
 		
 		return equipMap;
 	}
+	
+	
+	// 공연장 질문 답변
+	@PostMapping("/question/insert")
+	@ResponseBody
+	public HallQuestionDTO questionInsert(@RequestParam("content") String content, @RequestParam("hall_id") Integer hall_id) {		
+		HallQuestionDTO question = new HallQuestionDTO();
+		question.setContent(content);
+		question.setHall_id(hall_id);
+		question.setUser_id(user_session.getUser_id());
+		question.setCreate_date(LocalDateTime.now());
+
+		detailService.insertQuestion(question);
+		
+		return question;
+	}
+	
+	@PostMapping("question/delete")
+	@ResponseBody
+	public void questionDelete(@RequestParam("question_id") Integer question_id) {
+		detailService.deleteQuestion(question_id);
+	}
+
+	@PostMapping("question/modify")
+	@ResponseBody
+	public void questionModify(@RequestParam("question_id") Integer question_id, @RequestParam("content") String content) {
+		HallQuestionDTO question = new HallQuestionDTO();
+		question.setContent(content);
+		question.setQuestion_id(question_id);
+		
+		detailService.modifyQuestion(question);
+	}
+
+	
+	
+	
+	
+	
 	
 
 }

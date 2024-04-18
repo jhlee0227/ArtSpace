@@ -38,6 +38,7 @@ public class HallDTO {
 	private List<EquipmentDTO> equiList;	// 장비DTO리스트
 	private List<HallTimeDTO> hallTimeList;	// 공연장시간DTO리스트
 	private List<ReviewDTO> reviewList;		// 리뷰 리스트
+	private List<HallQuestionDTO> questionList;	// 질문 리스트
 	private String[] deleteImgList; // 삭제할 이미지URL List
 	
 	
@@ -220,6 +221,12 @@ public class HallDTO {
 	}
 	public void setReviewList(List<ReviewDTO> reviewList) {
 		this.reviewList = reviewList;
+	}
+	public List<HallQuestionDTO> getQuestionList() {
+		return questionList;
+	}
+	public void setQuestionList(List<HallQuestionDTO> questionList) {
+		this.questionList = questionList;
 	}
 
 
