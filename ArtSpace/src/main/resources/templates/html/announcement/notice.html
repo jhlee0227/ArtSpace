@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>공간</title>
   <link rel="stylesheet" href="/css/board/notice.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  
@@ -20,16 +19,21 @@
 		          </div>		<br>
       <h1>공지사항</h1> <br> <hr> 
       <ul>
-        <li th:each="notice : ${noticeList}">
-          <h3>
-            <span class="content-wrapper"th:text="${notice.subject}"></span>
-			<span class="expand-btn" onclick="toggleContent(this)">[ + ]</span>
-			<div class= time><span th:text="${notice.create_date}"></span> </div>
-          </h3>
-          <div class="content">
-            <pre th:text="${notice.content}"></pre>
-          </div>
-        </li>
+		<th:block>
+	       <li th:each="notice, i : ${noticeList}" 	th:onclick="|toggleContent(${i.index})|">
+	         <h3>
+	           <span class="content-wrapper"th:text="${notice.subject}"></span>
+				<span th:id="|askbtn_${i.index}|" class="expand-btn" >[ + ]</span>
+				<div class="time">
+					<span th:text="${notice.create_date}"></span>
+				</div>
+	         </h3>
+	         <div th:id="|ask_${i.index}|" class="content">
+	           <pre th:text="${notice.content}"></pre>
+	         </div>
+	       </li>
+			
+		</th:block>
         
   
         <div class="writeBtn" th:if="${#strings.equals(authority, 'SA')}">
@@ -62,11 +66,13 @@
 	
 	var isContentVisible = false; // 추가 변수
 	
-	function toggleContent(button) {
-	  var content = $(button).parent().next(".content");
+	function toggleContent(index) {
+	  var content = $('#ask_'+index);
+	  var id = $('#askbtn_'+index);
+	  
 	  content.slideToggle();
 	  isContentVisible = !isContentVisible; // 상태를 반전시킴
-	  $(button).text(isContentVisible ? "[ - ]" : "[ + ]"); // 상태에 따라 버튼 텍스트 설정
+	  id.text(isContentVisible ? "[ - ]" : "[ + ]"); // 상태에 따라 버튼 텍스트 설정
 	}
   </script>
   </div>
