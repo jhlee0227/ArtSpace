@@ -33,7 +33,15 @@
 		where reserve_date = #{reserve_date}
 	</select>
 
-
+	<select id="getReservation" resultType="com.example.demo.reservation.dto.ReservationDTO">
+		select r.*, h.hall_name, h.address1, h.address2, u.name, u.email, u.phone
+		  from reservation r 
+			  join hall h
+		        on r.hall_id = h.hall_id
+			  join user u
+			    on r.user_id = u.user_id
+		 where r.reserve_id = #{reserve_id};
+	</select>
 
 	
 

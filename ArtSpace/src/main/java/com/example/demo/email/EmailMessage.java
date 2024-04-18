@@ -4,7 +4,7 @@ public class EmailMessage {
 
     private String to;
     private String subject;
-    private String message;
+    private Object message;
 
     public String getTo() {
         return to;
@@ -22,11 +22,11 @@ public class EmailMessage {
         this.subject = subject;
     }
 
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Object message) {
         this.message = message;
     }
 

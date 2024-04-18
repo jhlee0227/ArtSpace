@@ -12,7 +12,7 @@
     <section class="hall-form">
       <h1 class="header-text">내 공연장 등록</h1>
       
-	  <form name="hall_info_form" th:action method="get" enctype="multipart/form-data">
+	  <form name="hall_info_form" th:action method="POST" enctype="multipart/form-data">
 		<input type="text" name="hall_id" th:value="${hall_info.hall_id}" id="hall_id" hidden>
 				
 		
