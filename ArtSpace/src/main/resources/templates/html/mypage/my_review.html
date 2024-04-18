@@ -35,7 +35,7 @@
 										<span th:text="${list.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${list.hall_id}|"></span>
 									</div>
 									<div class="reserve-date" th:each="reserveDate : ${list.reserveDateList}"
-										th:text="${reserveDate.reserve_date + ' ' + reserveDate.reserve_time}">
+										th:text="${#strings.substring(reserveDate.reserve_date, 0, 10) + ' ' + reserveDate.reserve_time}">
 									</div>
 								</div>
 								<div class="button">
@@ -56,14 +56,14 @@
 							<div class="written-rev" th:each="review : ${review_list}">
 								<div class="hall">
 									<!-- 상세페이지 링크 -->
-									<a href=""><span class="name" th:text="${review.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${review.hall_id}|"></span></a>
+									<span class="name" th:text="${review.hall_name}" th:onclick="|location.href='@{/hall/detail/}' + ${review.hall_id}|"></span>
 								</div>
 								<div class="sub">
 									<div class="rating">
 										<i class="fa-solid fa-star fa-3x"></i>
 										<span class="star" th:text="${review.rating}"></span>
 									</div>
-									<span class="date" th:text="${review.create_date}"></span>
+									<span class="date" th:text="${#temporals.format(review.create_date, 'yyyy-MM-dd')}"></span>
 								</div>
 
 
