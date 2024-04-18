@@ -10,6 +10,7 @@ public class CompanyDTO {
 	private Integer user_id;		//유저ID FK
 	
 	private String email;			//유저이메일(아이디)
+	private String authority;		//유저 권한
 	
 	public Integer getCompany_id() {
 		return company_id;
@@ -52,6 +53,12 @@ public class CompanyDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 	
 	
