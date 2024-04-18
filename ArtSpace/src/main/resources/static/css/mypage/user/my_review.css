@@ -268,15 +268,19 @@ input[name="tab_item"] {
 }
 
 .con .content .tabs .written-list .written-rev .sub {
-	margin-bottom: 2rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 2rem;
 }
 
-.con .content .tabs .written-list .written-rev .sub .rating i {
-	color: var(--main-color);
-	margin: 1rem 0 1rem 1.5rem;
+
+.fa-star{
+	color:var(--main-color);	
+}
+
+.gray{
+	color: gray;
 }
 
 .con .content .tabs .written-list .written-rev .sub .rating>span {
@@ -294,9 +298,9 @@ input[name="tab_item"] {
 
 .con .content .tabs .written-list .written-rev .review-box {
 	font-size: 1.5rem;
-	margin-left: 1.5rem;
-	padding-bottom: 1.5rem;
 	line-height: 1.5;
+	padding: 1.5rem;
+	padding-top: 0;
 }
 
 .modal-content {

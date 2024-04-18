@@ -59,8 +59,14 @@
 								</div>
 								<div class="sub">
 									<div class="rating">
-										<i class="fa-solid fa-star fa-3x"></i>
-										<span class="star" th:text="${review.rating}"></span>
+										<th:block th:each="num : ${#numbers.sequence(0, review.rating-1)}">						  
+										  	<i class="fa-solid fa-star fa-3x"></i>
+									  	</th:block>										
+										<th:block th:if="${review.rating} < 5" th:each="num : ${#numbers.sequence(review.rating+1, 5)}">						  
+											<i class="fa-solid fa-star fa-3x gray"></i>
+									    </th:block>
+										
+										<span class="star" th:text="|(${review.rating})|"></span>
 									</div>
 									<span class="date" th:text="${#temporals.format(review.create_date, 'yyyy-MM-dd')}"></span>
 								</div>

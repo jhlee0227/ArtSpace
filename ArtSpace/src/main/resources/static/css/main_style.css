@@ -241,6 +241,10 @@ section {
 	align-items: center;
 }
 
+.hall-list .con .box-container .content .content-top .rating-list{
+	font-size: 1.3rem;
+}
+
 .hall-list .con .box-container .content .content-top div #like_icon{
 	margin-left: .5rem;
 }
