@@ -1,7 +1,9 @@
 // 모달 열기
-function openModal() {
+function openModal(id, reId) {
 	var modal = document.getElementById('myModal');
 	modal.style.display = 'block';
+	hall_id = id;
+	reserve_id = reId;
 }
 // 모달 닫기
 function closeModal() {
@@ -18,12 +20,12 @@ $('.star-rating i').click(function() {
 	$('#ratingInput').val(rating); // 별점 값을 hidden input에 설정
 });
 
+var reserve_id = 0;
+var hall_id = 0;
 // 리뷰 저장하기
 $('#saveReview').click(function() {
 	var rating = parseInt($('#ratingInput').val(), 10);
 	var reviewContent = $('#reviewContentInput').val();
-	var hall_id = parseInt($('.first-btn').siblings('.hallId').val(), 10);
-	var reserve_id = parseInt($('.first-btn').siblings('.reserveId').val(), 10);
 
 	var data = {
 		rating: rating,
@@ -55,8 +57,7 @@ $('#saveReview').click(function() {
 
 // 리뷰작성 상태 변경
 function updateReviewStatus(reserve_id) {
-	var reserve_id = parseInt($('.first-btn').siblings('.reserveId').val(), 10);
-
+	
 	$.ajax({
 		type: 'POST',
 		url: '/mypage/updateReviewStatus',
