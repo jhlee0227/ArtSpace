@@ -97,7 +97,7 @@
 	
 	
 	<select id="reserveDetail" resultType="com.example.demo.reservation.dto.ReservationDTO">
-		select h.hall_name, h.address1, h.address2, h.hall_id, r.estimate, r.food, r.ac, u.name, u.phone
+		select h.hall_name, h.address1, h.address2, h.hall_id, r.estimate, r.food, r.ac, u.name, u.phone, r.reserve_id, r.create_date
 		from hall h
 		join reservation r on r.hall_id = h.hall_id
 		join user u on u.user_id = r.user_id

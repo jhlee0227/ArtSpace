@@ -23,6 +23,11 @@
 		where phone = #{phone}
 	</select>
 	
+	<select id="getSCUser" resultType="com.example.demo.user.dto.UserDTO">
+		select u.* from user u join hall h
+		    on u.user_id = h.user_id 
+		 where h.hall_id = #{hall_id};
+	</select>
 	
 	
 

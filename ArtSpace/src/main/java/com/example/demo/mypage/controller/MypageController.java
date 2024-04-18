@@ -194,9 +194,11 @@ public class MypageController {
 				List<ReservationDTO> reserveList = mypageService.getAllReserve(user_session.getUser_id());
 				model.addAttribute("reserve_list", reserveList);
 
+				// 예약날짜 중 가장 빠른 날짜
 				Map<Integer, LocalDateTime> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
 				model.addAttribute("earliest_reserve_date", earliestReserveDates);
 
+				// 현재 날짜
 				model.addAttribute("current_date", LocalDate.now()); // 현재 날짜 추가
 				return "html/mypage/reservation_list";
 			} else {
@@ -227,6 +229,22 @@ public class MypageController {
 		return response;
 	}
 
+	// 결제
+	@GetMapping("/pay")
+	public String pay(Model model, @RequestParam("reserve_id") Integer reserve_id) {
+		myInfo(model);
+		
+		user_session.setSessionValue(session);
+		if (user_session.getUser_id() == null) {
+			return "redirect:/login";
+		}
+		
+		ReservationDTO reservationDetail = mypageService.reserveDetail(reserve_id);
+		model.addAttribute("reserve", reservationDetail);
+		
+		return "html/pay/payment";
+	}
+	
 	// 예약 취소
 	@PostMapping("/reserve/delete")
 	public String reserveDelete(Model model, @RequestParam("reserve_id") Integer reserve_id) {
@@ -248,6 +266,7 @@ public class MypageController {
 
 		// 현재 날짜 가져오기
 		LocalDateTime currentDate = LocalDateTime.now();
+		// 파싱 오류 방지를 위한 formatter 설정
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 		// 가장 최근 예약 날짜와 현재 날짜를 비교하여 리뷰 가능한 예약만 필터링
