@@ -4,7 +4,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
 	<link rel="stylesheet" href="/css/payment.css">
 </head>
 
@@ -37,10 +36,12 @@
 						<div class="user-info">
 							<div class="user-caption">
 								<div>이름:</div>
+								<div>이메일:</div>
 								<div>전화번호:</div>
 							</div>
 							<div id="user-info">
 								<div th:text="${reserve.name}"></div>
+								<div th:text="${reserve.email}"></div>
 								<div th:text="${reserve.phone}"></div>
 							</div>
 						</div>

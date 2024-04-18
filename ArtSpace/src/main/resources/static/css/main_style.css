@@ -69,6 +69,13 @@ section {
   background-color: #aaa;
 }
 
+.main-banner .container .picture-contain .picture img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 .main-banner .container .banner-text {
   height: 100%;
   text-align: end;

@@ -45,6 +45,7 @@ function openModal(button) {
 				$('.modal-con.equipments').html(equipmentsHtml);
 
 				$('.modal-con.username').text(reservationDetail.name);
+				$('.modal-con.email').text(reservationDetail.email);
 				$('.modal-con.phone').text(reservationDetail.phone);
 				$('.modal-con.ac').text(reservationDetail.ac);
 				$('.modal-con.food').text(reservationDetail.food);

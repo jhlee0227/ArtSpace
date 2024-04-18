@@ -264,6 +264,7 @@ input[name="tab_item"] {
 .con .content .tabs .written-list .written-rev .hall .name {
 	font-size: 1.5rem;
 	font-weight: 600;
+	cursor: pointer;
 }
 
 .con .content .tabs .written-list .written-rev .sub {
@@ -287,6 +288,7 @@ input[name="tab_item"] {
 .con .content .tabs .written-list .written-rev .sub .date {
 	font-weight: 400;
 	text-align: right;
+	font-size: 1.5rem;
 	margin-right: 1.3rem;
 }
 
@@ -294,6 +296,7 @@ input[name="tab_item"] {
 	font-size: 1.5rem;
 	margin-left: 1.5rem;
 	padding-bottom: 1.5rem;
+	line-height: 1.5;
 }
 
 .modal-content {
