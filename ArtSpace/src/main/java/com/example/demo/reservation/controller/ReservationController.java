@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.EmailUtil;
 import com.example.demo.SessionUtil;
+import com.example.demo.email.EmailMessage;
 import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.reservation.dto.ReservationEquipmentDTO;
 import com.example.demo.reservation.dto.ReserveDateDTO;
 import com.example.demo.reservation.service.ReservationService;
+import com.example.demo.user.dto.UserDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -36,6 +39,9 @@ public class ReservationController {
 	@Autowired
 	HttpSession session;
 	
+	@Autowired
+	private EmailUtil emailUtil;
+
 	// 업데이트 처리
 	@PostMapping("insert")
 	@ResponseBody
@@ -99,7 +105,22 @@ public class ReservationController {
 		
 		reservationService.insert(reservation);
 		
+		UserDTO scUser = reservationService.getSCUser(reservation.getHall_id());
+		sendreservationEmail(scUser, reservation.getReserve_id());
+		
 		return "success";
+	}
+	
+	
+	// 법인 유저 이메일로 예약완료 메일 보내기
+	public void sendreservationEmail(UserDTO user, Integer reserve_id) {
+		ReservationDTO reservation = reservationService.getReservation(reserve_id);
+		
+		// 예약완료 메세지 메일 보내기
+		EmailMessage emailMessage = new EmailMessage();
+		emailMessage.setTo(user.getEmail());
+		emailUtil.sendReservationSCEmail(emailMessage, reservation);
+		
 	}
 	
 }

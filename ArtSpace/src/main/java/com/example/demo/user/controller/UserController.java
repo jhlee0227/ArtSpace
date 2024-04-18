@@ -76,8 +76,9 @@ public class UserController {
 	
 	// 회원가입 완료 페이지 오픈
 	@PostMapping("/welcome")
-	public String welcome() {
-
+	public String welcome(HttpSession session) {
+		// 세션에 남아있는 인증코드 삭제
+		session.removeAttribute("emailCode");
 		return "html/login/join_user_welcome";
 	}
 

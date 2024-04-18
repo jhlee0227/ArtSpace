@@ -304,6 +304,7 @@ function checkValue(){
 	  		contentType: false,
 	  		// 다른 페이지를 처리 후에 결과가 성공일 때
 	  		success:function(data) {
+				//location.href=data;
 				document.hall_info_form.action=data;
 				document.hall_info_form.submit();
 	  		},

@@ -28,10 +28,9 @@ public class ReservationDTO {
 	// 사용자가 예약한 날짜와 시간
 	private List<ReserveDateDTO> ReserveDateList;
 	
-
-	
 	// 예약자이름, 핸드폰번호
 	private String name;
+	private String email;
 	private String phone;
 	
 	private FileDTO mainImage;
@@ -172,6 +171,15 @@ public class ReservationDTO {
 	public void setCreate_date(LocalDateTime create_date) {
 		this.create_date = create_date;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	
 	
 	
