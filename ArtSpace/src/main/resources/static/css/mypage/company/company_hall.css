@@ -141,12 +141,12 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	padding: 2rem 0;
 }
 
 .con .content .list .item .hall-name {
 	font-size: 2rem;
 	font-weight: 600;
-	margin-top: 1.5rem;
 }
 
 .con .content .list .item .hall-name span {
@@ -156,7 +156,6 @@ body {
 .con .content .list .item .hall-region {
 	font-size: 1.5rem;
 	font-weight: 600;
-	margin-bottom: 1.5rem;
 }
 
 .con .content .list .item .button {
@@ -186,6 +185,7 @@ body {
 	cursor: pointer;
 	margin-left: auto;
 	margin-right: 1.4rem;
+	margin-bottom: 2rem;
 	background-color: var(--main-color);
 	border: var(--border);
 	border-radius: 1rem;
