@@ -1,84 +1,92 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layout/default_layout}" lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/payment.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/payment.css">
 </head>
+
 <body>
 	<div layout:fragment="content">
 		<section class="con">
-		      <div class="content">
-		        <div class="main">
-		          <div class="reserve">
-		            <h2>예약</h2>
-		            <div class="reserve-info">
-		              <div class="img">
-		                <img src="/img/hallex.jpg" alt="">
-		              </div>
-		              <div class="reserve-detail">
-		                <div class="reserve-num">예약번호:<span>1234</span></div>
-		                <div class="hall-name">장소 이름</div>
-		                <div class="reserve-day">예약 날짜 2024-03-24</div>
-		              </div>
-		              <!-- 예약 정보..? -->
-		              <div class="hall-detail"><a href="">상세 정보 ></a></div>
-		            </div>
-		          </div>
-		          <div class="user">
-		            <h2>예약자 정보</h2>
-		            <div class="user-info">
-		              <div class="user-caption">
-		                <div>이름</div>
-		                <div>전화번호</div>
-		                <div>단체명</div>
-		              </div>
-		              <div id="user-info">
-		                <div>000</div>
-		                <div>010-5555-5555</div>
-		                <div>test</div>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="pay">
-		            <h2>결제</h2>
-		            <div class="payment card">신용·체크카드</div>
-		            <div class="easy-payment">
-		              <div class="payment">Npay</div>
-		              <div class="payment last">Kpay</div>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </section>
-		    <section class="hall-expectation">
-		      <div class="expectation">
-		        <div class="estimate">예상 견적: </div>
-		        <div class="amount">0</div>
-		        <div>원</div>
-		        <a class="reservation">결제 확인</a>
-		      </div>
-		      </section>
-	</div>
+			<div class="content">
+				<div class="main">
+					<div class="reserve">
+						<h2>예약</h2>
+						<div class="reserve-info">
+							<div class="img">
 
-    <script src="https://kit.fontawesome.com/194e6948f1.js" crossorigin="anonymous"></script>
-    <script>
-	// 결제 수단 선택하면 yellow로 변경 원래 선택된거 gray로 변경
-      document.addEventListener('DOMContentLoaded', function() {
-        var divs = document.querySelectorAll('.payment');
-        var lastClicked = null; // 마지막으로 클릭된 div를 추적
-    
-        divs.forEach(function(div) {
-            div.addEventListener('click', function() {
-                if (lastClicked) {
-                    lastClicked.style.borderColor = 'gray'; // 이전에 선택된 div의 border 색상을 초기화
-                }
-                this.style.borderColor = 'var(--main-color)'; // 현재 클릭된 div의 border 색상을 yellow로 변경
-                lastClicked = this; // 현재 클릭된 div를 마지막으로 클릭된 div로 업데이트
-            });
-        });
-    });
-    </script>
+							</div>
+							<div class="reserve-detail">
+								<div class="reserve-num">예약번호: <span th:text="${reserve.reserve_id}"></span></div>
+								<div class="hall-name" th:text="${reserve.hall_name}">장소 이름</div>
+								<div class="reserve-day">접수일: <span
+										th:text="${#strings.substring(reserve.create_date, 0, 10)}"></span></div>
+							</div>
+							<!-- 예약 정보..? -->
+							<div class="hall-detail">
+								<input type="hidden" th:value="${reserve.reserve_id}" id="reserveId" class="reserveId">
+								<button onclick="openModal(this)">상세 정보 ></button>
+							</div>
+						</div>
+					</div>
+					<div class="user">
+						<h2>예약자 정보</h2>
+						<div class="user-info">
+							<div class="user-caption">
+								<div>이름:</div>
+								<div>전화번호:</div>
+							</div>
+							<div id="user-info">
+								<div th:text="${reserve.name}"></div>
+								<div th:text="${reserve.phone}"></div>
+							</div>
+						</div>
+					</div>
+					<div class="pay">
+						<h2>결제</h2>
+						<div class="payment card">신용·체크카드</div>
+						<div class="easy-payment">
+							<div class="payment">Npay</div>
+							<div class="payment last">Kpay</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="hall-expectation">
+			<div class="expectation">
+				<div class="estimate">견적가: </div>
+				<div class="amount" th:text="${#numbers.formatInteger(reserve.estimate, 3, 'COMMA')}"></div>
+				<div>원</div>
+				<a class="reservation">결제</a>
+			</div>
+		</section>
+
+		<div th:replace="~{fragments/modal/reservation_detail :: reserveModal}"></div>
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			// 결제 수단 선택하면 yellow로 변경 원래 선택된거 gray로 변경
+			document.addEventListener('DOMContentLoaded', function () {
+				var divs = document.querySelectorAll('.payment');
+				var lastClicked = null; // 마지막으로 클릭된 div를 추적
+
+				divs.forEach(function (div) {
+					div.addEventListener('click', function () {
+						if (lastClicked) {
+							lastClicked.style.borderColor = 'gray'; // 이전에 선택된 div의 border 색상을 초기화
+						}
+						this.style.borderColor = 'var(--main-color)'; // 현재 클릭된 div의 border 색상을 yellow로 변경
+						lastClicked = this; // 현재 클릭된 div를 마지막으로 클릭된 div로 업데이트
+					});
+				});
+			});
+		</script>
+		<script src="/js/reserve_modal.js"></script>
+	</div>
 </body>
+
 </html>

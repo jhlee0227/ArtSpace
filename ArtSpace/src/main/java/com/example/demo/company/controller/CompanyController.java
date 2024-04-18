@@ -1,6 +1,5 @@
 package com.example.demo.company.controller;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -197,7 +196,7 @@ public class CompanyController {
 			return "redirect:/login";
 		}
 
-		HallDTO hallInfo = hallService.findById(id);
+		HallDTO hallInfo = hallService.findById(id, user_session.getUser_id());
 		model.addAttribute("hall_info", hallInfo);
 
 		return "redirect:/hall/form" + id;
@@ -227,6 +226,7 @@ public class CompanyController {
 				List<ReservationDTO> reserveList = companyService.getReserve(user_session.getUser_id());
 				model.addAttribute("reserve_list", reserveList);
 				
+				// 예약 날짜 중 가장 빠른 날짜
 				Map<Integer, LocalDateTime> earliestReserveDates = mypageService.getEarliestReserveDates(reserveList);
 				model.addAttribute("earliest_reserve_date", earliestReserveDates);
 
