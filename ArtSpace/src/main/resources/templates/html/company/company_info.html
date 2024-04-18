@@ -18,6 +18,7 @@
 					<p th:if="${#strings.equals(my_info.authority, 'SCN')}" th:unless="${fileCount < 4}">관리자 승인
 						후 인증
 						완료됩니다.</p>
+					<p th:if="${#strings.equals(my_info.authority, 'SCY')}">승인이 완료되었습니다.</p>
 				</div>
 				<form th:action="@{/company/info}" method="post">
 					<div class="list" th:if="${#strings.equals(my_info.authority, 'SCY')}">
@@ -27,7 +28,8 @@
 							<div class="list-name">대표이름</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name" oninput="activate()">
+								<input type="text" name="owner_name" th:value="${com_info.owner_name}" id="owner_name"
+									oninput="activate()">
 							</div>
 							<span class="owner_check" id="owner_check"></span>
 						</div>
