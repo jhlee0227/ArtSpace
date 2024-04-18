@@ -1,16 +1,10 @@
 package com.example.demo.hall.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.file.dao.FileDAO;
@@ -20,7 +14,6 @@ import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallFilterDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
 import com.example.demo.mypage.dto.LikeDTO;
-import com.example.test.question.Question;
 
 @Service
 public class HallListServiceImpl implements HallListService{

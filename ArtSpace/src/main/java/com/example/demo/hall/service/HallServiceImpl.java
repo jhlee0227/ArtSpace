@@ -13,10 +13,12 @@ import org.springframework.stereotype.Service;
 import com.example.demo.file.dao.FileDAO;
 import com.example.demo.file.dao.HallFileDAO;
 import com.example.demo.file.dto.FileDTO;
+import com.example.demo.hall.dao.DetailDAO;
 import com.example.demo.hall.dao.HallDAO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallImageDTO;
+import com.example.demo.hall.dto.HallQuestionDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
 import com.example.demo.mypage.dto.LikeDTO;
 
@@ -33,6 +35,8 @@ public class HallServiceImpl implements HallService{
 	@Autowired
 	HallFileDAO hallFileDAO;
 	
+	@Autowired
+	DetailDAO detailDAO;
 
 	// 새로운 공연장 등록 폼
 	@Override
@@ -243,6 +247,12 @@ public class HallServiceImpl implements HallService{
 			hallDAO.likeHall(like);			
 		}
 		
+	}
+
+
+	@Override
+	public List<HallQuestionDTO> getQuestionList(Integer hall_id) {
+		return detailDAO.getQuestionList(hall_id);
 	}
 
 

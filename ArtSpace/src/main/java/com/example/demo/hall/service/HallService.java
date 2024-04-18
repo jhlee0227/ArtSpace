@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.EquipmentDTO;
 import com.example.demo.hall.dto.HallDTO;
+import com.example.demo.hall.dto.HallQuestionDTO;
 import com.example.demo.hall.dto.HallTimeDTO;
 
 public interface HallService {
@@ -47,6 +48,8 @@ public interface HallService {
 	public void deleteImages(Integer hall_id);
 
 	public void likeHall(Integer hall_id, Integer user_id, String status);
+
+	public List<HallQuestionDTO> getQuestionList(Integer hall_id);
 
 
 
