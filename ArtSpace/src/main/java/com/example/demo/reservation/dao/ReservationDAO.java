@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.reservation.dto.ReservationEquipmentDTO;
 import com.example.demo.reservation.dto.ReserveDateDTO;
+import com.example.demo.user.dto.UserDTO;
 
 @Repository
 public class ReservationDAO {
@@ -37,6 +38,14 @@ public class ReservationDAO {
 	// 하루를 예약하는데 그날 다른 시간대 예약한게 있는지 체크
 	public int dayDuplicationCheck(ReserveDateDTO date) {
 		return sqlSession.selectOne("reservation.dayDuplicationCheck", date);
+	}
+
+	public UserDTO getSCUser(Integer hall_id) {
+		return sqlSession.selectOne("user.getSCUser", hall_id);
+	}
+
+	public ReservationDTO getReservation(Integer reserve_id) {
+		return sqlSession.selectOne("reservation.getReservation", reserve_id);
 	}
 	
 	

@@ -7,6 +7,7 @@ import com.example.demo.reservation.dao.ReservationDAO;
 import com.example.demo.reservation.dto.ReservationDTO;
 import com.example.demo.reservation.dto.ReservationEquipmentDTO;
 import com.example.demo.reservation.dto.ReserveDateDTO;
+import com.example.demo.user.dto.UserDTO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -41,6 +42,17 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public int dayDuplicationCheck(ReserveDateDTO date) {
 		return reservationDAO.dayDuplicationCheck(date);
+	}
+
+	// 공연장 올린 사람 가져오기
+	@Override
+	public UserDTO getSCUser(Integer hall_id) {
+		return reservationDAO.getSCUser(hall_id);
+	}
+
+	@Override
+	public ReservationDTO getReservation(Integer reserve_id) {
+		return reservationDAO.getReservation(reserve_id);
 	}
 	
 

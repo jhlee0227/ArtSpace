@@ -144,7 +144,7 @@ public class HallController {
 		if (files != null) {
 			fileService.insertHallImage(files, hallDTO.getHall_id());
 		}
-
+		//http://localhost:1105/hall/form/equipment/20
 		return "/hall/form/equipment/" + hallDTO.getHall_id();
 	}
 	
@@ -177,7 +177,7 @@ public class HallController {
 	}
 
 	// 장비 화면 띄우기
-	@GetMapping("form/equipment/{id}")
+	@PostMapping("form/equipment/{id}")
 	public String showFormEquipment(@PathVariable("id") Integer id, Model model) {
 		user_session.setSessionValue(session);
 
