@@ -6,24 +6,89 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
+    padding: 2rem;
 }
+
+.hall-detail .content .qna .questionsContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hall-detail .content .qna .questionsContainer .question-box {
+	margin: 1rem 0;
+}
+
+.hall-detail .content .qna .questionsContainer .question-box .question-top{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(247, 240, 232);
+    padding: 1rem;
+    border-radius: 1rem 1rem 0 0; 
+}
+
+.hall-detail .content .qna .questionsContainer .question-box .review-content{
+    padding: 2rem;
+    background-color: rgb(250, 245, 241);    
+    border-radius: 0 0 1rem 1rem; 
+}
+
+.hall-detail .content .qna .questionsContainer .question-box .review-content .btns{
+	display: flex;
+
+}
+
+
+.hall-detail .content .qna .questionsContainer .question-box .review-content .answer-btn{
+	cursor: pointer;
+	margin: 2rem .5rem;
+    padding: .2rem 1rem;
+    width: 3rem;
+    border-radius: .5rem;
+    background-color: rgb(224, 196, 165);
+    margin-bottom: 0;
+}
+
+
+
 
 .hall-detail .content .qna .title span {
     font-size: 25px;
     color: gold;
 }
 
-.hall-detail .content .qna .edit textarea {
-    width: 85%;
-    height: 80px;
-    margin-top: 1%;
-    margin-left: 2%;
-    resize: none;
+.hall-detail .content .qna .edit #questionForm {
+   display: flex;
+    justify-content: center;
+ 	
 }
 
-input[type=submit] {
-    margin-top: 1%;
-    margin-left: 84.5%;
+textarea {
+	border-radius: 1rem;
+    width: 85%;
+    height: 8rem;
+    resize: none;
+    padding: 1rem;
+    
+}
+
+.hidden{
+	display: none;
+}
+
+.hall-detail .content .qna .edit #questionForm #submitBtn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--select-btn);
+	width: 15%;
+	padding: 2rem;
+	margin-left: 1rem;
+	border-radius: 1rem;
+	text-align: center;
+	font-weight: 600;
+	cursor: pointer;
 }
 
 .hall-detail .content .qna .question-nickname #name {

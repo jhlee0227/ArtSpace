@@ -14,7 +14,6 @@ $(document).ready(function() {
 			contentType: "application/json",
 			data: JSON.stringify(data), // 서버에서 반환되는 데이터 타입을 JSON으로 지정
 			success: function(userList) {
-				console.log(data);
 				var html = ""; // HTML 코드를 생성할 변수
 				for (var i = 0; i < userList.length; i++) {
 					html += "<tr>"; // 새로운 행 시작
@@ -36,13 +35,10 @@ $(document).ready(function() {
 					html += "</tr>"; // 행 종료
 				}
 				$("#searchResults1").html(html); // 테이블의 tbody에 HTML 코드 추가
-				console.log(html);
-				console.log(userList);
 				// 검색 후에는 전체선택 checkbox 체크 해제
 				$(".table thead input[name='selectAll1']").prop('checked', false);
 			},
 			error: function(data, status, error) {
-				console.log("에러:" + error);
 			}
 		});
 	});
@@ -64,7 +60,6 @@ $(document).ready(function() {
 			contentType: "application/json",
 			data: JSON.stringify(data), // 서버에서 반환되는 데이터 타입을 JSON으로 지정
 			success: function(userList) {
-				console.log(data);
 				var html = ""; // HTML 코드를 생성할 변수
 				for (var i = 0; i < userList.length; i++) {
 					if (userList[i].leave_status === 'N') {
@@ -89,13 +84,10 @@ $(document).ready(function() {
 
 				}
 				$("#searchResults2").html(html); // 테이블의 tbody에 HTML 코드 추가
-				console.log(html);
-				console.log(userList);
 				// 검색 후에는 전체선택 checkbox 체크 해제
 
 			},
 			error: function(data, status, error) {
-				console.log("에러:" + error);
 			}
 		});
 	});
@@ -117,7 +109,6 @@ $(document).ready(function() {
 			contentType: "application/json",
 			data: JSON.stringify(data), // 서버에서 반환되는 데이터 타입을 JSON으로 지정
 			success: function(userList) {
-				console.log(data);
 				var html = ""; // HTML 코드를 생성할 변수
 				for (var i = 0; i < userList.length; i++) {
 					if (userList[i].leave_status === 'Y') {
@@ -141,13 +132,10 @@ $(document).ready(function() {
 					}
 				}
 				$("#searchResults3").html(html); // 테이블의 tbody에 HTML 코드 추가
-				console.log(html);
-				console.log(userList);
 				// 검색 후에는 전체선택 checkbox 체크 해제
 				$(".table thead input[name='selectAll3']").prop('checked', false);
 			},
 			error: function(data, status, error) {
-				console.log("에러:" + error);
 			}
 		});
 	});

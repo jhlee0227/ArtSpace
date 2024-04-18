@@ -4,7 +4,6 @@ function openModal(button) {
 	var reserve_id = $(button).siblings('.reserveId').val();
 	var modal = document.getElementById('myModal');
 	modal.style.display = 'block';
-	console.log(reserve_id);
 	$.ajax({
 		type: 'POST',
 		url: '/mypage/reserve',
@@ -54,7 +53,6 @@ function openModal(button) {
 			}
 		},
 		error: function(data, status, error) {
-			console.log(response.message);
 			alert('예약 정보를 불러오는 데 실패했습니다.');
 		}
 	});

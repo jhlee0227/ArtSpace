@@ -98,7 +98,6 @@ function filterPush(){
 	var checkArr = [];     // 배열 초기화
 	
 	$("input[name='regionItem']:checked").each(function(i){
-		console.log($(this).val());
         checkArr.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push    		
 	});
 	

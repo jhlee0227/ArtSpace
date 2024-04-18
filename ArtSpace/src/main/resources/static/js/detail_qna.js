@@ -103,7 +103,6 @@ function deleteDate(index){
 
 // 담겨진 날짜를 유저 화면에 보여줌
 function showdate(){
-	console.log(rental_timeList);
 	let i = 0;
 	$(".contained-date").children().remove();
 	rental_timeList.forEach(function(e){
@@ -259,12 +258,88 @@ function reservation_submit(){
 			$("#div_ajax_load_image").hide();
 		},
   		error:function(request, status, error) { // 오류가 발생했을 때 호출된다.
-  			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
   		},
 	});
 }
 
 /* === 견적 내기 부분 END ===*/
+
+
+/* ==== 문의 사항 ==== */
+
+function submitQuestions() {
+	let content = $('#questionTextarea').val();
+	let hall_id =  $('input[name=hall_id]').val();
+		
+    $.ajax({
+        url: '/hall/question/insert',
+        type: 'post',
+        data:{
+			"content":content,
+			"hall_id":hall_id
+		},
+        success: function(data) {
+			location.reload();
+        },
+        error: function(xhr, status, error) {
+        }
+    });
+}
+
+
+
+function deleteQuestion(question_id){
+	if(!confirm("삭제 하시겠습니까?")){
+    	return;
+	} else {
+	    $.ajax({
+	        url: '/hall/question/delete',
+	        type: 'post',
+	        data:{
+				"question_id":question_id
+			},
+	        success: function(data) {
+				location.reload();
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+    	});	
+	}
+}
+
+
+function modifyQuestion(question_id){
+	let inputbox = $('#questionTextarea_'+question_id);
+	let modifybtn = $('#modifybtn_'+question_id);
+	
+	inputbox.toggleClass('hidden');
+	if(inputbox.hasClass("hidden")){
+		modifybtn.text('수정');
+	    $.ajax({
+	        url: '/hall/question/modify',
+	        type: 'post',
+	        data:{
+				"question_id":question_id,
+				"content":inputbox.val()
+			},
+	        success: function(data) {
+				location.reload();
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+    	});	
+		
+		
+	} else {
+		modifybtn.text('저장');	
+		
+	}
+}
+
+/* ================= */
+
 
 
 
