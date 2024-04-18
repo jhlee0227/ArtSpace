@@ -40,7 +40,7 @@
 								<div class="button">
 									<!-- 리뷰 작성 페이지로.. -->
 									<input type="hidden" th:value="${list.hall_id}" id="hallId" class="hallId">
-									<button class="first-btn" onclick="openModal()">리뷰 작성</button>
+									<button class="first-btn" th:onclick="|openModal(${list.hall_id}, ${list.reserve_id})|">리뷰 작성</button>
 									<input type="hidden" th:value="${list.reserve_id}" id="reserveId" class="reserveId">
 									<!-- 공연장 상세 페이지로.. -->
 									<button
