@@ -13,8 +13,6 @@ $(document).ready(function() {
 			contentType: "application/json",
 			data: JSON.stringify(data), // 서버에서 반환되는 데이터 타입을 JSON으로 지정
 			success: function(searchHallList) {
-				console.log(data);
-				console.log(searchHallList);
 				var html = ""; // HTML 코드
 				for (var i = 0; i < searchHallList.length; i++) {
 					html += "<tr>";
@@ -26,13 +24,10 @@ $(document).ready(function() {
 					html += "</tr>"; // 행 종료
 				}
 				$("#searchResult").html(html); // 테이블의 tbody에 HTML 코드 추가
-				console.log(html);
-				console.log(searchHallList);
 				// 검색 후에는 전체선택 checkbox 체크 해제
 				$(".table thead input[name='selectAll']").prop('checked', false);
 			},
 			error: function(data, status, error) {
-				console.log("에러:" + error);
 			}
 		});
 	});

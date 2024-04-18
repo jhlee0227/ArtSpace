@@ -94,10 +94,8 @@ public class FileServiceImpl implements FileService {
 //		Storage storage = StorageOptions.newBuilder().setProjectId("quiet-chalice-419309").build().getService();
 //		//Storage storage = StorageOptions.getDefaultInstance().getService();
 //		
-//		System.out.println(fileName);
 //		Blob blob = storage.get(bucketName, fileName);
 //		
-//		System.out.println(blob);
 //		return blob;
 //	}
 
