@@ -60,6 +60,7 @@ body {
   align-items: center;
   margin-bottom: 1.5rem;
   border-radius: 10px;
+  box-shadow: var(--box-shadow);
 }
 
 .con .content .main .reserve .reserve-info .img {
@@ -82,7 +83,7 @@ body {
 }
 
 .con .content .main .reserve .reserve-info .reserve-detail .reserve-num {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -95,7 +96,7 @@ body {
 }
 
 .con .content .main .reserve .reserve-info .reserve-detail .reserve-day {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: gray;
 }
@@ -106,7 +107,7 @@ body {
 
 .con .content .main .reserve .reserve-info .hall-detail button {
   color: var(--main-color);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
   border: none;
