@@ -12,10 +12,10 @@
 		
 		  <div class="ask">
 			<div class="content-box" th:each="ask : ${askList}"></div> <br>
-		    <h1>자주 묻는 질문</h1> <br> <hr> 
+		    <h1 class="title-text">자주 묻는 질문</h1> <br> <hr> 
 		    <ul>
 				<th:block th:each="ask, i : ${askList}">
-					<li th:onclick="|toggleContent(${i.index})|" >
+					<li class="list-bnt" th:onclick="|toggleContent(${i.index})|" >
 					  <h3>
 					      <span class="content-wrapper"th:text="${ask.subject}"></span>
 						<span th:id="|askbtn_${i.index}|" class="expand-btn">[ + ]</span>

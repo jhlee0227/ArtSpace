@@ -132,4 +132,6 @@
     border-radius: 10px;
 }
 
-
+.list-bnt{
+	cursor: pointer;
+}
