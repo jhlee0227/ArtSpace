@@ -151,6 +151,11 @@ body {
 	border-bottom: 2px solid var(--main-color);
 }
 
+.con .content .list #check {
+	margin-left: 1rem;
+	font-size: 1.3rem;
+}
+
 .con .content .list .last {
 	border-bottom: 2px solid var(--light_gray);
 }

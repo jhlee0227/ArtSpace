@@ -23,31 +23,32 @@
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con"><input type="text" id="group_name" name="group_name"
-									oninput="infoCheck()">
+									oninput="groupNameCheck(); infoCheck()">
 							</div>
-
+							<span id="groupNameCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">대표명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con"><input type="text" id="leader_name" name="leader_name"
-									oninput="infoCheck()"></div>
-
+									oninput="leaderNameCheck(); infoCheck()"></div>
+							<span id="leaderNameCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">대표전화번호</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
-								<input type="text" id="leader_phone" name="leader_phone" oninput="infoCheck()">
+								<input type="text" id="leader_phone" name="leader_phone"
+									oninput="phoneCheck(); infoCheck()">
 							</div>
-
+							<span id="phoneCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">인원수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con"><input type="number" id="member_num" name="member_num" maxlength="3"
-									oninput="infoCheck()">명</div>
-
+									oninput="memberNumCheck(); infoCheck()">명</div>
+							<span id="memberNumCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">공연횟수</div>
@@ -78,32 +79,32 @@
 							<div class="list-name">단체명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con"><input type="text" id="group_name" name="group_name"
-									th:value="${perfo_info.group_name}" oninput="infoCheck()">
+									th:value="${perfo_info.group_name}" oninput="groupNameCheck(); infoCheck()">
 							</div>
-
+							<span id="groupNameCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">대표명</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con"><input type="text" id="leader_name" name="leader_name"
-									th:value="${perfo_info.leader_name}" oninput="infoCheck()"></div>
-
+									th:value="${perfo_info.leader_name}" oninput="leaderNameCheck(); infoCheck()"></div>
+							<span id="leaderNameCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">대표전화번호</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con">
 								<input type="text" id="leader_phone" name="leader_phone"
-									th:value="${perfo_info.leader_phone}" oninput="infoCheck()">
+									th:value="${perfo_info.leader_phone}" oninput="phoneCheck(); infoCheck()">
 							</div>
-
+							<span id="phoneCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">인원수</div>
 							<span aria-hidden="true" style="margin-left: 4rem; margin-top: 0.25rem;"></span>
 							<div class="list-con"><input type="number" id="member_num" name="member_num"
-									th:value="${perfo_info.member_num}" maxlength="3" oninput="infoCheck()">명</div>
-
+									th:value="${perfo_info.member_num}" maxlength="3" oninput="memberNumCheck(); infoCheck()">명</div>
+							<span id="memberNumCheck"></span>
 						</div>
 						<div>
 							<div class="list-name">공연횟수</div>
