@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.hall.dto.HallAnswerDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallQuestionDTO;
 
@@ -34,5 +35,13 @@ public class DetailDAO {
 	public void modifyQuestion(HallQuestionDTO question) {
 		sqlSession.update("detailPage.modifyQuestion", question);
 		
+	}
+
+	public void insertAnswer(HallAnswerDTO answer) {
+		sqlSession.insert("detailPage.insertAnswer", answer);
+	}
+	
+	public HallAnswerDTO getAnswer(Integer question_id){
+		return sqlSession.selectOne("detailPage.getAnswer", question_id);
 	}
 }

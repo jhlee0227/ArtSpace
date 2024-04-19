@@ -34,6 +34,21 @@
 			WHERE question_id = #{question_id}
 	</update>
 	
+	<insert id="insertAnswer">
+		insert into hall_answer(user_id, question_id, content, create_date)
+				values(#{user_id}, #{question_id}, #{content}, #{create_date})
+					
+		<selectKey keyProperty="answer_id" resultType="int" order="AFTER" >
+			select LAST_INSERT_ID()
+		</selectKey>	
+	</insert>
+	
+	<select id="getAnswer" resultType="com.example.demo.hall.dto.HallAnswerDTO">
+		select h.*, u.nickname, u.email
+		  from hall_answer h join user u
+		    on h.user_id = u.user_id
+		 where h.question_id = #{question_id}
+	</select>
 	
 
 </mapper>

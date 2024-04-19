@@ -252,7 +252,13 @@ public class HallServiceImpl implements HallService{
 
 	@Override
 	public List<HallQuestionDTO> getQuestionList(Integer hall_id) {
-		return detailDAO.getQuestionList(hall_id);
+		List<HallQuestionDTO> questionList = detailDAO.getQuestionList(hall_id);
+		
+		for (HallQuestionDTO question : questionList) {
+			question.setAnswer(detailDAO.getAnswer(question.getQuestion_id()));
+		}
+		
+		return questionList;
 	}
 
 

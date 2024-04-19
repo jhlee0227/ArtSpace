@@ -5,9 +5,9 @@
 <!-- INSERT -->
 	<insert id="insert">
 		insert into hall(hall_name, zip_code, address1, address2, hall_description, warning,
-						create_date, area, width, length, height, maximum, user_id)
+						create_date, area, width, length, height, maximum, user_id, visibility)
 		values(#{hall_name}, #{zip_code}, #{address1}, #{address2}, #{hall_description}, #{warning},
-					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum}, #{user_id})
+					#{create_date}, #{area}, #{width}, #{length}, #{height}, #{maximum}, #{user_id}, 'N')
 					
 			<selectKey keyProperty="hall_id" resultType="int" order="AFTER" >
 				select LAST_INSERT_ID()
