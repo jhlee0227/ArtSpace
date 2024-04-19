@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.SessionUtil;
 import com.example.demo.file.dto.FileDTO;
 import com.example.demo.hall.dto.EquipmentDTO;
+import com.example.demo.hall.dto.HallAnswerDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallQuestionDTO;
 import com.example.demo.hall.service.DetailService;
@@ -51,6 +52,7 @@ public class DetailController {
 		if (user_session.getUser_id() != null) {
 			model.addAttribute("user_id", user_session.getUser_id());
 			model.addAttribute("nickname", user_session.getNickname());
+			model.addAttribute("authority", user_session.getAuthority());
 		}
 		
 		// 공연장 기본 정보들 불러오기
@@ -132,10 +134,14 @@ public class DetailController {
 	}
 	
 	
-	// 공연장 질문 답변
+	// 공연장 질문
 	@PostMapping("/question/insert")
 	@ResponseBody
-	public HallQuestionDTO questionInsert(@RequestParam("content") String content, @RequestParam("hall_id") Integer hall_id) {		
+	public String questionInsert(@RequestParam("content") String content, @RequestParam("hall_id") Integer hall_id) {	
+		if(user_session.getUser_id() == null) {
+			return "login";
+		}
+		
 		HallQuestionDTO question = new HallQuestionDTO();
 		question.setContent(content);
 		question.setHall_id(hall_id);
@@ -144,7 +150,7 @@ public class DetailController {
 
 		detailService.insertQuestion(question);
 		
-		return question;
+		return "success";
 	}
 	
 	@PostMapping("question/delete")
@@ -155,17 +161,38 @@ public class DetailController {
 
 	@PostMapping("question/modify")
 	@ResponseBody
-	public void questionModify(@RequestParam("question_id") Integer question_id, @RequestParam("content") String content) {
+	public String questionModify(@RequestParam("question_id") Integer question_id, @RequestParam("content") String content) {
+		if(user_session.getUser_id() == null) {
+			return "login";
+		}
+		
 		HallQuestionDTO question = new HallQuestionDTO();
 		question.setContent(content);
 		question.setQuestion_id(question_id);
 		
 		detailService.modifyQuestion(question);
+		return content;
 	}
 
 	
-	
-	
+	// 공연장 질문 답변
+	@PostMapping("/question/answer/insert")
+	@ResponseBody
+	public String answerInsert(@RequestParam("content") String content, @RequestParam("question_id") Integer question_id) {	
+		if(user_session.getUser_id() == null) {
+			return "login";
+		}
+		
+		HallAnswerDTO answer = new HallAnswerDTO();
+		answer.setQuestion_id(question_id);
+		answer.setContent(content);
+		answer.setUser_id(user_session.getUser_id());
+		answer.setCreate_date(LocalDateTime.now());
+
+		detailService.insertAnswer(answer);
+		
+		return "success";
+	}
 	
 	
 	

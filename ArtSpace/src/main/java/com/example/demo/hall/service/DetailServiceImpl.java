@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.hall.dao.DetailDAO;
 import com.example.demo.hall.dao.HallDAO;
+import com.example.demo.hall.dto.HallAnswerDTO;
 import com.example.demo.hall.dto.HallDTO;
 import com.example.demo.hall.dto.HallQuestionDTO;
 import com.example.demo.mypage.dto.LikeDTO;
@@ -30,6 +31,11 @@ public class DetailServiceImpl implements DetailService {
 	@Override
 	public void modifyQuestion(HallQuestionDTO question) {
 		detailDAO.modifyQuestion(question);
+	}
+
+	@Override
+	public void insertAnswer(HallAnswerDTO answer) {
+		detailDAO.insertAnswer(answer);
 	}
 
 }

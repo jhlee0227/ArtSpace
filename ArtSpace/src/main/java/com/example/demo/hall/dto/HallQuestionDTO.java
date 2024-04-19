@@ -13,6 +13,9 @@ public class HallQuestionDTO {
 	private String nickname;
 	private String email;
 	
+	// 답변은 질문당하나
+	private HallAnswerDTO answer;
+	
 	
 	public Integer getQuestion_id() {
 		return question_id;
@@ -55,6 +58,12 @@ public class HallQuestionDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public HallAnswerDTO getAnswer() {
+		return answer;
+	}
+	public void setAnswer(HallAnswerDTO answer) {
+		this.answer = answer;
 	}
 	
 	

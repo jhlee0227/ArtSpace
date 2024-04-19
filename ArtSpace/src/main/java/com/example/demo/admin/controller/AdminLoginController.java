@@ -56,6 +56,7 @@ public class AdminLoginController {
 				session.setAttribute("user_id", adminDTO.getAdmin_id());
 				session.setAttribute("nickname", adminDTO.getNickname());
 				session.setAttribute("authority", adminDTO.getAuthority());
+				
 				return "redirect:/";
 			}else {
 				model.addAttribute("errorMessage", "아이디 또는 비밀번호가 일치하지 않습니다.");

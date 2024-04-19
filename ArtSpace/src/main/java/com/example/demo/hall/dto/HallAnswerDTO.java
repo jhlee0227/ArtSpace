@@ -10,6 +10,8 @@ public class HallAnswerDTO {
 	private Integer question_id;
 	private LocalDateTime create_date;
 	
+	private String nickname;
+	private String email;
 	
 	public Integer getAnswer_id() {
 		return answer_id;
@@ -40,5 +42,17 @@ public class HallAnswerDTO {
 	}
 	public void setCreate_date(LocalDateTime create_date) {
 		this.create_date = create_date;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
