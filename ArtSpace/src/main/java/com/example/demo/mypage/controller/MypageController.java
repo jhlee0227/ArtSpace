@@ -237,12 +237,17 @@ public class MypageController {
 		user_session.setSessionValue(session);
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";
+		} else {
+			if (user_session.getAuthority().equals("SU")) {
+				ReservationDTO reservationDetail = mypageService.reserveDetail(reserve_id);
+				model.addAttribute("reserve", reservationDetail);
+				
+				return "html/pay/payment";				
+			} else {
+				return "redirect:/";
+			}
 		}
 		
-		ReservationDTO reservationDetail = mypageService.reserveDetail(reserve_id);
-		model.addAttribute("reserve", reservationDetail);
-		
-		return "html/pay/payment";
 	}
 	
 	// 예약 취소
