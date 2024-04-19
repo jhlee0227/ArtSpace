@@ -31,7 +31,6 @@
 .hall-detail .content .qna .questionsContainer .question-box .review-content{
     padding: 2rem;
     background-color: rgb(250, 245, 241);    
-    border-radius: 0 0 1rem 1rem; 
 }
 
 .hall-detail .content .qna .questionsContainer .question-box .review-content .btns{
@@ -50,6 +49,43 @@
     margin-bottom: 0;
 }
 
+
+
+.hall-detail .content .qna .questionsContainer .answer-box {
+	margin: 1rem 0;
+	margin-top: -1rem;
+	margin-left: 2rem;
+}
+
+.hall-detail .content .qna .questionsContainer .answer-box .question-top{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(247, 240, 232);
+    padding: 1rem;
+    border-radius: 0rem 0rem 0 0; 
+}
+
+.hall-detail .content .qna .questionsContainer .answer-box .review-content{
+    padding: 2rem;
+    background-color: rgb(250, 245, 241);    
+    border-radius: 0 0 1rem 1rem; 
+}
+
+.hall-detail .content .qna .questionsContainer .answer-box .review-content .btns{
+	display: flex;
+
+}
+
+
+.hall-detail .content .qna .questionsContainer .answer-box .review-content .answer-btn{
+	cursor: pointer;
+	margin: 2rem .5rem;
+    padding: .2rem 1rem;
+    width: 3rem;
+    border-radius: .5rem;
+    background-color: rgb(224, 196, 165);
+    margin-bottom: 0;
+}
 
 
 
@@ -91,6 +127,14 @@ textarea {
 	cursor: pointer;
 }
 
+
+
+.hall-detail .content .qna .question-content {
+    white-space: pre-line;
+}
+
+
+/*
 .hall-detail .content .qna .question-nickname #name {
     margin-left: 5%;
 }
@@ -98,15 +142,6 @@ textarea {
 .hall-detail .content .qna .question-nickname #date {
     margin-left: 60%;
 }
-
-.hall-detail .content .qna .question-content {
-    background-color: white;
-    border-top: 2px solid rgb(200, 200, 200);
-    padding: 1% 2.5% 1% 2.5%;
-    margin: 1% 12.5% 0% 2.5%;
-    white-space: pre-line;
-}
-
 .hall-detail .content .qna .answer-nickname {
     background-color: rgb(235, 235, 235);
     border-top: 2px solid rgb(200, 200, 200);
@@ -146,5 +181,5 @@ textarea {
 }
 
 .hall-detail .content .qna .pagination a:active {
-    background-color: rgb(150, 150, 150);
+    background-color: rgb(150, 150, 150);*/
 }

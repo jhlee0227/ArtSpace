@@ -14,4 +14,8 @@ public interface DetailService {
 
 	public void insertAnswer(HallAnswerDTO answer);
 
+	public void deleteAnswer(Integer answer_id);
+
+	public void modifyAnswer(HallAnswerDTO answer);
+
 }

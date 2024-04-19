@@ -50,5 +50,15 @@
 		 where h.question_id = #{question_id}
 	</select>
 	
+	<delete id="deleteAnswer">
+		delete from hall_answer
+		where answer_id = #{answer_id}
+	</delete>
+	
+	<update id="modifyAnswer">
+		update hall_answer
+			set content = #{content}
+			WHERE answer_id = #{answer_id}
+	</update>
 
 </mapper>
