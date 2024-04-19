@@ -171,10 +171,10 @@ function filterPush(){
 					str += '<img data-like="'+ hall.likeStatus +'"src="img/heart_black.png" class="'+ hall.likeStatus +'"></div>'
 				  	str += '<div class="content">';
 				  	str += '<div class="content-top">';
-					str += '<p class="address-text">'+ hall.address1.substring(0, 6) +'</p>\n<div>';
-				  	str += '<i class="fa fa-star fa-2x" aria-hidden="true"></i>'
+					str += '<p class="address-text">'+ hall.address1.substring(0, 6) +'</p>';
+				  	str += '<div class="rating-list"><i class="fa fa-star" aria-hidden="true"></i>'
 					str += '<p>('+ hall.rating +')</p>'
-					str += '<i id="like_icon" class="fa-regular fa-heart fa-2x" aria-hidden="true"></i>'
+					str += '<i id="like_icon" class="fa-regular fa-heart" aria-hidden="true"></i>'
 					str += '<p>('+hall.likeNum+')</p>\n</div>\n</div>'	
 					str += '<p class="title-text">'+ hall.hall_name +'</p>';
 					str += '<p class="price-text"><span class="point">'+ hall.minPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</span>원~</p>'

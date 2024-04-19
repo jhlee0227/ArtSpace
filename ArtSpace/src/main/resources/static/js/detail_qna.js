@@ -32,7 +32,7 @@ var equipList = [];			// 대여할 장비 리스트
 let date = new Date();
 let sel_day = 7; //일자 조절
 date.setDate(date.getDate() + sel_day );		
-//document.getElementById('rental_date').min = date.toISOString().substring(0,10);
+document.getElementById('rental_date').min = date.toISOString().substring(0,10);
 
 // 날짜, 시간 선택 > 가격 표시
 document.getElementById('rental_date').onchange = function(){
