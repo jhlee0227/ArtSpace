@@ -279,7 +279,12 @@ function submitQuestions() {
 			"hall_id":hall_id
 		},
         success: function(data) {
-			location.reload();
+			if(data == "login"){
+				alert("로그인이 필요 합니다.");
+				location.href="http://localhost:1105/login";
+			} else {			
+				location.reload();
+			}
         },
         error: function(xhr, status, error) {
         }
@@ -316,6 +321,7 @@ function modifyQuestion(question_id){
 	inputbox.toggleClass('hidden');
 	if(inputbox.hasClass("hidden")){
 		modifybtn.text('수정');
+		
 	    $.ajax({
 	        url: '/hall/question/modify',
 	        type: 'post',
@@ -324,7 +330,13 @@ function modifyQuestion(question_id){
 				"content":inputbox.val()
 			},
 	        success: function(data) {
-				location.reload();
+				if(data == "login"){
+					alert("로그인이 필요 합니다.");
+					location.href="http://localhost:1105/login";
+				} else {
+					$('#content_'+question_id).text(data);				
+				}
+				//location.reload();
 	        },
 	        error: function(xhr, status, error) {
 	            console.error(error);
@@ -334,56 +346,58 @@ function modifyQuestion(question_id){
 		
 	} else {
 		modifybtn.text('저장');	
-		
+		inputbox.text($('#content_'+question_id).text());		
 	}
+}
+
+function requestAnswer(question_id){
+	let inputbox = $('#questionTextarea_'+question_id);
+	let modifybtn = $('#answerbtn_'+question_id);
+	let canclebtn = $('#canclebtn_'+question_id);
+	
+	inputbox.toggleClass('hidden');
+	canclebtn.toggleClass('hidden');
+	if(inputbox.hasClass("hidden")){
+		modifybtn.text('답변');
+		
+	    $.ajax({
+	        url: '/hall/question/answer/insert',
+	        type: 'post',
+	        data:{
+				"question_id":question_id,
+				"content":inputbox.val()
+			},
+	        success: function(data) {
+				if(data == "login"){
+					alert("로그인이 필요 합니다.");
+					location.href="http://localhost:1105/login";
+				}else {
+					location.reload();				
+				}
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+    	});	
+		
+		
+	} else {
+		modifybtn.text('등록');	
+		// 답변 입력 공간 활성화된 상태
+	}
+}
+
+function canclebtn(question_id){
+	let inputbox = $('#questionTextarea_'+question_id);
+	let modifybtn = $('#answerbtn_'+question_id);
+	let canclebtn = $('#canclebtn_'+question_id);
+	
+	inputbox.toggleClass('hidden');
+	canclebtn.toggleClass('hidden');
+	modifybtn.text('답변');
+	inputbox.text('');
 }
 
 /* ================= */
 
 
-
-
-
-
-/*$(document).ready(function() {
-    // Load questions on page load
-    //loadQuestions();
-
-    // Submit question form
-    $('#questionForm').submit(function(event) {
-        event.preventDefault();
-        var content = $('#questionContent').val();
-        saveQuestion(content);
-    });
-});
-
-function loadQuestions() {
-    $.ajax({
-        url: '/questions',
-        type: 'GET',
-        success: function(data) {
-            // Display questions in the DOM
-            // Handle pagination if needed
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
-
-function saveQuestion(content) {
-    $.ajax({
-        url: '/questions',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ content: content }),
-        success: function(data) {
-            // Reload questions after successful submission
-            loadQuestions();
-            $('#questionContent').val(''); // Clear textarea
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-}*/

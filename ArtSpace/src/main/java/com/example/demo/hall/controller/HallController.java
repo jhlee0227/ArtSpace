@@ -250,8 +250,15 @@ public class HallController {
 		if (user_session.getUser_id() == null) {
 			return "redirect:/login";
 		}
-
-		hallService.cancelHall(id);
+		
+		HallDTO hallInfo = hallService.findById(id, user_session.getUser_id());
+		if(hallInfo.getVisibility().equals("Y")) {
+			return "redirect:/company/hall";
+		} else {			
+			hallService.cancelHall(id);
+		}
+		
+		
 		return "redirect:/";
 	}
 
