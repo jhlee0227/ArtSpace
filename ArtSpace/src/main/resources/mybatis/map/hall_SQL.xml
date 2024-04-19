@@ -157,7 +157,7 @@
           		on h.hall_id = lh.hall_id
               left join review r
          		on h.hall_id = r.hall_id
-                        where h.visibility = 'Y'
+                where h.visibility = 'Y'
          <if test ="local != '' or maxPrice > 0 or maxPeople >0">
              and
          </if>
@@ -170,7 +170,7 @@
 			 <if test="maxPeople > 0">and</if>
 		 </if>
 		 <if test="maxPeople > 0">
-	        h.maximum > #{maxPeople}
+	        h.maximum >= #{maxPeople}
 		 </if>
 		
 		group by hall_id

@@ -409,9 +409,9 @@
 						    <span class="date" th:text="${#temporals.format(question.create_date, 'yyyy-MM-dd HH:mm:ss')}">2024-03-11</span>
 						  </div>
 						  <div class="review-content">
-							<span th:id="|content_${question.question_id}|" th:text="${question.content}"></span>
+							<span class="question-content" th:id="|content_${question.question_id}|" th:text="${question.content}"></span>
 							<div class="btns">
-								<div th:onclick="|deleteQuestion(${question.question_id});|" th:if="${user_id} == ${question.user_id}" class="answer-btn">삭제</div>
+								<div th:onclick="|deleteQuestion(${question.question_id});|" th:if="${question.answer} == null and(${user_id} == ${question.user_id})" class="answer-btn">삭제</div>
 								<div th:onclick="|modifyQuestion(${question.question_id});|" th:if="${user_id} == ${question.user_id}" th:id="|modifybtn_${question.question_id}|" class="answer-btn">수정</div>
 								<div th:onclick="|requestAnswer(${question.question_id});|" th:if="${question.answer} == null and (${authority} == 'SA' or ${user_id} == ${hall.user_id})"  th:id="|answerbtn_${question.question_id}|"class="answer-btn">답변</div>		
 								<div th:onclick="|canclebtn(${question.question_id});|" th:id="|canclebtn_${question.question_id}|" class="answer-btn hidden">취소</div>								
@@ -419,7 +419,7 @@
 							<textarea class="hidden" th:id="|questionTextarea_${question.question_id}|" name="questionContent"></textarea>
 						  </div>		
 						</div>	
-						<div th:if="${question.answer} != null" class="question-box">
+						<div th:if="${question.answer} != null" class="answer-box">
 						  <div class="question-top">
 							<div class="left">
 							  <span class="nickname" th:text="|답변 : ${question.answer.nickname}|">닉네임</span>
@@ -428,25 +428,25 @@
 						    <span class="date" th:text="${#temporals.format(question.answer.create_date, 'yyyy-MM-dd HH:mm:ss')}">2024-03-11</span>
 						  </div>
 						  <div class="review-content">
-							<span th:id="|content_${question.question_id}|" th:text="${question.answer.content}"></span>
+							<span class="question-content" th:id="|answerContent_${question.answer.answer_id}|" th:text="${question.answer.content}"></span>
 							<div class="btns">
-								<div th:onclick="|deleteQuestion(${question.question_id});|" th:if="${user_id} == ${question.answer.user_id}" class="answer-btn">삭제</div>
-								<div th:onclick="|modifyQuestion(${question.question_id});|" th:if="${user_id} == ${question.answer.user_id}" th:id="|modifybtn_${question.question_id}|" class="answer-btn">수정</div>	
-								<div th:onclick="|canclebtn(${question.question_id});|" th:id="|canclebtn_${question.question_id}|" class="answer-btn hidden">취소</div>								
+								<div th:onclick="|deleteAnswer(${question.answer.answer_id});|" th:if="${user_id} == ${question.answer.user_id}" class="answer-btn">삭제</div>
+								<div th:onclick="|modifyAnswer(${question.answer.answer_id});|" th:if="${user_id} == ${question.answer.user_id}" th:id="|answerModifybtn_${question.question_id}|" class="answer-btn">수정</div>	
+								<div th:onclick="|answerCanclebtn(${question.answer.answer_id});|" th:id="|answerCanclebtn_${question.answer.answer_id}|" class="answer-btn hidden">취소</div>								
 							</div>
-							<textarea class="hidden" th:id="|questionTextarea_${question.question_id}|" name="questionContent"></textarea>
+							<textarea class="hidden" th:id="|answerTextarea_${question.answer.answer_id}|" name="questionContent"></textarea>
 						  </div>		
 						</div>	
 					</th:block>
         		</div>
                 <br>
 				
-                <div class="pagination">
+<!-- 	               <div class="pagination">
                   <a href="#" class="one">1</a>
                   <a href="#" class="two">2</a>
                   <a href="#" class="three">3</a>
                   <a href="#" class="etc">...</a>
-                </div>
+                </div>-->
 
               </section>
             </div>
