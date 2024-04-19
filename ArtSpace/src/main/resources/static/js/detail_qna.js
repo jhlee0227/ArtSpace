@@ -387,6 +387,70 @@ function requestAnswer(question_id){
 	}
 }
 
+
+function deleteAnswer(answer_id){
+	if(!confirm("삭제 하시겠습니까?")){
+    	return;
+	} else {
+	    $.ajax({
+	        url: '/hall/question/answer/delete',
+	        type: 'post',
+	        data:{
+				"answer_id":answer_id
+			},
+	        success: function(data) {
+				location.reload();
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+    	});	
+	}
+}
+
+
+function modifyAnswer(answer_id){
+	let inputbox = $('#answerTextarea_'+answer_id);
+	let modifybtn = $('#answerModifybtn_'+answer_id);
+	let canclebtn = $('#answerCanclebtn_'+answer_id);
+	
+	inputbox.toggleClass('hidden');
+	canclebtn.toggleClass('hidden');
+	if(inputbox.hasClass("hidden")){
+		modifybtn.text('수정');
+		
+	    $.ajax({
+	        url: '/hall/question/answer/modify',
+	        type: 'post',
+	        data:{
+				"answer_id":answer_id,
+				"content":inputbox.val()
+			},
+	        success: function(data) {
+				if(data == "login"){
+					alert("로그인이 필요 합니다.");
+					location.href="http://localhost:1105/login";
+				} else {
+					$('#answerContent_'+answer_id).text(data);				
+				}
+				//location.reload();
+	        },
+	        error: function(xhr, status, error) {
+	            console.error(error);
+	        }
+    	});	
+		
+		
+	} else {
+		modifybtn.text('저장');	
+		inputbox.text($('#answerContent_'+answer_id).text());		
+	}
+}
+
+
+
+
+
 function canclebtn(question_id){
 	let inputbox = $('#questionTextarea_'+question_id);
 	let modifybtn = $('#answerbtn_'+question_id);
@@ -397,6 +461,21 @@ function canclebtn(question_id){
 	modifybtn.text('답변');
 	inputbox.text('');
 }
+
+function answerCanclebtn(answer_id){
+	let inputbox = $('#answerTextarea_'+answer_id);
+	let modifybtn = $('#answerModifybtn_'+answer_id);
+	let canclebtn = $('#answerCanclebtn_'+answer_id);
+	
+	inputbox.toggleClass('hidden');
+	canclebtn.toggleClass('hidden');
+	modifybtn.text('수정');
+	inputbox.text('');
+}
+
+
+
+
 
 /* ================= */
 

@@ -34,7 +34,6 @@ public class DetailDAO {
 
 	public void modifyQuestion(HallQuestionDTO question) {
 		sqlSession.update("detailPage.modifyQuestion", question);
-		
 	}
 
 	public void insertAnswer(HallAnswerDTO answer) {
@@ -43,5 +42,14 @@ public class DetailDAO {
 	
 	public HallAnswerDTO getAnswer(Integer question_id){
 		return sqlSession.selectOne("detailPage.getAnswer", question_id);
+	}
+
+	public void deleteAnswer(Integer answer_id) {
+		sqlSession.delete("detailPage.deleteAnswer", answer_id);
+		
+	}
+
+	public void modifyAnswer(HallAnswerDTO answer) {
+		sqlSession.update("detailPage.modifyAnswer", answer);
 	}
 }

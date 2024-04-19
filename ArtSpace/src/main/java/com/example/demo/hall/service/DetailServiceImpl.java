@@ -38,4 +38,15 @@ public class DetailServiceImpl implements DetailService {
 		detailDAO.insertAnswer(answer);
 	}
 
+	@Override
+	public void deleteAnswer(Integer answer_id) {
+		detailDAO.deleteAnswer(answer_id);
+		
+	}
+
+	@Override
+	public void modifyAnswer(HallAnswerDTO answer) {
+		detailDAO.modifyAnswer(answer);
+	}
+
 }

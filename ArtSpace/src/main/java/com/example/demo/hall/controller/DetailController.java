@@ -195,6 +195,25 @@ public class DetailController {
 	}
 	
 	
+	@PostMapping("question/answer/delete")
+	@ResponseBody
+	public void answerDelete(@RequestParam("answer_id") Integer answer_id) {
+		detailService.deleteAnswer(answer_id);
+	}
 	
+	@PostMapping("question/answer/modify")
+	@ResponseBody
+	public String answerModify(@RequestParam("answer_id") Integer answer_id, @RequestParam("content") String content) {
+		if(user_session.getUser_id() == null) {
+			return "login";
+		}
+		
+		HallAnswerDTO answer = new HallAnswerDTO();
+		answer.setContent(content);
+		answer.setAnswer_id(answer_id);
+		
+		detailService.modifyAnswer(answer);
+		return content;
+	}
 
 }
