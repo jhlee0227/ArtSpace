@@ -18,8 +18,17 @@
 | 이준호<br/>[@jhlee0227](https://github.com/jhlee0227) | ks<br/>[@seoeev](https://github.com/seoeev) | kingminseo1027<br/>[@kimminseo123](https://github.com/kimminseo123) | Hannamug<br/>[@Hannamug](https://github.com/Hannamug) |
 
 ## 맡은 역할
-
+- 팀장 겸 마이페이지 기능 구현
+- ERD 다이어그램 설계와 usecase 다이어그램 작성
 ### 마이페이지
 - 예약 날짜 중 가장 빠른 날짜와 현재 날짜를 비교해 리뷰 입력 가능
 - 예약 내역 조회 및 취소 기능
 - 사용자 정보 수정 기능
+### 법인
+- Google Cloud Storage에 법인 사용자 등록을 위한 파일 업로드
+
+### ERD 설계
+[ERD 다이어그램](https://www.erdcloud.com/d/ci8oEzfuiXJH4CST2)
+
+### Usecase 설계
+[Usecase 다이어그램)()
