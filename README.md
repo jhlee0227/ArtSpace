@@ -29,6 +29,3 @@
 
 ### ERD 설계
 [ERD 다이어그램](https://www.erdcloud.com/d/ci8oEzfuiXJH4CST2)
-
-### Usecase 설계
-[Usecase 다이어그램)()
