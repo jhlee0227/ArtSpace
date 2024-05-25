@@ -36,3 +36,8 @@
 
 ### ERD 설계
 [ERD 다이어그램](https://www.erdcloud.com/d/ci8oEzfuiXJH4CST2)
+
+## 프로젝트 성과
+- 개인, 법인, 관리자와 같이 사용자 유형에 따라 다른 페이지 지원
+- Google Cloud Storage를 이용해 파일을 저장하는 경험
+
