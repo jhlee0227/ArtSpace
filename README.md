@@ -12,6 +12,9 @@
 ## 프로젝트 개요
 공간(ArtSpace)은 공연장을 등록하고 필요한 공연자가 해당 공연장을 예약하는 사이트입니다.
 
+## 결과발표 자료
+https://www.miricanvas.com/ko/v/133v2ur
+
 ## 팀원 소개
 | <img src="https://avatars.githubusercontent.com/u/161573822?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/112747135?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/161282676?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/161573872?v=4" width="150" height="150"/> |
 |:-:|:-:|:-:|:-:|
